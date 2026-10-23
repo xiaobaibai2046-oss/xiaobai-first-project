@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {routes,filterRoutes,mapUrl,roadbook} from '../data.js';
 test('region, duration, city, food, favorites and empty searches',()=>{
 assert.deepEqual(filterRoutes(routes,{region:'西藏'}).map(r=>r.id),['sichuan','lhasa-gaize','gaize-minfeng']);
-assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong','yunnan-southeast','qinghai-lake','qinghai-south','gansu-southeast']);
+assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong','yunnan-southeast','qinghai-lake','qinghai-south','gansu-southeast','ningxia-north','ningxia-yellowriver','ningxia-south','inner-central','inner-east','inner-west']);
 assert.equal(filterRoutes(routes,{query:'喀什'})[0].id,'south');
 assert.equal(filterRoutes(routes,{query:'石锅鸡'})[0].id,'sichuan');
 assert.equal(filterRoutes(routes,{savedOnly:true,saved:[]}).length,0);
@@ -21,3 +21,5 @@ test('Lop Nur loop preserves requested stop order and exports unresolved access 
 test('Qinghai retains its loops and includes the new cross-province route',()=>{const items=filterRoutes(routes,{region:'青海'});assert.equal(items.length,4);for(const r of items){assert.equal(r.stops[0].name,r.stops.at(-1).name);assert.ok(roadbook(r).includes('高原'));}assert.ok(filterRoutes(routes,{region:'甘肃'}).some(r=>r.id==='qinghai-gansu'));});
 
 test('Gansu filter includes three Lanzhou loops and the existing Qinghai-Gansu loop',()=>{const items=filterRoutes(routes,{region:'甘肃'});assert.equal(items.length,4);for(const id of ['gansu-hexi','gansu-gannan','gansu-southeast']){const r=items.find(r=>r.id===id);assert.equal(r.stops[0].name,'兰州');assert.equal(r.stops.at(-1).name,'兰州');}assert.ok(items.some(r=>r.id==='qinghai-gansu'));});
+
+test('Ningxia and Inner Mongolia share only the intended cross-province loop',()=>{const nx=filterRoutes(routes,{region:'宁夏'}),im=filterRoutes(routes,{region:'内蒙古'});assert.equal(nx.length,4);assert.equal(im.length,3);assert.deepEqual(nx.filter(r=>im.includes(r)).map(r=>r.id),['inner-west']);for(const r of [...nx,...im])assert.equal(r.stops[0].name,r.stops.at(-1).name);});
