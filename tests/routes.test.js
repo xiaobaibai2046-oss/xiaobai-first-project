@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {routes,filterRoutes,mapUrl,roadbook} from '../data.js';
 test('region, duration, city, food, favorites and empty searches',()=>{
 assert.deepEqual(filterRoutes(routes,{region:'西藏'}).map(r=>r.id),['sichuan','lhasa-gaize','gaize-minfeng']);
-assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong']);
+assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong','yunnan-southeast']);
 assert.equal(filterRoutes(routes,{query:'喀什'})[0].id,'south');
 assert.equal(filterRoutes(routes,{query:'石锅鸡'})[0].id,'sichuan');
 assert.equal(filterRoutes(routes,{savedOnly:true,saved:[]}).length,0);
