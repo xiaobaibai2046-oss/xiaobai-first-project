@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {routes,filterRoutes,mapUrl,roadbook} from '../data.js';
 test('region, duration, city, food, favorites and empty searches',()=>{
 assert.deepEqual(filterRoutes(routes,{region:'西藏'}).map(r=>r.id),['sichuan','lhasa-gaize','gaize-minfeng']);
-assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong','yunnan-southeast','qinghai-lake','qinghai-south','gansu-southeast','ningxia-north','ningxia-yellowriver','ningxia-south','inner-central','inner-east','inner-west','hainan-west','hainan-central','guangxi-north','guangxi-border','guangxi-coast','guizhou-west','guizhou-east','guizhou-north','sichuan-west','sichuan-south','sichuan-north','chongqing-east','chongqing-south','chongqing-west','shanxi-north','shanxi-central','shanxi-southeast','shaanxi-guanzhong','shaanxi-north','shaanxi-south','jiangxi-north','jiangxi-east','jiangxi-south','hunan-west','hunan-east','hunan-south','hubei-northeast','hubei-south']);
+const sample=routes[0];assert.deepEqual(filterRoutes([{...sample,id:'nine',days:9},{...sample,id:'ten',days:10},{...sample,id:'unknown',days:null}],{duration:'short'}).map(r=>r.id),['nine']);assert.deepEqual(filterRoutes([{...sample,id:'nine',days:9},{...sample,id:'ten',days:10},{...sample,id:'unknown',days:null}],{duration:'long'}).map(r=>r.id),['ten']);
 assert.equal(filterRoutes(routes,{query:'喀什'})[0].id,'south');
 assert.equal(filterRoutes(routes,{query:'石锅鸡'})[0].id,'sichuan');
 assert.equal(filterRoutes(routes,{savedOnly:true,saved:[]}).length,0);
@@ -27,3 +27,5 @@ test('Ningxia and Inner Mongolia share only the intended cross-province loop',()
 test('five new regions expose their loops, and Sichuan retains the Sichuan-Tibet route',()=>{for(const region of ['海南','广西','贵州','重庆']){const items=filterRoutes(routes,{region});assert.equal(items.length,3);for(const r of items)assert.equal(r.stops[0].name,r.stops.at(-1).name);}const sc=filterRoutes(routes,{region:'四川'});assert.equal(sc.length,4);assert.ok(sc.some(r=>r.id==='sichuan'));for(const r of sc.filter(r=>r.id!=='sichuan'))assert.equal(r.stops[0].name,r.stops.at(-1).name);});
 
 test('Shanxi Shaanxi Jiangxi Hunan and Hubei each contain three closed loops',()=>{for(const region of ['山西','陕西','江西','湖南','湖北']){const items=filterRoutes(routes,{region});assert.equal(items.length,3);for(const r of items)assert.equal(r.stops[0].name,r.stops.at(-1).name);}});
+
+test('ten added provinces each have three closed loops and distinguish Jilin province and city',()=>{for(const region of ['黑龙江','吉林','辽宁','山东','江苏','河北','福建','河南','广东','浙江']){const items=filterRoutes(routes,{region});assert.equal(items.length,3);for(const r of items)assert.equal(r.stops[0].name,r.stops.at(-1).name);}assert.ok(filterRoutes(routes,{region:'吉林',query:'吉林市'}).some(r=>r.id==='jilin-east'));});

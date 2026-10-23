@@ -33,6 +33,14 @@ const heritageSupplies={title:'古建与山地专项',items:[supply('heritage-ti
 const heritageRisk=risk('古建预约、台阶与文物保护','按官方场次和步道游览，寺院尊重参观拍摄规定，不触摸、攀爬或刻画文物；台阶多时量力而行。','满额、关闭、强风或身体不适就调整参观，不越过护栏、不绕行进入未开放空间。');
 const seasonalMountainRisk=risk('高山低温、雨雪与索道停运','山顶天气与城区不同，确认当地预警、索道接驳、步道和山区公路开放，备防寒防雨层。','雷暴、结冰、浓雾或设施停运时停止登高并按指引调整，不走未开放山路或冒险赶夜路。');
 
+const northeastSupplies={title:'东北季节与森林专项',items:[supply('ne-weather','按季节准备分层保暖与防雨衣物','夏秋也有早晚温差与蚊虫；冰雪季需另评估低温、日照、路况与车辆适用性。'),supply('ne-car','车辆季节性检修与防滑需求确认','冬季出发前由专业人员评估轮胎、冷却液、电池及所需防滑设备，按手册和当地交通要求准备。'),supply('ne-forest','森林、湿地与冰雪项目开放确认','仅使用正规景区及允许道路，不默认夏秋看点与冬季项目同时运营，关注森林火险和接待。')]};
+const northeastRisk=risk('低温、冰雪与季节错配','冬季不是夏秋线路的简单照搬，先确认车辆适用性、白昼长度、封路和正规冰雪项目；夏秋也备保暖层。','出现结冰、暴雪、封路或身体不适及时调整，避免夜间赶路；不在冰封江湖上试车或步行，不在封闭车内长时间怠速取暖，积雪时注意排气安全。');
+const forestWetlandRisk=risk('森林火险、野生动物与湿地边界','只进明确开放区域，不违规用火、采食不明野生菌、投喂野生动物或进入湿地栖息区。','火险升级、区域封闭或遇动物时遵从现场指引，不走林区便道，不为摄影追逐或靠近动物。');
+const northeastBorderRisk=risk('界江与边境活动限制','抚远、饶河、同江、集安、临江、丹东等先核实道路、证件和允许活动范围，不包含跨境出入境。','遇检查和限制服从指引，不越过隔离设施、不擅用无人机、不靠近边境或生产作业区域。');
+const northernCoastRisk=risk('海况、潮汐与离岸流','海岸游览不等于允许下水，提前核实海事预警、正规浴场、船班和上岛交通，冬季海边尤其寒冷。','大风、雷暴、潮汐或停航时取消水上与上岛活动，不进入未开放滩涂或礁石区；遇险呼叫专业救援，不盲目下水救人。');
+const ferrySupply={title:'海岸与船班专项',items:[supply('coast-ferry','轮渡、景区接驳及车辆停放确认','不少岛屿不能自驾直达，先落实港口、停车、正规船票、接驳与天气，船班及游览时间不默认计入驾车里程。'),supply('coast-flex','防晒、防雨与机动住宿','关注海事和气象预警，准备可调整的住宿，不为赶船疲劳驾驶，不把未开放海岸当作浴场。')]};
+const waterTownRisk=risk('园林古镇预约与水边活动','博物馆、园林和古镇分别核实预约、限行和停车，不在未开放河湖下水，乘正规船只按规定穿救生衣。','满额、停航、步道关闭或雷雨时调整游览，不闯步行街、不翻越护栏或冒险在拥挤水边停留。');
+
 export const preparationProfiles={
 'sichuan':{tags:['高原','连续山路'],groups:[highland],risks:[...highRisks,risk('涉水与山区暴雨','关注沿途降雨和道路中断，预留交通管制机动时间。','不驾车试探水深，不穿越漫水路段，听从当地交管并改期或折返。')]},
 'ili':{tags:['草原山地','季节性道路'],groups:[],risks:[risk('山区天气与季节性封路','景区道路和独库等可选支线需逐段核实开放，不按往年日期推定。','遇封路调整路线；大风、降温或降雨时停止不具备条件的山地游览。'),risk('牲畜、湿地与景区行车','遵守限速和景区交通规则，不驶入草场、湿地或牧民私人区域。','发现牲畜或野生动物提前减速，不鸣笛追赶，不突然转向进入危险路肩。')]},
@@ -87,7 +95,37 @@ export const preparationProfiles={
 'hunan-south':{tags:['衡山登高','丹霞步道','东江湖水域'],groups:[humidSupplies],risks:[seasonalMountainRisk,wetRoadRisk,waterRisk,risk('丹霞观景边界与野生菌','崀山、高椅岭等只走正规开放步道，不越过护栏或攀爬未开放岩壁，不采食不明野生菌。','雨后湿滑、雷暴或身体不适及时结束游览；遇疑似食物中毒立即就医并说明就餐信息。')]},
 'hubei-west':{tags:['三峡水域','神农架高山','武当山步道'],groups:[humidSupplies,heritageSupplies],risks:[wetRoadRisk,waterRisk,seasonalMountainRisk,risk('神农架保护区与特殊天气','只进开放景区，不擅自穿越林区、不采食野生菌；木鱼镇海拔低不代表神农顶等高处没有低温或缺氧风险。','遇冰雪、火险、封闭或身体不适按现场要求调整；严重不适及时求助，不强行上升或绕行林区。')]},
 'hubei-northeast':{tags:['大别山','森林防火','红色文化'],groups:[humidSupplies],risks:[wetRoadRisk,seasonalMountainRisk,heritageRisk,risk('山地花期与未开放步道','麻城花海按当年花期，天堂寨、薄刀峰等按明确开放入口和线路游览，不默认允许跨省穿越。','封闭、雷暴、火险或花期不符就调整，不违规用火、不走林区便道赶路。')]},
-'hubei-south':{tags:['九宫山','正规休整体验','水库观景'],groups:[humidSupplies],risks:[waterRisk,wetRoadRisk,seasonalMountainRisk,risk('温泉与个人健康条件','如安排温泉，先核实正规商家水质、营业与个人健康适宜性，饮酒后不泡汤也不驾驶。','出现头晕或其他不适立即停止活动并求助；不将野外水域或不明泉池作为温泉体验。')]}
+'hubei-south':{tags:['九宫山','正规休整体验','水库观景'],groups:[humidSupplies],risks:[waterRisk,wetRoadRisk,seasonalMountainRisk,risk('温泉与个人健康条件','如安排温泉，先核实正规商家水质、营业与个人健康适宜性，饮酒后不泡汤也不驾驶。','出现头晕或其他不适立即停止活动并求助；不将野外水域或不明泉池作为温泉体验。')]},
+"heilongjiang-south":{tags:["森林镜泊","冰雪另选季节","山路温差"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,wetRoadRisk,waterRisk]},
+"heilongjiang-north":{tags:["湿地森林","火山地质","北方温差"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,waterRisk,heritageRisk]},
+"heilongjiang-east":{tags:["界江边境","三江湿地","远郊补给"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,northeastBorderRisk,waterRisk]},
+"jilin-east":{tags:["长白山预约","山顶低温","森林防火"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,seasonalMountainRisk,foodRisk]},
+"jilin-south":{tags:["鸭绿江边境","森林山路","冬季另规划"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,northeastBorderRisk,wetRoadRisk]},
+"jilin-central":{tags:["城市纪念地","湖滨森林","北方温差"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,waterRisk,heritageRisk]},
+"liaoning-east":{tags:["辽东山地","界江边境","洞穴森林"],groups:[northeastSupplies],risks:[northeastRisk,forestWetlandRisk,northeastBorderRisk,wetRoadRisk]},
+"liaoning-coast":{tags:["滨海船班","界江活动","雨风天气"],groups:[northeastSupplies,ferrySupply],risks:[northernCoastRisk,northeastBorderRisk,wetRoadRisk,foodRisk]},
+"liaoning-west":{tags:["渤海湿地","文物古城","季节性海岸"],groups:[northeastSupplies],risks:[northernCoastRisk,forestWetlandRisk,heritageRisk,northeastRisk]},
+"shandong-south":{tags:["泰山登高","文物预约","运河古城"],groups:[heritageSupplies],risks:[heritageRisk,seasonalMountainRisk,wetRoadRisk,foodRisk]},
+"shandong-coast":{tags:["胶东海岸","上岛船班","季节观鸟"],groups:[ferrySupply],risks:[northernCoastRisk,forestWetlandRisk,foodRisk,mountainCultureRisk]},
+"shandong-north":{tags:["黄河口湿地","博物馆预约","古城慢游"],groups:[heritageSupplies],risks:[forestWetlandRisk,waterRisk,heritageRisk,foodRisk]},
+"jiangsu-central":{tags:["园林古街","跨江交通","场馆预约"],groups:[heritageSupplies],risks:[waterTownRisk,heritageRisk,foodRisk,wetRoadRisk]},
+"jiangsu-south":{tags:["水乡园林","湖滨活动","古镇限行"],groups:[humidSupplies],risks:[waterTownRisk,heritageRisk,foodRisk,wetRoadRisk]},
+"jiangsu-north":{tags:["黄海湿地","运河文化","远郊支线"],groups:[heritageSupplies,ferrySupply],risks:[forestWetlandRisk,northernCoastRisk,waterTownRisk,foodRisk]},
+"hebei-south":{tags:["太行山路","古建文物","纪念场馆"],groups:[heritageSupplies],risks:[heritageRisk,wetRoadRisk,seasonalMountainRisk,foodRisk]},
+"hebei-north":{tags:["坝上草原","冬季另规划","山地温差"],groups:[grassSupplies,northeastSupplies],risks:[...grassRisks,northeastRisk,seasonalMountainRisk,heritageRisk]},
+"hebei-east":{tags:["长城与清史","渤海海岸","文物保护"],groups:[heritageSupplies,ferrySupply],risks:[northernCoastRisk,heritageRisk,wetRoadRisk,seasonalMountainRisk]},
+"fujian-north":{tags:["闽东海岸","台风船班","山地古村"],groups:[humidSupplies,ferrySupply],risks:[tropicalRisk,northernCoastRisk,wetRoadRisk,foodRisk]},
+"fujian-coast":{tags:["古城与海岛","轮渡另核实","海况与台风"],groups:[humidSupplies,ferrySupply],risks:[tropicalRisk,northernCoastRisk,heritageRisk,foodRisk]},
+"fujian-inland":{tags:["武夷山地","茶乡古街","竹筏与洞穴"],groups:[humidSupplies],risks:[wetRoadRisk,seasonalMountainRisk,waterTownRisk,foodRisk]},
+"henan-west":{tags:["嵩山登高","石窟古迹","峡谷支线"],groups:[heritageSupplies],risks:[heritageRisk,seasonalMountainRisk,wetRoadRisk,waterRisk]},
+"henan-east":{tags:["宋都古城","预约场馆","节假日人流"],groups:[heritageSupplies],risks:[heritageRisk,waterTownRisk,foodRisk,wetRoadRisk]},
+"henan-north":{tags:["太行峡谷","红旗渠","殷商文物"],groups:[heritageSupplies],risks:[heritageRisk,wetRoadRisk,seasonalMountainRisk,waterRisk]},
+"guangdong-north":{tags:["岭南古建","丹霞山地","远郊支线"],groups:[humidSupplies],risks:[wetRoadRisk,seasonalMountainRisk,heritageRisk,foodRisk]},
+"guangdong-east":{tags:["海岸与台风","潮汕古城","餐饮卫生"],groups:[humidSupplies,ferrySupply],risks:[tropicalRisk,coastRisk,heritageRisk,foodRisk]},
+"guangdong-west":{tags:["粤西海岸","侨乡碉楼","风雨长途"],groups:[humidSupplies,ferrySupply],risks:[tropicalRisk,coastRisk,wetRoadRisk,foodRisk]},
+"zhejiang-north":{tags:["水乡园林","山地限行","夏季湿热"],groups:[humidSupplies],risks:[waterTownRisk,wetRoadRisk,heritageRisk,foodRisk]},
+"zhejiang-coast":{tags:["舟山轮渡","海况台风","浙东山地"],groups:[humidSupplies,ferrySupply],risks:[tropicalRisk,coastRisk,wetRoadRisk,heritageRisk]},
+"zhejiang-southwest":{tags:["浙西南山路","丹霞步道","洞穴水域"],groups:[humidSupplies],risks:[wetRoadRisk,seasonalMountainRisk,waterTownRisk,foodRisk]}
 };
 export function getPreparation(route){const profile=preparationProfiles[route.id];if(!profile)throw Error(`Missing preparation: ${route.id}`);return {tags:profile.tags,groups:[...commonGroups,...profile.groups],risks:[...commonRisks,...profile.risks]};}
 export function preparationText(route,checked=[]){const p=getPreparation(route),done=new Set(checked);return '自驾物资清单（'+p.tags.join(' / ')+'）\n'+p.groups.map(g=>g.title+'\n'+g.items.map(i=>`[${done.has(i.id)?'x':' '}] ${i.name}：${i.note}`).join('\n')).join('\n\n')+'\n\n风险防范与应对\n'+p.risks.map((r,i)=>`${i+1}. ${r.title}\n防范：${r.prevention}\n应对：${r.action}`).join('\n')+'\n紧急情况：报警 110，急救 120，交通事故报警 122；无信号地区不能保证可拨通，提前确认通讯及救援方案。以上为一般准备建议，不代替实时天气、通行信息、专业医疗或救援判断。';}
