@@ -9,3 +9,13 @@ export const restaurantCandidates = {
 export function restaurantsForStop(stop){return restaurantCandidates[stop.name==='库尔勒（分段返程）'?'库尔勒':stop.name]||[];}
 export function restaurantQuery(location,entry){return `${location} ${entry.name} ${entry.dish}`;}
 export function restaurantRoadbook(stop,location){const entries=restaurantsForStop(stop);return entries.length?'餐厅对比（品牌候选，不是已核验门店）\n'+entries.map((r,i)=>`${i+1}. ${r.name} · 对应美食：${r.dish}\n优势：${r.strength}\n劣势 / 待核实：${r.weakness}\n状态：${r.status}\n查询：https://uri.amap.com/search?keyword=${encodeURIComponent(restaurantQuery(location,r))}`).join('\n'):'餐厅资料尚未核验：请按菜品查询具体门店，确认菜单、营业、停车及近期评价；不把搜索结果直接当作推荐。';}
+
+export function restaurantSearchSources(query){
+ const keyword=query.trim();
+ return [
+ {label:'大众点评资料 · 百度检索',url:'https://www.baidu.com/s?wd='+encodeURIComponent(keyword+' site:dianping.com')},
+ {label:'美团资料 · 百度检索',url:'https://www.baidu.com/s?wd='+encodeURIComponent(keyword+' site:meituan.com')},
+ {label:'携程餐饮点评 · Bing 检索',url:'https://www.bing.com/search?q='+encodeURIComponent(keyword+' site:ctrip.com 餐厅 点评')},
+ {label:'综合查询 · 菜单与近期评价',url:'https://www.baidu.com/s?wd='+encodeURIComponent(keyword+' 菜单 近期评价 停车')}
+ ];
+}
