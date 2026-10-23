@@ -110,7 +110,7 @@ function createRouteMap(host,onSelect){
  host.addEventListener('click',e=>{const control=e.target.closest('[data-map-action]');if(control)action(control.dataset.mapAction);const marker=e.target.closest('[data-map-stop]');if(marker)onSelect(Number(marker.dataset.mapStop));});
  host.addEventListener('keydown',e=>{const marker=e.target.closest('[data-map-stop]');if(marker&&(e.key==='Enter'||e.key===' ')){e.preventDefault();onSelect(Number(marker.dataset.mapStop));return;}if(e.target!==canvas)return;const key={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down','+':'in','=':'in','-':'out'}[e.key];if(key){e.preventDefault();action(key);}});
  new ResizeObserver(()=>{if(route)draw();}).observe(canvas);
- return {update(next,selected){const changed=route?.id!==next.id;route=next;host.querySelector('.route-map-distance').textContent=next.distance==null?'总里程待核实':`全程约 ${next.distance.toLocaleString('zh-CN')} 公里 · 参考`;points=routePoints(next);active=selected;if(changed||!view)reset();else{overlay.querySelectorAll('.map-stop').forEach((g,i)=>g.classList.toggle('selected',i===active));}},reset};
+ return {update(next,selected){const changed=route?.id!==next.id;route=next;host.querySelector('.route-map-distance').textContent=next.distance==null?'总里程待核实':`全程${next.distanceSource?'':'约 '}${next.distance.toLocaleString('zh-CN')} 公里 · ${next.distanceSource||'参考'}`;points=routePoints(next);active=selected;if(changed||!view)reset();else{overlay.querySelectorAll('.map-stop').forEach((g,i)=>g.classList.toggle('selected',i===active));}},reset};
 }
 
 const stop = (name,days,altitude,sights,drive,area,food) => ({name,days,altitude,sights,drive,area,food});
@@ -146,17 +146,17 @@ stop('当雄','第 2 天','约 4300 米','沿途高原草原；纳木措为需�
 stop('班戈','第 3 天','约 4700 米','藏北草原与湖泊沿线风光，仅在允许道路和停靠区游览。','向尼玛方向按已确认开放的道路行驶；湖泊支线不默认可通行，不驶入湿地或保护区。','班戈县城酒店（提前确认供暖及接待）',['藏面','糌粑','牦牛肉']),
 stop('尼玛','第 4—5 天','约 4500 米','藏北高原风光，安排休整与下一段补给。','前往改则前确认沿途加油站营业、通讯和道路状态；不要依赖未经核实的无人区捷径。','尼玛县城酒店（提前确认停车及接待）',['牦牛肉','藏面','酥油茶']),
 stop('改则','第 6 天','约 4400 米','县城休整，重新评估身体、车辆与后续行程。','抵达后不要直接开始向民丰的偏远转场；先核实 G216 通行、证件、救援和中途住宿补给。','西藏改则县城酒店（确认供暖及停车）',['藏面','牦牛肉','青稞饼'])]},
-{id:'gaize-minfeng',region:'藏新跨区',regions:['西藏','新疆'],title:'改则 → 民丰 · G216 转场规划',days:null,distance:null,season:'待官方通行信息核实',art:'desert',description:'连接西藏改则与新疆民丰的 G216 方向规划。先确认能否通行，再细化每日里程与中途停靠。',warning:'这是待核实规划，不是已确认可直接通行的自驾行程。未核实中途合法住宿、加油、道路开放和相关证件前，不应出发；不安排无人区露营或单日穿越。',stops:[
+{id:'gaize-minfeng',region:'藏新跨区',regions:['西藏','新疆'],title:'改则 → 民丰 · G216 转场规划',days:null,distance:818,distanceSource:'用户提供',season:'待官方通行信息核实',art:'desert',description:'连接西藏改则与新疆民丰的 G216 方向规划。总里程按用户提供的 818 公里记录；通行及分段停靠仍需核实。',warning:'这是待核实规划，不是已确认可直接通行的自驾行程。未核实中途合法住宿、加油、道路开放和相关证件前，不应出发；不安排无人区露营或单日穿越。',stops:[
 stop('改则','出发准备 · 天数待定','约 4400 米','以县城整备为主；此段的目的不是增加未经核实的景点支线。','向西藏、新疆当地交管或公路管理部门核实 G216 对社会车辆的开放情况、具体路线、检查要求及是否需要办理相关通行手续。按官方确认结果逐段落实住宿、燃油、通讯和救援；任一关键条件未落实，应改期或重新选路。','西藏改则县城酒店（出发前保持可取消预订）',['藏面','牦牛肉','酥油茶']),
 stop('民丰','抵达安排 · 日期待定','约 1400 米','新疆和田地区民丰县城休整；尼雅遗址不作为默认开放景点。','仅在全程通行和分段停靠方案确认后安排抵达日期。高原及偏远路段无已核实的中途酒店清单，不以地图直线距离推算行车时间。到民丰后再规划向和田或库尔勒的后续行程。','新疆民丰县城酒店（确认停车、入住时间及房态）',['拌面','抓饭','烤馕'])]},
 {id:'minfeng-luntai',region:'新疆',title:'民丰 → 轮台 · 沙漠公路纵贯线',days:3,distance:600,season:'建议春秋 · 出发前核实天气',art:'desert',description:'由民丰沿塔克拉玛干沙漠公路向北，经塔中到轮台，串起沙海、绿化带与塔里木河沿线风光。',warning:'约 600 公里为县城间选路参考，不是实时测距。预留 3 天含准备和休整；塔中住宿及燃油须提前落实，遇沙尘、积沙或管制应调整行程，避免夜间赶路。',stops:[
 stop('民丰','第 1 天 · 准备与休整','约 1400 米','县城补给与休整；确认民丰—塔中—轮台沙漠公路的实际开放和天气。','检查轮胎、备胎、冷却系统并加足燃油和饮水；核实塔中加油与住宿接待，不把导航上的加油站标记视为营业保证。','新疆民丰县城有停车场的酒店',['拌面','抓饭','烤馕']),
 stop('塔中','第 2 天 · 分段转场','约 1100 米','沙漠公路沿线沙丘和防护林带，仅在合法、安全的停车区域观景。','从民丰沿已确认开放的沙漠公路北行，保持在公路上，不驶入沙丘、不在车道或危险路肩停车。塔中落脚点和加油须出发前电话确认；无法落实则先调整计划，不临时安排荒漠露营。','新疆塔中镇住宿（提前电话确认位置、接待和停车）',['拌面','抓饭','家常菜']),
 stop('轮台','第 3 天 · 抵达休整','约 980 米','塔里木河沿线风光；塔里木胡杨林为可选支线，提前核实开放、预约与额外车程，秋色时间以当年情况为准。','由塔中继续北行至轮台；沙漠公路出口至县城仍有车程，留出休息和补给时间。遇低能见度或积沙遵从交管指引，不为赶到酒店冒险行驶。','新疆轮台县城有停车场的酒店',['烤肉','拌面','抓饭'])]},
-{id:'qiemo-tazhong',region:'新疆',title:'且末 → 塔中 · 沙海连接线',days:2,distance:null,season:'建议春秋 · 出发前核实天气',art:'desert',description:'从且末县城出发，沿塔且沙漠公路方向前往塔中，可衔接塔中至轮台的后续行程。',warning:'参考 2 天含准备和休整，并非连续驾驶两天。县城至具体住宿点的里程需按实际选路核实；提前确认塔且沙漠公路开放、塔中住宿与燃油，不将地图路线视为实时通行保证。',stops:[
+{id:'qiemo-tazhong',region:'新疆',title:'且末 → 塔中 · 沙海连接线',days:2,distance:217,distanceSource:'用户提供',season:'建议春秋 · 出发前核实天气',art:'desert',description:'从且末县城出发，沿塔且沙漠公路方向前往塔中，可衔接塔中至轮台的后续行程。',warning:'参考 2 天含准备和休整，并非连续驾驶两天。总里程按用户提供的 217 公里记录，具体住宿点可能影响实际车程；提前确认塔且沙漠公路开放、塔中住宿与燃油，不将地图路线视为实时通行保证。',stops:[
 stop('且末','第 1 天 · 准备与休整','约 1250 米','县城休整与补给；托乎拉克庄园等景点作为可选游览，开放及参观安排需另行确认。','出发前核对且末县城至塔中的完整导航路线与塔且沙漠公路通行情况，检查轮胎、备胎、冷却系统并补足饮水和燃油。提前联系塔中住宿、确认可接待与到店时间。','新疆且末县城有停车场的酒店',['拌面','抓饭','烤馕']),
 stop('塔中','第 2 天 · 抵达休整','约 1100 米','沙漠公路沿线沙丘与防护林带，仅在允许且安全的停车区域观景。','沿确认开放的道路行驶，不驶入沙丘或擅自进入油田作业道路。遇沙尘、积沙或管制及时调整计划，避免夜间赶路；到达后补给休整，再决定是否衔接现有的塔中至轮台路书。','新疆塔中镇住宿（提前电话确认位置、接待和停车）',['拌面','抓饭','家常菜'])]},
-{id:'lopnur-loop',region:'新疆',title:'乌鲁木齐出发 · 罗布泊与沙漠公路环线',days:null,distance:null,season:'通行待核实 · 避开高温与沙尘',art:'desert',description:'乌鲁木齐 → 哈密 → 罗布泊镇 → 米兰 → 若羌 → 且末 → 塔中 → 库尔勒 → 乌鲁木齐。按指定顺序串联，分段落实通行与补给后再排期。',warning:'哈密—罗布泊镇—米兰段的社会车辆通行、管制、住宿及燃油尚未核实，因此全程天数与里程待定。罗布泊镇不等于可进入罗布泊湖盆、保护区或生产作业区；未获明确许可不得进入限制区域。无法通行时需重新选路，本方案不保证能完成原顺序环线。',stops:[
+{id:'lopnur-loop',region:'新疆',title:'乌鲁木齐出发 · 罗布泊与沙漠公路环线',days:null,distance:2668,distanceSource:'用户提供',season:'通行待核实 · 避开高温与沙尘',art:'desert',description:'乌鲁木齐 → 哈密 → 罗布泊镇 → 米兰 → 若羌 → 且末 → 塔中 → 库尔勒 → 乌鲁木齐。按指定顺序串联，分段落实通行与补给后再排期。',warning:'哈密—罗布泊镇—米兰段的社会车辆通行、管制、住宿及燃油尚未核实，全程里程按用户提供的 2668 公里记录，天数仍需按通行及停靠安排确定。罗布泊镇不等于可进入罗布泊湖盆、保护区或生产作业区；未获明确许可不得进入限制区域。无法通行时需重新选路，本方案不保证能完成原顺序环线。',stops:[
 stop('乌鲁木齐','第 1 站 · 出发准备','约 800 米','新疆博物馆、城市补给；检查车辆，按预约和开放安排游览。','先向相关公路管理和交管部门确认哈密—罗布泊镇—米兰的实际通行条件，再安排全程日期。准备备胎、饮水及通讯，逐段确认燃油与住宿。','乌鲁木齐市区有停车场的酒店',['拌面','大盘鸡','烤包子']),
 stop('哈密','第 2 站 · 休整及通行确认','约 760 米','哈密城区休整；回王府等景点按开放情况另行安排。','乌鲁木齐至哈密按实际选路分段驾驶。离开哈密前，核实前往罗布泊镇的指定道路、车辆准入、检查要求及目的地接待；未确认不得继续偏远转场。','新疆哈密市区酒店（未落实下一段前留在城区）',['拌面','抓饭','烤肉']),
 stop('罗布泊镇','第 3 站 · 须先确认可达及接待','镇区海拔待核实','仅在允许进入的镇区和开放道路范围活动；不将湖盆、无人区或生产作业区列作景点。','哈密至镇区以及镇区至米兰的道路均需逐段核实，不依赖地图连线或旅游轨迹。提前落实燃油、救援、接待和通行要求，不临时离开道路探路或露营。','新疆罗布泊镇住宿（是否对游客接待待核实；未落实不出发）',['拌面','抓饭','家常菜']),
@@ -172,7 +172,7 @@ stop('乌鲁木齐','第 9 站 · 环线结束','约 800 米','返程休整，�
 
 ];
 function mapUrl(query){return `https://uri.amap.com/search?keyword=${encodeURIComponent(query)}`;}
-const distanceLabel = route => route.distance == null ? '里程待核实' : `约 ${route.distance.toLocaleString()} 公里`;
+const distanceLabel = route => route.distance == null ? '里程待核实' : `${route.distanceSource?'':'约 '}${route.distance.toLocaleString('zh-CN')} 公里${route.distanceSource?' · '+route.distanceSource:''}`;
 const daysLabel = route => route.days == null ? '天数待核实' : `${route.days} 天参考`;
 function filterRoutes(items,{region='all',query='',duration='all',savedOnly=false,saved=[]}={}){return items.filter(r=>(region==='all'||r.region===region||r.regions?.includes(region))&&(duration==='all'||(r.days!=null&&(duration==='short'?r.days<10:r.days>=10)))&&(!savedOnly||saved.includes(r.id))&&(`${r.title} ${r.description} ${r.stops.map(s=>s.name+' '+s.food.join(' ')+' '+guideSearchText(s)).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase())));}
 function roadbook(route){return `向野 · ${route.title}\n${daysLabel(route)} / ${distanceLabel(route)}\n${route.season}\n${route.warning}\n\n`+route.stops.map((s,i)=>`${i+1}. ${s.name} · ${s.days} · ${s.altitude}\n景点：${s.sights}\n行车：${s.drive}\n住宿：${s.area}\n查询：${mapUrl(s.name+' '+s.area)}\n美食：${s.food.join('、')}\n${guideRoadbook(s)}\n`).join('\n')+'\n里程、天数和开放情况仅作规划参考，出行前核实实时路况、天气、预约与通行要求。';}
