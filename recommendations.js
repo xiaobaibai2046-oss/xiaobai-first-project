@@ -1,3 +1,4 @@
+import {restaurantsForStop,restaurantRoadbook} from './restaurants.js';
 // Editorial candidates, not live rankings. No ratings, availability or prices are asserted.
 const split = text => text.split('|');
 const sight = (name, reason) => ({name, reason, kind:'sight'});
@@ -45,7 +46,7 @@ export function getCityGuide(stop){const key=guideAliases[stop.name]||stop.name;
 export function guideQuery(guide,item){return `${guide.location} ${item.name}`;}
 
 export const lodgingPreference = {budget:'每间每晚 300—600 元',criteria:'舒适型优先 · 停车便利 · 热水与卫生 · 可取消预订'};
-export function guideSearchText(stop){const g=getCityGuide(stop);return [g.location,...g.sights.map(i=>i.name),...g.hotels.map(i=>i.name),...g.food.map(i=>i.name)].join(' ');}
-export function guideRoadbook(stop){const g=getCityGuide(stop);const group=(label,items)=>label+'\n'+items.map((item,i)=>`${i+1}. ${item.name}${item.status?' ['+item.status+']':''}：${item.reason}\n查询：https://uri.amap.com/search?keyword=${encodeURIComponent(guideQuery(g,item))}`).join('\n');return [g.notice||'',group('景点 / 沿途看点（开放待核实）',g.sights),`住宿偏好：${lodgingPreference.budget}；${lodgingPreference.criteria}。候选不代表符合当前预算。`,group('住宿候选 / 查找方向',g.hotels),group('当地美食（菜品建议，非餐厅排名）',g.food)].filter(Boolean).join('\n');}
+export function guideSearchText(stop){const g=getCityGuide(stop);return [g.location,...g.sights.map(i=>i.name),...g.hotels.map(i=>i.name),...g.food.map(i=>i.name),...restaurantsForStop(stop).map(i=>i.name)].join(' ');}
+export function guideRoadbook(stop){const g=getCityGuide(stop);const group=(label,items)=>label+'\n'+items.map((item,i)=>`${i+1}. ${item.name}${item.status?' ['+item.status+']':''}：${item.reason}\n查询：https://uri.amap.com/search?keyword=${encodeURIComponent(guideQuery(g,item))}`).join('\n');return [g.notice||'',group('景点 / 沿途看点（开放待核实）',g.sights),`住宿偏好：${lodgingPreference.budget}；${lodgingPreference.criteria}。候选不代表符合当前预算。`,group('住宿候选 / 查找方向',g.hotels),group('当地美食（菜品建议，非餐厅排名）',g.food),restaurantRoadbook(stop,g.location)].filter(Boolean).join('\n');}
 
 export function comfortHotelSearches(guide){return [area('舒适型酒店 停车场','以每间每晚 300—600 元为筛选目标；按入住日期核实实际房价、停车位置和费用。'),area('酒店 安静 热水 卫生','适合长途休整；结合近期住客评价筛选，不把设施关键词当作商家承诺。'),area('酒店 可取消预订','先核实到店接待、免费取消截止时间；天气或通行变化时保留调整空间。')];}
