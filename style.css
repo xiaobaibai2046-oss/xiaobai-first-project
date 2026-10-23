@@ -9,3 +9,5 @@
 .map-stop.selected circle,.map-stop:focus circle{r:14px}
 .satellite-tiles{pointer-events:none}
 .map-stop{pointer-events:none}.map-stop circle,.map-stop .marker-number{pointer-events:all}.map-stop .marker-label{pointer-events:none}
+
+.route-map-distance{position:absolute;top:12px;left:12px;z-index:2;max-width:calc(100% - 102px);padding:9px 12px;border:1px solid #ffffff55;border-radius:5px;background:#173d36ed;color:white;font-size:13px;font-weight:650;line-height:1.6;box-shadow:0 2px 8px #0002;pointer-events:none}@media(max-width:640px){.route-map-distance{font-size:12px;padding:7px 10px}}
