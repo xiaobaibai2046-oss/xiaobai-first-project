@@ -1,3 +1,4 @@
+import {guideSearchText,guideRoadbook} from './recommendations.js';
 const stop = (name,days,altitude,sights,drive,area,food) => ({name,days,altitude,sights,drive,area,food});
 export const routes = [
 {id:'sichuan',region:'西藏',title:'川藏南线 · 一路向拉萨',days:14,distance:2100,season:'建议 5—6 月 / 9—10 月',art:'mountains',description:'从成都出发，翻越山口，沿 G318 寻找雪山、森林与高原湖泊。',warning:'全程高差大，预留适应与天气机动时间；不要因计划天数强行赶路。',stops:[
@@ -59,5 +60,5 @@ stop('乌鲁木齐','第 9 站 · 环线结束','约 800 米','返程休整，�
 export function mapUrl(query){return `https://uri.amap.com/search?keyword=${encodeURIComponent(query)}`;}
 export const distanceLabel = route => route.distance == null ? '里程待核实' : `约 ${route.distance.toLocaleString()} 公里`;
 export const daysLabel = route => route.days == null ? '天数待核实' : `${route.days} 天参考`;
-export function filterRoutes(items,{region='all',query='',duration='all',savedOnly=false,saved=[]}={}){return items.filter(r=>(region==='all'||r.region===region||r.regions?.includes(region))&&(duration==='all'||(r.days!=null&&(duration==='short'?r.days<10:r.days>=10)))&&(!savedOnly||saved.includes(r.id))&&(`${r.title} ${r.description} ${r.stops.map(s=>s.name+' '+s.food.join(' ')).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase())));}
-export function roadbook(route){return `向野 · ${route.title}\n${daysLabel(route)} / ${distanceLabel(route)}\n${route.season}\n${route.warning}\n\n`+route.stops.map((s,i)=>`${i+1}. ${s.name} · ${s.days} · ${s.altitude}\n景点：${s.sights}\n行车：${s.drive}\n住宿：${s.area}\n查询：${mapUrl(s.name+' '+s.area)}\n美食：${s.food.join('、')}\n`).join('\n')+'\n里程、天数和开放情况仅作规划参考，出行前核实实时路况、天气、预约与通行要求。';}
+export function filterRoutes(items,{region='all',query='',duration='all',savedOnly=false,saved=[]}={}){return items.filter(r=>(region==='all'||r.region===region||r.regions?.includes(region))&&(duration==='all'||(r.days!=null&&(duration==='short'?r.days<10:r.days>=10)))&&(!savedOnly||saved.includes(r.id))&&(`${r.title} ${r.description} ${r.stops.map(s=>s.name+' '+s.food.join(' ')+' '+guideSearchText(s)).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase())));}
+export function roadbook(route){return `向野 · ${route.title}\n${daysLabel(route)} / ${distanceLabel(route)}\n${route.season}\n${route.warning}\n\n`+route.stops.map((s,i)=>`${i+1}. ${s.name} · ${s.days} · ${s.altitude}\n景点：${s.sights}\n行车：${s.drive}\n住宿：${s.area}\n查询：${mapUrl(s.name+' '+s.area)}\n美食：${s.food.join('、')}\n${guideRoadbook(s)}\n`).join('\n')+'\n里程、天数和开放情况仅作规划参考，出行前核实实时路况、天气、预约与通行要求。';}
