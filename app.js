@@ -92,7 +92,11 @@ $('#routeGrid').addEventListener('click',e=>{
  const save=e.target.closest('[data-save]');if(save){const id=save.dataset.save,exists=saved.includes(id);saved=exists?saved.filter(x=>x!==id):[...saved,id];try{localStorage.setItem('xiangye-saved',JSON.stringify(saved));toast(exists?'已取消收藏':'已收藏线路');}catch{toast('本次收藏已更新，浏览器无法保存；下次打开可能丢失。');}renderCards();return;}
  const select=e.target.closest('[data-route]');if(select){listReturn={y:window.scrollY,id:select.dataset.route};state.route=routes.find(r=>r.id===select.dataset.route);state.stop=0;renderCards();showCurrentRoute();}
 });
-$('#backToRoutes').addEventListener('click',()=>returnToRoutes());
+$('#backToRoutes').addEventListener('click',()=>{
+ document.body.classList.remove('viewing-route','map-focused');state.savedOnly=false;renderCards();syncNavigation();
+ if(location.hash){try{history.replaceState(null,'',location.pathname+location.search);}catch{}}
+ $('a.brand').focus({preventScroll:true});window.scrollTo({top:0,behavior:scrollBehavior()});
+});
 document.querySelectorAll('a[href="#routes"],a.brand').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();state.savedOnly=false;renderCards();returnToRoutes(false);}));
 document.querySelector('header nav a[href="#journey"]').addEventListener('click',e=>{e.preventDefault();showCurrentRoute();});
 window.addEventListener('hashchange',()=>{if(location.hash==='#journey')showCurrentRoute();else if(location.hash==='#map')showCurrentRoute(true);else if(location.hash==='#routes'||location.hash==='')returnToRoutes(false);});
