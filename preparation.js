@@ -20,6 +20,15 @@ const grassSupplies={title:'草原林地专项',items:[supply('grass-weather','�
 const grassRisks=[risk('雷雨、强风与夜间降温','关注天气，备防寒防雨层，不在雷雨时停留开阔草原或孤立高处。','遇雷雨结束露天活动，按现场指引进入安全场所；不要为日出、日落在陌生道路赶夜车。'),risk('牧场边界、牲畜与林草防火','只走允许道路，不驶入草场湿地，不违规用火，不追逐野生动物。','发现牲畜提前减速；遇禁行、火险或道路管制服从指挥，不寻找土路绕行。')];
 const waterRisk=risk('黄河、湖区与峡谷水域','只在允许区域活动，乘正规船只穿救生衣，不野泳、涉水或进入未开放河岸。','强风、暴雨或水域关闭时停止活动；遇险及时求助，不盲目下水施救。');
 
+const humidSupplies={title:'湿热山地专项',items:[supply('humid-rain','雨具、防滑鞋、替换衣物与车窗除雾检查','南方降雨与山路较多，确认雨刷、轮胎和制动状态，步道以当日开放为准。'),supply('humid-health','饮水、防晒与个人防蚊用品','按产品说明使用，注意湿热环境食品保存，个人常用药按医生建议准备。'),supply('humid-parking','景区预约、停车与接驳确认','古城、村寨和景区不默认允许车辆到店，提前核实行李转运及晚到接待。')]};
+const wetRoadRisk=risk('强降雨、山路落石与湿滑','核实具体选路天气、交管和景区公告，避免暴雨进山或入峡谷，不在危险路肩停车。','遇积水、滑坡、浓雾或步道关闭按现场指引等待或折返，不试探涉水、不自行绕过封控。');
+const tropicalRisk=risk('台风、雷暴与高温','出发前关注当地气象、海事及景区公告，准备防晒饮水和可取消住宿，不依赖固定预订赶路。','出现台风、雷暴或强风预警时停止海滨与雨林户外活动，服从停航、停运和疏散要求，及时调整住宿及路线。');
+const coastRisk=risk('离岸流、潮汐与海岛船班','只在正式开放且有救生服务的海域按现场条件活动；海滨看点不等于可下水，船班和项目先核实。','海况恶化或现场禁止下水就取消活动；遇险呼叫专业救援，不盲目下水救人，乘船穿救生衣。');
+const foodRisk=risk('生食、野生菌与餐饮计价','选择正规餐饮，不采食不明野生菌，海鲜等先确认计价、重量与过敏原，驾驶者不饮酒。','出现严重不适或疑似中毒及时就医或拨打 120，并说明食物及近期旅行地；保留就餐信息。');
+const borderSouthRisk=risk('边境与保护区域准入','德天、东兴等核实通行和可参观范围，不越过边境设施或进入作业区域；自然保护区仅进明确开放区域。','遇检查、封闭或限制按现场要求调整，不找土路绕行，不擅用无人机或进入保护核心区。');
+const mountainCultureRisk=risk('古镇、村寨与宗教参观规则','核实停车和接驳，尊重居民生活、拍摄和宗教参观规则，不擅入私人院落及未开放山地。','无法到店或接驳停运先联系住宿方调整，不闯步行街、不为赶夜景在陌生山路夜行。');
+const chongqingRisk=risk('立体道路、坡道停车与高温','出发前确认目的地停车入口和道路层级，按导航与现场标志驾驶；停车拉好驻车制动，夏季安排补水休息。','错过出口就按合法路线重新规划，不临时倒车或横切；炎热不适及时降温求助，不把人或宠物留在熄火封闭车内。');
+
 export const preparationProfiles={
 'sichuan':{tags:['高原','连续山路'],groups:[highland],risks:[...highRisks,risk('涉水与山区暴雨','关注沿途降雨和道路中断，预留交通管制机动时间。','不驾车试探水深，不穿越漫水路段，听从当地交管并改期或折返。')]},
 'ili':{tags:['草原山地','季节性道路'],groups:[],risks:[risk('山区天气与季节性封路','景区道路和独库等可选支线需逐段核实开放，不按往年日期推定。','遇封路调整路线；大风、降温或降雨时停止不具备条件的山地游览。'),risk('牲畜、湿地与景区行车','遵守限速和景区交通规则，不驶入草场、湿地或牧民私人区域。','发现牲畜或野生动物提前减速，不鸣笛追赶，不突然转向进入危险路肩。')]},
@@ -44,8 +53,22 @@ export const preparationProfiles={
 'ningxia-south':{tags:['六盘山','雨雾山路','石窟与森林'],groups:[{title:'六盘山专项',items:[supply('liupan-rain','防雨层、防滑鞋与替换衣物','山区比平原凉，雨雾路段检查雨刷和制动，步道开放以当日为准。'),supply('liupan-open','森林、峡谷和石窟开放确认','提前核实入口、接驳及参观预约，准备天气变化时的休整方案。')]}],risks:[risk('雨雾、落石与山路湿滑','核实六盘山天气和道路，不在强降雨时段赶山路。','遇浓雾、积水或落石按现场指引安全等待或折返，不试探涉水。'),risk('森林步道与峡谷限制','仅走开放步道，不采食不明野生菌，不违规用火。','步道关闭就调整行程；雷雨或身体不适时停止登高，及时求助。'),waterRisk]},
 'inner-central':{tags:['草原','火山支线','风雨温差'],groups:[grassSupplies],risks:[...grassRisks,risk('火山与景区自驾边界','乌兰哈达等支线先确认准入和道路，禁止驶入受限火山及私人草场。','遇禁行、松散路面或天气恶化结束支线，不用未确认土路绕行。')]},
 'inner-east':{tags:['边境小镇','林草防火','低温蚊虫'],groups:[grassSupplies,remote],risks:[...grassRisks,risk('边境道路与活动限制','室韦、满洲里等核实证件、通行和拍摄要求，不进入隔离设施、口岸作业或受限区域。','遇检查及限制服从现场要求，不越过边境设施、不擅用无人机，不为完成环线绕行受限土路。'),waterRisk]},
-'inner-west':{tags:['阿拉善长途','戈壁补给','秋季温差'],groups:[desert,remote],risks:[...sandRisks,risk('长距离转场与补给中断','阿左旗—额济纳和额济纳—乌海逐段落实燃油、休息及途中住宿，按实际选路拆分多日。','关键补给或落脚点未落实先不出发；延误就增加天数，不夜间冒险或用荒漠露营替代未确认住宿。'),risk('胡杨季房源与保护区域','秋色随当年天气变化，提前核实接待、价格及退改，只走开放景区。','旺季无房或景观不符时调整计划，不驶入胡杨林、湿地、边境或生产作业限制区。')]}
-
+'inner-west':{tags:['阿拉善长途','戈壁补给','秋季温差'],groups:[desert,remote],risks:[...sandRisks,risk('长距离转场与补给中断','阿左旗—额济纳和额济纳—乌海逐段落实燃油、休息及途中住宿，按实际选路拆分多日。','关键补给或落脚点未落实先不出发；延误就增加天数，不夜间冒险或用荒漠露营替代未确认住宿。'),risk('胡杨季房源与保护区域','秋色随当年天气变化，提前核实接待、价格及退改，只走开放景区。','旺季无房或景观不符时调整计划，不驶入胡杨林、湿地、边境或生产作业限制区。')]},
+'hainan-east':{tags:['海岛海湾','山区雨林','跨海轮渡另计'],groups:[humidSupplies,{title:'海南上岛专项',items:[supply('hn-ferry','跨海轮渡预约与车辆运输确认','如从岛外自驾，单独核实车票、证件、车辆类型运输要求和停航公告；环线天数及里程不含上岛过海。'),supply('hn-flex','台风季机动住宿与备选日期','关注海事和气象公告，保留调整余地，不为赶船冒险驾驶。')]}],risks:[tropicalRisk,coastRisk,wetRoadRisk,foodRisk]},
+'hainan-west':{tags:['西部海岸','森林保护','轮渡另计'],groups:[humidSupplies],risks:[tropicalRisk,coastRisk,wetRoadRisk,foodRisk,risk('雨林与生产区域边界','霸王岭、尖峰岭等只进允许开放游览区域，盐场不进入生产设施；上岛轮渡另行预约并预留停航余量。','未开放就取消支线，不擅自登山、雨林穿越或进入保护核心区。')]},
+'hainan-central':{tags:['热带雨林','黎苗文化','山区湿滑'],groups:[humidSupplies],risks:[tropicalRisk,wetRoadRisk,foodRisk,risk('雨林步道与国家公园限制','五指山等核实具体开放步道，不默认可登主峰或穿越雨林；如需跨海上岛，轮渡单独核实预约和天气。','遇关闭、雷暴、落水风险或体力不支及时结束游览，不走未开放便道。')]},
+'guangxi-north':{tags:['漓江山水','梯田与村寨','雨季水域'],groups:[humidSupplies],risks:[wetRoadRisk,waterRisk,mountainCultureRisk,foodRisk]},
+'guangxi-border':{tags:['边境田园','瀑布峡谷','保护区域'],groups:[humidSupplies],risks:[wetRoadRisk,waterRisk,borderSouthRisk,foodRisk]},
+'guangxi-coast':{tags:['北部湾','潮汐台风','边境城镇'],groups:[humidSupplies],risks:[tropicalRisk,coastRisk,borderSouthRisk,foodRisk]},
+'guizhou-west':{tags:['瀑布峡谷','连续山路','湿滑洞穴'],groups:[humidSupplies],risks:[wetRoadRisk,waterRisk,foodRisk,risk('瀑布、洞穴与观景步道','黄果树、马岭河、织金洞按开放线路和接驳游览，强降雨关注临时关闭，准备防滑鞋。','遇雷雨、洪水预警、步道关闭或不适及时停止游览，不越过护栏拍照或深入未开放洞穴。')]},
+'guizhou-east':{tags:['苗寨古城','远郊登高','雨季山路'],groups:[humidSupplies],risks:[wetRoadRisk,mountainCultureRisk,foodRisk,risk('梵净山预约与步行强度','梵净山属于铜仁地区远郊支线，先确认入口、索道、门票及当日开放，量力安排登高。','遇雷暴、停运或身体不适取消登高，不能为固定预订强行翻越或走未开放路线。')]},
+'guizhou-north':{tags:['红色人文','赤水山水','品酒不驾车'],groups:[humidSupplies],risks:[wetRoadRisk,waterRisk,foodRisk,risk('品酒与花期安排','仁怀酒文化参观如涉及品酒，必须安排不驾车的后续行程；百里杜鹃按当年花期与开放安排。','饮酒后不得驾驶，也不以休息短时间判断已可开车；花期或天气不符就改休整或室内游览。')]},
+'sichuan-west':{tags:['川西高原','雪山山口','村寨支线'],groups:[humidSupplies,highland,remote],risks:[...highRisks,wetRoadRisk,mountainCultureRisk,foodRisk]},
+'sichuan-south':{tags:['峨眉山高处','雅安雨雾','石刻与森林'],groups:[humidSupplies,{title:'峨眉山专项',items:[supply('emei-warm','登高保暖与高处身体评估','城区海拔低不代表金顶低；确认索道、接驳、雨雪与身体适应，必要时取消高处游览。'),supply('emei-shoe','防滑鞋与按当日要求准备的防滑用品','山地台阶多，听从现场开放和交通要求，避免为日出赶夜路。')]}],risks:[wetRoadRisk,mountainCultureRisk,foodRisk,risk('高处天气与野生动物','峨眉山高处关注低温、海拔适应和索道运营，不投喂或招惹野生猴群。','出现明显不适及时停止上升并求助，天气恶化或设施停运时调整路线，勿擅走封闭山道。')]},
+'sichuan-north':{tags:['蜀道石刻','古城步行','山地支线'],groups:[humidSupplies],risks:[wetRoadRisk,mountainCultureRisk,foodRisk,risk('剑门栈道与远郊支线','按体力选择开放步道，不擅入关闭栈道；南充至仪陇等支线单独计算时间和燃油。','天气恶化、路滑或身体不适停止登高，远郊行程来不及时顺延，禁止压缩休息赶夜路。')]},
+'chongqing-east':{tags:['山城立体道路','峡谷洞穴','土苗古镇'],groups:[humidSupplies],risks:[chongqingRisk,wetRoadRisk,waterRisk,mountainCultureRisk]},
+'chongqing-south':{tags:['高山森林','峡谷水域','山区温差'],groups:[humidSupplies],risks:[chongqingRisk,wetRoadRisk,waterRisk,risk('高山天气与索道运营','金佛山等高处温度与主城不同，核实雨雪、索道和步道开放，带保暖层。','遇停运、结冰或雷暴停止登高，不为拍摄日出进入封闭山路或赶夜车。')]},
+'chongqing-west':{tags:['石刻文物','古镇慢游','花期变化'],groups:[humidSupplies],risks:[chongqingRisk,wetRoadRisk,mountainCultureRisk,risk('文物参观与季节景观','大足石刻按官方预约、开放和保护规则参观；潼南油菜花海以实际花期为准。','遇满额或关闭调整场次，不触摸攀爬文物，不为赶花期或夜景压缩驾驶休息。')]}
 };
 export function getPreparation(route){const profile=preparationProfiles[route.id];if(!profile)throw Error(`Missing preparation: ${route.id}`);return {tags:profile.tags,groups:[...commonGroups,...profile.groups],risks:[...commonRisks,...profile.risks]};}
 export function preparationText(route,checked=[]){const p=getPreparation(route),done=new Set(checked);return '自驾物资清单（'+p.tags.join(' / ')+'）\n'+p.groups.map(g=>g.title+'\n'+g.items.map(i=>`[${done.has(i.id)?'x':' '}] ${i.name}：${i.note}`).join('\n')).join('\n\n')+'\n\n风险防范与应对\n'+p.risks.map((r,i)=>`${i+1}. ${r.title}\n防范：${r.prevention}\n应对：${r.action}`).join('\n')+'\n紧急情况：报警 110，急救 120，交通事故报警 122；无信号地区不能保证可拨通，提前确认通讯及救援方案。以上为一般准备建议，不代替实时天气、通行信息、专业医疗或救援判断。';}
