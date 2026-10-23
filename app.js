@@ -31,7 +31,7 @@ $('#querySources').addEventListener('click',e=>{const a=e.target.closest('[data-
 $('#closeMap').addEventListener('click',()=>mapDialog.close());
 $('#mapAddress').addEventListener('click',e=>e.target.select());
 $('#copyMap').addEventListener('click',async()=>{const input=$('#mapAddress');try{if(!navigator.clipboard?.writeText)throw Error('Clipboard unavailable');await navigator.clipboard.writeText(input.value);$('#copyStatus').textContent='地址已复制，请粘贴到浏览器地址栏打开。';}catch{input.focus();input.select();input.setSelectionRange(0,input.value.length);$('#copyStatus').textContent='自动复制不可用，地址已选中。请长按复制，或按 Ctrl+C / ⌘C。';}});
-function renderCards(){const list=filterRoutes(routes,{...state,saved});$('#savedCount').textContent=saved.length;$('#savedToggle').setAttribute('aria-pressed',String(state.savedOnly));$('#savedToggle').classList.toggle('active',state.savedOnly);$('#empty').hidden=list.length>0;$('#routeGrid').innerHTML=list.map(r=>`<article class="card ${state.route.id===r.id?'selected':''}"><div class="card-art route-cover"><img class="route-cover-image" src="${routeCoverImage(r)}" alt="${r.title}，沿途站点与方向示意图" decoding="async"><span class="tag">${r.region} · 自驾灵感</span><button class="save" data-save="${r.id}" aria-label="${saved.includes(r.id)?'取消收藏':'收藏'}${r.title}" aria-pressed="${saved.includes(r.id)}">${saved.includes(r.id)?'♥':'♡'}</button></div><div class="card-body"><h3>${r.title}</h3><p>${r.description}</p><div class="meta"><span>◷ ${daysLabel(r)}</span><span>↝ ${distanceLabel(r)}</span></div><div class="card-bottom"><span class="pill">${r.season}</span><button class="view-route" data-route="${r.id}">查看线路 →</button></div></div></article>`).join('');}
+function renderCards(){const list=filterRoutes(routes,{...state,saved});$('#routeResults').textContent=`${list.length} 条线路`;$('#routeListTitle').textContent=state.savedOnly?'我的收藏':'发现好线路';syncNavigation();$('#savedCount').textContent=saved.length;$('#savedToggle').setAttribute('aria-pressed',String(state.savedOnly));$('#savedToggle').classList.toggle('active',state.savedOnly);$('#empty').hidden=list.length>0;$('#routeGrid').innerHTML=list.map(r=>`<article class="card ${state.route.id===r.id?'selected':''}"><div class="card-art route-cover"><img class="route-cover-image" src="${routeCoverImage(r)}" alt="${r.title}，沿途站点与方向示意图" decoding="async"><span class="tag">${r.region} · 自驾灵感</span><button class="save" data-save="${r.id}" aria-label="${saved.includes(r.id)?'取消收藏':'收藏'}${r.title}" aria-pressed="${saved.includes(r.id)}">${saved.includes(r.id)?'♥':'♡'}</button></div><div class="card-body"><h3>${r.title}</h3><p>${r.description}</p><div class="meta"><span>◷ ${daysLabel(r)}</span><span>↝ ${distanceLabel(r)}</span></div><div class="card-bottom"><span class="pill">${r.season}</span><button class="view-route" data-route="${r.id}">查看线路 →</button></div></div></article>`).join('');}
 let prepared={};
 try{const stored=JSON.parse(localStorage.getItem('xiangye-preparation')||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))for(const r of routes)if(Array.isArray(stored[r.id]))prepared[r.id]=stored[r.id].filter(x=>typeof x==='string');}catch{}
 function preparedItems(){return prepared[state.route.id]||[];}
@@ -48,8 +48,8 @@ document.querySelector('.preparation-shortcuts').addEventListener('click',e=>{
  target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
 });
 $('#routePreparation').addEventListener('change',e=>{const input=e.target.closest('[data-supply]');if(!input)return;const done=new Set(preparedItems());if(input.checked)done.add(input.dataset.supply);else done.delete(input.dataset.supply);prepared[state.route.id]=[...done];const all=getPreparation(state.route).groups.flatMap(g=>g.items);$('#prepProgress').textContent=`已准备 ${all.filter(i=>done.has(i.id)).length} / ${all.length}`;try{localStorage.setItem('xiangye-preparation',JSON.stringify(prepared));}catch{toast('本次勾选有效，但浏览器无法保存；请导出线路备份。');}});
-const routeMap=createRouteMap($('#routeMap'),index=>{state.stop=index;renderJourney();});
-function renderJourney(){const r=state.route;if($('#routePreparation').dataset.preparationRoute!==r.id){renderPreparation();$('#routePreparation').dataset.preparationRoute=r.id;}routeMap.update(r,state.stop);$('#journeyTitle').textContent=r.title;$('#routeSummary').textContent=`${distanceLabel(r)} · ${daysLabel(r)} · ${r.season} ｜ ${r.warning}`;$('#stops').innerHTML=r.stops.map((s,i)=>`<button class="stop ${i===state.stop?'active':''}" data-stop="${i}" aria-pressed="${i===state.stop}"><span class="stop-num">${String(i+1).padStart(2,'0')}</span><span>${s.name}<small>${s.days}</small></span></button>`).join('');renderDetails();}
+const routeMap=createRouteMap($('#routeMap'),index=>{state.stop=index;renderJourney();if(innerWidth<1000)$('.detail').scrollIntoView({behavior:scrollBehavior(),block:'start'});});
+function renderJourney(){const r=state.route;if($('#routePreparation').dataset.preparationRoute!==r.id){renderPreparation();$('#routePreparation').dataset.preparationRoute=r.id;}if(document.body.classList.contains('viewing-route'))routeMap.update(r,state.stop);$('#mapRouteSelect').value=r.id;$('#currentStopHint').textContent=`第 ${state.stop+1} / ${r.stops.length} 站`;$('#routeQuickFacts').innerHTML=`<span>◷ ${daysLabel(r)}</span><span>↝ ${distanceLabel(r)}</span><span>◎ ${r.stops.length} 个停靠站</span>`;$('#journeyTitle').textContent=r.title;$('#routeSummary').textContent=`${distanceLabel(r)} · ${daysLabel(r)} · ${r.season} ｜ ${r.warning}`;$('#stops').innerHTML=r.stops.map((s,i)=>`<button class="stop ${i===state.stop?'active':''}" data-stop="${i}" aria-pressed="${i===state.stop}"><span class="stop-num">${String(i+1).padStart(2,'0')}</span><span>${s.name}<small>${s.days}</small></span></button>`).join('');renderDetails();}
 function restaurantComparison(stop,guide){
  const restaurants=restaurantsForStop(stop);
  const rows=guide.food.map(food=>{const matched=restaurants.filter(r=>r.dish===food.name);return matched.length?matched.map(r=>`<tr><th scope="row">${r.dish}</th><td><strong>${r.name}</strong><small>${r.status}</small></td><td>${r.strength}</td><td>${r.weakness}</td><td>${restaurantLink(restaurantQuery(guide.location,r),'多渠道查门店与口碑')}</td></tr>`).join(''):`<tr class="restaurant-pending"><th scope="row">${food.name}</th><td>尚无已核验餐厅</td><td>待确认擅长菜品、位置与就餐便利性</td><td>营业、菜单、停车与近期评价待核实</td><td>${restaurantLink(guide.location+' '+food.name+' 餐厅','多渠道找餐厅')}</td></tr>`;}).join('');
@@ -71,22 +71,43 @@ function renderDetails(){
   $('#detailContent').innerHTML=notice+`<div class="rec-section-title"><h4>值得尝试的当地味道</h4><span>3 项菜品 / 简餐建议</span></div>`+cards(g.food,'找提供这道菜的餐厅')+restaurantComparison(s,g);
  }
 }
-$('#routeGrid').addEventListener('click',e=>{const save=e.target.closest('[data-save]');if(save){const id=save.dataset.save;const exists=saved.includes(id);saved=exists?saved.filter(x=>x!==id):[...saved,id];try{localStorage.setItem('xiangye-saved',JSON.stringify(saved));toast(exists?'已取消收藏':'已收藏路线');}catch{toast('已更新本次收藏；浏览器无法保存，下次打开可能丢失');}renderCards();return;}const select=e.target.closest('[data-route]');if(select){listReturn={y:window.scrollY,id:select.dataset.route};document.body.classList.add('viewing-route');state.route=routes.find(r=>r.id===select.dataset.route);state.stop=0;renderCards();renderJourney();$('#journey').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}});
-function returnToRoutes(){
- document.body.classList.remove('viewing-route');
- const target=listReturn&&document.querySelector(`[data-route="${listReturn.id}"]`);
- if(target){target.focus({preventScroll:true});window.scrollTo({top:listReturn.y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
- else{$('#routes').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});$('#search').focus({preventScroll:true});}
+function scrollBehavior(){return matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';}
+function syncNavigation(){
+ const current=document.body.classList.contains('map-focused')?'map':(!document.body.classList.contains('viewing-route')&&state.savedOnly?'saved':'routes');
+ document.querySelectorAll('[data-app-view]').forEach(b=>{const active=b.dataset.appView===current;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
+ $('#bottomSavedCount').textContent=saved.length;
+ document.querySelectorAll('header nav a').forEach(a=>{const active=a.hash==='#journey'?document.body.classList.contains('viewing-route'):!document.body.classList.contains('viewing-route');if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
 }
-$('#backToRoutes').addEventListener('click',returnToRoutes);
-document.querySelectorAll('a[href="#routes"],a.brand').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('viewing-route')));
-document.querySelector('nav a[href="#journey"]').addEventListener('click',()=>document.body.classList.add('viewing-route'));
-window.addEventListener('hashchange',()=>{if(location.hash==='#journey')document.body.classList.add('viewing-route');else if(location.hash==='#routes'||location.hash==='')document.body.classList.remove('viewing-route');});
+function showCurrentRoute(mapFocused=false){
+ document.body.classList.add('viewing-route');document.body.classList.toggle('map-focused',mapFocused);
+ renderJourney();syncNavigation();$('#journey').scrollIntoView({behavior:scrollBehavior()});
+}
+function returnToRoutes(restore=true){
+ document.body.classList.remove('viewing-route','map-focused');syncNavigation();
+ const target=restore&&listReturn&&document.querySelector(`[data-route="${listReturn.id}"]`);
+ if(target){target.focus({preventScroll:true});window.scrollTo({top:listReturn.y,behavior:scrollBehavior()});}
+ else{$('#routes').scrollIntoView({behavior:scrollBehavior()});}
+}
+$('#routeGrid').addEventListener('click',e=>{
+ const save=e.target.closest('[data-save]');if(save){const id=save.dataset.save,exists=saved.includes(id);saved=exists?saved.filter(x=>x!==id):[...saved,id];try{localStorage.setItem('xiangye-saved',JSON.stringify(saved));toast(exists?'已取消收藏':'已收藏线路');}catch{toast('本次收藏已更新，浏览器无法保存；下次打开可能丢失。');}renderCards();return;}
+ const select=e.target.closest('[data-route]');if(select){listReturn={y:window.scrollY,id:select.dataset.route};state.route=routes.find(r=>r.id===select.dataset.route);state.stop=0;renderCards();showCurrentRoute();}
+});
+$('#backToRoutes').addEventListener('click',()=>returnToRoutes());
+document.querySelectorAll('a[href="#routes"],a.brand').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();state.savedOnly=false;renderCards();returnToRoutes(false);}));
+document.querySelector('header nav a[href="#journey"]').addEventListener('click',e=>{e.preventDefault();showCurrentRoute();});
+window.addEventListener('hashchange',()=>{if(location.hash==='#journey')showCurrentRoute();else if(location.hash==='#map')showCurrentRoute(true);else if(location.hash==='#routes'||location.hash==='')returnToRoutes(false);});
+document.querySelectorAll('[data-app-view]').forEach(b=>b.addEventListener('click',()=>{
+ if(b.dataset.appView==='map'){showCurrentRoute(true);return;}
+ state.savedOnly=b.dataset.appView==='saved';renderCards();returnToRoutes(false);
+}));
+const mapRouteSelect=$('#mapRouteSelect');
+for(const r of routes){const option=document.createElement('option');option.value=r.id;option.textContent=`${r.region} · ${r.title}`;mapRouteSelect.append(option);}
+mapRouteSelect.addEventListener('change',()=>{state.route=routes.find(r=>r.id===mapRouteSelect.value);state.stop=0;renderCards();renderJourney();});
 const regionFilter=$('#regionFilter');
 for(const button of document.querySelectorAll('[data-region]')){const option=document.createElement('option');option.value=button.dataset.region;option.textContent=button.textContent;regionFilter.append(option);}
 regionFilter.addEventListener('change',()=>{document.querySelectorAll('[data-region]').forEach(b=>{if(b.dataset.region===regionFilter.value)b.click();});});
 document.querySelectorAll('[data-region]').forEach(button=>button.addEventListener('click',()=>{state.region=button.dataset.region;regionFilter.value=state.region;document.querySelectorAll('[data-region]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});renderCards();}));
-$('#search').addEventListener('input',e=>{state.query=e.target.value;renderCards();});$('#duration').addEventListener('change',e=>{state.duration=e.target.value;renderCards();});$('#savedToggle').addEventListener('click',()=>{document.body.classList.remove('viewing-route');state.savedOnly=!state.savedOnly;renderCards();$('#routes').scrollIntoView();});$('#stops').addEventListener('click',e=>{const b=e.target.closest('[data-stop]');if(b){state.stop=Number(b.dataset.stop);renderJourney();}});document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{state.tab=b.dataset.tab;renderDetails();}));
+$('#search').addEventListener('input',e=>{state.query=e.target.value;renderCards();});$('#duration').addEventListener('change',e=>{state.duration=e.target.value;renderCards();});$('#savedToggle').addEventListener('click',()=>{state.savedOnly=!state.savedOnly;renderCards();returnToRoutes(false);});$('#stops').addEventListener('click',e=>{const b=e.target.closest('[data-stop]');if(b){state.stop=Number(b.dataset.stop);renderJourney();}});document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{state.tab=b.dataset.tab;renderDetails();}));
 $('#export').addEventListener('click',()=>{const blob=new Blob([roadbook(state.route,preparedItems())],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`向野-${state.route.title}.txt`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('线路已导出');});
-if(location.hash==='#journey')document.body.classList.add('viewing-route');
 renderCards();renderJourney();
+if(location.hash==='#journey'||location.hash==='#map')showCurrentRoute(location.hash==='#map');
