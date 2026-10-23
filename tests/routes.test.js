@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {routes,filterRoutes,mapUrl,roadbook} from '../data.js';
 test('region, duration, city, food, favorites and empty searches',()=>{
 assert.deepEqual(filterRoutes(routes,{region:'西藏'}).map(r=>r.id),['sichuan','lhasa-gaize','gaize-minfeng']);
-assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong','yunnan-southeast','qinghai-lake','qinghai-south']);
+assert.deepEqual(filterRoutes(routes,{duration:'short'}).map(r=>r.id),['ili','lhasa-gaize','minfeng-luntai','qiemo-tazhong','yunnan-southeast','qinghai-lake','qinghai-south','gansu-southeast']);
 assert.equal(filterRoutes(routes,{query:'喀什'})[0].id,'south');
 assert.equal(filterRoutes(routes,{query:'石锅鸡'})[0].id,'sichuan');
 assert.equal(filterRoutes(routes,{savedOnly:true,saved:[]}).length,0);
@@ -18,4 +18,6 @@ test('cross-region route is searchable from both regions and unknown duration is
 
 test('Lop Nur loop preserves requested stop order and exports unresolved access requirements',()=>{const r=routes.find(r=>r.id==='lopnur-loop');assert.deepEqual(r.stops.map(s=>s.name),['乌鲁木齐','哈密','罗布泊镇','米兰（若羌）','若羌','且末','塔中','库尔勒','乌鲁木齐']);assert.ok(filterRoutes(routes,{region:'新疆',query:'罗布泊'}).includes(r));assert.equal(r.days,null);assert.equal(r.distance,2668);assert.ok(roadbook(r).includes('未获明确许可'));});
 
-test('Qinghai has three closed loops and cross-province route metadata',()=>{const items=filterRoutes(routes,{region:'青海'});assert.equal(items.length,3);for(const r of items){assert.equal(r.stops[0].name,'西宁');assert.equal(r.stops.at(-1).name,'西宁');assert.ok(roadbook(r).includes('高原'));}assert.ok(filterRoutes(routes,{region:'甘肃'}).some(r=>r.id==='qinghai-gansu'));});
+test('Qinghai retains its loops and includes the new cross-province route',()=>{const items=filterRoutes(routes,{region:'青海'});assert.equal(items.length,4);for(const r of items){assert.equal(r.stops[0].name,r.stops.at(-1).name);assert.ok(roadbook(r).includes('高原'));}assert.ok(filterRoutes(routes,{region:'甘肃'}).some(r=>r.id==='qinghai-gansu'));});
+
+test('Gansu filter includes three Lanzhou loops and the existing Qinghai-Gansu loop',()=>{const items=filterRoutes(routes,{region:'甘肃'});assert.equal(items.length,4);for(const id of ['gansu-hexi','gansu-gannan','gansu-southeast']){const r=items.find(r=>r.id===id);assert.equal(r.stops[0].name,'兰州');assert.equal(r.stops.at(-1).name,'兰州');}assert.ok(items.some(r=>r.id==='qinghai-gansu'));});
