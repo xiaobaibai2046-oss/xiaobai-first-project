@@ -1,0 +1,27 @@
+const supply=(id,name,note)=>({id,name,note});
+const risk=(title,prevention,action)=>({title,prevention,action});
+const commonGroups=[
+{title:'证件与行程',items:[supply('identity','身份证、驾驶证、行驶证','确认有效期；证件备份单独保存。'),supply('insurance','保险与道路救援联系方式','确认车辆保险、救援范围、拖车距离及偏远地区是否覆盖。'),supply('booking','住宿、预约及通行确认记录','按实际行程核实证件或通行手续；离线保存地址、电话和退改条件。'),supply('offline','离线地图、纸质备份和行程共享','出发前下载沿线地图，向可信联系人说明计划与约定报平安时间。')]},
+{title:'车辆与故障应对',items:[supply('inspection','轮胎、制动、油液及电池检查','出发前检修；胎压按车辆手册与载荷调整，不凭经验统一放气。'),supply('spare','可用备胎、千斤顶和拆轮工具','确认工具匹配车辆，提前了解操作；不在危险路肩强行换胎。'),supply('inflator','胎压表、充气泵及适配搭电设备','确认设备适用和电量；不会操作时联系救援。'),supply('visibility','三角警示牌、反光背心和灭火器','检查有效状态；故障时先保障人员安全，按当地道路规则警示与求助。')]},
+{title:'饮食、衣物与健康',items:[supply('water','饮用水与额外储备','按人数、天气和最长补给间隔准备，另留延误余量；不可只依赖地图上的补给标记。'),supply('food','耐储存食物与简易餐具','准备即食主食、能量补充和备用餐，注意保质期与饮食禁忌。'),supply('clothing','保暖层、防风防雨外套及替换衣物','山区和荒漠昼夜温差大，按季节加带手套、帽子和保温用品。'),supply('firstaid','急救包、个人常用药与处方备份','按个人病史和医生建议备药，不随意使用他人的处方药；记录过敏与紧急联系人。'),supply('sun','防晒、遮阳帽、太阳镜和润唇用品','高原及荒漠紫外线强，按实际日照和产品说明补涂。')]},
+{title:'通讯、照明与环保',items:[supply('power','车充、充电宝和备用线','出发前充满电，检查适配和安全状态。'),supply('light','头灯或手电及备用电源','用于应急照明，不以此作为夜间穿越偏远路段的理由。'),supply('cash','适量现金与备用支付方式','偏远地区可能断网，现金与证件分开放置。'),supply('waste','垃圾袋、湿巾及个人卫生用品','垃圾随车带走，遵守保护区与用火规定。')]}
+];
+const highland={title:'高原专项',items:[supply('altitude-plan','高原适应与必要的健康咨询','循序上升、安排休整；有心肺等基础疾病者出发前咨询医生。'),supply('warmth','额外防寒衣物和保温毯','为山口天气突变、交通延误准备，保持衣物干燥。'),supply('oxygen-check','按专业建议评估应急供氧需求','如携带须确认设备安全、使用方法及运输要求；供氧不能替代下降海拔或就医。')]};
+const desert={title:'荒漠专项',items:[supply('desert-water','增加饮水、备用餐和遮阳用品','按最高气温、人数、最长补给间隔与可能延误规划储备，不把沿途餐馆当作已确认补给。'),supply('fuel-plan','燃油续航与已确认营业的加油点','根据油耗和绕行余量规划；不携带或存放不符合当地规定的散装燃油。'),supply('dust','防尘用品及车辆滤芯检查','核实冷却、空滤和车内用品固定；沙尘天气优先延后出发。')]};
+const remote={title:'偏远路段专项',items:[supply('remote-confirm','逐段通行、接待、燃油与救援确认','未落实关键补给与合法停靠条件前不出发，不能用露营代替未落实的住宿。'),supply('communication','可靠的通讯与失联应对计划','核实信号盲区，必要时配置符合当地规定且已测试的卫星通讯；不要默认普通手机可用卫星功能。'),supply('reserve-day','机动日期与折返方案','明确出发、折返和延后条件，向联系人约定失联后的核查方式。')]};
+const commonRisks=[risk('疲劳驾驶与夜间风险','按驾驶状态分段休息；避免连续赶路和夜间驶入陌生偏远道路。','困倦、注意力下降时在合法安全地点停车休息；无法安全继续就延后行程。'),risk('故障、断网与补给中断','出发前检查车辆，核实加油、住宿和救援，不将已记录里程当作通行保证。','先确保人员远离车流及其他危险，保留定位与电量；有信号时联系救援或当地警方。')];
+const highRisks=[risk('高原反应与快速升高海拔','逐步适应，避免初到高原即剧烈活动；身体不适时停止继续上升。','头痛等不适持续或加重应及时就医；出现静息气促、意识异常或步态不稳等情况立即求助，在安全条件下尽快降低海拔，不独自留守。'),risk('山口冰雪、落石及滑坡','核实天气、交管和公路信息，避免雨雪后冒险通过；不在落石带停留。','遇封闭、落石或积雪遵从现场指挥，停留在安全区域或折返，不自行绕过封控。')];
+const sandRisks=[risk('沙尘、积沙与低能见度','核实沙尘预警，保持在允许道路内，不越野、不追逐沙丘拍摄。','能见度不足时遵从交管指引，尽可能驶入安全停靠点；不要停在行车道或盲弯处。'),risk('高温脱水与车辆过热','避开极端高温，落实饮水、遮阳和燃油；关注车辆仪表。','身体出现热相关不适时及时降温求助；车辆高温报警安全停车处理，不贸然打开高温冷却系统。')];
+const restrictedRisk=risk('通行限制、保护区与生产作业区','先核实社会车辆准入、证件和开放道路；不得将地图轨迹当作通行许可。','遇限制立即服从现场要求并调整或折返，不穿越湖盆、保护区、油田作业道或无人区捷径。');
+export const preparationProfiles={
+'sichuan':{tags:['高原','连续山路'],groups:[highland],risks:[...highRisks,risk('涉水与山区暴雨','关注沿途降雨和道路中断，预留交通管制机动时间。','不驾车试探水深，不穿越漫水路段，听从当地交管并改期或折返。')]},
+'ili':{tags:['草原山地','季节性道路'],groups:[],risks:[risk('山区天气与季节性封路','景区道路和独库等可选支线需逐段核实开放，不按往年日期推定。','遇封路调整路线；大风、降温或降雨时停止不具备条件的山地游览。'),risk('牲畜、湿地与景区行车','遵守限速和景区交通规则，不驶入草场、湿地或牧民私人区域。','发现牲畜或野生动物提前减速，不鸣笛追赶，不突然转向进入危险路肩。')]},
+'south':{tags:['荒漠长途','高温沙尘'],groups:[desert],risks:[...sandRisks,risk('超长转场与日程压缩','和田至库尔勒等转场应拆分多日，提前落实途中住宿。','延误后顺延行程，不把多日路段压进单日驾驶。')]},
+'lhasa-gaize':{tags:['高海拔住宿','偏远补给'],groups:[highland,remote],risks:[...highRisks,restrictedRisk]},
+'gaize-minfeng':{tags:['高原','偏远荒漠','通行待核实'],groups:[highland,desert,remote],risks:[...highRisks,...sandRisks,restrictedRisk]},
+'minfeng-luntai':{tags:['沙漠公路','补给间隔长'],groups:[desert,remote],risks:[...sandRisks,risk('塔中接待与中途补给不确定','出发前电话确认塔中住宿、加油和实际接待，不承诺沿途随时有服务。','无法落实落脚或燃油时留在有服务的城镇，调整出发日或选路。')]},
+'qiemo-tazhong':{tags:['沙漠公路','需确认落脚点'],groups:[desert,remote],risks:[...sandRisks,restrictedRisk]},
+'lopnur-loop':{tags:['罗布泊段通行待核实','荒漠长途'],groups:[desert,remote],risks:[restrictedRisk,...sandRisks,risk('环线不能按原顺序完成','哈密—罗布泊镇—米兰需分别确认道路准入、住宿、燃油与救援覆盖。','任何关键条件无法落实就改变计划，不为完成环线进入受限道路；米兰遗址参观需单独确认开放。')]}
+};
+export function getPreparation(route){const profile=preparationProfiles[route.id];if(!profile)throw Error(`Missing preparation: ${route.id}`);return {tags:profile.tags,groups:[...commonGroups,...profile.groups],risks:[...commonRisks,...profile.risks]};}
+export function preparationText(route,checked=[]){const p=getPreparation(route),done=new Set(checked);return '自驾物资清单（'+p.tags.join(' / ')+'）\n'+p.groups.map(g=>g.title+'\n'+g.items.map(i=>`[${done.has(i.id)?'x':' '}] ${i.name}：${i.note}`).join('\n')).join('\n\n')+'\n\n风险防范与应对\n'+p.risks.map((r,i)=>`${i+1}. ${r.title}\n防范：${r.prevention}\n应对：${r.action}`).join('\n')+'\n紧急情况：报警 110，急救 120，交通事故报警 122；无信号地区不能保证可拨通，提前确认通讯及救援方案。以上为一般准备建议，不代替实时天气、通行信息、专业医疗或救援判断。';}
