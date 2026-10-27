@@ -78,7 +78,7 @@ export async function browserAPI(path,options={}){
   for(const code of codes)try{quotes.push(normalizeBrowserQuote(raw[marketSymbol(code)],code))}catch(e){errors.push({code,error:e.message})}
   if(!quotes.length)throw Error('数据源没有返回有效报价');data={quotes,errors,source:'腾讯财经公开报价 · 手机直连（延迟无保证）'};
  }else if(u.pathname==='/api/history'){
-  const code=u.searchParams.get('code'),sym=marketSymbol(code),variable='zh_history_'+crypto.randomUUID().replaceAll('-','');const url=new URL('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get');url.searchParams.set('param',sym+',day,,,640,');url.searchParams.set('_var',variable);
+  const code=u.searchParams.get('code'),sym=marketSymbol(code),variable='zh_history_'+crypto.randomUUID().replaceAll('-','');const url=new URL('https://ifzq.gtimg.cn/appstock/app/fqkline/get');url.searchParams.set('param',sym+',day,,,'+(u.searchParams.get('count')==='80'?80:640)+',');url.searchParams.set('_var',variable);
   data=normalizeBrowserHistory(await sandboxRequest(url.href,'variable',variable),code);
  }else if(u.pathname==='/api/hourly'){
   const code=u.searchParams.get('code'),sym=marketSymbol(code),variable='kline_m60';const url=new URL('https://ifzq.gtimg.cn/appstock/app/kline/mkline');url.searchParams.set('param',sym+',m60,,320');url.searchParams.set('_var',variable);data=normalizeHourly(await sandboxRequest(url.href,'variable',variable),code);

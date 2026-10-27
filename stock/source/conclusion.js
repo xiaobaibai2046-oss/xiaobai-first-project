@@ -2,7 +2,7 @@ import {analyzeHourlyMACD,makeTradeHints} from './macd.js';
 import {analyze} from './indicators.js';
 import {backtest,financialAnalysis} from './research.js';
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
-export function summarizeStock({code,quote=null,history=null,hourly=null,financial=null,errors={},now=new Date()}){
+export function summarizeStock({code,quote=null,history=null,hourly=null,financial=null,errors={},now=new Date(),includeSimulation=true}){
  for(const data of [quote,history,hourly,financial])if(data&&data.code!==code)throw Error('数据代码不一致，已停止合并分析');
  const missing=[],risks=[],reasons=[];let technical=null,macd=null,simulation=null,simulationNote='日线不足，回测未运行';
  const report=financial?.reports?.[0]||null;
@@ -31,7 +31,7 @@ export function summarizeStock({code,quote=null,history=null,hourly=null,financi
  if(technical){
   if(technical.trend)reasons.push('收盘价 > MA20，满足预设趋势规则');else risks.push('尚未满足“收盘价 > MA20”的趋势规则');
   if(technical.atr/technical.close>.04)risks.push('ATR 超过收盘价的 4%，近期波动较大');
-  if(history.bars.length>=22&&/^(60|00)\d{4}$/.test(code)&&!special){try{simulation=backtest(history.bars,{capital:1000000});simulationNote='仅 MA20 日线基准实验，未包含60分钟MACD；100 万元假设账户，单笔风险 0.5%，不复权价格实验'}catch(e){simulationNote=e.message}}else simulationNote='该板块、风险标识或日线数量不在首版回测支持范围';
+  if(includeSimulation&&history.bars.length>=22&&/^(60|00)\d{4}$/.test(code)&&!special){try{simulation=backtest(history.bars,{capital:1000000});simulationNote='仅 MA20 日线基准实验，未包含60分钟MACD；100 万元假设账户，单笔风险 0.5%，不复权价格实验'}catch(e){simulationNote=e.message}}else simulationNote='该板块、风险标识或日线数量不在首版回测支持范围';
  }
  let hourlyFresh=false;
  if(hourly?.bars?.length>=100){try{macd=analyzeHourlyMACD(hourly.bars);hourlyFresh=age(macd.asOf)>=0&&age(macd.asOf)<=10;if(!hourlyFresh)missing.push('近期的60分钟K线')}catch(e){missing.push(e.message)}}else missing.push('至少100根已完成60分钟K线');

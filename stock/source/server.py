@@ -174,12 +174,14 @@ def parse_history(payload, code):
                           '仅返回供应商可得的最近至多 640 根日线，不代表完整上市历史'])
 
 
-def get_history(code):
+def get_history(code, count=640):
     key = symbol(code)
+    if count not in (80,640):
+        raise InputError('日线条数仅支持80或640')
     def loader():
-        url = 'https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?' + urllib.parse.urlencode({'param': key + ',day,,,640,'})
+        url = 'https://ifzq.gtimg.cn/appstock/app/fqkline/get?' + urllib.parse.urlencode({'param': key + ',day,,,' + str(count) + ','})
         return parse_history(decode_json(fetch(url)), code)
-    return cached(('history', code), 300, loader)
+    return cached(('history', code, count), 300, loader)
 
 
 def parse_hourly(payload, code, now=None):
@@ -326,7 +328,7 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.respond(200, get_hourly(code))
             if url.path in ('/api/history', '/api/financial'):
                 symbol(code)
-                return self.respond(200, get_history(code) if url.path.endswith('history') else get_financial(code))
+                return self.respond(200, get_history(code,80 if qs.get('count')==['80'] else 640) if url.path.endswith('history') else get_financial(code))
             return self.respond(404, dict(error='接口不存在'))
         except InputError as exc:
             return self.respond(400, dict(error=str(exc), simulated=False))
