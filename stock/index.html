@@ -1,7 +1,9 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>知衡 · A股研究台</title><meta name="data-transport" content="browser"><meta name="theme-color" content="#24594c"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><style>:root{font-family:system-ui,-apple-system,"Microsoft Yahei",sans-serif;color:#1d3431;background:#f4f6f3;font-size:15px}*{box-sizing:border-box}body{margin:0}header{background:white;border-bottom:1px solid #dfe6df;padding:22px 5%;display:flex;justify-content:space-between;align-items:center}.logo{display:inline-grid;place-items:center;background:#24594c;color:white;width:35px;height:35px;border-radius:10px;margin-right:12px}main{max-width:1180px;margin:auto;padding:35px 25px}.hero{padding:15px 0 25px}h1{font-size:36px;letter-spacing:-1px;margin:12px 0}h2{margin:0 0 14px;font-size:22px}p,.muted,footer{color:#687972;line-height:1.7}.eyebrow{color:#407261;font-size:13px;letter-spacing:2px}.pill{font-size:12px;background:#eff5ef;padding:8px 12px;border-radius:20px}.notice{padding:13px 18px;background:#fff4da;border:1px solid #ead9af;border-radius:9px;color:#796027;font-size:13px}nav{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:24px}button,.upload{border:1px solid #cddbd1;border-radius:8px;padding:11px 14px;background:white;color:#274c40;cursor:pointer;font:inherit}button.active,button.primary{background:#24594c;color:white;border-color:#24594c}nav button{text-align:left;font-size:13px}.panel{background:white;padding:25px;border-radius:14px;border:1px solid #e0e7df;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}label{display:block;color:#5c6d64;font-size:13px;margin-bottom:14px}input,select,textarea{display:block;width:100%;padding:11px;margin-top:7px;border:1px solid #d4ddd5;border-radius:7px;font:inherit;background:#fff;color:#213e33}textarea{min-height:95px;resize:vertical}.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:15px 0}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}td,th{padding:15px 12px;text-align:left;border-bottom:1px solid #e9eee8}th{color:#728276;font-weight:500}.good{color:#24755b}.error{color:#a33b2b}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.stat{padding:20px;background:#edf3ee;border-radius:10px}.stat strong{font-size:26px;display:block;margin:6px 0}.small{font-size:12px;color:#728276}footer{font-size:12px;margin:25px 0}a{color:#24594c}@media(max-width:750px){header .muted,header .pill{display:none}main{padding:20px 14px}h1{font-size:28px}nav{grid-template-columns:repeat(3,1fr)}.grid,.cards{grid-template-columns:1fr}.panel{padding:18px}}
 
 .subpanel{padding:22px;background:#f6f9f5;border:1px solid #dce5da;border-radius:12px;margin-bottom:28px}.subpanel h3{margin:0 0 14px}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px}.inline{display:flex;align-items:center;gap:8px;margin:0}.inline input{width:auto;margin:0}.finding{padding:14px 16px;margin:12px 0;background:#edf3ee;border-radius:8px}.finding p{margin:5px 0}.riskfinding{background:#fff2df}.chart{margin:24px 0;padding:15px;background:white;border-radius:10px}.chart svg{width:100%;display:block}.chart text{fill:#6a7b71;font-size:11px}.cards{margin:16px 0}.stat strong{overflow-wrap:anywhere;font-size:24px}button:disabled{opacity:.5;cursor:wait}details{padding:15px;background:#f3f5ef;border-radius:8px}summary{cursor:pointer}.subpanel .grid{margin-top:18px}@media(max-width:750px){.subpanel{padding:14px}.sectionhead{align-items:flex-start;flex-direction:column}.chart{padding:6px}}
-</style><body><header><div><span class="logo">衡</span><b>知衡研究台</b><span class="muted"> A 股 · 从筛选到复盘</span></div><span class="pill">研究工具 · 非自动交易</span></header><main><section class="hero"><span class="eyebrow">让每一笔判断，都有依据</span><h1>先建立方法，再寻找机会。</h1><p>用趋势与波动缩小研究范围，用企业、价格和记录完成决策。</p><div id="source" class="notice">尚未导入行情</div></section><nav id="steps"></nav><section id="screen"></section><footer>指标不保证收益。A 股 T+1、跳空与跌停可能使退出无法按计划执行。本工具不连接券商、不下单。</footer></main><script type="module">const __modules={};
+
+.quickinput{display:flex;gap:12px}.quickinput input{font-size:23px;letter-spacing:3px;margin:0;min-width:0}.quickinput button{white-space:nowrap;min-width:125px}.quickverdict{border:1px solid #d6dfd5;padding:24px;margin:20px 0;border-radius:13px;background:#edf3ee}.quickverdict h2{font-size:26px;margin:12px 0}.quickverdict.incomplete,.quickverdict.caution{background:#fff6e6;border-color:#e6d7b9}.quickverdict.risk{background:#fff0eb;border-color:#ead1c7}.quickmetrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;font-size:12px;color:#697c70}.quickmetrics strong{display:block;font-size:19px;color:#263e32;margin-top:6px}.quickpanel h3{font-size:16px;margin:0}.quickpanel li{line-height:1.9;font-size:14px}.quickpanel ul{padding-left:20px}#advanced{background:transparent;padding:0}#advanced>summary{padding:18px;margin-bottom:16px;border:1px solid #dce4da;border-radius:9px;background:white}#advanced #source{margin-bottom:15px}.sixsummary{padding-left:22px}.quickdetails{margin:18px 0}@media(max-width:500px){.quickverdict{padding:16px}.quickverdict h2{font-size:23px}.quickinput{gap:8px}.quickinput button{min-width:103px;padding:10px}.quickinput input{font-size:20px;letter-spacing:2px}.quickmetrics strong{font-size:16px}}
+</style><body><header><div><span class="logo">衡</span><b>知衡研究台</b><span class="muted"> A 股 · 从筛选到复盘</span></div><span class="pill">研究工具 · 非自动交易</span></header><main><section class="hero"><span class="eyebrow">知衡 · 一键研究</span><h1>输入股票代码，直接看结论。</h1><p>自动汇总行情、财报和趋势，给出判断、理由与风险。</p></section><section class="panel quickpanel"><form id="quickform"><label for="quickcode">A 股代码</label><div class="quickinput"><input id="quickcode" name="code" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="例如 600519" aria-describedby="quickprogress"><button id="quickbutton" class="primary" type="submit">一键分析</button></div></form><p id="quickprogress" class="small" role="status" aria-live="polite">只需六位代码。自动读取公开数据，不需要逐页填写。</p><div id="quickresult" aria-live="polite"></div></section><details id="advanced"><summary>展开六步研究工具与自定义回测</summary><div id="source" class="notice">尚未导入行情</div><nav id="steps"></nav><section id="screen"></section></details><footer>指标不保证收益。A 股 T+1、跳空与跌停可能使退出无法按计划执行。本工具不连接券商、不下单。</footer></main><script type="module">const __modules={};
 __modules["./indicators.js"]=(()=>{
 function analyze(bars, capital=100000, riskPct=0.5) {
   if(bars.length<61) throw Error('每只股票至少需要 61 个交易日');
@@ -280,10 +282,93 @@ function equityChart(result){const values=result.equity.flatMap(x=>[x.value,x.be
  return `<figure class="chart"><figcaption>资金曲线：<span class="good">● 策略</span>　<span class="muted">● 价格基准</span>（元）</figcaption><svg viewBox="0 0 900 265" role="img" aria-label="策略与价格基准资金曲线"><text x="40" y="18">${money(high)}</text><text x="40" y="240">${money(low)}</text><line x1="40" y1="220" x2="860" y2="220" stroke="#d5ded6"/><polyline points="${points('benchmark')}" fill="none" stroke="#a0aaa3" stroke-width="2"/><polyline points="${points('value')}" fill="none" stroke="#24594c" stroke-width="3"/><text x="40" y="262">${result.start}</text><text x="755" y="262">${result.end}</text></svg></figure>`;
 }
 
-return {marketPanel,financePanel,backtestPanel,mountIntegrations};
+return {marketPanel,financePanel,backtestPanel,api,mountIntegrations};
+})();
+__modules["./conclusion.js"]=(()=>{
+const {analyze}=__modules["./indicators.js"];
+const {backtest,financialAnalysis}=__modules["./research.js"];
+const finite=x=>typeof x==='number'&&Number.isFinite(x);
+function summarizeStock({code,quote=null,history=null,financial=null,errors={},now=new Date()}){
+ for(const data of [quote,history,financial])if(data&&data.code!==code)throw Error('数据代码不一致，已停止合并分析');
+ const missing=[],risks=[],reasons=[];let technical=null,simulation=null,simulationNote='日线不足，回测未运行';
+ const report=financial?.reports?.[0]||null;
+ const age=date=>(now.getTime()-Date.parse(date))/86400000;
+ const validReport=!!report&&finite(report.profit)&&finite(report.revenue)&&finite(report.revenue_yoy)&&finite(report.profit_yoy)&&!!report.notice_date&&Number.isFinite(age(report.period))&&age(report.period)>=0&&age(report.period)<=240&&Number.isFinite(age(report.notice_date))&&age(report.notice_date)>=0;
+ const quoteOK=!!quote&&finite(quote.price)&&quote.price>0&&Number.isFinite(age(quote.exchange_time))&&age(quote.exchange_time)>=-1/1440&&age(quote.exchange_time)<=10;
+ if(!quoteOK)missing.push('有效且近期的报价');
+ if(!validReport)missing.push('近期、包含公告日期及盈利增长数据的财报');
+ if(history?.bars?.length>=61){try{technical=analyze(history.bars)}catch(e){missing.push('可计算的日线')}}else missing.push('至少 61 根已完成日线');
+ if(technical&&(!Number.isFinite(age(technical.date))||age(technical.date)<0||age(technical.date)>10))missing.push('近期日线（现有日线超过 10 个自然日或日期异常）');
+ if(technical&&history.bars.at(-1).volume===0)missing.push('末根日线零成交量，需核查停牌或数据');
+ const name=quote?.name||report?.name||history?.name||code;
+ const special=/^(?:\*)?ST|退市|退$/i.test(name);
+ const financialSector=/银行|保险|证券|金融/.test(report?.industry||'');
+ const cashKnown=!!report&&finite(report.eps)&&report.eps>0&&finite(report.ocf_per_share);
+ const cashRatio=cashKnown?report.ocf_per_share/report.eps:null;
+ if(!financialSector&&!cashKnown)missing.push('可比较的正 EPS 与每股经营现金流');
+ if(special)risks.push('名称带有 ST 或退市相关标识，需优先核查交易与退市风险');
+ if(report){
+  if(finite(report.profit)&&report.profit<=0)risks.push(`截至 ${report.period} 累计归母利润不为正`);
+  for(const [key,title] of [['revenue_yoy','营收'],['profit_yoy','净利润']])if(finite(report[key]))(report[key]<0?risks:reasons).push(`${title}同比 ${report[key].toFixed(2)}%（${report.period} 累计口径）`);
+  if(!financialSector&&cashRatio!==null){if(cashRatio<.8)risks.push(`经营现金流与 EPS 的粗略匹配比值 ${cashRatio.toFixed(2)}，低于研究阈值 0.8`);else reasons.push(`每股经营现金流 / EPS 为 ${cashRatio.toFixed(2)}，仍需核查口径与季节性`)}
+  if(financialSector)reasons.push('金融行业不套用一般企业现金流阈值，需要行业专门估值');
+ }
+ if(technical){
+  if(technical.trend)reasons.push('收盘价 > MA20 > MA60，满足预设趋势规则');else risks.push('尚未满足“收盘价 > MA20 > MA60”的趋势规则');
+  if(technical.atr/technical.close>.04)risks.push('ATR 超过收盘价的 4%，近期波动较大');
+  if(history.bars.length>=62&&/^(60|00)\d{4}$/.test(code)&&!special){try{simulation=backtest(history.bars,{capital:1000000});simulationNote='100 万元假设账户，单笔风险 0.5%；与个人账户无关，不复权价格实验'}catch(e){simulationNote=e.message}}else simulationNote='该板块、风险标识或日线数量不在首版回测支持范围';
+ }
+ let status='incomplete',title='数据不足，暂不下结论',action='缺失项目补齐后再判断；本次没有生成买入指令。';
+ if(special||(validReport&&report.profit<=0)){status='risk';title='风险较高，暂不列入优先研究';action=special?'先核查风险警示、财务和交易状态，不依据技术信号追入。':'近期财报显示累计归母利润不为正，先核查亏损原因和持续经营能力。'}
+ else if(!missing.length){
+  if(report.profit<=0||(report.revenue_yoy<0&&report.profit_yoy<0&&!technical.trend)){
+   status='risk';title='风险较高，暂不列入优先研究';action='盈利或经营趋势存在明显弱项，先等待财报或趋势改善。';
+  }else if(technical.trend&&report.revenue_yoy>=0&&report.profit_yoy>=0&&!financialSector&&cashRatio>=.8&&technical.atr/technical.close<=.04){
+   status='watch';title='可列入观察，值得进一步研究';action='基本面摘要与趋势规则同向；估值、公告和个人风险约束核查后再决定是否交易。';
+  }else{status='caution';title='谨慎观察，暂不追入';action='财务与趋势条件尚未充分同向，先关注下列弱项和后续变化。'}
+ }
+ return {code,name,status,title,action,missing,risks,reasons,quote,report,technical,simulation,simulationNote,errors,financialChecks:report?financialAnalysis(report):null,
+  valuation:quote&&finite(quote.pe_ttm)&&quote.pe_ttm>0?`当前供应商 PE(TTM) ${quote.pe_ttm.toFixed(2)} 倍；缺少行业可比估值和未来盈利假设，不能据此判断便宜或昂贵。`:'未取得有效正 PE(TTM)；没有生成估值或目标价。',
+  generatedAt:now.toISOString()};
+}
+
+return {summarizeStock};
+})();
+__modules["./quick.js"]=(()=>{
+const {api}=__modules["./integrations.js"];
+const {marketSymbol}=__modules["./providers.js"];
+const {summarizeStock}=__modules["./conclusion.js"];
+function mountQuick({esc,download,onHistory}){
+ const form=document.querySelector('#quickform'),input=document.querySelector('#quickcode'),button=document.querySelector('#quickbutton'),progress=document.querySelector('#quickprogress'),output=document.querySelector('#quickresult');
+ let generation=0,last=null;
+ const fmt=x=>typeof x==='number'&&Number.isFinite(x)?x.toLocaleString('zh-CN',{maximumFractionDigits:2}):'缺失';
+ const pc=x=>x==null?'—':(x*100).toFixed(2)+'%';
+ input.oninput=()=>{generation++;last=null;output.innerHTML='';progress.textContent='';button.disabled=false;button.textContent='一键分析';form.removeAttribute('aria-busy')};
+ form.onsubmit=async event=>{
+  event.preventDefault();const code=input.value.trim();try{marketSymbol(code)}catch(e){progress.textContent=e.message;output.innerHTML='';return}
+  const run=++generation;last=null;output.innerHTML='';button.disabled=true;button.textContent='正在分析…';form.setAttribute('aria-busy','true');
+  const states={quote:'获取中',history:'获取中',financial:'获取中'},values={},errors={};
+  const update=()=>{if(run===generation)progress.textContent=`报价：${states.quote} · 日线：${states.history} · 财报：${states.financial}`};update();
+  const tasks=[['quote','/api/quotes?codes='+code],['history','/api/history?code='+code],['financial','/api/financial?code='+code]];
+  await Promise.all(tasks.map(async([kind,path])=>{try{const data=await api(path);if(kind==='quote'){const q=data.quotes?.find(x=>x.code===code);if(!q)throw Error('该股票没有有效报价');values.quote=q;values.quoteSource=data.source}else values[kind]=data;states[kind]='完成'}catch(e){errors[kind]=e.message;states[kind]='未取得'}update()}));
+  if(run!==generation)return;
+  try{
+   const r=summarizeStock({code,quote:values.quote,history:values.history,financial:values.financial,errors});last=r;
+   if(values.history&&values.history.bars.length>=61)onHistory(values.history);
+   const list=(xs,empty)=>xs.length?`<ul>${xs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<p class="small">${empty}</p>`;
+   output.innerHTML=`<article class="quickverdict ${r.status}"><div class="eyebrow">${esc(r.code)} · ${esc(r.name)}</div><h2>${esc(r.title)}</h2><p>${esc(r.action)}</p><div class="quickmetrics"><div>最新价<strong>${fmt(r.quote?.price)}</strong></div><div>日线趋势<strong>${r.technical?(r.technical.trend?'满足规则':'尚未满足'):'未取得'}</strong></div><div>财报期<strong>${esc(r.report?.period||'未取得')}</strong></div></div>${r.missing.length?`<p class="error">未完成：${esc(r.missing.join('；'))}</p>`:''}</article><div class="grid"><section class="finding"><h3>主要依据</h3>${list(r.reasons,'尚无足够的可核对依据')}</section><section class="finding riskfinding"><h3>需要留意</h3>${list(r.risks,'本次规则未检出明显弱项，不代表没有风险')}</section><section class="finding"><h3>估值判断</h3><p>${esc(r.valuation)}</p></section></div><details class="quickdetails"><summary>查看自动分析的六步明细</summary><ol class="sixsummary"><li><b>约束</b><p>采用通用研究模式；未假定你的资金、期限与可承受亏损，因此不输出个性化买入仓位。</p></li><li><b>股票池</b><p>${esc(r.code)} ${esc(r.name)}；历史 ST、停牌、退市和治理信息未完整核验。</p></li><li><b>企业分析</b><p>报告期 ${esc(r.report?.period||'未取得')}，公告日 ${esc(r.report?.notice_date||'缺失')}；累计归母利润 ${fmt(r.report?.profit)} 元。</p>${list(r.financialChecks?.messages.filter(x=>x.title!=='分析边界').map(x=>x.detail)||[],'财报暂不可用')}</li><li><b>价格</b><p>${esc(r.valuation)} 不把季报 EPS 直接乘以全年市盈率生成目标价。</p></li><li><b>交易条件</b>${r.technical?`<p>日线 ${esc(r.technical.date)}：MA20 ${fmt(r.technical.ma20)} / MA60 ${fmt(r.technical.ma60)}；量比 ${fmt(r.technical.ratio)}（当日量 / 前20日均量）；ATR14 ${fmt(r.technical.atr)}。收盘减 2×ATR 为 ${fmt(r.technical.stop)}，仅为波动参考，不是承诺可成交的止损价。</p>`:'<p>缺少日线，未生成趋势和风险距离。</p>'}</li><li><b>复盘与历史实验</b><p>${esc(r.simulationNote)}</p>${r.simulation?`<p>${r.simulation.start}—${r.simulation.end}：价格策略收益 ${pc(r.simulation.totalReturn)}，价格基准 ${pc(r.simulation.benchmarkReturn)}，最大回撤 ${pc(r.simulation.maxDrawdown)}，已平仓 ${r.simulation.closedTrades} 笔。${r.simulation.closedTrades<5?'交易样本不足，不能据此判断策略有效。':''}</p><p class="small">收盘信号、下一开盘成交，含费用与滑点；未计分红送转和完整历史涨跌停状态，期末持仓不强制平仓。最新财报没有用于历史交易信号。</p>`:''}</li></ol></details><p class="small">报价时间：${esc(r.quote?.exchange_time||'未取得')}；${esc(values.quoteSource||'报价源未连接')}。日线来源：${esc(values.history?.source||'未取得')}；财报来源：${esc(values.financial?.source||'未取得')}。结论为明确规则生成的研究摘要，不预测收益。</p>${Object.keys(errors).length?`<details><summary>查看未完成的请求</summary>${Object.entries(errors).map(([k,v])=>`<p class="small">${esc({quote:'报价',history:'日线',financial:'财报'}[k])}：${esc(v)}</p>`).join('')}</details>`:''}<div class="actions"><button id="quickexport">导出这次分析</button></div>`;
+   document.querySelector('#quickexport').onclick=()=>{if(last)download('analysis-'+last.code+'.json',JSON.stringify(last,null,2),'application/json')};
+   progress.textContent=Object.keys(errors).length?'部分数据未取得；已展示已知信息及缺失项目。':'分析完成，先看结论，再按需展开依据。';
+  }catch(e){output.innerHTML='';progress.textContent='分析未完成：'+e.message}
+  finally{if(run===generation){button.disabled=false;button.textContent='重新分析';form.removeAttribute('aria-busy')}}
+ };
+}
+
+return {mountQuick};
 })();
 __modules["./app.js"]=(()=>{
 const {analyze,parseCSV,demoCSV}=__modules["./indicators.js"];
+const {mountQuick}=__modules["./quick.js"];
 const {marketPanel,financePanel,backtestPanel,mountIntegrations}=__modules["./integrations.js"];
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let store={};try{store=JSON.parse(localStorage.getItem('zhiheng-v1')||'{}');if(!store||Array.isArray(store)||typeof store!=='object')store={}}catch{}
@@ -327,6 +412,8 @@ function acceptHistory(all){
 }
 function valuation(){if(step!==3)return;const k='stock:'+(store.subject||'未指定')+':';for(const x of ['bear','base','bull']){const a=Number(store[k+x+'eps']),b=Number(store[k+x+'pe']);$('#'+x).textContent=a>0&&b>0?'情景估值 '+(a*b).toFixed(2)+' 元':'输入正数 EPS 与市盈率'}}
 render();
+
+mountQuick({esc,download,onHistory:data=>{groups=new Map([[data.code,data.bars]]);source=data.source;sourceKind='online';demo=false;store.subject=data.code+' '+data.name;try{calc()}catch{}render();document.querySelector('#source').textContent='一键分析载入的日线 · '+data.source+' · 截止 '+data.last_date;}});
 
 return {};
 })();

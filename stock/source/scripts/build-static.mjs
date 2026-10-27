@@ -3,7 +3,7 @@ import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 const root=new URL('../',import.meta.url),out=process.argv[2]?pathToFileURL(resolve(process.argv[2])+'/'):new URL('../dist/',import.meta.url);
 await mkdir(out,{recursive:true});
-const modules=['indicators.js','research.js','providers.js','integrations.js','app.js'];let script='const __modules={};\n';
+const modules=['indicators.js','research.js','providers.js','integrations.js','conclusion.js','quick.js','app.js'];let script='const __modules={};\n';
 for(const file of modules){let text=await readFile(new URL(file,root),'utf8');const exports=[...text.matchAll(/^export (?:(?:async )?function|const|let|class) (\w+)/gm)].map(x=>x[1]);text=text.replace(/^import \{([^}]+)\} from '([^']+)';\r?\n/gm,(_,names,path)=>`const {${names}}=__modules[${JSON.stringify(path)}];\n`).replace(/^export /gm,'');script+=`__modules[${JSON.stringify('./'+file)}]=(()=>{\n${text}\nreturn {${exports.join(',')}};\n})();\n`;}
 let html=await readFile(new URL('index.html',root),'utf8'),css=await readFile(new URL('style.css',root),'utf8');
 html=html.replace('<link rel="stylesheet" href="style.css">',()=>`<meta name="data-transport" content="browser"><meta name="theme-color" content="#24594c"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><style>${css.replace(/<\/style/gi,'<\\/style')}</style>`).replace('<script type="module" src="app.js"></script>',()=>`<script type="module">${script.replace(/<\/script/gi,'<\\/script')}</script>`);

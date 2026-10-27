@@ -1,4 +1,5 @@
 import {analyze,parseCSV,demoCSV} from './indicators.js';
+import {mountQuick} from './quick.js';
 import {marketPanel,financePanel,backtestPanel,mountIntegrations} from './integrations.js';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let store={};try{store=JSON.parse(localStorage.getItem('zhiheng-v1')||'{}');if(!store||Array.isArray(store)||typeof store!=='object')store={}}catch{}
@@ -42,3 +43,5 @@ function acceptHistory(all){
 }
 function valuation(){if(step!==3)return;const k='stock:'+(store.subject||'未指定')+':';for(const x of ['bear','base','bull']){const a=Number(store[k+x+'eps']),b=Number(store[k+x+'pe']);$('#'+x).textContent=a>0&&b>0?'情景估值 '+(a*b).toFixed(2)+' 元':'输入正数 EPS 与市盈率'}}
 render();
+
+mountQuick({esc,download,onHistory:data=>{groups=new Map([[data.code,data.bars]]);source=data.source;sourceKind='online';demo=false;store.subject=data.code+' '+data.name;try{calc()}catch{}render();document.querySelector('#source').textContent='一键分析载入的日线 · '+data.source+' · 截止 '+data.last_date;}});
