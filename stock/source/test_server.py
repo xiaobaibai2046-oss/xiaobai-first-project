@@ -61,6 +61,16 @@ class AdapterTests(unittest.TestCase):
         payload['result']['data'][0]['SECURITY_CODE']='000001'
         with self.assertRaises(server.DataError):server.parse_financial(payload,'600519')
 
+    def test_hourly_contract_excludes_future_bar_and_preserves_close_order(self):
+        payload={'code':0,'data':{'sh600519':{'m60':[['202510271030','10','11','12','9','100'],['202510271130','11','12','13','10','200'],['202510271400','12','13','14','11','300']]}}}
+        now=dt.datetime(2025,10,27,11,40,tzinfo=server.SH)
+        data=server.parse_hourly(payload,'600519',now=now)
+        self.assertEqual(len(data['bars']),2)
+        self.assertEqual(data['bars'][0]['close'],11)
+        self.assertEqual(data['last_time'],'2025-10-27T11:30:00+08:00')
+        self.assertEqual(data['excluded_bars'],1)
+        with self.assertRaises(server.DataError):server.parse_hourly({'code':0,'data':{'sh600519':{'day':[]}}},'600519')
+
     def test_denied_network_never_becomes_synthetic_success(self):
         with patch.object(server.urllib.request,'urlopen',side_effect=urllib.error.URLError('Tunnel connection failed: 403 Forbidden')):
             with self.assertRaisesRegex(server.DataError,'403'):server.get_quotes(['600519'])
@@ -101,3 +111,9 @@ class HTTPTests(unittest.TestCase):
             with self.assertRaises(urllib.error.HTTPError) as error:urllib.request.urlopen(self.base+'/api/quotes?codes=123456')
             self.assertEqual(error.exception.code,400)
             upstream.assert_not_called()
+
+    def test_hourly_route_uses_its_own_adapter(self):
+        with patch.object(server,'get_hourly',return_value={'code':'600519','bars':[]}) as adapter:
+            with urllib.request.urlopen(self.base+'/api/hourly?code=600519') as response:
+                self.assertEqual(json.load(response)['code'],'600519')
+            adapter.assert_called_once_with('600519')

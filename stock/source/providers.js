@@ -1,3 +1,4 @@
+import {normalizeHourly} from './macd.js';
 // Static hosting transport: provider scripts run in an opaque-origin sandbox.
 // They cannot access the parent DOM, research notes or localStorage.
 const browserCache=new Map();
@@ -18,7 +19,7 @@ function sandboxRequest(url,mode,variable){
   const message=event=>{if(event.source!==iframe.contentWindow||event.data?.nonce!==nonce)return;finish(event.data.error,event.data.data)};
   const timeout=setTimeout(()=>finish('手机未能在 20 秒内连接数据源，请检查网络或稍后重试'),20000);window.addEventListener('message',message);
   const config=JSON.stringify({url,mode,variable,nonce}).replace(/</g,'\\u003c');
-  iframe.srcdoc=`<!doctype html><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://qt.gtimg.cn https://web.ifzq.gtimg.cn https://datacenter-web.eastmoney.com; connect-src 'none'; img-src 'none'; base-uri 'none'"><script>
+  iframe.srcdoc=`<!doctype html><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://qt.gtimg.cn https://ifzq.gtimg.cn https://web.ifzq.gtimg.cn https://datacenter-web.eastmoney.com; connect-src 'none'; img-src 'none'; base-uri 'none'"><script>
   (()=>{const c=${config};let sent=false;const send=(data,error)=>{if(sent)return;sent=true;parent.postMessage({nonce:c.nonce,data,error},'*')};
    if(c.mode==='callback')window[c.variable]=data=>send(data);
    const script=document.createElement('script');script.referrerPolicy='no-referrer';script.charset=c.mode==='quote'?'gb18030':'utf-8';script.src=c.url;
@@ -59,7 +60,7 @@ export function normalizeBrowserFinancial(payload,code,today=chinaClock().date){
 }
 export async function browserAPI(path){
  const u=new URL(path,location.href),key=u.pathname+'?'+u.searchParams.toString(),old=browserCache.get(key);
- const ttl=u.pathname==='/api/quotes'?10000:u.pathname==='/api/history'?300000:3600000;
+ const ttl=u.pathname==='/api/quotes'?10000:u.pathname==='/api/history'?300000:u.pathname==='/api/hourly'?60000:3600000;
  if(old&&Date.now()-old.time<ttl)return {...old.data,cache_hit:true};
  let data;
  if(u.pathname==='/api/quotes'){
@@ -70,6 +71,8 @@ export async function browserAPI(path){
  }else if(u.pathname==='/api/history'){
   const code=u.searchParams.get('code'),sym=marketSymbol(code),variable='zh_history_'+crypto.randomUUID().replaceAll('-','');const url=new URL('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get');url.searchParams.set('param',sym+',day,,,640,');url.searchParams.set('_var',variable);
   data=normalizeBrowserHistory(await sandboxRequest(url.href,'variable',variable),code);
+ }else if(u.pathname==='/api/hourly'){
+  const code=u.searchParams.get('code'),sym=marketSymbol(code),variable='kline_m60';const url=new URL('https://ifzq.gtimg.cn/appstock/app/kline/mkline');url.searchParams.set('param',sym+',m60,,320');url.searchParams.set('_var',variable);data=normalizeHourly(await sandboxRequest(url.href,'variable',variable),code);
  }else if(u.pathname==='/api/financial'){
   const code=u.searchParams.get('code');marketSymbol(code);const callback='zh_finance_'+crypto.randomUUID().replaceAll('-',''),url=new URL('https://datacenter-web.eastmoney.com/api/data/v1/get');
   for(const [k,v] of Object.entries({reportName:'RPT_LICO_FN_CPD',columns:'ALL',filter:`(SECURITY_CODE="${code}")`,pageNumber:'1',pageSize:'8',sortColumns:'REPORTDATE',sortTypes:'-1',callback}))url.searchParams.set(k,v);

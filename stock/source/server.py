@@ -180,6 +180,52 @@ def get_history(code):
     return cached(('history', code), 300, loader)
 
 
+def parse_hourly(payload, code, now=None):
+    key = symbol(code)
+    rows = payload.get('data', {}).get(key, {}).get('m60')
+    if payload.get('code') != 0 or not isinstance(rows, list) or not rows:
+        raise DataError('数据源没有返回 m60 K线，未用日线代替')
+    now = now or dt.datetime.now(SH)
+    bars, seen, excluded = [], set(), 0
+    for row in rows:
+        if not isinstance(row, list) or len(row) < 6:
+            raise DataError('60分钟字段不完整')
+        raw = str(row[0])
+        if not re.fullmatch(r'(?:\d{12}|\d{14}|\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(?::\d{2})?)', raw):
+            raise DataError('60分钟时间格式发生变化')
+        digits = re.sub(r'\D', '', raw)
+        try:
+            end = dt.datetime.strptime(digits[:12], '%Y%m%d%H%M').replace(tzinfo=SH)
+        except ValueError as exc:
+            raise DataError('60分钟日期无效') from exc
+        if digits[8:12] not in ('1030', '1130', '1400', '1500') or end > now:
+            excluded += 1
+            continue
+        values = [number(x) for x in row[1:6]]
+        if any(x is None for x in values):
+            raise DataError('60分钟价格缺失')
+        op, close, high, low, volume = values
+        stamp = end.isoformat(timespec='seconds')
+        if min(op, close, high, low) <= 0 or volume < 0 or high < max(op, close) or low > min(op, close) or stamp in seen:
+            raise DataError('60分钟价格或重复时间无效')
+        seen.add(stamp)
+        bars.append(dict(code=code, endTime=stamp, open=op, close=close, high=high, low=low, volume=volume))
+    bars.sort(key=lambda b: b['endTime'])
+    if not bars:
+        raise DataError('没有符合 A股收盘时段的已完成60分钟K线')
+    return dict(code=code, bars=bars, timeframe='60m', adjustment='none', source='腾讯财经60分钟K线',
+                last_time=bars[-1]['endTime'], excluded_bars=excluded,
+                session_ends='北京时间10:30、11:30、14:00、15:00；排除未完成K线')
+
+
+def get_hourly(code):
+    key = symbol(code)
+    def loader():
+        url = 'https://ifzq.gtimg.cn/appstock/app/kline/mkline?' + urllib.parse.urlencode({'param': key + ',m60,,320'})
+        return parse_hourly(decode_json(fetch(url)), code)
+    return cached(('hourly', code), 60, loader)
+
+
 FINANCE_FIELDS = {
     'eps': ('BASIC_EPS', 'EPSJB'),
     'revenue': ('TOTAL_OPERATE_INCOME',),
@@ -267,6 +313,9 @@ class Handler(SimpleHTTPRequestHandler):
                 for value in codes:
                     symbol(value)
                 return self.respond(200, get_quotes(codes))
+            if url.path == '/api/hourly':
+                symbol(code)
+                return self.respond(200, get_hourly(code))
             if url.path in ('/api/history', '/api/financial'):
                 symbol(code)
                 return self.respond(200, get_history(code) if url.path.endswith('history') else get_financial(code))
