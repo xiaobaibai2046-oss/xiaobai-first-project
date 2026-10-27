@@ -313,6 +313,7 @@ function summarizeStock({code,quote=null,history=null,financial=null,errors={},n
   if(!financialSector&&cashRatio!==null){if(cashRatio<.8)risks.push(`经营现金流与 EPS 的粗略匹配比值 ${cashRatio.toFixed(2)}，低于研究阈值 0.8`);else reasons.push(`每股经营现金流 / EPS 为 ${cashRatio.toFixed(2)}，仍需核查口径与季节性`)}
   if(financialSector)reasons.push('金融行业不套用一般企业现金流阈值，需要行业专门估值');
  }
+ reasons.unshift(finite(report?.roe)?`ROE（净资产收益率）${report.roe.toFixed(2)}%（截至 ${report.period||'报告期未取得'}，累计口径，未年化）`:'ROE（净资产收益率）：数据缺失，暂不评价');
  if(technical){
   if(technical.trend)reasons.push('收盘价 > MA20 > MA60，满足预设趋势规则');else risks.push('尚未满足“收盘价 > MA20 > MA60”的趋势规则');
   if(technical.atr/technical.close>.04)risks.push('ATR 超过收盘价的 4%，近期波动较大');
