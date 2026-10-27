@@ -117,3 +117,9 @@ class HTTPTests(unittest.TestCase):
             with urllib.request.urlopen(self.base+'/api/hourly?code=600519') as response:
                 self.assertEqual(json.load(response)['code'],'600519')
             adapter.assert_called_once_with('600519')
+
+    def test_pool_route_uses_a_complete_cached_pool(self):
+        with patch.object(server,'fetch_pool',return_value={'complete':True,'year':2025,'stocks':[]}) as adapter:
+            with urllib.request.urlopen(self.base+'/api/roe-pool?refresh=1') as response:
+                self.assertEqual(json.load(response)['year'],2025)
+            adapter.assert_called_once_with()

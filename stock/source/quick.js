@@ -6,7 +6,7 @@ export function mountQuick({esc,download,onHistory}){
  let generation=0,last=null;
  const fmt=x=>typeof x==='number'&&Number.isFinite(x)?x.toLocaleString('zh-CN',{maximumFractionDigits:2}):'缺失';
  const pc=x=>x==null?'—':(x*100).toFixed(2)+'%';
- input.oninput=()=>{generation++;last=null;output.innerHTML='';progress.textContent='';button.disabled=false;button.textContent='一键分析';form.removeAttribute('aria-busy')};
+ input.oninput=()=>{const note=document.querySelector('#poolselection');if(note)note.hidden=true;generation++;last=null;output.innerHTML='';progress.textContent='';button.disabled=false;button.textContent='一键分析';form.removeAttribute('aria-busy')};
  form.onsubmit=async event=>{
   event.preventDefault();const code=input.value.trim();try{marketSymbol(code)}catch(e){progress.textContent=e.message;output.innerHTML='';return}
   const run=++generation;last=null;output.innerHTML='';button.disabled=true;button.textContent='正在分析…';form.setAttribute('aria-busy','true');

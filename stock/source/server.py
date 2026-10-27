@@ -13,6 +13,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from pool_data import fetch_pool, PoolError
+
 ROOT = Path(__file__).resolve().parent
 SH = ZoneInfo('Asia/Shanghai')
 CACHE = {}
@@ -313,6 +315,12 @@ class Handler(SimpleHTTPRequestHandler):
                 for value in codes:
                     symbol(value)
                 return self.respond(200, get_quotes(codes))
+            if url.path == '/api/roe-pool':
+                try:
+                    data = fetch_pool() if qs.get('refresh') == ['1'] else cached(('roe-pool', 2025), 3600, fetch_pool)
+                    return self.respond(200, data)
+                except PoolError as exc:
+                    raise DataError(str(exc)) from exc
             if url.path == '/api/hourly':
                 symbol(code)
                 return self.respond(200, get_hourly(code))

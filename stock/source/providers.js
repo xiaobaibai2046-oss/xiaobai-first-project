@@ -1,3 +1,4 @@
+import {POOL_SOURCE,parsePoolPage,assemblePool} from './pool-model.js';
 import {normalizeHourly} from './macd.js';
 // Static hosting transport: provider scripts run in an opaque-origin sandbox.
 // They cannot access the parent DOM, research notes or localStorage.
@@ -58,12 +59,20 @@ export function normalizeBrowserFinancial(payload,code,today=chinaClock().date){
  if(!reports.length||!Object.keys(fields).some(k=>reports[0][k]!==null))throw Error('没有可识别的已披露财务数据');
  return {code,reports,source:'东方财富数据中心 · 业绩报表 RPT_LICO_FN_CPD',period_basis:'年初至报告期末累计，非单季度、非 TTM；同比以供应商字段为准',warnings:['摘要不能替代公告及审计；未自动核验负债、关联交易和财务真实性','公告日期缺失时不可当作历史已知数据；修订报表不回填到技术回测']};
 }
-export async function browserAPI(path){
+export async function browserAPI(path,options={}){
  const u=new URL(path,location.href),key=u.pathname+'?'+u.searchParams.toString(),old=browserCache.get(key);
  const ttl=u.pathname==='/api/quotes'?10000:u.pathname==='/api/history'?300000:u.pathname==='/api/hourly'?60000:3600000;
- if(old&&Date.now()-old.time<ttl)return {...old.data,cache_hit:true};
+ if(u.searchParams.get('refresh')!=='1'&&old&&Date.now()-old.time<ttl)return {...old.data,cache_hit:true};
  let data;
- if(u.pathname==='/api/quotes'){
+ if(u.pathname==='/api/roe-pool'){
+  const pages=[];let pageNumber=1;
+  while(true){const url=new URL('https://datacenter-web.eastmoney.com/api/data/v1/get'),callback='zh_pool_'+pageNumber;
+   for(const [k,v] of Object.entries({reportName:'RPT_LICO_FN_CPD',columns:POOL_SOURCE.columns,filter:POOL_SOURCE.filter,pageNumber,pageSize:500,sortColumns:'SECURITY_CODE',sortTypes:'1',callback}))url.searchParams.set(k,v);
+   const page=parsePoolPage(await sandboxRequest(url.href,'callback',callback));if(pages.length&&(page.count!==pages[0].count||page.pages!==pages[0].pages))throw Error('抓取期间年报总数变化，请稍后重试');pages.push(page);options.onProgress?.(pageNumber,page.pages);
+   if(pageNumber===page.pages)break;pageNumber++;
+  }
+  data=assemblePool(pages);
+ }else if(u.pathname==='/api/quotes'){
   const codes=[...new Set((u.searchParams.get('codes')||'').split(','))];if(codes.length>20)throw Error('每次最多 20 只股票');const symbols=codes.map(marketSymbol);
   const raw=await sandboxRequest('https://qt.gtimg.cn/q='+symbols.join(','),'quote',symbols),quotes=[],errors=[];
   for(const code of codes)try{quotes.push(normalizeBrowserQuote(raw[marketSymbol(code)],code))}catch(e){errors.push({code,error:e.message})}
