@@ -53,6 +53,19 @@ class AdapterTests(unittest.TestCase):
         payload['data']['sh600519']['day'][0][3]='1'
         with self.assertRaises(server.DataError):server.parse_history(payload,'600519')
 
+    def test_kline_failover_and_failure_preserves_unknown(self):
+        payload = json.dumps({'code':0,'data':{'sh600519':{'day':[['2025-01-02','99','100','101','98','1000']]}}})
+        with patch.object(server, 'fetch', side_effect=[server.DataError('连接失败'), payload]) as fetcher:
+            data = server.get_history('600519', 80)
+            self.assertIn('web.ifzq.gtimg.cn', data['source'])
+            self.assertEqual(data['bars'][0]['close'], 100)
+            self.assertEqual(fetcher.call_count, 2)
+        server.CACHE.clear()
+        with patch.object(server, 'fetch', side_effect=server.DataError('连接失败')):
+            with self.assertRaisesRegex(server.DataError, '主备行情入口均失败'):
+                server.get_history('600519', 80)
+        self.assertEqual(server.CACHE, {})
+
     def test_financial_period_notice_missing_and_zero_not_confused(self):
         payload={'success':True,'result':{'data':[{'SECURITY_CODE':'600519','SECURITY_NAME_ABBR':'合成公司','REPORTDATE':'2025-03-31 00:00:00','NOTICE_DATE':'2025-04-20 00:00:00','BASIC_EPS':0,'TOTAL_OPERATE_INCOME':100,'PARENT_NETPROFIT':0,'YSTZ':-10,'SJLTZ':None,'WEIGHTAVG_ROE':0,'MGJYXJJE':'--'},{'SECURITY_CODE':'600519','REPORTDATE':'2099-01-01'}]}}
         out=server.parse_financial(payload,'600519');self.assertEqual(len(out['reports']),1)

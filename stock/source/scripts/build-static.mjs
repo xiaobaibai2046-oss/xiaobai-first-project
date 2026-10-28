@@ -12,6 +12,7 @@ const pool=validatePool(JSON.parse(await readFile(new URL('pool-2025.json',root)
 html=html.replace('<script id="roe-pool-data" type="application/json">{}</script>',()=>'<script id="roe-pool-data" type="application/json">'+JSON.stringify(pool).replace(/</g,'\\u003c')+'</script>');
 let signals={schema_version:1,results:{}};try{signals=JSON.parse(await readFile(new URL('pool-signals.json',root),'utf8'))}catch{}
 html=html.replace('<script id="pool-signal-data" type="application/json">{}</script>',()=>'<script id="pool-signal-data" type="application/json">'+JSON.stringify(signals).replace(/</g,()=>String.fromCharCode(92)+'u003c')+'</script>');
+await writeFile(new URL('pool-signals.json',out),JSON.stringify(signals));
 await writeFile(new URL('index.html',out),html);
 await writeFile(new URL('.nojekyll',out),'');
 await writeFile(new URL('manifest.webmanifest',out),JSON.stringify({name:'知衡 · A股研究台',short_name:'知衡研究',lang:'zh-CN',start_url:'./',scope:'./',display:'standalone',theme_color:'#24594c',background_color:'#f4f6f3',icons:[{src:'icon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]},null,2));

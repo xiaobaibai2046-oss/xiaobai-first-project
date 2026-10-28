@@ -1,0 +1,57 @@
+name: Update stock signals
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/stock-signals.yml'
+      - 'stock/source/scripts/scan-*.mjs'
+      - 'stock/source/scripts/scan-*.py'
+      - 'stock/source/server.py'
+  workflow_dispatch:
+  schedule:
+    # Beijing 10:40–17:40, weekdays. GitHub schedules can be delayed.
+    - cron: '40 2-9 * * 1-5'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: stock-signals
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan bounded batch with checkpoint and backoff
+        working-directory: stock/source
+        env:
+          SCAN_BATCH_SIZE: '240'
+          SCAN_SECONDS: '840'
+        run: npm run scan:pool
+      - name: Build published snapshots
+        if: always()
+        working-directory: stock/source
+        run: npm run build -- ..
+      - name: Save results and publish Pages
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stock/source/pool-signals.json stock/pool-signals.json stock/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh background stock signal snapshot"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Request Pages rebuild for bot commit
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/pages/builds

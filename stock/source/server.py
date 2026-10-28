@@ -174,13 +174,25 @@ def parse_history(payload, code):
                           '仅返回供应商可得的最近至多 640 根日线，不代表完整上市历史'])
 
 
+def fetch_kline(path, params, parser, code):
+    """Try fixed alternate entry; both hosts belong to Tencent, not independent feeds."""
+    failures = []
+    for host in ('ifzq.gtimg.cn', 'web.ifzq.gtimg.cn'):
+        try:
+            data = parser(decode_json(fetch('https://' + host + path + '?' + urllib.parse.urlencode(params))), code)
+            data['source'] += ' · ' + host
+            return data
+        except DataError as exc:
+            failures.append(host + ': ' + str(exc))
+    raise DataError('主备行情入口均失败：' + '；'.join(failures))
+
+
 def get_history(code, count=640):
     key = symbol(code)
     if count not in (80,640):
         raise InputError('日线条数仅支持80或640')
     def loader():
-        url = 'https://ifzq.gtimg.cn/appstock/app/fqkline/get?' + urllib.parse.urlencode({'param': key + ',day,,,' + str(count) + ','})
-        return parse_history(decode_json(fetch(url)), code)
+        return fetch_kline('/appstock/app/fqkline/get', {'param': key + ',day,,,' + str(count) + ','}, parse_history, code)
     return cached(('history', code, count), 300, loader)
 
 
@@ -225,8 +237,7 @@ def parse_hourly(payload, code, now=None):
 def get_hourly(code):
     key = symbol(code)
     def loader():
-        url = 'https://ifzq.gtimg.cn/appstock/app/kline/mkline?' + urllib.parse.urlencode({'param': key + ',m60,,320'})
-        return parse_hourly(decode_json(fetch(url)), code)
+        return fetch_kline('/appstock/app/kline/mkline', {'param': key + ',m60,,320'}, parse_hourly, code)
     return cached(('hourly', code), 60, loader)
 
 
