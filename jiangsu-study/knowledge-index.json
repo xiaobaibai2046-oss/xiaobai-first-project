@@ -1,0 +1,1163 @@
+[
+  {
+    "id": "lesson-1",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "有理数的加法",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "lesson-2",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "一次函数的图象",
+    "unit": "函数与图象",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "lesson-3",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "一元二次方程的求根公式",
+    "unit": "方程与应用",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "lesson-4",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "七年级",
+    "title": "比喻与拟人",
+    "unit": "阅读与表达",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-5",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "八年级",
+    "title": "文言词语的语境义",
+    "unit": "文言文阅读",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-6",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "九年级",
+    "title": "议论文的论点与论据",
+    "unit": "议论性文本",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-7",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "七年级",
+    "title": "一般现在时的主谓一致",
+    "unit": "语法基础",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-8",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "八年级",
+    "title": "一般过去时",
+    "unit": "时态与表达",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-9",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "九年级",
+    "title": "被动语态的基本结构",
+    "unit": "语法与运用",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-10",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "八年级",
+    "title": "速度与单位换算",
+    "unit": "运动与测量",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-11",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "八年级",
+    "title": "光的反射定律",
+    "unit": "光现象",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-12",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "九年级",
+    "title": "欧姆定律",
+    "unit": "电路规律",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-13",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "物理变化与化学变化",
+    "unit": "物质与变化",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-14",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "质量守恒定律",
+    "unit": "化学反应",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-15",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "溶液的溶质质量分数",
+    "unit": "溶液",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-16",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "细胞的基本结构",
+    "unit": "细胞与生命",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "lesson-17",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "光合作用",
+    "unit": "绿色植物",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "lesson-18",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "生态系统中的食物链",
+    "unit": "生态与环境",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "lesson-19",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "七年级",
+    "title": "秦统一与中央集权",
+    "unit": "中国古代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-20",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "八年级",
+    "title": "辛亥革命与中华民国",
+    "unit": "中国近代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-21",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "九年级",
+    "title": "工业革命的影响",
+    "unit": "世界近代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-22",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "七年级",
+    "title": "经纬网定位",
+    "unit": "地球与地图",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-23",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "七年级",
+    "title": "等高线与地形",
+    "unit": "地图判读",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-24",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "八年级",
+    "title": "秦岭—淮河一线",
+    "unit": "中国地理",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-25",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "七年级",
+    "title": "友谊中的尊重与边界",
+    "unit": "成长与交往",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-26",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "八年级",
+    "title": "宪法与国家法制",
+    "unit": "法治基础",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "lesson-27",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "九年级",
+    "title": "创新与社会发展",
+    "unit": "社会与责任",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-1",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "整式的合并同类项",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-2",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "一元一次方程",
+    "unit": "方程与应用",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-3",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "平行线的性质",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-4",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "勾股定理",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-5",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "分式的有意义条件",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-6",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "相似三角形的面积比",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-7",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "等可能情形下的概率",
+    "unit": "统计与概率",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-8",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "七年级",
+    "title": "记叙文的六要素",
+    "unit": "记叙性文本",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-9",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "七年级",
+    "title": "古诗中的意象",
+    "unit": "诗歌阅读",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-10",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "八年级",
+    "title": "说明方法及作用",
+    "unit": "说明性文本",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-11",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "八年级",
+    "title": "病句中的搭配不当",
+    "unit": "语言运用",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-12",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "九年级",
+    "title": "论证方法：举例与对比",
+    "unit": "议论性文本",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-13",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "九年级",
+    "title": "作文中的选材与详略",
+    "unit": "写作",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-14",
+    "subject": "chinese",
+    "subjectName": "语文",
+    "gradeSuggestion": "九年级",
+    "title": "文言文的省略与补译",
+    "unit": "文言文阅读",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-15",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "七年级",
+    "title": "可数名词的复数",
+    "unit": "词法基础",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-16",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "七年级",
+    "title": "there be 句型",
+    "unit": "句型基础",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-17",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "八年级",
+    "title": "形容词比较级",
+    "unit": "比较与表达",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-18",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "八年级",
+    "title": "现在完成时的基本结构",
+    "unit": "时态与表达",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-19",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "八年级",
+    "title": "情态动词后的动词形式",
+    "unit": "语法基础",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-20",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "九年级",
+    "title": "宾语从句的语序",
+    "unit": "复合句",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-21",
+    "subject": "english",
+    "subjectName": "英语",
+    "gradeSuggestion": "九年级",
+    "title": "条件状语从句的时态",
+    "unit": "复合句",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-22",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "八年级",
+    "title": "密度及计算",
+    "unit": "物质与测量",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-23",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "八年级",
+    "title": "二力平衡的条件",
+    "unit": "力与运动",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-24",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "八年级",
+    "title": "压强与受力面积",
+    "unit": "力与压强",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-25",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "八年级",
+    "title": "阿基米德原理",
+    "unit": "浮力",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-26",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "九年级",
+    "title": "串联与并联电路",
+    "unit": "电路规律",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-27",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "九年级",
+    "title": "电功率",
+    "unit": "电能与功率",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-28",
+    "subject": "physics",
+    "subjectName": "物理",
+    "gradeSuggestion": "九年级",
+    "title": "机械效率",
+    "unit": "功与机械",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-29",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "原子与离子",
+    "unit": "物质构成",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-30",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "化合价与化学式",
+    "unit": "化学用语",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-31",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "化学方程式的配平",
+    "unit": "化学反应",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-32",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "酸碱性与 pH",
+    "unit": "酸碱盐",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-33",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "金属活动性顺序的应用",
+    "unit": "金属与材料",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-34",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "燃烧的条件",
+    "unit": "化学与生活",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-35",
+    "subject": "chemistry",
+    "subjectName": "化学",
+    "gradeSuggestion": "九年级",
+    "title": "实验中的气密性检查",
+    "unit": "科学探究",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-36",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "显微镜成像与视野",
+    "unit": "科学探究",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-37",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "呼吸作用",
+    "unit": "生命活动",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-38",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "血液循环中的动脉与静脉",
+    "unit": "人体生理",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-39",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "遗传与变异",
+    "unit": "遗传与进化",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-40",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "传染病的预防",
+    "unit": "健康与免疫",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-41",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "自然选择",
+    "unit": "遗传与进化",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-42",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "生物多样性",
+    "unit": "生态与保护",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "expanded-43",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "七年级",
+    "title": "隋朝科举制的形成",
+    "unit": "中国古代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-44",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "七年级",
+    "title": "宋代经济的发展",
+    "unit": "中国古代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-45",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "八年级",
+    "title": "鸦片战争与南京条约",
+    "unit": "中国近代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-46",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "八年级",
+    "title": "五四运动",
+    "unit": "中国近代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-47",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "八年级",
+    "title": "中华人民共和国的成立",
+    "unit": "中国现代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-48",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "九年级",
+    "title": "文艺复兴",
+    "unit": "世界近代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-49",
+    "subject": "history",
+    "subjectName": "历史",
+    "gradeSuggestion": "九年级",
+    "title": "联合国与世界和平",
+    "unit": "世界现代史",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-50",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "七年级",
+    "title": "比例尺的计算",
+    "unit": "地图判读",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-51",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "七年级",
+    "title": "地球自转与公转",
+    "unit": "地球与运动",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-52",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "七年级",
+    "title": "天气与气候",
+    "unit": "天气与气候",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-53",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "八年级",
+    "title": "中国地势的阶梯特征",
+    "unit": "中国自然地理",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-54",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "八年级",
+    "title": "长江的开发与保护",
+    "unit": "河流与区域",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-55",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "八年级",
+    "title": "因地制宜发展农业",
+    "unit": "经济与环境",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-56",
+    "subject": "geography",
+    "subjectName": "地理",
+    "gradeSuggestion": "八年级",
+    "title": "长江三角洲区域联系",
+    "unit": "区域地理",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-57",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "七年级",
+    "title": "学习中的自主与合作",
+    "unit": "成长与学习",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-58",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "七年级",
+    "title": "正确认识自己",
+    "unit": "成长与自我",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-59",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "八年级",
+    "title": "权利与义务相统一",
+    "unit": "权利与责任",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-60",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "八年级",
+    "title": "预防违法与依法求助",
+    "unit": "法治与安全",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-61",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "八年级",
+    "title": "诚信与个人信息保护",
+    "unit": "交往与规则",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-62",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "九年级",
+    "title": "绿色发展与日常行动",
+    "unit": "发展与责任",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "expanded-63",
+    "subject": "ethics",
+    "subjectName": "道德与法治",
+    "gradeSuggestion": "九年级",
+    "title": "文化认同与尊重多样性",
+    "unit": "文化与世界",
+    "alignmentStatus": "pending"
+  },
+  {
+    "id": "chapter-core-1",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "几何中的点、线与角",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-2",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "实数与平方根",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-3",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "平面直角坐标系",
+    "unit": "图形与坐标",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-4",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "二元一次方程组的消元",
+    "unit": "方程与应用",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-5",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "一元一次不等式",
+    "unit": "不等式",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-6",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "统计调查与样本",
+    "unit": "统计与概率",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-7",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "三角形的内角和",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-8",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "全等三角形的判定",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-9",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "轴对称与垂直平分线",
+    "unit": "图形与变换",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-10",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "整式乘法与因式分解",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-11",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "二次根式的条件与化简",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-12",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "八年级",
+    "title": "平行四边形的性质",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-13",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "平均数、中位数与方差",
+    "unit": "统计与概率",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-14",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "二次函数的顶点式",
+    "unit": "函数与图象",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-15",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "旋转与中心对称",
+    "unit": "图形与变换",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-16",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "圆周角与圆心角",
+    "unit": "图形与几何",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-17",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "反比例函数",
+    "unit": "函数与图象",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-18",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "锐角三角函数",
+    "unit": "图形与测量",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-19",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "九年级",
+    "title": "投影与三视图",
+    "unit": "图形与空间",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-20",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "用数学模型解决问题",
+    "unit": "数学思考",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-21",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "幂的运算",
+    "unit": "数与代数",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-22",
+    "subject": "math",
+    "subjectName": "数学",
+    "gradeSuggestion": "七年级",
+    "title": "命题、逆命题与证明",
+    "unit": "数学推理",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-23",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "生物与环境的相互影响",
+    "unit": "生物与环境",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-24",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "生物体的结构层次",
+    "unit": "细胞与生命",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-25",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "种子萌发的条件",
+    "unit": "绿色植物",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-26",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "绿色植物与物质循环",
+    "unit": "生态与环境",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-27",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "人的生殖与青春期",
+    "unit": "人体与健康",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-28",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "营养物质的消化与吸收",
+    "unit": "人体生理",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-29",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "肾脏与尿液的形成",
+    "unit": "人体生理",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-30",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "神经调节与反射",
+    "unit": "人体生理",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-31",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "七年级",
+    "title": "人类活动与生物圈",
+    "unit": "生态与责任",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-32",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "生物分类与主要类群",
+    "unit": "生物多样性",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-33",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "动物运动的结构基础",
+    "unit": "动物与行为",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-34",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "先天性行为与学习行为",
+    "unit": "动物与行为",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-35",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "生物圈与不同生态系统",
+    "unit": "生态与环境",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-36",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "有性生殖与无性生殖",
+    "unit": "生殖与发育",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-37",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "发酵与食品保存",
+    "unit": "生物技术",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-38",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "现代生物技术的基本认识",
+    "unit": "生物技术",
+    "alignmentStatus": "mirror-linked"
+  },
+  {
+    "id": "chapter-core-39",
+    "subject": "biology",
+    "subjectName": "生物",
+    "gradeSuggestion": "八年级",
+    "title": "免疫、用药与健康生活",
+    "unit": "健康与免疫",
+    "alignmentStatus": "mirror-linked"
+  }
+]

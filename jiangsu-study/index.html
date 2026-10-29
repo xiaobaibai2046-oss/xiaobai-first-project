@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#173e35"><title>知序 · 南京初中学习空间</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<aside class="sidebar">
+<a class="brand" href="#"><span class="brand-mark">知</span><span>知序<small>让知识，慢慢成体系</small></span></a>
+<div class="workspace-label">我的学习空间 <span>南京</span></div>
+<nav aria-label="主导航"><button data-view="home" class="nav-item active"><span>◫</span>学习概览</button><button data-view="library" class="nav-item"><span>▦</span>知识点图书馆</button><button data-view="curriculum" class="nav-item"><span>▤</span>教材对照</button><button data-view="exams" class="nav-item"><span>▧</span>五年中考资料</button><button data-view="practice" class="nav-item"><span>✎</span>巩固练习</button><button data-view="mistakes" class="nav-item"><span>↻</span>我的错题本 <b id="wrong-badge">0</b></button><button data-view="progress" class="nav-item"><span>▥</span>学习记录</button></nav>
+<div class="sidebar-note"><span>一点点，也算向前。</span><p>不必一次学会所有知识，<br>从今天的一个问题开始。</p><div class="book-art">▱ <i>✧</i> ▱</div></div>
+<button class="about-button" id="about-button">ⓘ 内容与使用说明</button><div class="profile"><span>同</span><div>同学，你好<small>南京 · 初中学习空间</small></div><span class="online-dot"></span></div>
+</aside>
+<div class="app-shell"><header><div class="breadcrumb">我的学习空间 <span>/</span> <b id="page-label">学习概览</b></div><div class="header-right"><span class="local-status">● 进度保存在本机</span><span class="avatar">同</span></div></header>
+<main id="main" tabindex="-1"></main>
+<footer>知序 ZHIXU <span>循序而进，学有所知。</span><button id="footer-about">南京基础版 · 内容说明 ↗</button></footer></div>
+<dialog id="lesson-dialog" aria-labelledby="lesson-title"><div id="dialog-body"></div></dialog>
+<dialog id="about-dialog" aria-labelledby="about-title"><button class="close" data-close="about-dialog" aria-label="关闭说明">×</button><span class="eyebrow">关于这个学习空间</span><h2 id="about-title">面向南京，循序而进</h2><p>这是一个可运行的学习软件初版，包含九门主要学科、129 个基础知识点及 129 道原创单选练习。新增人教版、苏教版教材对照清单与 2022—2026 年南京中考资料区。知识讲解与配套练习为原创整理，已读取 16 册旧版公开镜像的 87 章目录并关联基础讲解；新版和南京当前学校适用性待核对，当前已核验中考原题为 0 道。用户导入资料单独标记未核验，不冒充官方原题。</p><p><strong>适用边界：</strong>以初中通用基础知识为起点，年级归类为学习导航建议，尚未逐一匹配南京各校教材版本、学期目录或当年中考要求。这里不提供未经核验的考点频率、分值、考试科目组合或政策结论。</p><p>正式使用时，请以学校当前教材、教师要求及南京市教育主管部门公布的当年文件为准。体育与健康、信息科技、艺术等内容尚未收录。</p><p><strong>隐私与记录：</strong>无需账号，学习完成状态、答题统计和错题保存在当前浏览器。不同设备不会同步，清理浏览器数据可能丢失记录。不收集姓名、学校或联系方式。</p><p>“标记学完”表示你已阅读，不代表自动认定掌握；练习正确率只统计本应用实际提交的答案。</p></dialog>
+<div id="toast" role="status" aria-live="polite"></div><noscript>请启用 JavaScript 以使用知识点筛选、练习和学习记录。</noscript><script type="module" src="app.js"></script>
+</body></html>

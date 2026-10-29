@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "知序南京 2022—2026 试题资料包",
+  "description": "这是格式说明，不是可直接导入的试题。所有用户导入均为未核验资料，verification 字段无法提升核验状态。单包最多 500 题，2 MB；仅支持纯文字单选和主观题，不会解析图片或公式文件。",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "questions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "required": [
+          "year",
+          "city",
+          "subject",
+          "questionNumber",
+          "type",
+          "prompt",
+          "source",
+          "explanation"
+        ],
+        "properties": {
+          "year": {
+            "type": "integer",
+            "enum": [
+              2022,
+              2023,
+              2024,
+              2025,
+              2026
+            ]
+          },
+          "city": {
+            "const": "南京"
+          },
+          "subject": {
+            "enum": [
+              "math",
+              "chinese",
+              "english",
+              "physics",
+              "chemistry",
+              "biology",
+              "history",
+              "geography",
+              "ethics"
+            ]
+          },
+          "questionNumber": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "type": {
+            "enum": [
+              "single-choice",
+              "written"
+            ]
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "source": {
+            "type": "object",
+            "required": [
+              "title",
+              "locator"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300,
+                "description": "原卷页码、题号或附件定位"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https://",
+                "description": "可省略；必须是不含账号密码的 HTTPS 链接。文档文件可用 title 与 locator 标识。"
+              }
+            }
+          },
+          "lessonIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "description": "可选，使用 knowledge-index.json 的知识点 ID"
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "answer": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7,
+            "description": "从 0 开始的选项索引，必须小于选项数"
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "single-choice"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "options",
+                "answer"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "written"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "reference"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

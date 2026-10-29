@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-29",
+  "method": "保持TLS验证，使用公开网页、固定Git提交的原始文件、原生Git和Git LFS；无登录绕过。",
+  "textbooks": {
+    "repository": "https://github.com/TapXWorld/ChinaTextbook",
+    "result": "已读取16册旧版镜像，整理87章目录；基础讲解关联59个，不代表新版或整章覆盖。",
+    "evidence": "textbook-catalog.js 记录每册固定提交、源路径、文件SHA-256和PDF目录页。"
+  },
+  "examCandidates": [
+    {
+      "url": "https://github.com/lxztry/nanjing-zhongkao/tree/2cad67921a4ea9afccda43fa18ab7efeb02c2485",
+      "result": "未作为真题收录",
+      "reason": "读取questions.js发现是知识练习，缺少逐题南京年份、卷别及原题来源，部分单选有多个可成立选项或答案问题。项目标题不能证明真题身份。"
+    },
+    {
+      "url": "https://github.com/chrisjame/learn_third_year_of_middle_school_math/tree/bebe942dfcfbcbbacc72e587e5731df8dfed1ee0",
+      "result": "排除为南京近五年试卷来源",
+      "reason": "原生Git读取成功；docs中试题标题明确标为安徽，不能移作南京真题。根目录试卷PDF为Git LFS指针，原生LFS下载另返回Resource not accessible by integration。"
+    },
+    {
+      "url": "https://github.com/1wri/Exams/tree/afa7271351a4a5a646ab5d2a3872df235db5aa32",
+      "result": "仅线索，未收录",
+      "reason": "仓库仅有分享介绍和截图，正文指向外部网盘，没有可直接读取核验的南京五年原卷及答案。"
+    },
+    {
+      "url": "https://github.com/sowahsun/My-Books/tree/270bddc7bbccf7f958fec053c9761d56bf71eb7c",
+      "result": "不在五年窗口，未收录",
+      "reason": "检索到的南京试卷目录为2018年，不能充作2022—2026年内容。"
+    },
+    {
+      "url": "https://github.com/rongchenxu100/shuxueshuo/tree/5ec7d7de565da3c8af8edfb86b72d50b6917029a",
+      "result": "未发现南京卷条目",
+      "reason": "读取site/data/problems.json，已列条目未发现南京试题，不以其他城市模拟题替代。"
+    }
+  ],
+  "currentBlockers": [
+    "出版社、教育资源站点和南京考试站点仍被当前HTTPS网络代理以403拒绝。",
+    "已保存10个必要网络域名到配置草稿；保存不等于当前运行机器已应用，不等于发布。",
+    "目前尚未取得可核验的南京2022—2026原卷与答案，正式已核验真题仍为0道。"
+  ]
+}
