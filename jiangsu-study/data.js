@@ -1,3 +1,4 @@
+import {foundationLessons} from './content/index.js';
 import {chapterLessons} from './chapter-lessons.js';
 import {textbooks} from './textbook-catalog.js';
 import {expandedLessons} from './expanded-data.js';
@@ -45,4 +46,4 @@ const rows = [
 const originalLessons = rows.map((r,i)=>({id:`lesson-${i+1}`,subject:r[0],grade:r[1],title:r[2],unit:r[3],body:r[4],tip:r[5],example:r[6],question:r[7],options:r[8],answer:r[9],explanation:r[10],minutes:5}));
 export const gradeName = grade => ({7:'七年级',8:'八年级',9:'九年级'})[grade];
 
-export const lessons = [...originalLessons,...expandedLessons,...chapterLessons].map(l=>{const refs=textbooks.flatMap(book=>book.chapters.filter(ch=>ch.lessonTitles.includes(l.title)).map(ch=>({edition:book.edition,bookId:book.id,grade:book.grade,term:book.term,chapterId:ch.id,chapter:ch.number,chapterTitle:ch.title,status:"source-read",sourceType:"public-mirror",sourceTitle:book.source.title,sourceUrl:book.source.url,locator:`${book.title} 第${ch.number}章 ${ch.title}；目录PDF页 ${book.source.tocPdfPages.join("、")}`,revision:book.revision,reviewer:"目录文字/OCR整理及来源检查",checkedAt:book.checkedAt,reviewScope:"仅公开镜像章节定位，基础内容关联；不代表整章细分覆盖或当前南京教材适用性"})));return {...l,contentKind:"original-notes",exerciseKind:"original-practice",alignmentStatus:refs.length?"mirror-linked":"pending",textbookRefs:refs};});
+export const lessons = [...originalLessons,...expandedLessons,...chapterLessons,...foundationLessons].map(l=>{const refs=textbooks.flatMap(book=>book.chapters.filter(ch=>ch.lessonTitles.includes(l.title)).map(ch=>({edition:book.edition,bookId:book.id,grade:book.grade,term:book.term,chapterId:ch.id,chapter:ch.number,chapterTitle:ch.title,status:"source-read",sourceType:"public-mirror",sourceTitle:book.source.title,sourceUrl:book.source.url,locator:`${book.title} 第${ch.number}章 ${ch.title}；目录PDF页 ${book.source.tocPdfPages.join("、")}`,revision:book.revision,reviewer:"目录文字/OCR整理及来源检查",checkedAt:book.checkedAt,reviewScope:"仅公开镜像章节定位，基础内容关联；不代表整章细分覆盖或当前南京教材适用性"})));return {...l,contentKind:"original-notes",exerciseKind:l.question?"original-practice":"not-yet-added",alignmentStatus:refs.length?"mirror-linked":"pending",textbookRefs:refs};});

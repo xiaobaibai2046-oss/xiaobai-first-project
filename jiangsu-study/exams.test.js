@@ -12,8 +12,8 @@ const pack=q=>JSON.stringify({schemaVersion:1,questions:[q]});
 test('five-year window and source status do not invent past questions or textbook coverage',()=>{
  assert.deepEqual(examYears,[2026,2025,2024,2023,2022]);assert.equal(verifiedQuestions.length,0);
  assert.equal(filterLessons({edition:'pep'}).length,29);assert.equal(filterLessons({edition:'sujiao'}).length,27);assert.equal(filterLessons({edition:'suke'}).length,32);
- assert.equal(filterLessons().length,129);
- for(const l of lessons){assert.equal(l.exerciseKind,'original-practice');assert.equal(l.textbookRefs.some(ref=>ref.status==='verified'),false);assert.equal(l.textbookRefs.every(ref=>ref.status==='source-read'),true);}
+ assert.equal(filterLessons().length,900);
+ for(const l of lessons){assert.ok(['original-practice','not-yet-added'].includes(l.exerciseKind));assert.equal(l.textbookRefs.some(ref=>ref.status==='verified'),false);assert.equal(l.textbookRefs.every(ref=>ref.status==='source-read'),true);}
 });
 test('verified alignment requires a concrete source locator, revision and reviewer',()=>{
  const ref={edition:'pep',status:'verified',sourceTitle:'Test',sourceUrl:'https://example.com/',locator:'p1',revision:'2024',reviewer:'test',checkedAt:'2026-10-29'};
@@ -49,4 +49,10 @@ test('edition grade filters follow sourced book grades while generic recommendat
  const similarity=lessons.find(l=>l.title==='反比例函数');assert.equal(similarity.grade,9);
  assert.ok(filterLessons({edition:'suke',grade:'8'}).some(l=>l.id===similarity.id));
  assert.ok(!filterLessons({edition:'pep',grade:'8'}).some(l=>l.id===similarity.id));
+});
+test('published audit counts agree with the actual notes, exercises and provenance',()=>{
+ const audit=JSON.parse(readFileSync(new URL('./content-audit.json',import.meta.url),'utf8'));
+ assert.equal(audit.knowledgePoints,lessons.length);assert.equal(audit.conceptNotesWithoutExercise,771);assert.equal(audit.originalExercises,129);
+ for(const row of audit.subjects){const actual=lessons.filter(l=>l.subject===row.subject);assert.equal(row.knowledgePoints,actual.length);assert.ok(row.knowledgePoints>=100);assert.equal(row.linked,actual.filter(l=>l.textbookRefs.length).length);}
+ assert.equal(audit.verifiedPastPaperQuestions,verifiedQuestions.length);
 });
