@@ -5,7 +5,7 @@ import {emptyState,filterLessons,normalizeState,recordAnswer,metrics,hasExercise
 test('all notes have valid subjects and distinguish reading-only cards from scored exercises',()=>{
  assert.equal(new Set(lessons.map(l=>l.id)).size,900);
  for(const s of subjects)assert.equal(lessons.filter(l=>l.subject===s.id).length,100);
- for(const l of lessons){assert.ok(subjects.some(s=>s.id===l.subject));assert.ok([7,8,9].includes(l.grade));assert.ok(l.body.length>=25);if(hasExercise(l)){assert.equal(l.options.length,4);assert.ok(l.answer>=0&&l.answer<4);for(const key of ['tip','example','explanation'])assert.ok(l[key].length>10);}else{assert.equal(l.contentFormat,'concept-note');assert.ok(l.reviewPrompt.length>10);assert.equal(l.question,undefined);}}
+ for(const l of lessons){assert.ok(subjects.some(s=>s.id===l.subject));assert.ok([7,8,9].includes(l.grade));assert.ok(l.body.length>=25);if(hasExercise(l)&&l.contentFormat!=='concept-note'){assert.equal(l.options.length,4);assert.ok(l.answer>=0&&l.answer<4);for(const key of ['tip','example','explanation'])assert.ok(l[key].length>10);}else{assert.equal(l.contentFormat,'concept-note');assert.ok(l.reviewPrompt.length>10);assert.ok(hasExercise(l));assert.equal(l.questionType,'concept-check');assert.equal(l.options.length,2);assert.ok(l.explanation.length>25);assert.ok(l.hint.length>5);}}
 });
 test('subject, grade and Chinese query combine without unrelated results',()=>{
  assert.equal(filterLessons({subject:'chemistry',grade:'7'}).length,0);
@@ -23,10 +23,10 @@ test('restoring corrupted storage rejects unknown IDs and invalid records',()=>{
  assert.deepEqual(s,{completed:['lesson-1'],wrong:[],attempts:[]});assert.equal(metrics(emptyState()).accuracy,null);
 });
 
-test('900 accessible notes include 100 per subject and preserve separate quiz counts',()=>{
- const report=subjectCoverage();assert.equal(report.length,9);assert.ok(report.every(r=>r.knowledgePoints>=100));assert.equal(report.reduce((n,r)=>n+r.exercises,0),129);
+test('900 accessible notes include 100 per subject and each have scored practice with separate source counts',()=>{
+ const report=subjectCoverage();assert.equal(report.length,9);assert.ok(report.every(r=>r.knowledgePoints>=100));assert.equal(report.reduce((n,r)=>n+r.exercises,0),900);
  for(const subject of subjects){const items=lessons.filter(l=>l.subject===subject.id);assert.equal(new Set(items.map(l=>l.title)).size,items.length);assert.equal(new Set(items.map(l=>l.body)).size,items.length);assert.ok(new Set(items.map(l=>l.unit)).size>=3);}
- assert.throws(()=>recordAnswer(emptyState(),'foundation-math-1',0),/Invalid answer/);
+ const note=lessons.find(l=>l.id==='foundation-math-1');assert.equal(recordAnswer(emptyState(),note.id,note.answer).attempts[0].correct,true);
 });
 test('pagination neither hides nor repeats content across 900 notes and reset results',()=>{
  const all=[];for(let page=1;page<=25;page++)all.push(...paginate(lessons,page).items.map(l=>l.id));assert.deepEqual(all,lessons.map(l=>l.id));

@@ -21,7 +21,7 @@ test('verified alignment requires a concrete source locator, revision and review
 });
 test('import forcibly downgrades claimed verification and validates provenance, years and linked lessons',()=>{
  const [q]=parseQuestionPack(pack(fixture()));assert.equal(q.verification,'user-provided');
- for(const patch of [{year:2021},{city:'苏州'},{source:{}},{answer:8},{lessonIds:['nonexistent']},{source:{title:'x',locator:'y',url:'javascript:alert(1)'}},{source:{title:'x',locator:'y',url:'https://user:secret@example.com/'}}])assert.throws(()=>parseQuestionPack(pack({...fixture(),...patch})));
+ for(const patch of [{year:2021},{city:''},{source:{}},{answer:8},{lessonIds:['nonexistent']},{source:{title:'x',locator:'y',url:'javascript:alert(1)'}},{source:{title:'x',locator:'y',url:'https://user:secret@example.com/'}}])assert.throws(()=>parseQuestionPack(pack({...fixture(),...patch})));
  assert.throws(()=>parseQuestionPack(JSON.stringify({schemaVersion:1,questions:[fixture(),fixture()]})));
 });
 test('single-choice wrong retry, conflict rejection, and state persistence preserve provenance',()=>{
@@ -52,7 +52,11 @@ test('edition grade filters follow sourced book grades while generic recommendat
 });
 test('published audit counts agree with the actual notes, exercises and provenance',()=>{
  const audit=JSON.parse(readFileSync(new URL('./content-audit.json',import.meta.url),'utf8'));
- assert.equal(audit.knowledgePoints,lessons.length);assert.equal(audit.conceptNotesWithoutExercise,771);assert.equal(audit.originalExercises,129);
+ assert.equal(audit.knowledgePoints,lessons.length);assert.equal(audit.conceptNotesWithoutExercise,0);assert.equal(audit.originalExercises,900);assert.equal(audit.originalConceptChecks,771);
  for(const row of audit.subjects){const actual=lessons.filter(l=>l.subject===row.subject);assert.equal(row.knowledgePoints,actual.length);assert.ok(row.knowledgePoints>=100);assert.equal(row.linked,actual.filter(l=>l.textbookRefs.length).length);}
  assert.equal(audit.verifiedPastPaperQuestions,verifiedQuestions.length);
+});
+
+test('regions participate in question identity while existing Nanjing identities stay stable',()=>{
+ const original=fixture();const a=parseQuestionPack(pack(original))[0],b=parseQuestionPack(pack({...original,city:'深圳'}))[0];assert.notEqual(a.id,b.id);assert.equal(a.id,'2025:math:测试夹具-1');assert.equal(b.city,'深圳');assert.equal(b.verification,'user-provided');
 });

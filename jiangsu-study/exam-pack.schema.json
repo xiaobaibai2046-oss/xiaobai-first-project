@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "知序南京 2022—2026 试题资料包",
+  "title": "知序各地2022—2026试题资料包",
   "description": "这是格式说明，不是可直接导入的试题。所有用户导入均为未核验资料，verification 字段无法提升核验状态。单包最多 500 题，2 MB；仅支持纯文字单选和主观题，不会解析图片或公式文件。",
   "type": "object",
   "required": [
@@ -39,7 +39,10 @@
             ]
           },
           "city": {
-            "const": "南京"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "description": "填写实际地区，如南京、深圳、安徽省；不得将省卷误标为南京卷。"
           },
           "subject": {
             "enum": [
@@ -128,6 +131,15 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 12000
+          },
+          "kind": {
+            "enum": [
+              "original",
+              "adapted",
+              "recalled",
+              "past-paper-claim"
+            ],
+            "description": "原题、改编、回忆或身份待核对。用户标注不提升来源核验等级。"
           }
         },
         "allOf": [

@@ -20,6 +20,6 @@ export function recordAnswer(state,id,selected,at=new Date().toISOString()){
 }
 export function metrics(state){const count=state.attempts.length;return {completed:state.completed.length,answered:count,accuracy:count?Math.round(state.attempts.filter(a=>a.correct).length/count*100):null,wrong:state.wrong.length};}
 
-export function hasExercise(lesson){return typeof lesson?.question==='string'&&Array.isArray(lesson.options)&&lesson.options.length===4&&Number.isInteger(lesson.answer)&&lesson.answer>=0&&lesson.answer<lesson.options.length;}
+export function hasExercise(lesson){return typeof lesson?.question==='string'&&Array.isArray(lesson.options)&&lesson.options.length>=2&&lesson.options.length<=8&&Number.isInteger(lesson.answer)&&lesson.answer>=0&&lesson.answer<lesson.options.length;}
 export function subjectCoverage(){return [...new Set(lessons.map(l=>l.subject))].map(subject=>{const items=lessons.filter(l=>l.subject===subject);return {subject,knowledgePoints:items.length,exercises:items.filter(hasExercise).length,linked:items.filter(l=>l.textbookRefs.length>0).length,units:new Set(items.map(l=>l.unit)).size};});}
 export function paginate(items,page=1,pageSize=36){const pages=Math.max(1,Math.ceil(items.length/pageSize)),current=Math.min(Math.max(1,page),pages);return {items:items.slice((current-1)*pageSize,current*pageSize),page:current,pages,total:items.length,start:items.length?(current-1)*pageSize+1:0,end:Math.min(current*pageSize,items.length)};}

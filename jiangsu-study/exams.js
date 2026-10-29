@@ -1,8 +1,10 @@
+import {sourcedQuestions} from './sourced-exams.js';
 import {lessons,subjects} from './data.js';
 export const examYears=[2026,2025,2024,2023,2022];
 export const EXAM_STORAGE_KEY='zhixu-nanjing-exams-v1';
 // Only source-reviewed records belong here. Never insert generated questions as past papers.
 export const verifiedQuestions=[];
+export const builtinQuestions=[...verifiedQuestions,...sourcedQuestions];
 const ids=new Set(lessons.map(l=>l.id));
 const subjectIds=new Set(subjects.map(s=>s.id));
 const text=(value,label,max=12000)=>{if(typeof value!=='string'||!value.trim()||value.length>max)throw new Error(`${label}缺失或长度不合法`);return value.trim();};
@@ -10,7 +12,8 @@ function sourceUrl(value){if(!value)return '';const url=new URL(value);if(url.pr
 export function validateQuestion(raw){
  if(!raw||typeof raw!=='object')throw new Error('题目必须是对象');
  if(!examYears.includes(raw.year))throw new Error('年份必须是 2022—2026 的整数');
- if(raw.city!=='南京')throw new Error('当前只接收 city 为南京的试题资料');
+ const city=text(raw.city,'地区（省卷或城市）',50);
+ const kind=raw.kind||'past-paper-claim';if(!['original','adapted','recalled','past-paper-claim'].includes(kind))throw new Error('题目身份标记不合法');
  if(!subjectIds.has(raw.subject))throw new Error('学科代码不合法');
  if(!['single-choice','written'].includes(raw.type))throw new Error('题型必须为 single-choice 或 written');
  const questionNumber=text(raw.questionNumber,'题号',80),prompt=text(raw.prompt,'题干');
@@ -26,7 +29,7 @@ export function validateQuestion(raw){
   answer=raw.answer;
  }else reference=text(raw.reference,'参考答案或评分说明');
  const explanation=text(raw.explanation,'解析或答案来源说明');
- return {id:`${raw.year}:${raw.subject}:${questionNumber}`,year:raw.year,city:'南京',subject:raw.subject,questionNumber,type:raw.type,prompt,source,lessonIds,options,answer,reference,explanation,verification:'user-provided',kind:'past-paper-claim'};
+ return {id:city==='南京'?`${raw.year}:${raw.subject}:${questionNumber}`:`${raw.year}:${encodeURIComponent(city)}:${raw.subject}:${questionNumber}`,year:raw.year,city,subject:raw.subject,questionNumber,type:raw.type,prompt,source,lessonIds,options,answer,reference,explanation,verification:'user-provided',kind};
 }
 export function parseQuestionPack(content){
  if(typeof content!=='string'||content.length>2000000)throw new Error('文件过大，请分批导入不超过 2 MB 的 JSON');
@@ -46,7 +49,7 @@ export function emptyExamState(){return {questions:[],attempts:[],wrong:[]};}
 export function normalizeExamState(raw){
  const questions=[];
  for(const q of Array.isArray(raw?.questions)?raw.questions.slice(0,2000):[]){try{const validated=validateQuestion(q);if(!questions.some(x=>x.id===validated.id))questions.push(validated);}catch{ /* Skip corrupt individual records, retain valid local work. */ }}
- const allowed=new Set([...verifiedQuestions,...questions].map(q=>q.id));
+ const allowed=new Set([...builtinQuestions,...questions].map(q=>q.id));
  const attempts=(Array.isArray(raw?.attempts)?raw.attempts:[]).filter(a=>a&&allowed.has(a.id)&&typeof a.correct==='boolean'&&Number.isFinite(Date.parse(a.at))).slice(-1000);
  const wrong=[...new Set((Array.isArray(raw?.wrong)?raw.wrong:[]).filter(id=>allowed.has(id)))];
  return {questions,attempts,wrong};

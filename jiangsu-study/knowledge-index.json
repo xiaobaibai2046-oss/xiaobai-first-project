@@ -1297,7 +1297,7 @@
     "title": "有理数的分类",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-2",
@@ -1307,7 +1307,7 @@
     "title": "零的数学意义",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-3",
@@ -1317,7 +1317,7 @@
     "title": "数轴的三要素",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-4",
@@ -1327,7 +1327,7 @@
     "title": "相反数与倒数",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-5",
@@ -1337,7 +1337,7 @@
     "title": "绝对值的几何意义",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-6",
@@ -1347,7 +1347,7 @@
     "title": "负数的大小比较",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-7",
@@ -1357,7 +1357,7 @@
     "title": "有理数的减法",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-8",
@@ -1367,7 +1367,7 @@
     "title": "有理数乘除的符号",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-9",
@@ -1377,7 +1377,7 @@
     "title": "乘方的符号与括号",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-10",
@@ -1387,7 +1387,7 @@
     "title": "科学记数法",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-11",
@@ -1397,7 +1397,7 @@
     "title": "近似数与精确度",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-12",
@@ -1407,7 +1407,7 @@
     "title": "运算律的选择",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-13",
@@ -1417,7 +1417,7 @@
     "title": "代数式的书写约定",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-14",
@@ -1427,7 +1427,7 @@
     "title": "单项式的系数与次数",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-15",
@@ -1437,7 +1437,7 @@
     "title": "多项式的项与次数",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-16",
@@ -1447,7 +1447,7 @@
     "title": "去括号的符号规则",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-17",
@@ -1457,7 +1457,7 @@
     "title": "移项与等式性质",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-18",
@@ -1467,7 +1467,7 @@
     "title": "方程解的检验",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-19",
@@ -1477,7 +1477,7 @@
     "title": "角的度分秒换算",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-20",
@@ -1487,7 +1487,7 @@
     "title": "余角与补角",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-21",
@@ -1497,7 +1497,7 @@
     "title": "对顶角的性质",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-22",
@@ -1507,7 +1507,7 @@
     "title": "垂线段最短",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-23",
@@ -1517,7 +1517,7 @@
     "title": "平行线的判定",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-24",
@@ -1527,7 +1527,7 @@
     "title": "二元方程组的代入法",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-25",
@@ -1537,7 +1537,7 @@
     "title": "不等式解集的数轴表示",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-26",
@@ -1547,7 +1547,7 @@
     "title": "不等式组取公共部分",
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-27",
@@ -1557,7 +1557,7 @@
     "title": "算术平方根的非负性",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-28",
@@ -1567,7 +1567,7 @@
     "title": "立方根与平方根的区别",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-29",
@@ -1577,7 +1577,7 @@
     "title": "无理数与数轴",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-30",
@@ -1587,7 +1587,7 @@
     "title": "点到坐标轴的距离",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-31",
@@ -1597,7 +1597,7 @@
     "title": "关于坐标轴的对称点",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-32",
@@ -1607,7 +1607,7 @@
     "title": "坐标中的平移",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-33",
@@ -1617,7 +1617,7 @@
     "title": "三角形三边关系",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-34",
@@ -1627,7 +1627,7 @@
     "title": "三角形外角定理",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-35",
@@ -1637,7 +1637,7 @@
     "title": "多边形的内角和",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-36",
@@ -1647,7 +1647,7 @@
     "title": "全等中的对应关系",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-37",
@@ -1657,7 +1657,7 @@
     "title": "角平分线的性质与判定",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-38",
@@ -1667,7 +1667,7 @@
     "title": "等腰三角形的三线合一",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-39",
@@ -1677,7 +1677,7 @@
     "title": "等边三角形的性质",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-40",
@@ -1687,7 +1687,7 @@
     "title": "同底数幂的除法",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-41",
@@ -1697,7 +1697,7 @@
     "title": "完全平方公式",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-42",
@@ -1707,7 +1707,7 @@
     "title": "提公因式法",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-43",
@@ -1717,7 +1717,7 @@
     "title": "分式约分的条件",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-44",
@@ -1727,7 +1727,7 @@
     "title": "分式通分的方法",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-45",
@@ -1737,7 +1737,7 @@
     "title": "分式方程与增根",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-46",
@@ -1747,7 +1747,7 @@
     "title": "二次根式的乘除法",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-47",
@@ -1757,7 +1757,7 @@
     "title": "二次根式的加减法",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-48",
@@ -1767,7 +1767,7 @@
     "title": "勾股定理的逆定理",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-49",
@@ -1777,7 +1777,7 @@
     "title": "矩形的判定",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-50",
@@ -1787,7 +1787,7 @@
     "title": "菱形的性质与判定",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-51",
@@ -1797,7 +1797,7 @@
     "title": "正方形的双重性质",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-52",
@@ -1807,7 +1807,7 @@
     "title": "三角形的中位线",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-53",
@@ -1817,7 +1817,7 @@
     "title": "函数自变量的取值范围",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-54",
@@ -1827,7 +1827,7 @@
     "title": "一次函数的待定系数法",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-55",
@@ -1837,7 +1837,7 @@
     "title": "加权平均数",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-56",
@@ -1847,7 +1847,7 @@
     "title": "频数、频率与样本容量",
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-57",
@@ -1857,7 +1857,7 @@
     "title": "一元二次方程的因式分解法",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-58",
@@ -1867,7 +1867,7 @@
     "title": "一元二次方程的配方法",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-59",
@@ -1877,7 +1877,7 @@
     "title": "判别式与实根个数",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-60",
@@ -1887,7 +1887,7 @@
     "title": "根与系数的关系",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-61",
@@ -1897,7 +1897,7 @@
     "title": "二次函数与轴的交点",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-62",
@@ -1907,7 +1907,7 @@
     "title": "圆的切线判定",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-63",
@@ -1917,7 +1917,7 @@
     "title": "弧长与扇形面积",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-64",
@@ -1927,7 +1927,7 @@
     "title": "相似三角形的判定",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-65",
@@ -1937,7 +1937,7 @@
     "title": "树状图与列表求概率",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-66",
@@ -1947,7 +1947,7 @@
     "title": "负整数指数幂",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-67",
@@ -1957,7 +1957,7 @@
     "title": "圆内接四边形的对角",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-math-68",
@@ -1967,7 +1967,7 @@
     "title": "直线与圆的位置关系",
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-1",
@@ -1977,7 +1977,7 @@
     "title": "多音字的语境读音",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-2",
@@ -1987,7 +1987,7 @@
     "title": "形近字的辨认",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-3",
@@ -1997,7 +1997,7 @@
     "title": "同音字的选择",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-4",
@@ -2007,7 +2007,7 @@
     "title": "词语的感情色彩",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-5",
@@ -2017,7 +2017,7 @@
     "title": "词语的语体色彩",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-6",
@@ -2027,7 +2027,7 @@
     "title": "近义词的搭配差别",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-7",
@@ -2037,7 +2037,7 @@
     "title": "成语的对象限制",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-8",
@@ -2047,7 +2047,7 @@
     "title": "成语的整体意义",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-9",
@@ -2057,7 +2057,7 @@
     "title": "词语的本义与引申义",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-10",
@@ -2067,7 +2067,7 @@
     "title": "词语的比喻义",
     "unit": "字词积累",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-11",
@@ -2077,7 +2077,7 @@
     "title": "名词的辨认",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-12",
@@ -2087,7 +2087,7 @@
     "title": "动词的辨认",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-13",
@@ -2097,7 +2097,7 @@
     "title": "形容词的辨认",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-14",
@@ -2107,7 +2107,7 @@
     "title": "代词的指代作用",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-15",
@@ -2117,7 +2117,7 @@
     "title": "副词的限制与修饰",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-16",
@@ -2127,7 +2127,7 @@
     "title": "介词与介宾短语",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-17",
@@ -2137,7 +2137,7 @@
     "title": "并列短语",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-18",
@@ -2147,7 +2147,7 @@
     "title": "偏正短语",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-19",
@@ -2157,7 +2157,7 @@
     "title": "动宾短语",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-20",
@@ -2167,7 +2167,7 @@
     "title": "主谓短语",
     "unit": "词类与短语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-21",
@@ -2177,7 +2177,7 @@
     "title": "句子主干的提取",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-22",
@@ -2187,7 +2187,7 @@
     "title": "成分残缺的辨析",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-23",
@@ -2197,7 +2197,7 @@
     "title": "语序不当的辨析",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-24",
@@ -2207,7 +2207,7 @@
     "title": "重复赘余的修改",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-25",
@@ -2217,7 +2217,7 @@
     "title": "否定词与逻辑关系",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-26",
@@ -2227,7 +2227,7 @@
     "title": "顿号的使用",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-27",
@@ -2237,7 +2237,7 @@
     "title": "分号的使用",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-28",
@@ -2247,7 +2247,7 @@
     "title": "冒号的提示作用",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-29",
@@ -2257,7 +2257,7 @@
     "title": "引号与句末点号",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-30",
@@ -2267,7 +2267,7 @@
     "title": "问号与非疑问句",
     "unit": "句子与标点",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-31",
@@ -2277,7 +2277,7 @@
     "title": "夸张的表达作用",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-32",
@@ -2287,7 +2287,7 @@
     "title": "排比的结构与作用",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-33",
@@ -2297,7 +2297,7 @@
     "title": "对偶的形式特点",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-34",
@@ -2307,7 +2307,7 @@
     "title": "设问的作用",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-35",
@@ -2317,7 +2317,7 @@
     "title": "反问的语气",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-36",
@@ -2327,7 +2327,7 @@
     "title": "反复的强调作用",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-37",
@@ -2337,7 +2337,7 @@
     "title": "举例子的说明作用",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-38",
@@ -2347,7 +2347,7 @@
     "title": "列数字的准确表达",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-39",
@@ -2357,7 +2357,7 @@
     "title": "作比较的突出效果",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-40",
@@ -2367,7 +2367,7 @@
     "title": "打比方的形象说明",
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-41",
@@ -2377,7 +2377,7 @@
     "title": "第一人称叙述",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-42",
@@ -2387,7 +2387,7 @@
     "title": "第三人称叙述",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-43",
@@ -2397,7 +2397,7 @@
     "title": "顺叙的结构",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-44",
@@ -2407,7 +2407,7 @@
     "title": "倒叙的安排",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-45",
@@ -2417,7 +2417,7 @@
     "title": "插叙的作用",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-46",
@@ -2427,7 +2427,7 @@
     "title": "叙事线索的辨认",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-47",
@@ -2437,7 +2437,7 @@
     "title": "动作描写的分析",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-48",
@@ -2447,7 +2447,7 @@
     "title": "语言描写的分析",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-49",
@@ -2457,7 +2457,7 @@
     "title": "心理描写的分析",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-50",
@@ -2467,7 +2467,7 @@
     "title": "环境描写的分析",
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-51",
@@ -2477,7 +2477,7 @@
     "title": "伏笔与照应",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-52",
@@ -2487,7 +2487,7 @@
     "title": "悬念的设置",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-53",
@@ -2497,7 +2497,7 @@
     "title": "铺垫的作用",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-54",
@@ -2507,7 +2507,7 @@
     "title": "欲扬先抑",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-55",
@@ -2517,7 +2517,7 @@
     "title": "象征手法",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-56",
@@ -2527,7 +2527,7 @@
     "title": "托物言志",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-57",
@@ -2537,7 +2537,7 @@
     "title": "借景抒情",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-58",
@@ -2547,7 +2547,7 @@
     "title": "关键句的含义",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-59",
@@ -2557,7 +2557,7 @@
     "title": "标题的多重作用",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-60",
@@ -2567,7 +2567,7 @@
     "title": "段落的结构作用",
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-61",
@@ -2577,7 +2577,7 @@
     "title": "律诗与绝句的句数",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-62",
@@ -2587,7 +2587,7 @@
     "title": "诗歌朗读的节奏",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-63",
@@ -2597,7 +2597,7 @@
     "title": "诗歌炼字的角度",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-64",
@@ -2607,7 +2607,7 @@
     "title": "诗歌中动静结合",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-65",
@@ -2617,7 +2617,7 @@
     "title": "诗歌中的虚实结合",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-66",
@@ -2627,7 +2627,7 @@
     "title": "用典的理解方法",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-67",
@@ -2637,7 +2637,7 @@
     "title": "古今异义词",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-68",
@@ -2647,7 +2647,7 @@
     "title": "通假字的识别",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-69",
@@ -2657,7 +2657,7 @@
     "title": "词类活用的语境",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-70",
@@ -2667,7 +2667,7 @@
     "title": "文言断句的依据",
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-71",
@@ -2677,7 +2677,7 @@
     "title": "之的常见用法",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-72",
@@ -2687,7 +2687,7 @@
     "title": "其的指代与语气",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-73",
@@ -2697,7 +2697,7 @@
     "title": "而的连接关系",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-74",
@@ -2707,7 +2707,7 @@
     "title": "以的介词用法",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-75",
@@ -2717,7 +2717,7 @@
     "title": "于的介词用法",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-76",
@@ -2727,7 +2727,7 @@
     "title": "文言判断句",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-77",
@@ -2737,7 +2737,7 @@
     "title": "文言被动句",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-78",
@@ -2747,7 +2747,7 @@
     "title": "文言倒装的翻译",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-79",
@@ -2757,7 +2757,7 @@
     "title": "文言省略宾语的补译",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-80",
@@ -2767,7 +2767,7 @@
     "title": "文言实词的迁移",
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-81",
@@ -2777,7 +2777,7 @@
     "title": "事实论据的分析",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-82",
@@ -2787,7 +2787,7 @@
     "title": "道理论据的分析",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-83",
@@ -2797,7 +2797,7 @@
     "title": "因果论证的联系",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-84",
@@ -2807,7 +2807,7 @@
     "title": "论证思路的梳理",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-85",
@@ -2817,7 +2817,7 @@
     "title": "审题中的限制条件",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-86",
@@ -2827,7 +2827,7 @@
     "title": "作文立意的集中",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-87",
@@ -2837,7 +2837,7 @@
     "title": "细节描写的选择",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-88",
@@ -2847,7 +2847,7 @@
     "title": "作文的过渡衔接",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-89",
@@ -2857,7 +2857,7 @@
     "title": "记叙中的议论抒情",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chinese-90",
@@ -2867,7 +2867,7 @@
     "title": "应用文的对象与格式",
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-1",
@@ -2877,7 +2877,7 @@
     "title": "规则名词复数的拼写",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-2",
@@ -2887,7 +2887,7 @@
     "title": "辅音字母加 y 的复数",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-3",
@@ -2897,7 +2897,7 @@
     "title": "不规则名词复数的积累",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-4",
@@ -2907,7 +2907,7 @@
     "title": "不可数名词的量词表达",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-5",
@@ -2917,7 +2917,7 @@
     "title": "名词所有格的撇号",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-6",
@@ -2927,7 +2927,7 @@
     "title": "a 与 an 的选择",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-7",
@@ -2937,7 +2937,7 @@
     "title": "定冠词的特指用法",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-8",
@@ -2947,7 +2947,7 @@
     "title": "零冠词的常见情形",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-9",
@@ -2957,7 +2957,7 @@
     "title": "复合名词的复数",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-10",
@@ -2967,7 +2967,7 @@
     "title": "可数与不可数的语境差异",
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-11",
@@ -2977,7 +2977,7 @@
     "title": "人称代词的主格与宾格",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-12",
@@ -2987,7 +2987,7 @@
     "title": "形容词性物主代词",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-13",
@@ -2997,7 +2997,7 @@
     "title": "名词性物主代词",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-14",
@@ -3007,7 +3007,7 @@
     "title": "反身代词的指向",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-15",
@@ -3017,7 +3017,7 @@
     "title": "指示代词的单复数",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-16",
@@ -3027,7 +3027,7 @@
     "title": "some 与 any 的语境",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-17",
@@ -3037,7 +3037,7 @@
     "title": "few 与 a few",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-18",
@@ -3047,7 +3047,7 @@
     "title": "little 与 a little",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-19",
@@ -3057,7 +3057,7 @@
     "title": "either 与 neither",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-20",
@@ -3067,7 +3067,7 @@
     "title": "each 与 every",
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-21",
@@ -3077,7 +3077,7 @@
     "title": "be 动词的人称形式",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-22",
@@ -3087,7 +3087,7 @@
     "title": "一般疑问句的基本结构",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-23",
@@ -3097,7 +3097,7 @@
     "title": "特殊疑问词的选择",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-24",
@@ -3107,7 +3107,7 @@
     "title": "How many 与 How much",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-25",
@@ -3117,7 +3117,7 @@
     "title": "祈使句的肯定与否定",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-26",
@@ -3127,7 +3127,7 @@
     "title": "感叹句 What 句型",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-27",
@@ -3137,7 +3137,7 @@
     "title": "感叹句 How 句型",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-28",
@@ -3147,7 +3147,7 @@
     "title": "现在分词的拼写",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-29",
@@ -3157,7 +3157,7 @@
     "title": "序数词的基本形式",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-30",
@@ -3167,7 +3167,7 @@
     "title": "日期与时间的介词",
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-31",
@@ -3177,7 +3177,7 @@
     "title": "现在进行时的结构",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-32",
@@ -3187,7 +3187,7 @@
     "title": "一般将来时 will",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-33",
@@ -3197,7 +3197,7 @@
     "title": "be going to 的计划用法",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-34",
@@ -3207,7 +3207,7 @@
     "title": "过去进行时的结构",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-35",
@@ -3217,7 +3217,7 @@
     "title": "过去时间与 did",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-36",
@@ -3227,7 +3227,7 @@
     "title": "现在完成时中的 for 与 since",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-37",
@@ -3237,7 +3237,7 @@
     "title": "have been 与 have gone",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-38",
@@ -3247,7 +3247,7 @@
     "title": "延续性动词与时间段",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-39",
@@ -3257,7 +3257,7 @@
     "title": "used to 表过去习惯",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-40",
@@ -3267,7 +3267,7 @@
     "title": "be used to doing 的习惯含义",
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-41",
@@ -3277,7 +3277,7 @@
     "title": "mustn't 与 needn't",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-42",
@@ -3287,7 +3287,7 @@
     "title": "Must 问句的否定回答",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-43",
@@ -3297,7 +3297,7 @@
     "title": "may 与 might 的可能性",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-44",
@@ -3307,7 +3307,7 @@
     "title": "should 的建议用法",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-45",
@@ -3317,7 +3317,7 @@
     "title": "不定式作目的状语",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-46",
@@ -3327,7 +3327,7 @@
     "title": "enjoy 与 finish 后的动名词",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-47",
@@ -3337,7 +3337,7 @@
     "title": "stop doing 与 stop to do",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-48",
@@ -3347,7 +3347,7 @@
     "title": "remember doing 与 to do",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-49",
@@ -3357,7 +3357,7 @@
     "title": "感官动词后的动词形式",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-50",
@@ -3367,7 +3367,7 @@
     "title": "make 与 let 的主动结构",
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-51",
@@ -3377,7 +3377,7 @@
     "title": "形容词与副词的修饰对象",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-52",
@@ -3387,7 +3387,7 @@
     "title": "系动词后的形容词",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-53",
@@ -3397,7 +3397,7 @@
     "title": "比较级前的程度修饰",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-54",
@@ -3407,7 +3407,7 @@
     "title": "最高级的比较范围",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-55",
@@ -3417,7 +3417,7 @@
     "title": "as...as 的原级结构",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-56",
@@ -3427,7 +3427,7 @@
     "title": "not as...as 的表达",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-57",
@@ -3437,7 +3437,7 @@
     "title": "比较对象的一致性",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-58",
@@ -3447,7 +3447,7 @@
     "title": "enough 的位置",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-59",
@@ -3457,7 +3457,7 @@
     "title": "too...to 的结构",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-60",
@@ -3467,7 +3467,7 @@
     "title": "so...that 的结果表达",
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-61",
@@ -3477,7 +3477,7 @@
     "title": "宾语从句的引导词",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-62",
@@ -3487,7 +3487,7 @@
     "title": "宾语从句中的时态配合",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-63",
@@ -3497,7 +3497,7 @@
     "title": "whether 与 or not",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-64",
@@ -3507,7 +3507,7 @@
     "title": "定语从句的先行词",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-65",
@@ -3517,7 +3517,7 @@
     "title": "who 与 which 的常见指向",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-66",
@@ -3527,7 +3527,7 @@
     "title": "关系代词在从句中的作用",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-67",
@@ -3537,7 +3537,7 @@
     "title": "时间状语从句中的将来表达",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-68",
@@ -3547,7 +3547,7 @@
     "title": "although 与 but 的搭配",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-69",
@@ -3557,7 +3557,7 @@
     "title": "because 与 so 的搭配",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-70",
@@ -3567,7 +3567,7 @@
     "title": "过去时被动语态",
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-71",
@@ -3577,7 +3577,7 @@
     "title": "spend 的搭配",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-72",
@@ -3587,7 +3587,7 @@
     "title": "cost 与 take 的结构",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-73",
@@ -3597,7 +3597,7 @@
     "title": "borrow 与 lend",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-74",
@@ -3607,7 +3607,7 @@
     "title": "bring 与 take 的方向",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-75",
@@ -3617,7 +3617,7 @@
     "title": "say、speak、tell、talk",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-76",
@@ -3627,7 +3627,7 @@
     "title": "look for 与 find",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-77",
@@ -3637,7 +3637,7 @@
     "title": "arrive、reach 与 get",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-78",
@@ -3647,7 +3647,7 @@
     "title": "be made of 与 from",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-79",
@@ -3657,7 +3657,7 @@
     "title": "be good at 与 be good for",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-80",
@@ -3667,7 +3667,7 @@
     "title": "prefer 的平行结构",
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-81",
@@ -3677,7 +3677,7 @@
     "title": "阅读中的代词指代",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-82",
@@ -3687,7 +3687,7 @@
     "title": "主旨句与段落大意",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-83",
@@ -3697,7 +3697,7 @@
     "title": "语境猜测词义",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-84",
@@ -3707,7 +3707,7 @@
     "title": "推理题与原文依据",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-85",
@@ -3717,7 +3717,7 @@
     "title": "阅读中的转折信号",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-86",
@@ -3727,7 +3727,7 @@
     "title": "完形填空的上下文联系",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-87",
@@ -3737,7 +3737,7 @@
     "title": "写作要点的覆盖",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-88",
@@ -3747,7 +3747,7 @@
     "title": "写作中的人称与时态",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-89",
@@ -3757,7 +3757,7 @@
     "title": "连接词与逻辑",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-english-90",
@@ -3767,7 +3767,7 @@
     "title": "书信与邮件的语气",
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-1",
@@ -3777,7 +3777,7 @@
     "title": "长度测量的估读",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-2",
@@ -3787,7 +3787,7 @@
     "title": "刻度尺零端磨损",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-3",
@@ -3797,7 +3797,7 @@
     "title": "多次测量与误差",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-4",
@@ -3807,7 +3807,7 @@
     "title": "累积法测微小长度",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-5",
@@ -3817,7 +3817,7 @@
     "title": "时间的国际单位",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-6",
@@ -3827,7 +3827,7 @@
     "title": "机械运动的相对性",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-7",
@@ -3837,7 +3837,7 @@
     "title": "参照物的选择",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-8",
@@ -3847,7 +3847,7 @@
     "title": "匀速直线运动",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-9",
@@ -3857,7 +3857,7 @@
     "title": "路程与位置信息",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-10",
@@ -3867,7 +3867,7 @@
     "title": "路程时间图象",
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-11",
@@ -3877,7 +3877,7 @@
     "title": "声音由振动产生",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-12",
@@ -3887,7 +3887,7 @@
     "title": "声音传播需要介质",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-13",
@@ -3897,7 +3897,7 @@
     "title": "声速与介质",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-14",
@@ -3907,7 +3907,7 @@
     "title": "回声测距",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-15",
@@ -3917,7 +3917,7 @@
     "title": "音调与频率",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-16",
@@ -3927,7 +3927,7 @@
     "title": "响度与振幅",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-17",
@@ -3937,7 +3937,7 @@
     "title": "音色的辨认",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-18",
@@ -3947,7 +3947,7 @@
     "title": "超声波与次声波",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-19",
@@ -3957,7 +3957,7 @@
     "title": "声音传递信息与能量",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-20",
@@ -3967,7 +3967,7 @@
     "title": "控制噪声的途径",
     "unit": "声现象",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-21",
@@ -3977,7 +3977,7 @@
     "title": "光的直线传播条件",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-22",
@@ -3987,7 +3987,7 @@
     "title": "影子的形成",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-23",
@@ -3997,7 +3997,7 @@
     "title": "小孔成像",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-24",
@@ -4007,7 +4007,7 @@
     "title": "平面镜成像特点",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-25",
@@ -4017,7 +4017,7 @@
     "title": "实像与虚像的区别",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-26",
@@ -4027,7 +4027,7 @@
     "title": "光的折射规律",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-27",
@@ -4037,7 +4037,7 @@
     "title": "白光的色散",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-28",
@@ -4047,7 +4047,7 @@
     "title": "凸透镜的会聚作用",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-29",
@@ -4057,7 +4057,7 @@
     "title": "凸透镜成像的物距条件",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-30",
@@ -4067,7 +4067,7 @@
     "title": "近视眼的矫正",
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-31",
@@ -4077,7 +4077,7 @@
     "title": "温度与内能的区别",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-32",
@@ -4087,7 +4087,7 @@
     "title": "液体温度计的使用",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-33",
@@ -4097,7 +4097,7 @@
     "title": "晶体熔化的特点",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-34",
@@ -4107,7 +4107,7 @@
     "title": "凝固的放热",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-35",
@@ -4117,7 +4117,7 @@
     "title": "蒸发与沸腾",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-36",
@@ -4127,7 +4127,7 @@
     "title": "蒸发快慢的因素",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-37",
@@ -4137,7 +4137,7 @@
     "title": "液化的两种途径",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-38",
@@ -4147,7 +4147,7 @@
     "title": "升华与凝华",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-39",
@@ -4157,7 +4157,7 @@
     "title": "比热容的含义",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-40",
@@ -4167,7 +4167,7 @@
     "title": "热量计算的条件",
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-41",
@@ -4177,7 +4177,7 @@
     "title": "质量的物理意义",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-42",
@@ -4187,7 +4187,7 @@
     "title": "托盘天平的调节",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-43",
@@ -4197,7 +4197,7 @@
     "title": "密度单位换算",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-44",
@@ -4207,7 +4207,7 @@
     "title": "力的作用效果",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-45",
@@ -4217,7 +4217,7 @@
     "title": "力的三要素",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-46",
@@ -4227,7 +4227,7 @@
     "title": "相互作用力",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-47",
@@ -4237,7 +4237,7 @@
     "title": "重力与重心",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-48",
@@ -4247,7 +4247,7 @@
     "title": "弹力产生的条件",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-49",
@@ -4257,7 +4257,7 @@
     "title": "滑动摩擦力的因素",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-50",
@@ -4267,7 +4267,7 @@
     "title": "惯性与牛顿第一定律",
     "unit": "质量与力",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-51",
@@ -4277,7 +4277,7 @@
     "title": "增大减小压强的方法",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-52",
@@ -4287,7 +4287,7 @@
     "title": "液体压强的特点",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-53",
@@ -4297,7 +4297,7 @@
     "title": "连通器原理",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-54",
@@ -4307,7 +4307,7 @@
     "title": "大气压的存在",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-55",
@@ -4317,7 +4317,7 @@
     "title": "托里拆利实验",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-56",
@@ -4327,7 +4327,7 @@
     "title": "流体压强与流速",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-57",
@@ -4337,7 +4337,7 @@
     "title": "浮力的方向与成因",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-58",
@@ -4347,7 +4347,7 @@
     "title": "浸没后的浮力变化",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-59",
@@ -4357,7 +4357,7 @@
     "title": "漂浮与悬浮条件",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-60",
@@ -4367,7 +4367,7 @@
     "title": "物体浮沉的判断",
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-61",
@@ -4377,7 +4377,7 @@
     "title": "做功的两个必要因素",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-62",
@@ -4387,7 +4387,7 @@
     "title": "机械功的计算",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-63",
@@ -4397,7 +4397,7 @@
     "title": "机械功率的计算",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-64",
@@ -4407,7 +4407,7 @@
     "title": "杠杆平衡条件",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-65",
@@ -4417,7 +4417,7 @@
     "title": "省力杠杆与费力杠杆",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-66",
@@ -4427,7 +4427,7 @@
     "title": "定滑轮与动滑轮",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-67",
@@ -4437,7 +4437,7 @@
     "title": "动能的影响因素",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-68",
@@ -4447,7 +4447,7 @@
     "title": "重力势能的影响因素",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-69",
@@ -4457,7 +4457,7 @@
     "title": "机械能的转化",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-70",
@@ -4467,7 +4467,7 @@
     "title": "能量守恒与效率",
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-71",
@@ -4477,7 +4477,7 @@
     "title": "两种电荷及相互作用",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-72",
@@ -4487,7 +4487,7 @@
     "title": "电流方向的规定",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-73",
@@ -4497,7 +4497,7 @@
     "title": "通路、断路与短路",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-74",
@@ -4507,7 +4507,7 @@
     "title": "电流表的连接",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-75",
@@ -4517,7 +4517,7 @@
     "title": "电压表的连接",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-76",
@@ -4527,7 +4527,7 @@
     "title": "电阻的决定因素",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-77",
@@ -4537,7 +4537,7 @@
     "title": "滑动变阻器的接法",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-78",
@@ -4547,7 +4547,7 @@
     "title": "伏安法测电阻",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-79",
@@ -4557,7 +4557,7 @@
     "title": "串联分压的关系",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-80",
@@ -4567,7 +4567,7 @@
     "title": "并联分流的关系",
     "unit": "电路与测量",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-81",
@@ -4577,7 +4577,7 @@
     "title": "电能表的读数",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-82",
@@ -4587,7 +4587,7 @@
     "title": "千瓦时与焦耳换算",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-83",
@@ -4597,7 +4597,7 @@
     "title": "额定功率与实际功率",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-84",
@@ -4607,7 +4607,7 @@
     "title": "焦耳定律的适用",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-85",
@@ -4617,7 +4617,7 @@
     "title": "家庭电路的并联",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-86",
@@ -4627,7 +4627,7 @@
     "title": "保险丝与电流过大",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-87",
@@ -4637,7 +4637,7 @@
     "title": "磁场与磁感线",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-88",
@@ -4647,7 +4647,7 @@
     "title": "电流的磁效应",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-89",
@@ -4657,7 +4657,7 @@
     "title": "电磁铁的强弱",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-physics-90",
@@ -4667,7 +4667,7 @@
     "title": "电磁感应与发电机",
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-1",
@@ -4677,7 +4677,7 @@
     "title": "药品取用的安全原则",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-2",
@@ -4687,7 +4687,7 @@
     "title": "固体药品的取用",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-3",
@@ -4697,7 +4697,7 @@
     "title": "倾倒液体的操作",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-4",
@@ -4707,7 +4707,7 @@
     "title": "胶头滴管的使用",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-5",
@@ -4717,7 +4717,7 @@
     "title": "量筒的读数",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-6",
@@ -4727,7 +4727,7 @@
     "title": "酒精灯的安全使用",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-7",
@@ -4737,7 +4737,7 @@
     "title": "试管加热的方向",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-8",
@@ -4747,7 +4747,7 @@
     "title": "过滤操作的要点",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-9",
@@ -4757,7 +4757,7 @@
     "title": "蒸发结晶的操作",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-10",
@@ -4767,7 +4767,7 @@
     "title": "实验记录与变量控制",
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-11",
@@ -4777,7 +4777,7 @@
     "title": "空气中的主要成分",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-12",
@@ -4787,7 +4787,7 @@
     "title": "氧气的助燃性",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-13",
@@ -4797,7 +4797,7 @@
     "title": "氮气的常见用途",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-14",
@@ -4807,7 +4807,7 @@
     "title": "稀有气体与保护气",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-15",
@@ -4817,7 +4817,7 @@
     "title": "催化剂的概念",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-16",
@@ -4827,7 +4827,7 @@
     "title": "过氧化氢制氧气",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-17",
@@ -4837,7 +4837,7 @@
     "title": "高锰酸钾制氧气",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-18",
@@ -4847,7 +4847,7 @@
     "title": "排水法收集气体",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-19",
@@ -4857,7 +4857,7 @@
     "title": "排空气法收集气体",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-20",
@@ -4867,7 +4867,7 @@
     "title": "氧气的检验与验满",
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-21",
@@ -4877,7 +4877,7 @@
     "title": "分子的运动与间隔",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-22",
@@ -4887,7 +4887,7 @@
     "title": "分子与原子的关系",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-23",
@@ -4897,7 +4897,7 @@
     "title": "原子核与核外电子",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-24",
@@ -4907,7 +4907,7 @@
     "title": "元素由质子数决定",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-25",
@@ -4917,7 +4917,7 @@
     "title": "元素符号的含义",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-26",
@@ -4927,7 +4927,7 @@
     "title": "相对原子质量",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-27",
@@ -4937,7 +4937,7 @@
     "title": "单质与化合物",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-28",
@@ -4947,7 +4947,7 @@
     "title": "纯净物与混合物",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-29",
@@ -4957,7 +4957,7 @@
     "title": "氧化物的判断",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-30",
@@ -4967,7 +4967,7 @@
     "title": "化学式中的数字",
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-31",
@@ -4977,7 +4977,7 @@
     "title": "电解水的实验结论",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-32",
@@ -4987,7 +4987,7 @@
     "title": "硬水与软水",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-33",
@@ -4997,7 +4997,7 @@
     "title": "净水方法的分工",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-34",
@@ -5007,7 +5007,7 @@
     "title": "蒸馏与过滤的差异",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-35",
@@ -5017,7 +5017,7 @@
     "title": "化合反应",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-36",
@@ -5027,7 +5027,7 @@
     "title": "分解反应",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-37",
@@ -5037,7 +5037,7 @@
     "title": "置换反应",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-38",
@@ -5047,7 +5047,7 @@
     "title": "复分解反应的条件",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-39",
@@ -5057,7 +5057,7 @@
     "title": "化学反应中的原子守恒",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-40",
@@ -5067,7 +5067,7 @@
     "title": "化学方程式中的质量关系",
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-41",
@@ -5077,7 +5077,7 @@
     "title": "金刚石与石墨",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-42",
@@ -5087,7 +5087,7 @@
     "title": "活性炭的吸附性",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-43",
@@ -5097,7 +5097,7 @@
     "title": "碳的充分与不充分燃烧",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-44",
@@ -5107,7 +5107,7 @@
     "title": "一氧化碳的毒性",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-45",
@@ -5117,7 +5117,7 @@
     "title": "一氧化碳的还原性",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-46",
@@ -5127,7 +5127,7 @@
     "title": "二氧化碳的检验",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-47",
@@ -5137,7 +5137,7 @@
     "title": "二氧化碳与水",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-48",
@@ -5147,7 +5147,7 @@
     "title": "实验室制二氧化碳",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-49",
@@ -5157,7 +5157,7 @@
     "title": "燃料的充分利用",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-50",
@@ -5167,7 +5167,7 @@
     "title": "化石燃料与环境",
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-51",
@@ -5177,7 +5177,7 @@
     "title": "金属的共同物理性质",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-52",
@@ -5187,7 +5187,7 @@
     "title": "合金的定义",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-53",
@@ -5197,7 +5197,7 @@
     "title": "合金性质与纯金属比较",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-54",
@@ -5207,7 +5207,7 @@
     "title": "金属与稀酸反应",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-55",
@@ -5217,7 +5217,7 @@
     "title": "铁与酸生成亚铁盐",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-56",
@@ -5227,7 +5227,7 @@
     "title": "金属活动性的实验比较",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-57",
@@ -5237,7 +5237,7 @@
     "title": "铁生锈的条件",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-58",
@@ -5247,7 +5247,7 @@
     "title": "防锈措施的原理",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-59",
@@ -5257,7 +5257,7 @@
     "title": "铝的氧化膜",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-60",
@@ -5267,7 +5267,7 @@
     "title": "金属资源的保护",
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-61",
@@ -5277,7 +5277,7 @@
     "title": "溶液的均一性与稳定性",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-62",
@@ -5287,7 +5287,7 @@
     "title": "溶质与溶剂的判断",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-63",
@@ -5297,7 +5297,7 @@
     "title": "溶解时的热量变化",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-64",
@@ -5307,7 +5307,7 @@
     "title": "乳化与溶解",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-65",
@@ -5317,7 +5317,7 @@
     "title": "饱和溶液的条件",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-66",
@@ -5327,7 +5327,7 @@
     "title": "浓溶液与饱和溶液",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-67",
@@ -5337,7 +5337,7 @@
     "title": "溶解度的四个条件",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-68",
@@ -5347,7 +5347,7 @@
     "title": "溶解度曲线的读取",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-69",
@@ -5357,7 +5357,7 @@
     "title": "结晶的两种常见方法",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-70",
@@ -5367,7 +5367,7 @@
     "title": "稀释计算的守恒量",
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-71",
@@ -5377,7 +5377,7 @@
     "title": "酸的水溶液中的共同粒子",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-72",
@@ -5387,7 +5387,7 @@
     "title": "碱的水溶液中的共同粒子",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-73",
@@ -5397,7 +5397,7 @@
     "title": "紫色石蕊的变色",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-74",
@@ -5407,7 +5407,7 @@
     "title": "无色酚酞的变色",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-75",
@@ -5417,7 +5417,7 @@
     "title": "pH试纸的使用",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-76",
@@ -5427,7 +5427,7 @@
     "title": "浓硫酸稀释的次序",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-77",
@@ -5437,7 +5437,7 @@
     "title": "氢氧化钠的性质",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-78",
@@ -5447,7 +5447,7 @@
     "title": "氢氧化钙的俗名",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-79",
@@ -5457,7 +5457,7 @@
     "title": "中和反应",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-80",
@@ -5467,7 +5467,7 @@
     "title": "中和过程的指示剂观察",
     "unit": "酸与碱",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-81",
@@ -5477,7 +5477,7 @@
     "title": "盐的组成特征",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-82",
@@ -5487,7 +5487,7 @@
     "title": "氯化钠的用途边界",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-83",
@@ -5497,7 +5497,7 @@
     "title": "碳酸钠与碳酸氢钠",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-84",
@@ -5507,7 +5507,7 @@
     "title": "碳酸盐与酸的检验",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-85",
@@ -5517,7 +5517,7 @@
     "title": "铵态氮肥的使用",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-86",
@@ -5527,7 +5527,7 @@
     "title": "氮磷钾肥的作用",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-87",
@@ -5537,7 +5537,7 @@
     "title": "有机物与无机物",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-88",
@@ -5547,7 +5547,7 @@
     "title": "三大供能营养物质",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-89",
@@ -5557,7 +5557,7 @@
     "title": "微量元素与健康",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-chemistry-90",
@@ -5567,7 +5567,7 @@
     "title": "合成材料与环境",
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-1",
@@ -5577,7 +5577,7 @@
     "title": "科学探究的对照原则",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-2",
@@ -5587,7 +5587,7 @@
     "title": "实验重复与样本数量",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-3",
@@ -5597,7 +5597,7 @@
     "title": "观察法与实验法",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-4",
@@ -5607,7 +5607,7 @@
     "title": "生物的共同特征",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-5",
@@ -5617,7 +5617,7 @@
     "title": "显微镜视野亮度调节",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-6",
@@ -5627,7 +5627,7 @@
     "title": "显微镜图像的移动",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-7",
@@ -5637,7 +5637,7 @@
     "title": "临时装片避免气泡",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-8",
@@ -5647,7 +5647,7 @@
     "title": "细胞膜的选择性",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-9",
@@ -5657,7 +5657,7 @@
     "title": "叶绿体与线粒体",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-10",
@@ -5667,7 +5667,7 @@
     "title": "细胞分裂与分化的区别",
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-11",
@@ -5677,7 +5677,7 @@
     "title": "根尖的吸收区域",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-12",
@@ -5687,7 +5687,7 @@
     "title": "导管与筛管的运输",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-13",
@@ -5697,7 +5697,7 @@
     "title": "叶片的基本结构",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-14",
@@ -5707,7 +5707,7 @@
     "title": "气孔的开闭",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-15",
@@ -5717,7 +5717,7 @@
     "title": "蒸腾作用的意义",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-16",
@@ -5727,7 +5727,7 @@
     "title": "植物需要的无机盐",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-17",
@@ -5737,7 +5737,7 @@
     "title": "光合作用实验中的暗处理",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-18",
@@ -5747,7 +5747,7 @@
     "title": "碘液检验淀粉",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-19",
@@ -5757,7 +5757,7 @@
     "title": "花的主要生殖结构",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-20",
@@ -5767,7 +5767,7 @@
     "title": "果实与种子的形成",
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-21",
@@ -5777,7 +5777,7 @@
     "title": "食物中的六类营养物质",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-22",
@@ -5787,7 +5787,7 @@
     "title": "蛋白质的作用",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-23",
@@ -5797,7 +5797,7 @@
     "title": "维生素缺乏的影响",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-24",
@@ -5807,7 +5807,7 @@
     "title": "唾液淀粉酶的作用",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-25",
@@ -5817,7 +5817,7 @@
     "title": "胃的消化作用",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-26",
@@ -5827,7 +5827,7 @@
     "title": "胆汁与脂肪消化",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-27",
@@ -5837,7 +5837,7 @@
     "title": "小肠适于吸收的结构",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-28",
@@ -5847,7 +5847,7 @@
     "title": "合理膳食与食品安全",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-29",
@@ -5857,7 +5857,7 @@
     "title": "呼吸道的作用",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-30",
@@ -5867,7 +5867,7 @@
     "title": "肺泡适于气体交换",
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-31",
@@ -5877,7 +5877,7 @@
     "title": "红细胞的运输功能",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-32",
@@ -5887,7 +5887,7 @@
     "title": "白细胞与防御",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-33",
@@ -5897,7 +5897,7 @@
     "title": "血小板与止血",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-34",
@@ -5907,7 +5907,7 @@
     "title": "心脏四腔与相连血管",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-35",
@@ -5917,7 +5917,7 @@
     "title": "体循环的路径",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-36",
@@ -5927,7 +5927,7 @@
     "title": "肺循环的路径",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-37",
@@ -5937,7 +5937,7 @@
     "title": "毛细血管的结构",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-38",
@@ -5947,7 +5947,7 @@
     "title": "输血与血型安全",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-39",
@@ -5957,7 +5957,7 @@
     "title": "肾小球过滤的限制",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-40",
@@ -5967,7 +5967,7 @@
     "title": "排泄的不同途径",
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-41",
@@ -5977,7 +5977,7 @@
     "title": "神经元的结构功能",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-42",
@@ -5987,7 +5987,7 @@
     "title": "反射弧的完整性",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-43",
@@ -5997,7 +5997,7 @@
     "title": "非条件反射与条件反射",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-44",
@@ -6007,7 +6007,7 @@
     "title": "眼球的成像",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-45",
@@ -6017,7 +6017,7 @@
     "title": "耳的听觉形成",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-46",
@@ -6027,7 +6027,7 @@
     "title": "激素调节的特点",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-47",
@@ -6037,7 +6037,7 @@
     "title": "受精与胚胎发育",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-48",
@@ -6047,7 +6047,7 @@
     "title": "胎盘的物质交换",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-49",
@@ -6057,7 +6057,7 @@
     "title": "基因与染色体",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-50",
@@ -6067,7 +6067,7 @@
     "title": "生殖细胞的染色体数",
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-51",
@@ -6077,7 +6077,7 @@
     "title": "藻类的结构特点",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-52",
@@ -6087,7 +6087,7 @@
     "title": "苔藓与蕨类的区别",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-53",
@@ -6097,7 +6097,7 @@
     "title": "裸子植物与被子植物",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-54",
@@ -6107,7 +6107,7 @@
     "title": "鱼类适于水生的特征",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-55",
@@ -6117,7 +6117,7 @@
     "title": "两栖动物的发育",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-56",
@@ -6127,7 +6127,7 @@
     "title": "爬行动物的适应",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-57",
@@ -6137,7 +6137,7 @@
     "title": "鸟类适于飞行的结构",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-58",
@@ -6147,7 +6147,7 @@
     "title": "哺乳动物的特征",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-59",
@@ -6157,7 +6157,7 @@
     "title": "细菌与真菌的差别",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-60",
@@ -6167,7 +6167,7 @@
     "title": "病毒的结构与生活",
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-61",
@@ -6177,7 +6177,7 @@
     "title": "显性与隐性的表示",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-62",
@@ -6187,7 +6187,7 @@
     "title": "基因型与表现性状",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-63",
@@ -6197,7 +6197,7 @@
     "title": "性别决定的基本模型",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-64",
@@ -6207,7 +6207,7 @@
     "title": "遗传病与近亲婚配",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-65",
@@ -6217,7 +6217,7 @@
     "title": "可遗传与不可遗传变异",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-66",
@@ -6227,7 +6227,7 @@
     "title": "先天免疫与特异性免疫",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-67",
@@ -6237,7 +6237,7 @@
     "title": "抗原与抗体",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-68",
@@ -6247,7 +6247,7 @@
     "title": "传染源与传播途径",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-69",
@@ -6257,7 +6257,7 @@
     "title": "食物网与生态联系",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-70",
@@ -6267,7 +6267,7 @@
     "title": "能量在食物链中的流动",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-71",
@@ -6277,7 +6277,7 @@
     "title": "分解者的生态作用",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-72",
@@ -6287,7 +6287,7 @@
     "title": "生态系统的调节能力",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-biology-73",
@@ -6297,7 +6297,7 @@
     "title": "自然保护区的作用",
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-1",
@@ -6307,7 +6307,7 @@
     "title": "原始农业的意义",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-2",
@@ -6317,7 +6317,7 @@
     "title": "河姆渡与半坡的比较",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-3",
@@ -6327,7 +6327,7 @@
     "title": "夏朝与世袭制",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-4",
@@ -6337,7 +6337,7 @@
     "title": "商代甲骨文",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-5",
@@ -6347,7 +6347,7 @@
     "title": "青铜器与早期国家",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-6",
@@ -6357,7 +6357,7 @@
     "title": "西周分封制",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-7",
@@ -6367,7 +6367,7 @@
     "title": "春秋时期的社会变化",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-8",
@@ -6377,7 +6377,7 @@
     "title": "铁制农具与牛耕",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-9",
@@ -6387,7 +6387,7 @@
     "title": "孔子的思想与教育",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-10",
@@ -6397,7 +6397,7 @@
     "title": "百家争鸣的学派",
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-11",
@@ -6407,7 +6407,7 @@
     "title": "秦朝统一度量衡",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-12",
@@ -6417,7 +6417,7 @@
     "title": "秦末农民起义",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-13",
@@ -6427,7 +6427,7 @@
     "title": "汉武帝的推恩令",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-14",
@@ -6437,7 +6437,7 @@
     "title": "张骞通西域",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-15",
@@ -6447,7 +6447,7 @@
     "title": "丝绸之路的交流",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-16",
@@ -6457,7 +6457,7 @@
     "title": "蔡伦改进造纸术",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-17",
@@ -6467,7 +6467,7 @@
     "title": "张仲景与医学",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-18",
@@ -6477,7 +6477,7 @@
     "title": "隋朝大运河",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-19",
@@ -6487,7 +6487,7 @@
     "title": "贞观之治",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-20",
@@ -6497,7 +6497,7 @@
     "title": "唐代中外交流",
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-21",
@@ -6507,7 +6507,7 @@
     "title": "宋代重文轻武",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-22",
@@ -6517,7 +6517,7 @@
     "title": "宋代海外贸易",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-23",
@@ -6527,7 +6527,7 @@
     "title": "活字印刷术",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-24",
@@ -6537,7 +6537,7 @@
     "title": "蒙古统一与元朝建立",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-25",
@@ -6547,7 +6547,7 @@
     "title": "元朝行省制度",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-26",
@@ -6557,7 +6557,7 @@
     "title": "明朝废除丞相",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-27",
@@ -6567,7 +6567,7 @@
     "title": "郑和下西洋",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-28",
@@ -6577,7 +6577,7 @@
     "title": "戚继光抗倭",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-29",
@@ -6587,7 +6587,7 @@
     "title": "清朝军机处",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-30",
@@ -6597,7 +6597,7 @@
     "title": "清代闭关锁国政策",
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-31",
@@ -6607,7 +6607,7 @@
     "title": "第二次鸦片战争",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-32",
@@ -6617,7 +6617,7 @@
     "title": "太平天国运动",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-33",
@@ -6627,7 +6627,7 @@
     "title": "洋务运动的目标与局限",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-34",
@@ -6637,7 +6637,7 @@
     "title": "甲午中日战争",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-35",
@@ -6647,7 +6647,7 @@
     "title": "马关条约的影响",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-36",
@@ -6657,7 +6657,7 @@
     "title": "戊戌变法",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-37",
@@ -6667,7 +6667,7 @@
     "title": "义和团运动",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-38",
@@ -6677,7 +6677,7 @@
     "title": "辛丑条约",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-39",
@@ -6687,7 +6687,7 @@
     "title": "中国同盟会",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-40",
@@ -6697,7 +6697,7 @@
     "title": "武昌起义",
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-41",
@@ -6707,7 +6707,7 @@
     "title": "新文化运动",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-42",
@@ -6717,7 +6717,7 @@
     "title": "中国共产党成立",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-43",
@@ -6727,7 +6727,7 @@
     "title": "第一次国共合作",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-44",
@@ -6737,7 +6737,7 @@
     "title": "北伐战争",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-45",
@@ -6747,7 +6747,7 @@
     "title": "南昌起义",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-46",
@@ -6757,7 +6757,7 @@
     "title": "八七会议",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-47",
@@ -6767,7 +6767,7 @@
     "title": "井冈山革命根据地",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-48",
@@ -6777,7 +6777,7 @@
     "title": "长征的原因与历程",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-49",
@@ -6787,7 +6787,7 @@
     "title": "遵义会议",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-50",
@@ -6797,7 +6797,7 @@
     "title": "西安事变的和平解决",
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-51",
@@ -6807,7 +6807,7 @@
     "title": "九一八事变",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-52",
@@ -6817,7 +6817,7 @@
     "title": "七七事变",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-53",
@@ -6827,7 +6827,7 @@
     "title": "南京大屠杀的史实",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-54",
@@ -6837,7 +6837,7 @@
     "title": "抗日战争胜利",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-55",
@@ -6847,7 +6847,7 @@
     "title": "重庆谈判",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-56",
@@ -6857,7 +6857,7 @@
     "title": "新中国土地改革",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-57",
@@ -6867,7 +6867,7 @@
     "title": "抗美援朝",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-58",
@@ -6877,7 +6877,7 @@
     "title": "第一个五年计划",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-59",
@@ -6887,7 +6887,7 @@
     "title": "三大改造",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-60",
@@ -6897,7 +6897,7 @@
     "title": "十一届三中全会",
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-61",
@@ -6907,7 +6907,7 @@
     "title": "古埃及文明",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-62",
@@ -6917,7 +6917,7 @@
     "title": "汉谟拉比法典",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-63",
@@ -6927,7 +6927,7 @@
     "title": "古印度种姓制度",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-64",
@@ -6937,7 +6937,7 @@
     "title": "雅典民主政治",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-65",
@@ -6947,7 +6947,7 @@
     "title": "罗马共和国与帝国",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-66",
@@ -6957,7 +6957,7 @@
     "title": "西欧封建庄园",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-67",
@@ -6967,7 +6967,7 @@
     "title": "中世纪城市兴起",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-68",
@@ -6977,7 +6977,7 @@
     "title": "阿拉伯文化交流",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-69",
@@ -6987,7 +6987,7 @@
     "title": "日本大化改新",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-70",
@@ -6997,7 +6997,7 @@
     "title": "拜占庭与查士丁尼法典",
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-71",
@@ -7007,7 +7007,7 @@
     "title": "新航路开辟",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-72",
@@ -7017,7 +7017,7 @@
     "title": "三角贸易",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-73",
@@ -7027,7 +7027,7 @@
     "title": "英国资产阶级革命",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-74",
@@ -7037,7 +7037,7 @@
     "title": "权利法案",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-75",
@@ -7047,7 +7047,7 @@
     "title": "美国独立战争",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-76",
@@ -7057,7 +7057,7 @@
     "title": "法国大革命",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-77",
@@ -7067,7 +7067,7 @@
     "title": "拿破仑法典",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-78",
@@ -7077,7 +7077,7 @@
     "title": "马克思主义诞生",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-79",
@@ -7087,7 +7087,7 @@
     "title": "巴黎公社",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-80",
@@ -7097,7 +7097,7 @@
     "title": "第二次工业革命",
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-81",
@@ -7107,7 +7107,7 @@
     "title": "第一次世界大战",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-82",
@@ -7117,7 +7117,7 @@
     "title": "俄国十月革命",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-83",
@@ -7127,7 +7127,7 @@
     "title": "凡尔赛华盛顿体系",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-84",
@@ -7137,7 +7137,7 @@
     "title": "苏联工业化",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-85",
@@ -7147,7 +7147,7 @@
     "title": "罗斯福新政",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-86",
@@ -7157,7 +7157,7 @@
     "title": "第二次世界大战全面爆发",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-87",
@@ -7167,7 +7167,7 @@
     "title": "世界反法西斯联盟",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-88",
@@ -7177,7 +7177,7 @@
     "title": "斯大林格勒保卫战",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-89",
@@ -7187,7 +7187,7 @@
     "title": "冷战与两极格局",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-history-90",
@@ -7197,7 +7197,7 @@
     "title": "经济全球化的联系与风险",
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-1",
@@ -7207,7 +7207,7 @@
     "title": "地球的形状与证据",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-2",
@@ -7217,7 +7217,7 @@
     "title": "纬线的形状与长度",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-3",
@@ -7227,7 +7227,7 @@
     "title": "经线的形状与长度",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-4",
@@ -7237,7 +7237,7 @@
     "title": "纬度的划分",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-5",
@@ -7247,7 +7247,7 @@
     "title": "经度的划分",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-6",
@@ -7257,7 +7257,7 @@
     "title": "南北半球与东西半球",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-7",
@@ -7267,7 +7267,7 @@
     "title": "地轴倾斜与季节",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-8",
@@ -7277,7 +7277,7 @@
     "title": "五带的划分",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-9",
@@ -7287,7 +7287,7 @@
     "title": "昼夜长短的变化",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-10",
@@ -7297,7 +7297,7 @@
     "title": "地方时间的差异",
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-11",
@@ -7307,7 +7307,7 @@
     "title": "地图的基本要素",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-12",
@@ -7317,7 +7317,7 @@
     "title": "一般地图的方向",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-13",
@@ -7327,7 +7327,7 @@
     "title": "指向标地图的定向",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-14",
@@ -7337,7 +7337,7 @@
     "title": "比例尺大小的比较",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-15",
@@ -7347,7 +7347,7 @@
     "title": "相同图幅下的范围与详略",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-16",
@@ -7357,7 +7357,7 @@
     "title": "海拔与相对高度",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-17",
@@ -7367,7 +7367,7 @@
     "title": "山顶与洼地的等高线",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-18",
@@ -7377,7 +7377,7 @@
     "title": "山脊与山谷的判读",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-19",
@@ -7387,7 +7387,7 @@
     "title": "陡崖的等高线特征",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-20",
@@ -7397,7 +7397,7 @@
     "title": "分层设色地形图",
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-21",
@@ -7407,7 +7407,7 @@
     "title": "气温的日变化",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-22",
@@ -7417,7 +7417,7 @@
     "title": "气温年较差",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-23",
@@ -7427,7 +7427,7 @@
     "title": "降水的主要形式",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-24",
@@ -7437,7 +7437,7 @@
     "title": "气温曲线与降水柱状图",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-25",
@@ -7447,7 +7447,7 @@
     "title": "纬度对气温的影响",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-26",
@@ -7457,7 +7457,7 @@
     "title": "海陆位置对气候的影响",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-27",
@@ -7467,7 +7467,7 @@
     "title": "地形对气候的影响",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-28",
@@ -7477,7 +7477,7 @@
     "title": "季风的基本含义",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-29",
@@ -7487,7 +7487,7 @@
     "title": "气候与生产生活",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-30",
@@ -7497,7 +7497,7 @@
     "title": "灾害天气与防范",
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-31",
@@ -7507,7 +7507,7 @@
     "title": "七大洲与陆地分布",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-32",
@@ -7517,7 +7517,7 @@
     "title": "四大洋的相互连通",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-33",
@@ -7527,7 +7527,7 @@
     "title": "亚欧分界的认识",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-34",
@@ -7537,7 +7537,7 @@
     "title": "苏伊士运河与巴拿马运河",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-35",
@@ -7547,7 +7547,7 @@
     "title": "岛屿、半岛与海峡",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-36",
@@ -7557,7 +7557,7 @@
     "title": "大陆漂移的证据",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-37",
@@ -7567,7 +7567,7 @@
     "title": "板块运动的基本思想",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-38",
@@ -7577,7 +7577,7 @@
     "title": "板块张裂与碰撞",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-39",
@@ -7587,7 +7587,7 @@
     "title": "海陆变迁的例证",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-40",
@@ -7597,7 +7597,7 @@
     "title": "地震风险的理解",
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-41",
@@ -7607,7 +7607,7 @@
     "title": "亚洲的地形与河流",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-42",
@@ -7617,7 +7617,7 @@
     "title": "日本的自然条件与工业",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-43",
@@ -7627,7 +7627,7 @@
     "title": "东南亚的区位",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-44",
@@ -7637,7 +7637,7 @@
     "title": "印度的季风与农业",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-45",
@@ -7647,7 +7647,7 @@
     "title": "俄罗斯的交通与资源",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-46",
@@ -7657,7 +7657,7 @@
     "title": "中东的石油与水资源",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-47",
@@ -7667,7 +7667,7 @@
     "title": "欧洲西部的经济联系",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-48",
@@ -7677,7 +7677,7 @@
     "title": "撒哈拉以南非洲的发展",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-49",
@@ -7687,7 +7687,7 @@
     "title": "澳大利亚的自然与经济",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-50",
@@ -7697,7 +7697,7 @@
     "title": "极地环境与科学考察",
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-51",
@@ -7707,7 +7707,7 @@
     "title": "人口密度的计算",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-52",
@@ -7717,7 +7717,7 @@
     "title": "人口自然增长",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-53",
@@ -7727,7 +7727,7 @@
     "title": "人口年龄结构",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-54",
@@ -7737,7 +7737,7 @@
     "title": "人口迁移的影响",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-55",
@@ -7747,7 +7747,7 @@
     "title": "语言与宗教的分布",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-56",
@@ -7757,7 +7757,7 @@
     "title": "聚落形成的条件",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-57",
@@ -7767,7 +7767,7 @@
     "title": "城市与乡村的差异",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-58",
@@ -7777,7 +7777,7 @@
     "title": "交通方式的选择",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-59",
@@ -7787,7 +7787,7 @@
     "title": "资源的可再生性",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-60",
@@ -7797,7 +7797,7 @@
     "title": "国际经济合作",
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-61",
@@ -7807,7 +7807,7 @@
     "title": "中国的海陆位置",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-62",
@@ -7817,7 +7817,7 @@
     "title": "中国的行政区划",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-63",
@@ -7827,7 +7827,7 @@
     "title": "中国的人口分布",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-64",
@@ -7837,7 +7837,7 @@
     "title": "中国地形的多样性",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-65",
@@ -7847,7 +7847,7 @@
     "title": "冬夏气温的空间差异",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-66",
@@ -7857,7 +7857,7 @@
     "title": "降水的东西差异",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-67",
@@ -7867,7 +7867,7 @@
     "title": "梅雨的时空特征",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-68",
@@ -7877,7 +7877,7 @@
     "title": "台风的利弊与风险",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-69",
@@ -7887,7 +7887,7 @@
     "title": "外流河与内流河",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-70",
@@ -7897,7 +7897,7 @@
     "title": "黄河的治理重点",
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-71",
@@ -7907,7 +7907,7 @@
     "title": "中国水资源的时空分布",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-72",
@@ -7917,7 +7917,7 @@
     "title": "跨流域调水的作用",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-73",
@@ -7927,7 +7927,7 @@
     "title": "土地资源的合理利用",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-74",
@@ -7937,7 +7937,7 @@
     "title": "耕地保护与粮食安全",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-75",
@@ -7947,7 +7947,7 @@
     "title": "林地与草地的生态功能",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-76",
@@ -7957,7 +7957,7 @@
     "title": "农业部门的区别",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-77",
@@ -7967,7 +7967,7 @@
     "title": "工业布局的因素",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-78",
@@ -7977,7 +7977,7 @@
     "title": "高新技术产业的条件",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-79",
@@ -7987,7 +7987,7 @@
     "title": "铁路与综合交通网络",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-80",
@@ -7997,7 +7997,7 @@
     "title": "能源利用与结构调整",
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-81",
@@ -8007,7 +8007,7 @@
     "title": "北方地区的自然特点",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-82",
@@ -8017,7 +8017,7 @@
     "title": "南方地区的农业条件",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-83",
@@ -8027,7 +8027,7 @@
     "title": "西北地区的干旱环境",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-84",
@@ -8037,7 +8037,7 @@
     "title": "青藏地区的高寒特征",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-85",
@@ -8047,7 +8047,7 @@
     "title": "东北地区的工农业",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-86",
@@ -8057,7 +8057,7 @@
     "title": "黄土高原的水土流失",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-87",
@@ -8067,7 +8067,7 @@
     "title": "北京的城市职能",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-88",
@@ -8077,7 +8077,7 @@
     "title": "台湾的地形与农业",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-89",
@@ -8087,7 +8087,7 @@
     "title": "港澳与内地的联系",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-geography-90",
@@ -8097,7 +8097,7 @@
     "title": "南京的地形与城市联系",
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-1",
@@ -8107,7 +8107,7 @@
     "title": "中学生活的新变化",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-2",
@@ -8117,7 +8117,7 @@
     "title": "梦想与现实的联系",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-3",
@@ -8127,7 +8127,7 @@
     "title": "目标的具体化",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-4",
@@ -8137,7 +8137,7 @@
     "title": "自我评价的证据",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-5",
@@ -8147,7 +8147,7 @@
     "title": "接纳自己的不同",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-6",
@@ -8157,7 +8157,7 @@
     "title": "欣赏自己的努力",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-7",
@@ -8167,7 +8167,7 @@
     "title": "改进缺点的方法",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-8",
@@ -8177,7 +8177,7 @@
     "title": "发掘潜能的途径",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-9",
@@ -8187,7 +8187,7 @@
     "title": "学习态度与学习效果",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-10",
@@ -8197,7 +8197,7 @@
     "title": "终身学习的意义",
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-11",
@@ -8207,7 +8207,7 @@
     "title": "情绪的多样性",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-12",
@@ -8217,7 +8217,7 @@
     "title": "情绪与行为的区别",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-13",
@@ -8227,7 +8227,7 @@
     "title": "情绪表达的场合",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-14",
@@ -8237,7 +8237,7 @@
     "title": "注意转移的调节方法",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-15",
@@ -8247,7 +8247,7 @@
     "title": "认知调整的方法",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-16",
@@ -8257,7 +8257,7 @@
     "title": "合理宣泄与求助",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-17",
@@ -8267,7 +8267,7 @@
     "title": "情绪感染与人际影响",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-18",
@@ -8277,7 +8277,7 @@
     "title": "情感与情绪的联系",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-19",
@@ -8287,7 +8287,7 @@
     "title": "挫折的客观认识",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-20",
@@ -8297,7 +8297,7 @@
     "title": "增强韧性与支持系统",
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-21",
@@ -8307,7 +8307,7 @@
     "title": "建立友谊的主动性",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-22",
@@ -8317,7 +8317,7 @@
     "title": "友谊中的平等互惠",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-23",
@@ -8327,7 +8327,7 @@
     "title": "竞争与友谊的关系",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-24",
@@ -8337,7 +8337,7 @@
     "title": "冲突中的沟通步骤",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-25",
@@ -8347,7 +8347,7 @@
     "title": "网络交往的真实性",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-26",
@@ -8357,7 +8357,7 @@
     "title": "尊重教师与理性沟通",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-27",
@@ -8367,7 +8367,7 @@
     "title": "理解父母的不同视角",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-28",
@@ -8377,7 +8377,7 @@
     "title": "家庭责任的适度承担",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-29",
@@ -8387,7 +8387,7 @@
     "title": "集体中的共同规则",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-30",
@@ -8397,7 +8397,7 @@
     "title": "个人与集体利益的协调",
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-31",
@@ -8407,7 +8407,7 @@
     "title": "社会规则的类型",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-32",
@@ -8417,7 +8417,7 @@
     "title": "自由与规则的关系",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-33",
@@ -8427,7 +8427,7 @@
     "title": "规则的遵守与改进",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-34",
@@ -8437,7 +8437,7 @@
     "title": "尊重他人的具体行为",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-35",
@@ -8447,7 +8447,7 @@
     "title": "文明礼貌与交往",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-36",
@@ -8457,7 +8457,7 @@
     "title": "诚信中的履行承诺",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-37",
@@ -8467,7 +8467,7 @@
     "title": "责任的来源",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-38",
@@ -8477,7 +8477,7 @@
     "title": "承担责任的代价与回报",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-39",
@@ -8487,7 +8487,7 @@
     "title": "关爱中的尊重与方法",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-40",
@@ -8497,7 +8497,7 @@
     "title": "服务社会的可行行动",
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-41",
@@ -8507,7 +8507,7 @@
     "title": "法律的规范与保护作用",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-42",
@@ -8517,7 +8517,7 @@
     "title": "法律面前人人平等",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-43",
@@ -8527,7 +8527,7 @@
     "title": "一般违法与犯罪的区别",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-44",
@@ -8537,7 +8537,7 @@
     "title": "违法责任的不同类型",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-45",
@@ -8547,7 +8547,7 @@
     "title": "未成年人受特殊保护",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-46",
@@ -8557,7 +8557,7 @@
     "title": "家庭保护的责任",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-47",
@@ -8567,7 +8567,7 @@
     "title": "学校保护的要求",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-48",
@@ -8577,7 +8577,7 @@
     "title": "网络保护与个人信息",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-49",
@@ -8587,7 +8587,7 @@
     "title": "司法保护的基本认识",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-50",
@@ -8597,7 +8597,7 @@
     "title": "面对欺凌的求助",
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-51",
@@ -8607,7 +8607,7 @@
     "title": "宪法规定国家根本问题",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-52",
@@ -8617,7 +8617,7 @@
     "title": "宪法与普通法律的关系",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-53",
@@ -8627,7 +8627,7 @@
     "title": "宪法制定修改的严格性",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-54",
@@ -8637,7 +8637,7 @@
     "title": "国家权力的规范运行",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-55",
@@ -8647,7 +8647,7 @@
     "title": "公民基本权利的范围",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-56",
@@ -8657,7 +8657,7 @@
     "title": "人身自由与人格尊严",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-57",
@@ -8667,7 +8667,7 @@
     "title": "隐私权与合理披露",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-58",
@@ -8677,7 +8677,7 @@
     "title": "受教育权与教育义务",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-59",
@@ -8687,7 +8687,7 @@
     "title": "依法维权的途径",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-60",
@@ -8697,7 +8697,7 @@
     "title": "法定义务必须履行",
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-61",
@@ -8707,7 +8707,7 @@
     "title": "社会主义制度的地位",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-62",
@@ -8717,7 +8717,7 @@
     "title": "人民代表大会制度",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-63",
@@ -8727,7 +8727,7 @@
     "title": "全国人民代表大会的地位",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-64",
@@ -8737,7 +8737,7 @@
     "title": "国家行政机关的职责",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-65",
@@ -8747,7 +8747,7 @@
     "title": "审判机关与检察机关",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-66",
@@ -8757,7 +8757,7 @@
     "title": "监察机关的基本职能",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-67",
@@ -8767,7 +8767,7 @@
     "title": "基层群众自治",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-68",
@@ -8777,7 +8777,7 @@
     "title": "民主参与的理性要求",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-69",
@@ -8787,7 +8787,7 @@
     "title": "法治与德治的关系",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-70",
@@ -8797,7 +8797,7 @@
     "title": "权力监督的意义",
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-71",
@@ -8807,7 +8807,7 @@
     "title": "改革与发展的联系",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-72",
@@ -8817,7 +8817,7 @@
     "title": "共同富裕的理解",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-73",
@@ -8827,7 +8827,7 @@
     "title": "公平与正义的意义",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-74",
@@ -8837,7 +8837,7 @@
     "title": "教育与人才培养",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-75",
@@ -8847,7 +8847,7 @@
     "title": "知识产权与创新保护",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-76",
@@ -8857,7 +8857,7 @@
     "title": "创新中的实践检验",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-77",
@@ -8867,7 +8867,7 @@
     "title": "中华优秀传统文化的传承",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-78",
@@ -8877,7 +8877,7 @@
     "title": "文化自信与开放学习",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-79",
@@ -8887,7 +8887,7 @@
     "title": "社会主义核心价值观的层次",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-80",
@@ -8897,7 +8897,7 @@
     "title": "人与自然和谐共生",
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-81",
@@ -8907,7 +8907,7 @@
     "title": "国家利益与个人发展",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-82",
@@ -8917,7 +8917,7 @@
     "title": "国家安全的整体认识",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-83",
@@ -8927,7 +8927,7 @@
     "title": "维护国家统一的责任",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-84",
@@ -8937,7 +8937,7 @@
     "title": "民族平等与共同发展",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-85",
@@ -8947,7 +8947,7 @@
     "title": "爱国的具体表达",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-86",
@@ -8957,7 +8957,7 @@
     "title": "和平与发展的联系",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-87",
@@ -8967,7 +8967,7 @@
     "title": "国际合作与竞争",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-88",
@@ -8977,7 +8977,7 @@
     "title": "人类命运共同体的视角",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-89",
@@ -8987,7 +8987,7 @@
     "title": "职业选择与社会需要",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   },
   {
     "id": "foundation-ethics-90",
@@ -8997,6 +8997,6 @@
     "title": "劳动精神与实践成长",
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
-    "hasExercise": false
+    "hasExercise": true
   }
 ]

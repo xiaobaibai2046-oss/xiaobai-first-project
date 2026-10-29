@@ -14,8 +14,8 @@
     },
     {
       "url": "https://github.com/chrisjame/learn_third_year_of_middle_school_math/tree/bebe942dfcfbcbbacc72e587e5731df8dfed1ee0",
-      "result": "排除为南京近五年试卷来源",
-      "reason": "原生Git读取成功；docs中试题标题明确标为安徽，不能移作南京真题。根目录试卷PDF为Git LFS指针，原生LFS下载另返回Resource not accessible by integration。"
+      "result": "原先仅南京范围下排除；本轮按安徽省转录使用",
+      "reason": "用户现允许各地：已读取2022—2026年题头及可辨识的部分题干，改编10道并独立解题。PDF的LFS下载仍受限，入口为分段转录，不称完整官方原卷。"
     },
     {
       "url": "https://github.com/1wri/Exams/tree/afa7271351a4a5a646ab5d2a3872df235db5aa32",
@@ -31,11 +31,25 @@
       "url": "https://github.com/rongchenxu100/shuxueshuo/tree/5ec7d7de565da3c8af8edfb86b72d50b6917029a",
       "result": "未发现南京卷条目",
       "reason": "读取site/data/problems.json，已列条目未发现南京试题，不以其他城市模拟题替代。"
+    },
+    {
+      "url": "https://github.com/szkakalau/szzk-llm/tree/9963806b0c1ffc9dcca90173ccd2ef7a2b68ded9/exam-papers",
+      "result": "已读取22份2022—2025年深圳文档转录，保存入口与文件指纹；选取可独立解答的部分改编",
+      "reason": "不使用仓库AI扩增训练数据冒充原题；对回忆版、加工痕迹及缺公式情况分别标注。官方原卷未独立核对。"
     }
   ],
   "currentBlockers": [
     "出版社、教育资源站点和南京考试站点仍被当前HTTPS网络代理以403拒绝。",
     "已保存10个必要网络域名到配置草稿；保存不等于当前运行机器已应用，不等于发布。",
     "目前尚未取得可核验的南京2022—2026原卷与答案，正式已核验真题仍为0道。"
-  ]
+  ],
+  "latestScope": "本轮用户允许各地；先前仅南京的排除结论不再用于排除其他地区资料。",
+  "latestResults": {
+    "regionalAdaptations": 17,
+    "publicResourceEntries": 27,
+    "shenzhenDocumentTranscripts": 22,
+    "anhuiPartialTranscripts": 5,
+    "officialOriginalQuestionsVerified": 0,
+    "notes": "内置题全部为据第三方转录改编、解析自编；不是官方原题逐字复刻。部分深圳来源为回忆或机构加工版本，含公式、图片缺失。"
+  }
 }
