@@ -1,0 +1,43 @@
+name: Publish Dazhihui local analysis
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/local-signals.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: stock-signals
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate and merge local result
+        working-directory: stock/source
+        run: node scripts/apply-local.mjs
+      - name: Build website
+        working-directory: stock/source
+        run: npm run build -- ..
+      - name: Commit published snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stock/source/pool-signals.json stock/pool-signals.json stock/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish verified Dazhihui analysis"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Rebuild Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/pages/builds

@@ -1,0 +1,12 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {validatePair,analyzePair} from './worker.mjs';
+function dad(period,{last=30,missing=false,badClose=false}={}){
+ const records=[];for(let i=0;i<60;i++){const day=new Date(Date.UTC(2026,9,last-59+i)).toISOString().slice(0,10);
+ if(period===0)records.push({time:day+'T00:00:00Z',values:[10,12,9,badClose&&i===59?10.5:11,48,52800]});
+ else for(const end of [630,690,840,900])for(let j=0;j<12;j++){if(missing&&i===59&&end===630&&j===0)continue;const minute=end-55+j*5;records.push({time:day+'T'+String(Math.floor(minute/60)).padStart(2,'0')+':'+String(minute%60).padStart(2,'0')+':00Z',values:[10,12,9,11,1,1100]})}}
+ const bytes=new Uint8Array(80+32*records.length),v=new DataView(bytes.buffer);for(const [p,x]of [[0,0x33fc198c],[8,1],[12,period],[16,0xffffffff],[bytes.length-32,0xffffffff]])v.setUint32(p,x,true);bytes.set(new TextEncoder().encode('SH600809'),20);
+ for(const [i,r]of records.entries()){const p=48+32*i;v.setUint32(p,Date.parse(r.time)/1000,true);r.values.forEach((x,j)=>v.setFloat32(p+4+4*j,x,true))}return bytes;
+}
+const now=new Date('2026-10-30T09:00:00Z');
+test('complete same-day pair passes readiness without network and has 4 current hourly bars',()=>{const p=validatePair(dad(0),dad(1),now);assert.equal(p.daily.last_date,'2026-10-30');assert.equal(p.hourly.bars.filter(b=>b.endTime.startsWith('2026-10-30')).length,4)});
+test('prior-day files, inconsistent daily prices and missing 5min slots stop before publishing',()=>{for(const [d,m]of [[dad(0,{last:29}),dad(1,{last:29})],[dad(0,{badClose:true}),dad(1)],[dad(0),dad(1,{missing:true})]])assert.throws(()=>validatePair(d,m,now));assert.throws(()=>validatePair(dad(0),dad(1),new Date('2026-10-30T07:35:00Z')),/16:00/)});
+test('supplement failures remain explicit and cannot invent a buy; upload packet excludes raw bars',async()=>{let calls=0;const {packet,summary}=await analyzePair(dad(0),dad(1),{now,request:async()=>{calls++;throw Error('TEST offline')}});assert.equal(calls,2);assert.equal(packet.results['600809'].state,'none');assert.equal(summary.tradeHints.buy.triggered,false);assert.equal(packet.results['600809'].errors.financial,'TEST offline');assert.equal(packet.results['600809'].sources.daily.startsWith('大智慧DAD'),true);assert.equal(packet.scope.includes('非全池'),true);assert.equal(JSON.stringify(packet).includes('"bars"'),false)});
