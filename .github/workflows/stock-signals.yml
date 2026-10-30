@@ -8,6 +8,9 @@ on:
       - 'stock/source/scripts/scan-*.py'
       - 'stock/source/scripts/merge-scans.mjs'
       - 'stock/source/scan-plan.js'
+      - 'stock/source/strategy-config.js'
+      - 'stock/source/macd.js'
+      - 'stock/source/signal-model.js'
       - 'stock/source/server.py'
   workflow_dispatch:
   schedule:

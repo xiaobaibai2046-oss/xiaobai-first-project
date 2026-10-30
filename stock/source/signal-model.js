@@ -1,4 +1,5 @@
-export const SIGNAL_RULE='ma20-m60-dif-v1';
+import {BOTTOM_PRICE_TOLERANCE} from './strategy-config.js';
+export const SIGNAL_RULE='ma20-m60-dif-v2-bottom-tol-'+Math.round(BOTTOM_PRICE_TOLERANCE*1000000);
 const sessionCache=new Map();
 export function expectedSignalTime(now=new Date(),kind='hourly'){
  const cacheKey=kind+'|'+Math.floor(now.getTime()/60000);if(sessionCache.has(cacheKey))return sessionCache.get(cacheKey);
@@ -18,7 +19,7 @@ export function signalRecord(summary,checkedAt=new Date()){
   const candidate=summary.technical?.trend&&summary.macd?.bullish?.active;
   state=candidate&&summary.missing.length?'incomplete':'none';reasons=state==='incomplete'?summary.missing:[...summary.tradeHints.buy.reasons,...(summary.status==='risk'?summary.risks:[])];
  }
- const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active}:null;
+ const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
  return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
 }
 export function signalState(record,now=new Date()){
