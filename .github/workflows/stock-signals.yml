@@ -6,11 +6,15 @@ on:
       - '.github/workflows/stock-signals.yml'
       - 'stock/source/scripts/scan-*.mjs'
       - 'stock/source/scripts/scan-*.py'
+      - 'stock/source/scripts/merge-scans.mjs'
+      - 'stock/source/scan-plan.js'
       - 'stock/source/server.py'
   workflow_dispatch:
   schedule:
-    # Beijing 10:40–17:40, weekdays. GitHub schedules can be delayed.
-    - cron: '40 2-9 * * 1-5'
+    # Beijing 10:05–15:50 every 15 min; 16:05 completed daily-bar refresh.
+    # GitHub schedules are best effort and can run late.
+    - cron: '5,20,35,50 2-7 * * 1-5'
+    - cron: '5 8 * * 1-5'
 permissions:
   contents: write
   pages: write
@@ -20,7 +24,11 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 18
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,18 +37,44 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Scan bounded batch with checkpoint and backoff
+      - name: Scan one disjoint quarter; preserve progress on timeout
         working-directory: stock/source
         env:
-          SCAN_BATCH_SIZE: '240'
-          SCAN_SECONDS: '840'
+          SCAN_SHARD: ${{ matrix.shard }}
+          SCAN_SHARDS: '4'
+          SCAN_SECONDS: '720'
         run: npm run scan:pool
-      - name: Build published snapshots
+      - uses: actions/upload-artifact@v4
         if: always()
+        with:
+          name: stock-signals-${{ matrix.shard }}
+          path: stock/source/scan-results/shard-${{ matrix.shard }}.json
+          if-no-files-found: warn
+          retention-days: 2
+  publish:
+    needs: scan
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stock-signals-*
+          path: stock/source/scan-results
+          merge-multiple: true
+      - name: Merge current records without overwriting newer analysis
+        working-directory: stock/source
+        run: node scripts/merge-scans.mjs
+      - name: Build published snapshots
         working-directory: stock/source
         run: npm run build -- ..
       - name: Save results and publish Pages
-        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -51,7 +85,6 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Request Pages rebuild for bot commit
-        if: success()
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api --method POST repos/${{ github.repository }}/pages/builds

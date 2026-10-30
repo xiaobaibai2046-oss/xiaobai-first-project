@@ -18,7 +18,8 @@ export function signalRecord(summary,checkedAt=new Date()){
   const candidate=summary.technical?.trend&&summary.macd?.bullish?.active;
   state=candidate&&summary.missing.length?'incomplete':'none';reasons=state==='incomplete'?summary.missing:[...summary.tradeHints.buy.reasons,...(summary.status==='risk'?summary.risks:[])];
  }
- return {rule:SIGNAL_RULE,code:summary.code,state,checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
+ const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active}:null;
+ return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
 }
 export function signalState(record,now=new Date()){
  if(!record)return 'unscanned';if(record.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(record.state)||!Number.isFinite(Date.parse(record.checked_at))||Date.parse(record.checked_at)>now.getTime()+60000)return 'stale';
