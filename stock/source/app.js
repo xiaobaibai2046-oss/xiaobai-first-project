@@ -1,3 +1,4 @@
+import {mountDzhImport} from './dzh-data.js';
 import {analyze,parseCSV,demoCSV} from './indicators.js';
 import {mountPool} from './pool.js';
 import {mountQuick} from './quick.js';
@@ -45,6 +46,7 @@ function acceptHistory(all){
 function valuation(){if(step!==3)return;const k='stock:'+(store.subject||'未指定')+':';for(const x of ['bear','base','bull']){const a=Number(store[k+x+'eps']),b=Number(store[k+x+'pe']);$('#'+x).textContent=a>0&&b>0?'情景估值 '+(a*b).toFixed(2)+' 元':'输入正数 EPS 与市盈率'}}
 render();
 
+mountDzhImport();
 mountQuick({esc,download,onHistory:data=>{groups=new Map([[data.code,data.bars]]);source=data.source;sourceKind='online';demo=false;store.subject=data.code+' '+data.name;try{calc()}catch{}render();document.querySelector('#source').textContent='一键分析载入的日线 · '+data.source+' · 截止 '+data.last_date;}});
 
 mountPool({esc,download,onSelect:stock=>{const input=document.querySelector('#quickcode');input.value=stock.code;input.dispatchEvent(new Event('input',{bubbles:true}));const note=document.querySelector('#poolselection');note.textContent='来自2025年股票池：'+stock.name+'，2025年年报ROE '+stock.roe+'%；以下分析读取最新财报。';note.hidden=false;document.querySelector('#quickform').requestSubmit();document.querySelector('.quickpanel').scrollIntoView({behavior:'smooth',block:'start'});}});
