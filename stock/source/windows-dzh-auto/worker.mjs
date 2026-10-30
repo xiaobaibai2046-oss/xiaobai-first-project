@@ -32,28 +32,32 @@ export async function analyzePair(dayBytes,minuteBytes,{now=new Date(),request=s
  const summary=summarizeStock({code:daily.code,history:daily,hourly,quote,financial:values.financial,errors,now,includeSimulation:false});
  summary.signalSources={daily:daily.source,hourly:hourly.source,quote:values.quote?.source||null,financial:values.financial?.source||null};
  const record=signalRecord(summary,now);
- return {packet:{schema_version:1,rule:SIGNAL_RULE,run_id:randomUUID(),generated_at:now.toISOString(),scope:'600809单股连接验证，非全池',results:{[record.code]:record}},summary};
+ return {packet:{schema_version:1,rule:SIGNAL_RULE,run_id:randomUUID(),generated_at:now.toISOString(),mode:'auxiliary',scope:'600809单股辅助连接验证，非全池；不覆盖云端',results:{[record.code]:record}},summary};
 }
 function gh(args){const p=spawnSync('gh',args,{encoding:'utf8',windowsHide:true});if(p.error)throw Error('无法启动GitHub CLI，请完成安装配置');if(p.status!==0)throw Error('GitHub授权或API请求失败，请查看本机GitHub CLI状态（不会打印令牌）');return p.stdout}
-async function publish(file){
- const packet=JSON.parse(await readFile(file,'utf8'));const path='repos/xiaobaibai2046-oss/xiaobai-first-project/contents/stock/source/local-signals.json';
- if(gh(['api','repos/xiaobaibai2046-oss/xiaobai-first-project','--jq','.permissions.push']).trim()!=='true')throw Error('GitHub账号没有目标仓库写入权限');
+export async function publishAux(file,{callGh=gh,readPublished=async()=>{const r=await fetch('https://raw.githubusercontent.com/xiaobaibai2046-oss/xiaobai-first-project/dzh-aux-data/aux/dzh-signals.json?v='+Date.now(),{signal:AbortSignal.timeout(10000)});if(!r.ok)throw Error('辅助文件尚未可读');return r.json()},pause=ms=>new Promise(r=>setTimeout(r,ms))}={}){
+ const packet=JSON.parse(await readFile(file,'utf8'));if(packet.mode!=='auxiliary')throw Error('拒绝发布非辅助数据');const repo='repos/xiaobaibai2046-oss/xiaobai-first-project',branch='dzh-aux-data',path=repo+'/contents/aux/dzh-signals.json';
+ if(callGh(['api','repos/xiaobaibai2046-oss/xiaobai-first-project','--jq','.permissions.push']).trim()!=='true')throw Error('GitHub账号没有目标仓库写入权限');
+ try{callGh(['api',repo+'/git/ref/heads/'+branch])}catch{
+  const ref=JSON.parse(callGh(['api',repo+'/git/ref/heads/main']));const body=file+'.branch.json';await writeFile(body,JSON.stringify({ref:'refs/heads/'+branch,sha:ref.object.sha}));
+  try{callGh(['api','--method','POST',repo+'/git/refs','--input',body])}catch{callGh(['api',repo+'/git/ref/heads/'+branch])}
+ }
  let commit;
  for(let attempt=0;attempt<3;attempt++){
-  let sha;try{sha=JSON.parse(gh(['api',path])).sha}catch{ /* first creation; PUT still checks permissions */ }
-  const payload={message:'Update Dazhihui local analysis '+packet.generated_at,content:Buffer.from(JSON.stringify(packet)).toString('base64'),branch:'main',...(sha?{sha}:{})};
+  let sha;try{sha=JSON.parse(callGh(['api',path+'?ref='+branch])).sha}catch{ /* first creation; PUT still checks permissions */ }
+  const payload={message:'Update Dazhihui local analysis '+packet.generated_at,content:Buffer.from(JSON.stringify(packet)).toString('base64'),branch,...(sha?{sha}:{})};
   const body=file+'.upload.json';await writeFile(body,JSON.stringify(payload));
-  try{commit=JSON.parse(gh(['api','--method','PUT',path,'--input',body])).commit.sha;break}catch(e){if(attempt===2)throw e}
+  try{commit=JSON.parse(callGh(['api','--method','PUT',path,'--input',body])).commit.sha;break}catch(e){if(attempt===2)throw e}
  }
- console.log('已提交分析结果，等待网站部署；提交：'+commit);
+ console.log('已提交独立辅助分支，等待公开辅助文件可读取；未修改main或云端股票池。提交：'+commit);
  for(let i=0;i<40;i++){
-  try{const r=await fetch('https://xiaobaibai2046-oss.github.io/xiaobai-first-project/stock/pool-signals.json?v='+Date.now(),{signal:AbortSignal.timeout(10000)});const data=await r.json();if(data.local_update?.run_id===packet.run_id){console.log('网站更新已确认：'+data.local_update.applied_at);return}}catch{}
-  await new Promise(r=>setTimeout(r,15000));
+  try{const data=await readPublished();if(data.mode==='auxiliary'&&data.run_id===packet.run_id){console.log('辅助结果发布已确认：'+data.generated_at+'；云端更新未改动');return}}catch{}
+  await pause(15000);
  }
- throw Error('结果已提交，但10分钟内未确认网站部署；请查看GitHub Actions，不能视为网站更新完成');
+ throw Error('辅助结果已提交，但10分钟内未确认公开文件；不视为辅助更新完成，云端主路径不受影响');
 }
 async function main(){const [command,...args]=process.argv.slice(2);
- if(command==='publish'){await publish(args[0]);return}
+ if(command==='publish'){await publishAux(args[0]);return}
  const [day,minute,output]=args;if(!day||!minute)throw Error('缺少日线和5分钟文件路径');const d=await readFile(day),m=await readFile(minute);
  if(command==='check'){const p=validatePair(d,m);console.log('数据完整：'+p.daily.last_date+'；当天日线、4根60分钟及成交量一致');return}
  if(command!=='analyze'||!output)throw Error('命令须为check、analyze或publish');

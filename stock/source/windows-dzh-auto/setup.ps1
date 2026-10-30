@@ -31,12 +31,14 @@ try {
     if ($LASTEXITCODE -ne 0 -or -not $canPush -or $canPush.Trim() -ne 'true') { throw '当前GitHub账号没有目标仓库的写入权限。' }
     Start-Transcript -Path $log -Append | Out-Null
     if ((Get-TimeZone).Id -ne 'China Standard Time') { throw '需要中国标准时间，未创建任务。' }
+    $legacy=Get-ScheduledTask -TaskName '知衡-大智慧收盘更新-600809' -ErrorAction SilentlyContinue
+    if ($legacy) { Disable-ScheduledTask -TaskName '知衡-大智慧收盘更新-600809' | Out-Null; Write-Host '已停用本工具旧版主池合并任务。' }
     $action=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoLogo -NoProfile -ExecutionPolicy Bypass -File "'+(Join-Path $PSScriptRoot 'run.ps1')+'" -Scheduled') -WorkingDirectory $PSScriptRoot
     $trigger=New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday,Tuesday,Wednesday,Thursday,Friday -At '15:30'
     $principal=New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
     $settings=New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Hours 2) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
-    Register-ScheduledTask -TaskName '知衡-大智慧收盘更新-600809' -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Description '15:30开始检查，数据完整后自动生成、分析和发布；当前仅600809验证。需保持登录、开机、大智慧数据生成窗口可用。' -Force | Out-Null
-    Write-Host '定时任务已创建。现在执行首轮完整更新；网站更新是否成功请以运行状态为准。'
+    Register-ScheduledTask -TaskName '知衡-大智慧辅助更新-600809' -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Description '15:30开始检查，数据完整后自动生成、分析和发布；当前仅600809验证。需保持登录、开机、大智慧数据生成窗口可用。' -Force | Out-Null
+    Write-Host '定时任务已创建。现在执行首轮辅助更新；结果是否公开可读以运行状态为准，云端主路径不变。'
     Stop-Transcript | Out-Null
     & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'run.ps1')
     if ($LASTEXITCODE -ne 0) { throw '首轮更新未成功。定时任务已创建，可在任务计划程序停用或运行卸载脚本。' }

@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parent.parent
 client=root/'windows-dzh-auto'
 engine=['strategy-config.js','dzh-dad.js','macd.js','signal-model.js','conclusion.js','indicators.js','research.js','providers.js','pool-model.js']
 out=root.parent/'dzh-daily-auto.zip'
-prefix='大智慧收盘自动更新/'
+prefix='大智慧辅助自动更新/'
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
     z.writestr(prefix+'source/package.json',json.dumps({'private':True,'type':'module'}))
     for name in engine:z.write(root/name,prefix+'source/'+name)

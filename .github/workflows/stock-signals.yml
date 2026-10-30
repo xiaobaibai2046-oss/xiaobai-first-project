@@ -73,9 +73,7 @@ jobs:
           merge-multiple: true
       - name: Merge current records without overwriting newer analysis
         working-directory: stock/source
-        run: |
-          node scripts/merge-scans.mjs
-          node scripts/apply-local.mjs
+        run: node scripts/merge-scans.mjs
       - name: Build published snapshots
         working-directory: stock/source
         run: npm run build -- ..
