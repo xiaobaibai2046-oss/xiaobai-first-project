@@ -1,5 +1,5 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
-import {shardStocks,planSignalBatch} from './scan-plan.js';
+import {shardStocks,planSignalBatch,retryEligible} from './scan-plan.js';
 import {SIGNAL_RULE} from './signal-model.js';
 import {mkdtemp,mkdir,writeFile,readFile,copyFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';import {execFileSync} from 'node:child_process';
 const stocks=Array.from({length:1264},(_,i)=>({code:String(600000+i)}));const now=new Date('2026-10-30T04:00:00Z');
@@ -8,3 +8,15 @@ test('four independent shards cover all 1264 stocks once, independent of pool RO
 test('each completed hour refreshes the entire pool rather than rotating a 240-stock ceiling',()=>{const records=Object.fromEntries(stocks.map(s=>[s.code,record(s.code)]));assert.equal(planSignalBatch(stocks,records,{now}).length,0);const next=new Date('2026-10-30T06:01:00Z');const planned=[0,1,2,3].flatMap(shard=>planSignalBatch(stocks,records,{shard,shards:4,now:next}));assert.equal(planned.length,1264);const limited=planSignalBatch(stocks,records,{now:next,limit:10});assert.equal(limited.length,10)});
 test('never scanned and oldest failures are checked ahead of recently failed records',()=>{const selected=stocks.slice(0,3),records={[selected[0].code]:{...record(selected[0].code),state:'incomplete'},[selected[1].code]:{...record(selected[1].code,'2026-10-29T03:45:00Z'),state:'incomplete'}};assert.deepEqual(planSignalBatch(selected,records,{now}).map(s=>s.code),[selected[2].code,selected[1].code,selected[0].code])});
 test('shard merge keeps newer records, excludes outsiders and reports missing groups',async()=>{const root=await mkdtemp(join(tmpdir(),'signal-merge-'));try{await mkdir(join(root,'scripts'));await mkdir(join(root,'scan-results'));for(const f of ['signal-model.js','strategy-config.js'])await copyFile(new URL(f,import.meta.url),join(root,f));await copyFile(new URL('scripts/merge-scans.mjs',import.meta.url),join(root,'scripts/merge-scans.mjs'));await writeFile(join(root,'package.json'),'{"type":"module"}');const code=stocks[0].code;const old=record(code,'2026-10-29T03:45:00Z'),fresh=record(code);await writeFile(join(root,'pool-2025.json'),JSON.stringify({stocks:[{code}]}));await writeFile(join(root,'pool-signals.json'),JSON.stringify({rule:'previous-rule',results:{[code]:fresh}}));await writeFile(join(root,'scan-results/shard-0.json'),JSON.stringify({rule:SIGNAL_RULE,results:{[code]:old,'999999':record('999999')},background:{status:'batch_complete',checked:1,batch_total:1}}));execFileSync(process.execPath,[join(root,'scripts/merge-scans.mjs')]);const merged=JSON.parse(await readFile(join(root,'pool-signals.json'),'utf8'));assert.equal(merged.rule,SIGNAL_RULE);assert.equal(merged.results[code].checked_at,fresh.checked_at);assert.equal(merged.results['999999'],undefined);assert.equal(merged.background.status,'partial');assert.equal(merged.background.shards_received,1);assert.match(merged.background.message,/缺失/)}finally{await rm(root,{recursive:true,force:true})}});
+
+test('coverage failures cool down without suppressing the next completed hour',()=>{
+ const r={...record('600809','2026-10-30T03:50:00Z'),state:'incomplete',errors:{hourly:'没有返回 m60 K线'}};
+ assert.equal(retryEligible(r,now),false);
+ assert.equal(retryEligible(r,new Date('2026-10-30T04:51:00Z')),true);
+ assert.equal(retryEligible(r,new Date('2026-10-30T06:00:00Z')),true);
+ assert.equal(planSignalBatch([{code:r.code}],{[r.code]:r},{now}).length,0);
+ assert.equal(r.state,'incomplete');
+ const network={...r,checked_at:'2026-10-30T03:58:00Z',errors:{hourly:'网络超时'}};
+ assert.equal(retryEligible(network,now),false);
+ assert.equal(retryEligible(network,new Date('2026-10-30T04:04:00Z')),true);
+});

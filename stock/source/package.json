@@ -5,7 +5,7 @@
   "scripts": {
     "start": "python3 server.py",
     "test": "node --test",
-    "test:api": "python3 -m unittest -v test_server.py test_pool_data.py",
+    "test:api": "python3 -m unittest -v test_server.py test_pool_data.py test_cloud_cache.py",
     "build": "node scripts/build-static.mjs",
     "refresh:pool": "python3 scripts/refresh-pool.py",
     "scan:pool": "node scripts/scan-pool.mjs"

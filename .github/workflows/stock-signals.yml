@@ -12,6 +12,7 @@ on:
       - 'stock/source/macd.js'
       - 'stock/source/signal-model.js'
       - 'stock/source/server.py'
+      - 'stock/source/cloud_cache.py'
   workflow_dispatch:
   schedule:
     # Beijing 10:05–15:50 every 15 min; 16:05 completed daily-bar refresh.
@@ -40,12 +41,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-market-cache
+          key: market-bars-v1-${{ matrix.shard }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: market-bars-v1-${{ matrix.shard }}-
       - name: Scan one disjoint quarter; preserve progress on timeout
         working-directory: stock/source
         env:
           SCAN_SHARD: ${{ matrix.shard }}
           SCAN_SHARDS: '4'
           SCAN_SECONDS: '720'
+          CLOUD_MARKET_CACHE: ${{ runner.temp }}/stock-market-cache
         run: npm run scan:pool
       - uses: actions/upload-artifact@v4
         if: always()
