@@ -19,14 +19,14 @@ try {
     $target=$candidates[0]
     $worker=Get-Content -LiteralPath (Join-Path $target 'worker.mjs') -Raw -Encoding UTF8
     if (-not $worker.Contains("branch='dzh-aux-data'")) { throw '所选工具不是独立辅助版，停止。请保留云端主路径。' }
-    $names=@('export-ui.ps1','selection-policy.ps1','setup.ps1')
+    $names=@('export-ui.ps1','selection-policy.ps1','native-list.ps1','native-list.cs','setup.ps1')
     $manifest=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'payload-sha256.json') -Raw -Encoding UTF8 | ConvertFrom-Json
     foreach ($name in $names) {
         $payload=Join-Path (Join-Path $PSScriptRoot 'payload') $name
         $hash=(Get-FileHash -LiteralPath $payload -Algorithm SHA256).Hash.ToLowerInvariant()
         if (-not $manifest.$name -or $hash -cne $manifest.$name) { throw ('修复包校验失败：'+$name+'。尚未修改原工具。') }
     }
-    $backup=Join-Path $target ('r3备份_'+[Guid]::NewGuid().ToString('N'))
+    $backup=Join-Path $target ('r4备份_'+[Guid]::NewGuid().ToString('N'))
     New-Item -ItemType Directory -Path $backup | Out-Null
     foreach ($name in $names) {
         $existing=Join-Path $target $name

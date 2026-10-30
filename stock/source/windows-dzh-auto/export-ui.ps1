@@ -39,12 +39,12 @@ function Get-DzhCheckRecord($Element) {
     return [PSCustomObject]@{Name=(UiName $Element);Enabled=$Element.Current.IsEnabled;ToggleState=$toggleState;LegacyState=$legacyState}
 }
 function Save-DzhUiReport([object[]]$Items,[string]$Path) {
-    $lines=@('辅助工具r3：只读控件属性，用于检查列表项勾选；不记录账户凭据。')
+    $lines=@('辅助工具r4：只读控件属性，用于检查列表项勾选；不记录账户凭据。')
     foreach ($e in $Items) {
         try {
             $r=Get-DzhCheckRecord $e
             $legacy=if ($null -ne $r.LegacyState) { '0x'+('{0:X8}' -f $r.LegacyState) } else { 'unavailable' }
-            $lines+=((UiName $e)+' ['+$e.Current.ControlType.ProgrammaticName+'] Class='+$e.Current.ClassName+' Id='+$e.Current.AutomationId+' Enabled='+$r.Enabled+' Toggle='+$r.ToggleState+' LegacyState='+$legacy)
+            $lines+=((UiName $e)+' ['+$e.Current.ControlType.ProgrammaticName+'] Class='+$e.Current.ClassName+' Id='+$e.Current.AutomationId+' Handle='+$e.Current.NativeWindowHandle+' PID='+$e.Current.ProcessId+' Enabled='+$r.Enabled+' Toggle='+$r.ToggleState+' LegacyState='+$legacy)
         } catch { $lines+='[控件读取失败：'+$_.Exception.Message+']' }
     }
     $lines | Set-Content -LiteralPath $Path -Encoding UTF8
@@ -65,7 +65,24 @@ function Export-Dzh([string]$Period,[string]$Path) {
     }
     if ($candidates.Count -ne 1) { throw '未唯一识别包含600809的市场列表，停止。' }
     $states=@($candidates[0].Rows | ForEach-Object { Get-DzhCheckRecord $_ })
-    Assert-DzhStockChecks $states
+    try { Assert-DzhStockChecks $states }
+    catch {
+        # Only an unreadable interface can trigger the read-only native fallback.
+        # Known UIA states must agree with the native result; ambiguity still stops.
+        if (@($states | Where-Object { -not $_.ToggleState -and $null -eq $_.LegacyState }).Count -eq 0) { throw }
+        foreach ($state in $states) {
+            if ($state.ToggleState -and $state.ToggleState -notin @('On','Off')) { throw 'UIA勾选状态不确定，停止。' }
+            if ($null -ne $state.LegacyState -and (([uint32]$state.LegacyState -band 0x20) -ne 0)) { throw '可访问勾选状态不确定，停止。' }
+        }
+        . (Join-Path $PSScriptRoot 'native-list.ps1')
+        $nativeStates=@(Read-DzhNativeChecks $candidates[0].List $candidates[0].Rows)
+        if ($nativeStates.Count -ne $states.Count) { throw '原生列表状态数量不一致。' }
+        for ($i=0;$i -lt $states.Count;$i++) {
+            if ($states[$i].ToggleState -and $states[$i].ToggleState -cne $nativeStates[$i].ToggleState) { throw 'UIA与原生列表状态矛盾，停止。' }
+        }
+        $nativeStates | ForEach-Object { 'NativeCheck '+$_.Name+' Image='+$_.NativeImage+' Checked='+$_.ToggleState } | Add-Content -LiteralPath (Join-Path $PSScriptRoot 'work\界面连接报告.txt') -Encoding UTF8
+        Assert-DzhStockChecks $nativeStates
+    }
     Write-Host '已核对列表项勾选状态：只选600809，其他市场／个股均未勾选。'
     $radios = @($items | Where-Object { (UiName $_) -eq $Period -and $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::RadioButton })
     if ($radios.Count -ne 1) { throw ('无法可靠识别周期：'+$Period) }
