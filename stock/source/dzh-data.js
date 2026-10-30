@@ -1,4 +1,5 @@
-// Dazhihui text exports only. This does not connect to a desktop process or SDK.
+import {parseDzhDad} from './dzh-dad.js';
+// Dazhihui exported files only. This does not connect to a desktop process or SDK.
 const datasets=new Map();
 export function parseDzhText(text,{now=new Date(),skipInvalid=false}={}){
  const lines=String(text).replace(/^\uFEFF/,'').trim().split(/\r?\n/);const title=lines.shift()||'';
@@ -33,17 +34,17 @@ export function clearDzhData(){datasets.clear()}
 export function getDzhData(path){const u=new URL(path,'https://local.invalid');const kind=u.pathname==='/api/history'?'history':u.pathname==='/api/hourly'?'hourly':null;return kind?datasets.get(kind+':'+u.searchParams.get('code'))||null:null}
 export function mountDzhImport(){
  const root=document.querySelector('#dzh-import');if(!root)return;
- root.innerHTML=`<details><summary>接入大智慧导出文件（试运行）</summary><p>选择大智慧导出的日线和／或60分钟TXT文件。导入后该股票优先使用文件K线；未导入的周期、报价和财务仍读取公开接口。文件仅在本次页面打开期间使用，不上传、不自动刷新、不跨设备同步。</p><label>文本编码<select id="dzhencoding"><option value="utf-8">UTF-8（含聊天粘贴保存的文本）</option><option value="gb18030">GB18030／ANSI（中文Windows导出）</option></select></label><label>选择文件（可多选）<input id="dzhfiles" type="file" accept=".txt,.tsv" multiple></label><label><input id="dzhunadjusted" type="checkbox">我已确认这些文件来自不复权图表</label><label><input id="dzhskip" type="checkbox">允许跳过异常行，并在下方列出明细</label><div class="actions"><button id="dzhload" type="button">载入文件</button><button id="dzhclear" type="button">清除已导入行情</button></div><p id="dzhstatus" class="small" role="status">尚未载入大智慧文件；尚未建立大智慧实时连接。</p></details>`;
+ root.innerHTML=`<details><summary>接入大智慧导出文件（试运行）</summary><p>选择大智慧单只股票的日线／5分钟DAD，或日线／60分钟TXT文件。5分钟DAD仅在每组12根齐全时合成60分钟线。导入后该股票优先使用文件K线；未导入的周期、报价和财务仍读取公开接口。文件仅在本次页面打开期间使用，不上传、不自动刷新、不跨设备同步。</p><label>TXT文本编码（DAD不需要选择）<select id="dzhencoding"><option value="utf-8">UTF-8（含聊天粘贴保存的文本）</option><option value="gb18030">GB18030／ANSI（中文Windows导出）</option></select></label><label>选择文件（可多选）<input id="dzhfiles" type="file" accept=".txt,.tsv,.dad" multiple></label><label><input id="dzhunadjusted" type="checkbox">我已确认这些文件来自不复权图表</label><label><input id="dzhskip" type="checkbox">允许跳过异常行，并在下方列出明细</label><div class="actions"><button id="dzhload" type="button">载入文件</button><button id="dzhclear" type="button">清除已导入行情</button></div><p id="dzhstatus" class="small" role="status">尚未载入大智慧文件；尚未建立大智慧实时连接。</p></details>`;
  if(location.hash==='#dzh-import')root.querySelector('details').open=true;
  const $=id=>root.querySelector(id);let generation=0;
  $('#dzhload').onclick=async()=>{const run=++generation;$('#dzhload').disabled=true;try{
   if(!$('#dzhunadjusted').checked)throw Error('请先在大智慧确认复权设置，再勾选“不复权”');
-  const encoding=$('#dzhencoding').value,skipInvalid=$('#dzhskip').checked;const files=[...$('#dzhfiles').files];if(!files.length)throw Error('请选择导出的TXT或TSV文件');if(files.length>20)throw Error('每次最多20个文件');
-  const loaded=[];for(const f of files){if(f.size>8*1024*1024)throw Error('单文件不能超过8MB');const bytes=await f.arrayBuffer();const text=new TextDecoder(encoding,{fatal:true}).decode(bytes);loaded.push(parseDzhText(text,{skipInvalid}))}
+  const encoding=$('#dzhencoding').value,skipInvalid=$('#dzhskip').checked;const files=[...$('#dzhfiles').files];if(!files.length)throw Error('请选择导出的DAD、TXT或TSV文件');if(files.length>20)throw Error('每次最多20个文件');
+  const loaded=[];for(const f of files){if(f.size>8*1024*1024)throw Error('单文件不能超过8MB');const bytes=await f.arrayBuffer();if(/\.dad$/i.test(f.name))loaded.push(parseDzhDad(bytes,{skipInvalid}));else{const text=new TextDecoder(encoding,{fatal:true}).decode(bytes);loaded.push(parseDzhText(text,{skipInvalid}))}}
   if(run!==generation)return;
   const duplicate=new Set();for(const d of loaded){const key=d.code+':'+d.kind;if(duplicate.has(key))throw Error('同一股票周期一次只能载入一个文件');duplicate.add(key)}
   for(const d of loaded)setDzhData(d);
-  $('#dzhstatus').textContent=loaded.map(d=>`${d.code} ${d.name} ${d.kind==='hourly'?'60分钟':'日线'}：${d.bars.length}根，截至${d.last_time||d.last_date}；未完成${d.import_report.unfinished}根；跳过异常${d.import_report.issues.length}行。${d.import_report.issues.map(x=>'第'+x.line+'行：'+x.message).join('；')}`).join('\n')+' 请点击“一键分析”重新计算；旧结论不会自动改写。';
+  $('#dzhstatus').textContent=loaded.map(d=>`${d.code} ${d.name} ${d.kind==='hourly'?'60分钟':'日线'}：${d.bars.length}根，截至${d.last_time||d.last_date}；未完成${d.import_report.unfinished}根；跳过异常${d.import_report.issues.length}条；缺失／未完成的60分钟组${d.import_report.incomplete_groups?.length||0}组。${d.import_report.issues.map(x=>'第'+(x.line||x.record)+(x.line?'行':'条')+'：'+x.message).join('；')}`).join('\n')+' 请点击“一键分析”重新计算；旧结论不会自动改写。';
   const input=document.querySelector('#quickcode');input.value=loaded[0].code;input.dispatchEvent(new Event('input',{bubbles:true}));
  }catch(e){if(run===generation)$('#dzhstatus').textContent='未导入：'+e.message+'。此前已成功导入的数据仍保留。'}finally{if(run===generation)$('#dzhload').disabled=false}};
  $('#dzhclear').onclick=()=>{generation++;clearDzhData();$('#dzhload').disabled=false;$('#dzhstatus').textContent='已清除本次页面的大智慧文件，下次分析恢复读取公开接口；股票池已缓存的历史检查结果保留。';const input=document.querySelector('#quickcode');input.dispatchEvent(new Event('input',{bubbles:true}))};
