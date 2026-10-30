@@ -10,7 +10,7 @@ prefix='大智慧辅助自动更新/'
 with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
     z.writestr(prefix+'source/package.json',json.dumps({'private':True,'type':'module'}))
     for name in engine:z.write(root/name,prefix+'source/'+name)
-    allowed=['worker.mjs','export-ui.ps1','run.ps1','setup.ps1','remove-task.ps1','01安装与首次连接.cmd','02立即更新.cmd','03移除定时任务.cmd','使用说明.txt']
+    allowed=['worker.mjs','runtime.ps1','export-ui.ps1','run.ps1','setup.ps1','remove-task.ps1','01安装与首次连接.cmd','02立即更新.cmd','03移除定时任务.cmd','使用说明.txt']
     for name in allowed:
         p=client/name
         if not p.is_file():raise FileNotFoundError(name)

@@ -20,6 +20,8 @@ try {
     if (-not $held) { throw '已有任务运行，本次停止，避免同时操作大智慧。' }
     if ((Get-TimeZone).Id -ne 'China Standard Time') { throw '本机时区需为中国标准时间；工具不会修改系统时区。' }
     if ($Scheduled -and (Get-Date).DayOfWeek -in @([DayOfWeek]::Saturday,[DayOfWeek]::Sunday)) { Note '周末跳过。'; exit 0 }
+    . (Join-Path $PSScriptRoot 'runtime.ps1')
+    Enable-DzhRuntime
     . (Join-Path $PSScriptRoot 'export-ui.ps1')
     $script:NodeExe=(Get-Command node -ErrorAction Stop).Source
     $worker=Join-Path $PSScriptRoot 'worker.mjs'
