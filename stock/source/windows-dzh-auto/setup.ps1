@@ -9,7 +9,7 @@ function SetupNote([string]$Message) {
 try {
     if ($env:OS -ne 'Windows_NT') { throw '此工具需要Windows桌面环境。' }
     . (Join-Path $PSScriptRoot 'runtime.ps1')
-    SetupNote '辅助安装修正版：不使用winget，不重置系统软件源，不改动云端更新路径。'
+    SetupNote '辅助工具r3（列表项勾选兼容）：不使用winget，不重置系统软件源，不改动云端更新路径。'
     Ensure-DzhNode
     SetupNote 'Node运行环境已就绪。先检查大智慧控件和当天数据。'
     & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'run.ps1') -CheckOnly

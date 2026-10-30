@@ -1,6 +1,7 @@
 # Only accessibility patterns on the verified Dazhihui data-generation dialog.
 Add-Type -AssemblyName UIAutomationClient
 Add-Type -AssemblyName UIAutomationTypes
+. (Join-Path $PSScriptRoot 'selection-policy.ps1')
 function UiName($Element) { return $Element.Current.Name.Replace('&','').Trim() }
 function Get-DzhDialog {
     $windows = [System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,[System.Windows.Automation.Condition]::TrueCondition)
@@ -25,22 +26,47 @@ function Require-Selection($Element) {
     if (-not $Element.TryGetCurrentPattern([System.Windows.Automation.SelectionItemPattern]::Pattern,[ref]$p)) { throw ('控件不提供可验证的选择状态：'+(UiName $Element)) }
     if (-not $p.Current.IsSelected) { throw ('请先选中：'+(UiName $Element)) }
 }
+function Get-DzhCheckRecord($Element) {
+    $toggleState=$null; $legacyState=$null
+    try {
+        $p=$null
+        if ($Element.TryGetCurrentPattern([System.Windows.Automation.TogglePattern]::Pattern,[ref]$p)) { $toggleState=[string]$p.Current.ToggleState }
+    } catch {}
+    try {
+        $p=$null
+        if ($Element.TryGetCurrentPattern([System.Windows.Automation.LegacyIAccessiblePattern]::Pattern,[ref]$p)) { $legacyState=[uint32]$p.Current.State }
+    } catch {}
+    return [PSCustomObject]@{Name=(UiName $Element);Enabled=$Element.Current.IsEnabled;ToggleState=$toggleState;LegacyState=$legacyState}
+}
+function Save-DzhUiReport([object[]]$Items,[string]$Path) {
+    $lines=@('辅助工具r3：只读控件属性，用于检查列表项勾选；不记录账户凭据。')
+    foreach ($e in $Items) {
+        try {
+            $r=Get-DzhCheckRecord $e
+            $legacy=if ($null -ne $r.LegacyState) { '0x'+('{0:X8}' -f $r.LegacyState) } else { 'unavailable' }
+            $lines+=((UiName $e)+' ['+$e.Current.ControlType.ProgrammaticName+'] Class='+$e.Current.ClassName+' Id='+$e.Current.AutomationId+' Enabled='+$r.Enabled+' Toggle='+$r.ToggleState+' LegacyState='+$legacy)
+        } catch { $lines+='[控件读取失败：'+$_.Exception.Message+']' }
+    }
+    $lines | Set-Content -LiteralPath $Path -Encoding UTF8
+}
 function Export-Dzh([string]$Period,[string]$Path) {
     $dialog = Get-DzhDialog
     $items = @(Get-DzhElements $dialog)
-    $items | ForEach-Object { (UiName $_) + ' [' + $_.Current.ControlType.ProgrammaticName + ']' } | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'work\界面连接报告.txt') -Encoding UTF8
+    Save-DzhUiReport $items (Join-Path $PSScriptRoot 'work\界面连接报告.txt')
     $tabs = @($items | Where-Object { (UiName $_) -eq '生成数据' -and $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::TabItem })
     if ($tabs.Count -ne 1) { throw '无法可靠识别“生成数据”标签，停止。可发送work里的界面连接报告，不需再导出行情。' }
     Require-Selection $tabs[0]
-    $codes = @($items | ForEach-Object { [regex]::Matches((UiName $_),'(?<!\d)\d{6}(?!\d)') } | ForEach-Object { $_.Value } | Select-Object -Unique)
-    if ($codes.Count -ne 1 -or $codes[0] -ne '600809') { throw '本次连接验证必须只选择600809；不会把单股当作全池。' }
-    $checks = @($items | Where-Object { $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::CheckBox })
-    if ($checks.Count -eq 0) { throw '无法核实市场复选框，停止，不使用固定坐标。' }
-    foreach ($box in $checks) {
-        $toggle = $null
-        if (-not $box.TryGetCurrentPattern([System.Windows.Automation.TogglePattern]::Pattern,[ref]$toggle)) { throw '市场复选框不支持可靠状态读取。' }
-        if ($toggle.Current.ToggleState -ne [System.Windows.Automation.ToggleState]::Off -and (UiName $box) -notmatch '600809') { throw ('请取消其他市场／个股的勾选：'+(UiName $box)) }
+    # The actual user's report shows List1/ListItem, not CheckBox controls.
+    $candidates=@()
+    $condition=[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::ControlTypeProperty,[System.Windows.Automation.ControlType]::ListItem)
+    foreach ($list in @($items | Where-Object { $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::List })) {
+        $rows=@(); foreach ($entry in $list.FindAll([System.Windows.Automation.TreeScope]::Descendants,$condition)) { $rows+=$entry }
+        if (@($rows | Where-Object { (UiName $_) -match '^600809(?!\d)' }).Count -eq 1) { $candidates += [PSCustomObject]@{List=$list;Rows=$rows} }
     }
+    if ($candidates.Count -ne 1) { throw '未唯一识别包含600809的市场列表，停止。' }
+    $states=@($candidates[0].Rows | ForEach-Object { Get-DzhCheckRecord $_ })
+    Assert-DzhStockChecks $states
+    Write-Host '已核对列表项勾选状态：只选600809，其他市场／个股均未勾选。'
     $radios = @($items | Where-Object { (UiName $_) -eq $Period -and $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::RadioButton })
     if ($radios.Count -ne 1) { throw ('无法可靠识别周期：'+$Period) }
     $select = $null

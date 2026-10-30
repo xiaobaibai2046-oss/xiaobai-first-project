@@ -137,10 +137,13 @@ DAD试运行：同一导入入口新增`.dad`，支持本次已验证的大智�
 
 缓存报告后续：用户2026-10-30 15:33—15:35的元数据报告列出8288个文件、0变化（非连续交易时段）。已定位SH的DAY_2.DAT、DAY_2.DAT.dat、MIN_2.DAT、MIN_2.DAT.dat，仅凭名称不能断言其二进制布局或周期。一次性采样包`/stock/dzh-cache-sample.zip`仅共享只读复制这4个已确认的市场缓存，不碰账户目录，不操作UI或联网；单文件16MB上限、校验前后文件长度和修改时间并记录SHA256。多文件副本非原子，后续必须验证。仍未声称原生缓存解析、盘中时效和每小时自动同步成功。
 
-大智慧收盘辅助自动更新试运行：`/stock/dzh-daily-auto.zip?v=portable-r2`，可用`python3 scripts/build-dzh-auto.py`重建。当前仅600809验证，Windows UI Automation、任务计划、GitHub本机授权尚需实机验证；不声称全池接通。安装先检查控件和当天完整DAD，再网页登录授权并建立周一至周五15:30交互式任务；当前策略16:00确认当日日线，每5分钟重试到16:30，失败保留旧辅助结果。必须电脑开机联网、用户与大智慧已登录、生成数据窗口可识别且只选600809/60天/不复权。不会盲点、操作交易或未知弹窗。只覆盖`D:\DZH_Export\自动更新\auto_day.dad`与`auto_5min.dad`。修正版r2缺少组件时直接下载官方Node24 LTS和GitHub CLI的Windows便携版，并对照官方SHA256清单校验；组件仅位于工具runtime目录，按进程启用PATH，不使用winget、不重置软件源、不做全局安装；程序不保存令牌。
+大智慧收盘辅助自动更新试运行：`/stock/dzh-daily-auto.zip?v=listitem-r3`，可用`python3 scripts/build-dzh-auto.py`重建。当前仅600809验证，Windows UI Automation、任务计划、GitHub本机授权尚需实机验证；不声称全池接通。安装先检查控件和当天完整DAD，再网页登录授权并建立周一至周五15:30交互式任务；当前策略16:00确认当日日线，每5分钟重试到16:30，失败保留旧辅助结果。必须电脑开机联网、用户与大智慧已登录、生成数据窗口可识别且只选600809/60天/不复权。不会盲点、操作交易或未知弹窗。只覆盖`D:\DZH_Export\自动更新\auto_day.dad`与`auto_5min.dad`。修正版r2缺少组件时直接下载官方Node24 LTS和GitHub CLI的Windows便携版，并对照官方SHA256清单校验；组件仅位于工具runtime目录，按进程启用PATH，不使用winget、不重置软件源、不做全局安装；程序不保存令牌。
 
 用户明确要求云端主路径不可受大智慧影响。已移除原本的本机结果主池合并：原stock-signals.yml恢复原内容，无本机依赖，发布与扫描不等电脑。辅助程序只写独立分支`dzh-aux-data`的`aux/dzh-signals.json`，读取main的SHA仅为首次创建分支，不对main进行提交，不触发主路径Actions或Pages重建。没有辅助合并工作流。辅助页面`#dzh-aux`展开后才单独读取raw.githubusercontent.com，不合并缓存、不触发stock-analysis-complete、不修改云端信号及计数；失败与过期只在辅助区说明。导入DAD/TXT仅供单股辅助分析，共用API和手机池扫描仍读取云端来源；历史大智慧派生的主池浏览器缓存会被过滤。新安装会停用本工具旧版主池合并任务。
 
 辅助程序仅上传派生信号，不上传行情原件或账户凭据。GitHub CLI授权可能宽于单分支，用户需审阅官方授权页；代码写入目标固定为辅助分支。公开辅助结果确认独立于Pages，最多轮询10分钟，不把提交当成读取成功。源码包使用固定白名单，不含用户数据、令牌、安装日志或work目录。需要更新规则时重新下载客户端；版本不兼容只影响辅助展示，不影响云端。
 
 安装修复r2：用户实机winget 0x8a15000f导致Node缺失，安装异常处理又与Start-Transcript竞争日志。本版移除transcript并用显式阶段日志；认证输出不记录。新增runtime.ps1，官方HTTPS及文件名白名单、SHA256唯一匹配、字节型HTTP校验清单UTF-8解码、校验失败禁止解压执行。runtime.tests.ps1使用不执行的伪exe压缩夹具验证校验失败/成功、URL限制、依赖失败仍可写日志和退出码；在官方PowerShell7.4.6 Linux解释器通过，Windows UI仍待用户实机验证。官方Node24和GitHub CLI当前Windows资产及校验清单已通过只读网络核对。云端工作流、数据源和辅助独立分支设计不变。
+
+列表兼容修复r3：用户真实界面连接报告包含List1/ListItem而无CheckBox；已将勾选校验限定到唯一包含600809的列表，读取ListItem的TogglePattern或LegacyIAccessible.State Checked位。Legacy路径须以600809真实Checked锚定，不将Selected高亮位当作勾选；要求目标已启用且仅目标勾选，其他状态缺失/混合或其他选中均拒绝。selection-policy.tests.ps1通过14个检查场景，包括Highlight≠Checked。详细报告新增Class/AutomationId/Enabled/Toggle/LegacyState，不写账户值。尚未证明本机提供可用的Checked接口，Windows真实读取仍须验证。
+小补丁`/stock/dzh-ui-fix-r3.zip`保留旧运行环境，由OpenFileDialog让用户选择原01启动文件，不猜安装路径；校验辅助worker独立分支签名和3个脚本SHA256，备份后替换export-ui/selection-policy/setup，再启动原辅助工具。补丁应用阶段仅更新本工具3个脚本并备份，保留运行环境、DAD、授权和任务；随后原安装流程会按已有设计继续授权与辅助任务配置，云端主路径不变。源码在apply-ui-fix.ps1，完整包与补丁均由build-dzh-auto.py重建。
