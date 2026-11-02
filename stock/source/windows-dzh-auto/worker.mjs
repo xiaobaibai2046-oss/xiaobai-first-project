@@ -6,7 +6,7 @@ export function validatePair(dayBytes,minuteBytes,now=new Date()){
  const daily=parseDzhDad(dayBytes,{now}),hourly=parseDzhDad(minuteBytes,{now});
  if(daily.kind!=='history'||hourly.kind!=='hourly'||daily.code!=='600809'||hourly.code!==daily.code)throw Error('本试运行仅支持600809单股的日线及5分钟DAD；未将单股视为全池');
  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
- if(expectedSignalTime(now,'daily')!==today)throw Error('当前规则等待北京时间16:00后确认当日日线；请稍后自动重试');
+ if(expectedSignalTime(now,'daily')!==today)throw Error('当日日线尚未收盘，等待完整收盘数据后自动重试');
  if(daily.last_date!==today||hourly.last_time!==today+'T15:00:00+08:00')throw Error('日线或5分钟文件尚未覆盖当天收盘；保留网站旧结果，等待重试');
  if(daily.bars.length<20||hourly.bars.length<100||hourly.import_report.issues.length||hourly.import_report.incomplete_groups.length)throw Error('数据条数不足、异常或存在不完整60分钟组，停止发布');
  const rows=hourly.bars.filter(b=>b.endTime.startsWith(today));if(rows.length!==4)throw Error('当天必须有4根完整60分钟K线');

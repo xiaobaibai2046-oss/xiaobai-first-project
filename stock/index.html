@@ -23,6 +23,43 @@ const BOTTOM_PRICE_TOLERANCE=0.003;
 
 return {BOTTOM_PRICE_TOLERANCE};
 })();
+__modules["./signal-model.js"]=(()=>{
+const {BOTTOM_PRICE_TOLERANCE}=__modules["./strategy-config.js"];
+const SIGNAL_RULE='ma20-m60-dif-v2-bottom-tol-'+Math.round(BOTTOM_PRICE_TOLERANCE*1000000);
+const sessionCache=new Map();
+function expectedSignalTime(now=new Date(),kind='hourly'){
+ const cacheKey=kind+'|'+Math.floor(now.getTime()/60000);if(sessionCache.has(cacheKey))return sessionCache.get(cacheKey);
+ const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now).map(x=>[x.type,x.value]));let d=new Date(Date.UTC(+p.year,+p.month-1,+p.day));const weekday=d.getUTCDay(),time=+p.hour*60+(+p.minute);let hm=null;
+ if(weekday!==0&&weekday!==6){if(kind==='daily'&&time>=15*60)hm='1500';if(kind==='hourly')hm=['1030','1130','1400','1500'].filter(x=>(+x.slice(0,2))*60+(+x.slice(2))<=time).at(-1)||null}
+ if(!hm){do{d.setUTCDate(d.getUTCDate()-1)}while([0,6].includes(d.getUTCDay()));hm='1500'}const date=d.toISOString().slice(0,10);const value=kind==='daily'?date:`${date}T${hm.slice(0,2)}:${hm.slice(2)}:00+08:00`;if(sessionCache.size>32)sessionCache.delete(sessionCache.keys().next().value);sessionCache.set(cacheKey,value);return value;
+}
+function signalRecord(summary,checkedAt=new Date()){
+ const day=summary.technical?.date||null,hour=summary.macd?.asOf||null;
+ const dailyOK=!!day&&day===expectedSignalTime(checkedAt,'daily'),hourlyOK=!!hour&&hour===expectedSignalTime(checkedAt);
+ const daySell=dailyOK&&summary.technical?.close<summary.technical?.ma20,topSell=hourlyOK&&summary.macd?.bearish?.active;
+ let state,dependencies={daily:true,hourly:true},reasons=[];
+ if(daySell||topSell){state='sell';dependencies={daily:!!daySell,hourly:!daySell};reasons=summary.tradeHints.sell.reasons}
+ else if(summary.tradeHints.buy.triggered&&dailyOK&&hourlyOK){state='buy';reasons=summary.tradeHints.buy.reasons}
+ else if(!dailyOK||!hourlyOK){state='incomplete';reasons=[...(!dailyOK?['日线未更新至最新已完成交易日']:[]),...(!hourlyOK?['60分钟数据未更新至最新已完成时段']:[]),...summary.missing.filter(x=>/日线|60分钟|K线|成交量|MACD/.test(x)),...Object.values(summary.errors||{})];}
+ else{
+  const candidate=summary.technical?.trend&&summary.macd?.bullish?.active;
+  state=candidate&&summary.missing.length?'incomplete':'none';reasons=state==='incomplete'?summary.missing:[...summary.tradeHints.buy.reasons,...(summary.status==='risk'?summary.risks:[])];
+ }
+ const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
+ return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
+}
+function signalState(record,now=new Date()){
+ if(!record)return 'unscanned';if(record.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(record.state)||!Number.isFinite(Date.parse(record.checked_at))||Date.parse(record.checked_at)>now.getTime()+60000)return 'stale';
+ if(record.state==='buy'&&(!record.dependencies?.daily||!record.dependencies?.hourly)||record.state==='sell'&&!record.dependencies?.daily&&!record.dependencies?.hourly||record.state==='none'&&(!record.dependencies?.daily||!record.dependencies?.hourly))return 'stale';
+ if(record.state==='incomplete')return record.checked_session===expectedSignalTime(now)?'incomplete':'stale';
+ if(record.dependencies?.daily&&(!record.daily_as_of||record.daily_as_of!==expectedSignalTime(now,'daily')))return 'stale';
+ if(record.dependencies?.hourly&&(!record.hourly_as_of||record.hourly_as_of!==expectedSignalTime(now)))return 'stale';return record.state;
+}
+function signalCounts(stocks,records,now=new Date()){const counts={all:stocks.length,buy:0,sell:0,none:0,incomplete:0,pending:0,unscanned:0,stale:0};for(const s of stocks){const k=signalState(records[s.code],now);counts[k]++;if(k==='unscanned'||k==='stale')counts.pending++}return counts}
+function mergeSignals(old,incoming,codes){const out={...old};for(const [code,r] of Object.entries(incoming||{})){if(!r||typeof r!=='object'||!codes.has(code)||r.code!==code||r.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(r.state)||!Array.isArray(r.reasons)||!Number.isFinite(Date.parse(r.checked_at)))continue;if(!out[code]||Date.parse(r.checked_at)>=Date.parse(out[code].checked_at))out[code]=r}return out}
+
+return {SIGNAL_RULE,expectedSignalTime,signalRecord,signalState,signalCounts,mergeSignals};
+})();
 __modules["./macd.js"]=(()=>{
 const {BOTTOM_PRICE_TOLERANCE}=__modules["./strategy-config.js"];
 // EMA seeds with the first close; discard 78 bars before looking for pivots.
@@ -248,6 +285,7 @@ function filterPool(stocks,query='',exchange='all',sort='roe'){
 return {POOL_SOURCE,parsePoolPage,assemblePool,validatePool,displayPoolROE,filterPool};
 })();
 __modules["./providers.js"]=(()=>{
+const {expectedSignalTime}=__modules["./signal-model.js"];
 const {POOL_SOURCE,parsePoolPage,assemblePool}=__modules["./pool-model.js"];
 const {normalizeHourly}=__modules["./macd.js"];
 // Static hosting transport: provider scripts run in an opaque-origin sandbox.
@@ -289,13 +327,14 @@ function normalizeBrowserQuote(text,code){
 function normalizeBrowserHistory(payload,code,clock=chinaClock()){
  const key=marketSymbol(code),obj=payload?.data?.[key],rows=obj?.day;if(payload?.code!==0||!Array.isArray(rows)||!rows.length)throw Error('未返回不复权日线；不会静默改用前复权');
  const seen=new Set(),name=Array.isArray(obj.qt?.[key])?obj.qt[key][1]||code:code;
- const bars=rows.map(row=>{
+ const parsed=rows.map(row=>{
   if(!Array.isArray(row)||row.length<6)throw Error('日线格式变化');const [date,...values]=row;
   const [open,close,high,low,volume]=values.map(providerNumber);
   if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date))||new Date(date).toISOString().slice(0,10)!==date||[open,close,high,low,volume].some(x=>x==null)||Math.min(open,close,high,low)<=0||volume<0||high<Math.max(open,close)||low>Math.min(open,close)||seen.has(date))throw Error('日线包含无效价格、日期或重复数据');seen.add(date);
   return {code,name,date,open,close,high,low,volume};
- }).filter(b=>b.date<clock.date||b.date===clock.date&&clock.hour>=16).sort((a,b)=>a.date.localeCompare(b.date));
- if(!bars.length)throw Error('没有已完成日线');return {code,name,bars,adjustment:'none',source:'腾讯财经公开日线',first_date:bars[0].date,last_date:bars.at(-1).date};
+ });const forming_bar=parsed.find(b=>b.date===clock.date&&clock.hour<15)||null;
+ const bars=parsed.filter(b=>b.date<clock.date||b.date===clock.date&&clock.hour>=15).sort((a,b)=>a.date.localeCompare(b.date));
+ if(!bars.length)throw Error('没有已完成日线');return {code,name,bars,forming_bar,adjustment:'none',source:'腾讯财经公开日线',first_date:bars[0].date,last_date:bars.at(-1).date};
 }
 function normalizeBrowserFinancial(payload,code,today=chinaClock().date){
  if(payload?.success===false||!Array.isArray(payload?.result?.data))throw Error('财务源未返回可用报表');
@@ -310,7 +349,8 @@ function normalizeBrowserFinancial(payload,code,today=chinaClock().date){
  return {code,reports,source:'东方财富数据中心 · 业绩报表 RPT_LICO_FN_CPD',period_basis:'年初至报告期末累计，非单季度、非 TTM；同比以供应商字段为准',warnings:['摘要不能替代公告及审计；未自动核验负债、关联交易和财务真实性','公告日期缺失时不可当作历史已知数据；修订报表不回填到技术回测']};
 }
 async function browserAPI(path,options={}){
- const u=new URL(path,location.href),key=u.pathname+'?'+u.searchParams.toString(),old=browserCache.get(key);
+ const u=new URL(path,location.href),session=u.pathname==='/api/history'?expectedSignalTime(new Date(),'daily'):u.pathname==='/api/hourly'?expectedSignalTime():'';
+ const key=u.pathname+'?'+u.searchParams.toString()+'|'+session,old=browserCache.get(key);
  const ttl=u.pathname==='/api/quotes'?10000:u.pathname==='/api/history'?300000:u.pathname==='/api/hourly'?60000:3600000;
  if(u.searchParams.get('refresh')!=='1'&&old&&Date.now()-old.time<ttl)return {...old.data,cache_hit:true};
  let data;
@@ -367,7 +407,7 @@ function parseDzhDad(input,{now=new Date(),skipInvalid=false}={}){
    for(const price of [open,high,low,close])if(Math.abs(price-Math.round(price*100)/100)>0.0001)throw Error('价格精度超出已验证的A股分单位');
    [open,high,low,close]=[open,high,low,close].map(x=>Math.round(x*100)/100);
    const time=day+'T'+stamp.toISOString().slice(11,16)+':00+08:00';
-   if(period===0?day>today||day===today&&+clock.hour<16:Date.parse(time)>now.getTime()){unfinished++;continue}
+   if(period===0?day>today||day===today&&+clock.hour<15:Date.parse(time)>now.getTime()){unfinished++;continue}
    const bar={code,name:code,open,high,low,close,volume,amount};
    if(period===0)bars.push({...bar,date:day});else{
     const end=minute<=630?630:minute<=690?690:minute<=840?840:900,groupKey=day+'T'+String(Math.floor(end/60)).padStart(2,'0')+':'+String(end%60).padStart(2,'0')+':00+08:00';
@@ -415,7 +455,7 @@ function parseDzhText(text,{now=new Date(),skipInvalid=false}={}){
    if(seen.has(stamp))throw Error('重复K线时间');seen.add(stamp);
    if(raw.slice(1).some(x=>!x||!/^[+\-]?\d+(?:\.\d+)?$/.test(x)))throw Error('价格或成交量缺失／格式无效');
    const [open,high,low,close,volume]=raw.slice(1).map(Number);if([open,high,low,close,volume].some(x=>!Number.isFinite(x))||Math.min(open,high,low,close)<=0||volume<0||high<Math.max(open,close)||low>Math.min(open,close))throw Error('价格关系异常（最高价不得低于收盘等）或成交量无效');
-   if(kind==='hourly'?Date.parse(stamp)>now.getTime():date>today||date===today&&+p.hour<16){unfinished++;continue}
+   if(kind==='hourly'?Date.parse(stamp)>now.getTime():date>today||date===today&&+p.hour<15){unfinished++;continue}
    bars.push({code,name,...(kind==='hourly'?{endTime:stamp}:{date}),open,high,low,close,volume});
   }catch(e){issues.push({line:i+3,message:e.message})}
  }
@@ -517,43 +557,6 @@ function equityChart(result){const values=result.equity.flatMap(x=>[x.value,x.be
 }
 
 return {marketPanel,financePanel,backtestPanel,api,mountIntegrations};
-})();
-__modules["./signal-model.js"]=(()=>{
-const {BOTTOM_PRICE_TOLERANCE}=__modules["./strategy-config.js"];
-const SIGNAL_RULE='ma20-m60-dif-v2-bottom-tol-'+Math.round(BOTTOM_PRICE_TOLERANCE*1000000);
-const sessionCache=new Map();
-function expectedSignalTime(now=new Date(),kind='hourly'){
- const cacheKey=kind+'|'+Math.floor(now.getTime()/60000);if(sessionCache.has(cacheKey))return sessionCache.get(cacheKey);
- const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now).map(x=>[x.type,x.value]));let d=new Date(Date.UTC(+p.year,+p.month-1,+p.day));const weekday=d.getUTCDay(),time=+p.hour*60+(+p.minute);let hm=null;
- if(weekday!==0&&weekday!==6){if(kind==='daily'&&time>=16*60)hm='1500';if(kind==='hourly')hm=['1030','1130','1400','1500'].filter(x=>(+x.slice(0,2))*60+(+x.slice(2))<=time).at(-1)||null}
- if(!hm){do{d.setUTCDate(d.getUTCDate()-1)}while([0,6].includes(d.getUTCDay()));hm='1500'}const date=d.toISOString().slice(0,10);const value=kind==='daily'?date:`${date}T${hm.slice(0,2)}:${hm.slice(2)}:00+08:00`;if(sessionCache.size>32)sessionCache.delete(sessionCache.keys().next().value);sessionCache.set(cacheKey,value);return value;
-}
-function signalRecord(summary,checkedAt=new Date()){
- const day=summary.technical?.date||null,hour=summary.macd?.asOf||null;
- const dailyOK=!!day&&day===expectedSignalTime(checkedAt,'daily'),hourlyOK=!!hour&&hour===expectedSignalTime(checkedAt);
- const daySell=dailyOK&&summary.technical?.close<summary.technical?.ma20,topSell=hourlyOK&&summary.macd?.bearish?.active;
- let state,dependencies={daily:true,hourly:true},reasons=[];
- if(daySell||topSell){state='sell';dependencies={daily:!!daySell,hourly:!daySell};reasons=summary.tradeHints.sell.reasons}
- else if(summary.tradeHints.buy.triggered&&dailyOK&&hourlyOK){state='buy';reasons=summary.tradeHints.buy.reasons}
- else if(!dailyOK||!hourlyOK){state='incomplete';reasons=[...(!dailyOK?['日线未更新至最新已完成交易日']:[]),...(!hourlyOK?['60分钟数据未更新至最新已完成时段']:[]),...summary.missing.filter(x=>/日线|60分钟|K线|成交量|MACD/.test(x)),...Object.values(summary.errors||{})];}
- else{
-  const candidate=summary.technical?.trend&&summary.macd?.bullish?.active;
-  state=candidate&&summary.missing.length?'incomplete':'none';reasons=state==='incomplete'?summary.missing:[...summary.tradeHints.buy.reasons,...(summary.status==='risk'?summary.risks:[])];
- }
- const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
- return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
-}
-function signalState(record,now=new Date()){
- if(!record)return 'unscanned';if(record.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(record.state)||!Number.isFinite(Date.parse(record.checked_at))||Date.parse(record.checked_at)>now.getTime()+60000)return 'stale';
- if(record.state==='buy'&&(!record.dependencies?.daily||!record.dependencies?.hourly)||record.state==='sell'&&!record.dependencies?.daily&&!record.dependencies?.hourly||record.state==='none'&&(!record.dependencies?.daily||!record.dependencies?.hourly))return 'stale';
- if(record.state==='incomplete')return record.checked_session===expectedSignalTime(now)?'incomplete':'stale';
- if(record.dependencies?.daily&&(!record.daily_as_of||record.daily_as_of!==expectedSignalTime(now,'daily')))return 'stale';
- if(record.dependencies?.hourly&&(!record.hourly_as_of||record.hourly_as_of!==expectedSignalTime(now)))return 'stale';return record.state;
-}
-function signalCounts(stocks,records,now=new Date()){const counts={all:stocks.length,buy:0,sell:0,none:0,incomplete:0,pending:0,unscanned:0,stale:0};for(const s of stocks){const k=signalState(records[s.code],now);counts[k]++;if(k==='unscanned'||k==='stale')counts.pending++}return counts}
-function mergeSignals(old,incoming,codes){const out={...old};for(const [code,r] of Object.entries(incoming||{})){if(!r||typeof r!=='object'||!codes.has(code)||r.code!==code||r.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(r.state)||!Array.isArray(r.reasons)||!Number.isFinite(Date.parse(r.checked_at)))continue;if(!out[code]||Date.parse(r.checked_at)>=Date.parse(out[code].checked_at))out[code]=r}return out}
-
-return {SIGNAL_RULE,expectedSignalTime,signalRecord,signalState,signalCounts,mergeSignals};
 })();
 __modules["./dzh-aux.js"]=(()=>{
 const {SIGNAL_RULE,mergeSignals,signalState}=__modules["./signal-model.js"];
@@ -702,7 +705,7 @@ function mountQuick({esc,download,onHistory}){
    const r=summarizeStock({code,quote:values.quote,history:values.history,hourly:values.hourly,financial:values.financial,errors});r.signalSources={daily:values.history?.source||null,hourly:values.hourly?.source||null,quote:values.quoteSource||null,financial:values.financial?.source||null};last=r;if(!values.history?.import_report&&!values.hourly?.import_report)window.dispatchEvent(new CustomEvent('stock-analysis-complete',{detail:r}));
    if(values.history&&values.history.bars.length>=20)onHistory(values.history);
    const list=(xs,empty)=>xs.length?`<ul>${xs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<p class="small">${empty}</p>`;
-   output.innerHTML=`<article class="quickverdict ${r.status}">${values.history?.import_report||values.hourly?.import_report?'<p class="small">本次含大智慧导入行情，仅作辅助分析，不写入云端股票池。</p>':''}<div class="eyebrow">${esc(r.code)} · ${esc(r.name)}</div><h2>${esc(r.title)}</h2><p>${esc(r.action)}</p><div class="tradehints"><section class="tradehint ${r.tradeHints.buy.triggered?'triggerbuy':''}"><h3>买入提示</h3><b>${esc(r.tradeHints.buy.title)}</b>${list(r.tradeHints.buy.reasons,'等待条件')}</section><section class="tradehint ${r.tradeHints.sell.triggered?'triggersell':''}"><h3>卖出提示</h3><b>${esc(r.tradeHints.sell.title)}</b>${list(r.tradeHints.sell.reasons,'等待条件')}</section></div><p class="small">${esc(r.tradeHints.note)}</p>${r.macd?.bullish?`<p class="small">底背离第二拐点：${esc(r.macd.bullish.secondTime)}；算法确认：${esc(r.macd.bullish.confirmedAt)}；本次检查：${esc(r.generatedAt)}。${r.technical&&!r.technical.trend?'日线尚未站上MA20，底背离本身不触发买入。':'买入仍需同时通过MA20、数据和财务检查。'}</p>`:''}<div class="quickmetrics"><div>最新价<strong>${fmt(r.quote?.price)}</strong></div><div>日线趋势<strong>${r.technical?(r.technical.trend?'满足规则':'尚未满足'):'未取得'}</strong></div><div>财报期<strong>${esc(r.report?.period||'未取得')}</strong></div></div>${r.missing.length?`<p class="error">未完成：${esc(r.missing.join('；'))}</p>`:''}</article><div class="grid"><section class="finding"><h3>主要依据</h3>${list(r.reasons,'尚无足够的可核对依据')}</section><section class="finding riskfinding"><h3>需要留意</h3>${list(r.risks,'本次规则未检出明显弱项，不代表没有风险')}</section><section class="finding"><h3>估值判断</h3><p>${esc(r.valuation)}</p></section></div><details class="quickdetails"><summary>查看自动分析的六步明细</summary><ol class="sixsummary"><li><b>约束</b><p>采用通用研究模式；未假定你的资金、期限与可承受亏损，因此不输出个性化买入仓位。</p></li><li><b>股票池</b><p>${esc(r.code)} ${esc(r.name)}；历史 ST、停牌、退市和治理信息未完整核验。</p></li><li><b>企业分析</b><p>报告期 ${esc(r.report?.period||'未取得')}，公告日 ${esc(r.report?.notice_date||'缺失')}；累计归母利润 ${fmt(r.report?.profit)} 元。</p>${list(r.financialChecks?.messages.filter(x=>x.title!=='分析边界').map(x=>x.detail)||[],'财报暂不可用')}</li><li><b>价格</b><p>${esc(r.valuation)} 不把季报 EPS 直接乘以全年市盈率生成目标价。</p></li><li><b>交易条件</b>${r.macd?`<p>60分钟截至 ${esc(r.macd.asOf)}：DIF ${fmt(r.macd.latest.dif)} / DEA ${fmt(r.macd.latest.dea)}；${esc(r.macd.method)}</p>${[r.macd.bullish,r.macd.bearish].filter(Boolean).map(e=>`<p>${e.kind==='bullish'?'底背离':'顶背离'}：拐点 ${esc(e.firstTime)} → ${esc(e.secondTime)}；确认 ${esc(e.confirmedAt)}；${e.active?'最近8根内':'已超出提示有效窗口'}。</p>`).join('')}`:'<p>60分钟数据不足，未判断MACD背离。</p>'}${r.technical?`<p>日线 ${esc(r.technical.date)}：MA20 ${fmt(r.technical.ma20)}；量比 ${fmt(r.technical.ratio)}（当日量 / 前20日均量）；ATR14 ${fmt(r.technical.atr)}。收盘减 2×ATR 为 ${fmt(r.technical.stop)}，仅为波动参考，不是承诺可成交的止损价。</p>`:'<p>缺少日线，未生成趋势和风险距离。</p>'}</li><li><b>复盘与MA20日线独立实验</b><p>${esc(r.simulationNote)}</p>${r.simulation?`<p>${r.simulation.start}—${r.simulation.end}：价格策略收益 ${pc(r.simulation.totalReturn)}，价格基准 ${pc(r.simulation.benchmarkReturn)}，最大回撤 ${pc(r.simulation.maxDrawdown)}，已平仓 ${r.simulation.closedTrades} 笔。${r.simulation.closedTrades<5?'交易样本不足，不能据此判断策略有效。':''}</p><p class="small">收盘信号、下一开盘成交，含费用与滑点；未计分红送转和完整历史涨跌停状态，期末持仓不强制平仓。最新财报没有用于历史交易信号。</p>`:''}</li></ol></details><p class="small">报价时间：${esc(r.quote?.exchange_time||'未取得')}；${esc(values.quoteSource||'报价源未连接')}。日线来源：${esc(values.history?.source||'未取得')}；60分钟来源：${esc(values.hourly?.source||'未取得')}；财报来源：${esc(values.financial?.source||'未取得')}。结论为明确规则生成的研究摘要，不预测收益。</p>${Object.keys(errors).length?`<details><summary>查看未完成的请求</summary>${Object.entries(errors).map(([k,v])=>`<p class="small">${esc({quote:'报价',history:'日线',hourly:'60分钟',financial:'财报'}[k])}：${esc(v)}</p>`).join('')}</details>`:''}<div class="actions"><button id="quickexport">导出这次分析</button></div>`;
+   output.innerHTML=`<article class="quickverdict ${r.status}">${values.history?.import_report||values.hourly?.import_report?'<p class="small">本次含大智慧导入行情，仅作辅助分析，不写入云端股票池。</p>':''}<div class="eyebrow">${esc(r.code)} · ${esc(r.name)}</div><h2>${esc(r.title)}</h2><p>${esc(r.action)}</p><div class="tradehints"><section class="tradehint ${r.tradeHints.buy.triggered?'triggerbuy':''}"><h3>买入提示</h3><b>${esc(r.tradeHints.buy.title)}</b>${list(r.tradeHints.buy.reasons,'等待条件')}</section><section class="tradehint ${r.tradeHints.sell.triggered?'triggersell':''}"><h3>卖出提示</h3><b>${esc(r.tradeHints.sell.title)}</b>${list(r.tradeHints.sell.reasons,'等待条件')}</section></div><p class="small">${esc(r.tradeHints.note)}</p>${r.macd?.bullish?`<p class="small">底背离第二拐点：${esc(r.macd.bullish.secondTime)}；算法确认：${esc(r.macd.bullish.confirmedAt)}；本次检查：${esc(r.generatedAt)}。${r.technical&&!r.technical.trend?'日线尚未站上MA20，底背离本身不触发买入。':'买入仍需同时通过MA20、数据和财务检查。'}</p>`:''}${values.history?.forming_bar?'<p class="small">盘中日线正在形成，报价照常更新；正式买卖条件使用最近已收盘K线，不额外等待16点。</p>':''}<div class="quickmetrics"><div>最新价<strong>${fmt(r.quote?.price)}</strong></div><div>日线趋势<strong>${r.technical?(r.technical.trend?'满足规则':'尚未满足'):'未取得'}</strong></div><div>财报期<strong>${esc(r.report?.period||'未取得')}</strong></div></div>${r.missing.length?`<p class="error">未完成：${esc(r.missing.join('；'))}</p>`:''}</article><div class="grid"><section class="finding"><h3>主要依据</h3>${list(r.reasons,'尚无足够的可核对依据')}</section><section class="finding riskfinding"><h3>需要留意</h3>${list(r.risks,'本次规则未检出明显弱项，不代表没有风险')}</section><section class="finding"><h3>估值判断</h3><p>${esc(r.valuation)}</p></section></div><details class="quickdetails"><summary>查看自动分析的六步明细</summary><ol class="sixsummary"><li><b>约束</b><p>采用通用研究模式；未假定你的资金、期限与可承受亏损，因此不输出个性化买入仓位。</p></li><li><b>股票池</b><p>${esc(r.code)} ${esc(r.name)}；历史 ST、停牌、退市和治理信息未完整核验。</p></li><li><b>企业分析</b><p>报告期 ${esc(r.report?.period||'未取得')}，公告日 ${esc(r.report?.notice_date||'缺失')}；累计归母利润 ${fmt(r.report?.profit)} 元。</p>${list(r.financialChecks?.messages.filter(x=>x.title!=='分析边界').map(x=>x.detail)||[],'财报暂不可用')}</li><li><b>价格</b><p>${esc(r.valuation)} 不把季报 EPS 直接乘以全年市盈率生成目标价。</p></li><li><b>交易条件</b>${r.macd?`<p>60分钟截至 ${esc(r.macd.asOf)}：DIF ${fmt(r.macd.latest.dif)} / DEA ${fmt(r.macd.latest.dea)}；${esc(r.macd.method)}</p>${[r.macd.bullish,r.macd.bearish].filter(Boolean).map(e=>`<p>${e.kind==='bullish'?'底背离':'顶背离'}：拐点 ${esc(e.firstTime)} → ${esc(e.secondTime)}；确认 ${esc(e.confirmedAt)}；${e.active?'最近8根内':'已超出提示有效窗口'}。</p>`).join('')}`:'<p>60分钟数据不足，未判断MACD背离。</p>'}${r.technical?`<p>日线 ${esc(r.technical.date)}：MA20 ${fmt(r.technical.ma20)}；量比 ${fmt(r.technical.ratio)}（当日量 / 前20日均量）；ATR14 ${fmt(r.technical.atr)}。收盘减 2×ATR 为 ${fmt(r.technical.stop)}，仅为波动参考，不是承诺可成交的止损价。</p>`:'<p>缺少日线，未生成趋势和风险距离。</p>'}</li><li><b>复盘与MA20日线独立实验</b><p>${esc(r.simulationNote)}</p>${r.simulation?`<p>${r.simulation.start}—${r.simulation.end}：价格策略收益 ${pc(r.simulation.totalReturn)}，价格基准 ${pc(r.simulation.benchmarkReturn)}，最大回撤 ${pc(r.simulation.maxDrawdown)}，已平仓 ${r.simulation.closedTrades} 笔。${r.simulation.closedTrades<5?'交易样本不足，不能据此判断策略有效。':''}</p><p class="small">收盘信号、下一开盘成交，含费用与滑点；未计分红送转和完整历史涨跌停状态，期末持仓不强制平仓。最新财报没有用于历史交易信号。</p>`:''}</li></ol></details><p class="small">报价时间：${esc(r.quote?.exchange_time||'未取得')}；${esc(values.quoteSource||'报价源未连接')}。日线来源：${esc(values.history?.source||'未取得')}；60分钟来源：${esc(values.hourly?.source||'未取得')}；财报来源：${esc(values.financial?.source||'未取得')}。结论为明确规则生成的研究摘要，不预测收益。</p>${Object.keys(errors).length?`<details><summary>查看未完成的请求</summary>${Object.entries(errors).map(([k,v])=>`<p class="small">${esc({quote:'报价',history:'日线',hourly:'60分钟',financial:'财报'}[k])}：${esc(v)}</p>`).join('')}</details>`:''}<div class="actions"><button id="quickexport">导出这次分析</button></div>`;
    document.querySelector('#quickexport').onclick=()=>{if(last)download('analysis-'+last.code+'.json',JSON.stringify(last,null,2),'application/json')};
    progress.textContent=Object.keys(errors).length?'部分数据未取得；已展示已知信息及缺失项目。':'分析完成，先看结论，再按需展开依据。';
   }catch(e){output.innerHTML='';progress.textContent='分析未完成：'+e.message}

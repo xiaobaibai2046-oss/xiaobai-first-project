@@ -160,15 +160,16 @@ def parse_history(payload, code):
     bars.sort(key=lambda b: b['date'])
     # Intraday unfinished daily bars must not enter a close-based strategy.
     now = dt.datetime.now(SH)
+    forming = next((b for b in bars if b['date'] == now.date().isoformat() and now.hour < 15), None)
     bars = [b for b in bars if b['date'] < now.date().isoformat() or
-            (b['date'] == now.date().isoformat() and now.hour >= 16)]
+            (b['date'] == now.date().isoformat() and now.hour >= 15)]
     if not bars:
         raise DataError('没有已完成的日线')
     info = obj.get('qt', {}).get(key, [])
     name = info[1] if isinstance(info, list) and len(info) > 1 else code
     for bar in bars:
         bar['name'] = name
-    return dict(code=code, name=name, bars=bars, adjustment='none',
+    return dict(code=code, name=name, bars=bars, forming_bar=forming, adjustment='none',
                 source='腾讯财经公开日线', volume_unit='手（以供应商口径为准）',
                 first_date=bars[0]['date'], last_date=bars[-1]['date'],
                 warnings=['不复权价格；未包含现金分红、送转、配股及退市收益，除权窗口回测可能失真',

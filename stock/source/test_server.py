@@ -24,14 +24,14 @@ class AdapterTests(unittest.TestCase):
     def test_memory_cache_expires_at_completed_session_boundary(self):
         real_datetime=dt.datetime
         class Clock(real_datetime):
-            moment=real_datetime(2026,11,2,15,59,tzinfo=server.SH)
+            moment=real_datetime(2026,11,2,14,59,tzinfo=server.SH)
             @classmethod
             def now(cls,tz=None):
                 return cls.moment.astimezone(tz) if tz else cls.moment
         with patch.object(server.dt,'datetime',Clock), patch.object(server,'fetch_kline',side_effect=lambda *args:{'code':'600519','bars':[]}) as loader:
             server.get_history('600519',80);server.get_history('600519',80)
             self.assertEqual(loader.call_count,1)
-            Clock.moment=real_datetime(2026,11,2,16,0,tzinfo=server.SH)
+            Clock.moment=real_datetime(2026,11,2,15,0,tzinfo=server.SH)
             server.get_history('600519',80)
             self.assertEqual(loader.call_count,2)
             Clock.moment=real_datetime(2026,11,3,11,29,tzinfo=server.SH)
@@ -68,7 +68,7 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(out['bars'][0]['open'],99)
         self.assertEqual(out['bars'][0]['close'],100)
         self.assertEqual(out['adjustment'],'none')
-        if dt.datetime.now(server.SH).hour<16:self.assertEqual(out['last_date'],'2025-01-02')
+        if dt.datetime.now(server.SH).hour<15:self.assertEqual(out['last_date'],'2025-01-02')
         with self.assertRaises(server.DataError):server.parse_history({'data':{'sh600519':{'qfqday':payload['data']['sh600519']['day']}}},'600519')
         payload['data']['sh600519']['day'][0][3]='1'
         with self.assertRaises(server.DataError):server.parse_history(payload,'600519')

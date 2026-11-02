@@ -54,6 +54,7 @@ try{
   }
  });
  data.finished_at=new Date().toISOString();data.attempted_all=assigned.every(s=>!!data.results[s.code]);
+ if(stopped&&Date.now()>=deadline&&data.background?.status==='paused')data.background.status='budget_reached';
  if(!data.background)data.background={shard,shards,phase:process.env.SCAN_PHASE||'full',status:'batch_complete',checked:0,batch_total:0,updated_at:data.finished_at,message:null};
  await persist();await writeQueue;
  console.log('SAVED',data.finished_at,JSON.stringify(signalCounts(assigned,data.results)),JSON.stringify(metrics));

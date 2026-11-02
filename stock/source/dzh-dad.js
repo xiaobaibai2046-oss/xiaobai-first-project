@@ -22,7 +22,7 @@ export function parseDzhDad(input,{now=new Date(),skipInvalid=false}={}){
    for(const price of [open,high,low,close])if(Math.abs(price-Math.round(price*100)/100)>0.0001)throw Error('价格精度超出已验证的A股分单位');
    [open,high,low,close]=[open,high,low,close].map(x=>Math.round(x*100)/100);
    const time=day+'T'+stamp.toISOString().slice(11,16)+':00+08:00';
-   if(period===0?day>today||day===today&&+clock.hour<16:Date.parse(time)>now.getTime()){unfinished++;continue}
+   if(period===0?day>today||day===today&&+clock.hour<15:Date.parse(time)>now.getTime()){unfinished++;continue}
    const bar={code,name:code,open,high,low,close,volume,amount};
    if(period===0)bars.push({...bar,date:day});else{
     const end=minute<=630?630:minute<=690?690:minute<=840?840:900,groupKey=day+'T'+String(Math.floor(end/60)).padStart(2,'0')+':'+String(end%60).padStart(2,'0')+':00+08:00';

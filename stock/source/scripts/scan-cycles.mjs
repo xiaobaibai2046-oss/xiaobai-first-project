@@ -1,5 +1,5 @@
 import {expectedSignalTime} from '../signal-model.js';
-// Replan after each pass: a list chosen before 16:00 cannot cover the new daily session.
+// Replan after each pass: a list chosen before a market close cannot cover the new completed session.
 export async function runScanCycles({plan,scan,deadline,now=()=>new Date(),wait=ms=>new Promise(r=>setTimeout(r,ms)),onBackoff=()=>{},stopped=()=>false}){
  const attempted=new Set();let failures=0,passes=0;
  while(!stopped()&&now().getTime()<deadline){

@@ -4,13 +4,13 @@ import {runScanCycles} from './scripts/scan-cycles.mjs';
 import {SIGNAL_RULE,expectedSignalTime,signalCounts} from './signal-model.js';
 import {planSignalBatch} from './scan-plan.js';
 function record(code,time,dailyOnly=false){return {code,rule:SIGNAL_RULE,state:dailyOnly?'sell':'none',checked_at:time.toISOString(),checked_session:expectedSignalTime(time),daily_as_of:expectedSignalTime(time,'daily'),hourly_as_of:expectedSignalTime(time),dependencies:{daily:true,hourly:!dailyOnly},reasons:[]}}
-test('scan crossing 16:00 replans both skipped daily sells and records just scanned',async()=>{
- let clock=new Date('2026-11-02T07:59:00Z');const old=new Date('2026-10-30T08:10:00Z');
+test('scan crossing the market close replans both skipped daily sells and records just scanned',async()=>{
+ let clock=new Date('2026-11-02T06:59:00Z');const old=new Date('2026-10-30T08:10:00Z');
  const stocks=[{code:'600001'},{code:'600002'}],records={'600001':record('600001',old,true),'600002':record('600002',old)};
  const batches=[];
- const passes=await runScanCycles({now:()=>clock,deadline:Date.parse('2026-11-02T08:05:00Z'),plan:now=>planSignalBatch(stocks,records,{now}),scan:async candidates=>{
+ const passes=await runScanCycles({now:()=>clock,deadline:Date.parse('2026-11-02T07:05:00Z'),plan:now=>planSignalBatch(stocks,records,{now}),scan:async candidates=>{
   batches.push(candidates.map(s=>s.code));for(const s of candidates)records[s.code]=record(s.code,clock);
-  if(batches.length===1)clock=new Date('2026-11-02T08:00:01Z');
+  if(batches.length===1)clock=new Date('2026-11-02T07:00:01Z');
   return {status:'batch_complete',codes:candidates.map(s=>s.code)};
  }});
  assert.equal(passes,2);assert.deepEqual(batches,[['600002'],['600001','600002']]);assert.equal(signalCounts(stocks,records,clock).pending,0);

@@ -20,12 +20,12 @@ test('coverage failures cool down without suppressing the next completed hour',(
  assert.equal(retryEligible(network,now),false);
  assert.equal(retryEligible(network,new Date('2026-10-30T04:04:00Z')),true);
 });
-test('16:00 invalidates daily-only records and releases yesterday-day failure cooldown',()=>{
- const before=new Date('2026-11-02T07:59:00Z'),after=new Date('2026-11-02T08:00:00Z');
+test('market close invalidates daily-only records and releases yesterday-day failure cooldown',()=>{
+ const before=new Date('2026-11-02T06:59:00Z'),after=new Date('2026-11-02T07:00:00Z');
  const sell={...record('600809',before.toISOString()),state:'sell',daily_as_of:'2026-10-30',dependencies:{daily:true,hourly:false}};
  assert.equal(planSignalBatch([{code:sell.code}],{[sell.code]:sell},{now:before}).length,0);
  assert.equal(planSignalBatch([{code:sell.code}],{[sell.code]:sell},{now:after}).length,1);
- const failed={...sell,state:'incomplete',checked_session:'2026-11-02T15:00:00+08:00',errors:{hourly:'没有返回 m60 K线'}};
+ const failed={...sell,state:'incomplete',checked_session:'2026-11-02T14:00:00+08:00',errors:{hourly:'没有返回 m60 K线'}};
  assert.equal(retryEligible(failed,before),false);assert.equal(retryEligible(failed,after),true);
 });
 test('previous buy candidates are checked before neutral records while all remain eligible',()=>{

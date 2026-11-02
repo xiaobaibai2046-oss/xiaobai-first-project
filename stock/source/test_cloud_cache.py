@@ -19,7 +19,7 @@ class CloudCacheTests(unittest.TestCase):
         self.assertFalse(self.load(now=self.now.replace(hour=15))['cloud_cache_hit']);self.assertEqual(self.calls,2)
     def test_daily_close_and_financial_ttl(self):
         self.load('history');self.assertTrue(self.load('history')['cloud_cache_hit'])
-        self.assertFalse(self.load('history',self.now.replace(hour=16))['cloud_cache_hit'])
+        self.assertFalse(self.load('history',self.now.replace(hour=15))['cloud_cache_hit'])
         self.load('financial');self.assertTrue(self.load('financial')['cloud_cache_hit'])
         self.assertFalse(self.load('financial',self.now+dt.timedelta(hours=1))['cloud_cache_hit'])
     def test_corrupt_and_future_cache_refetched(self):

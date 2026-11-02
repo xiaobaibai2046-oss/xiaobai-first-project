@@ -21,7 +21,7 @@ export function parseDzhText(text,{now=new Date(),skipInvalid=false}={}){
    if(seen.has(stamp))throw Error('重复K线时间');seen.add(stamp);
    if(raw.slice(1).some(x=>!x||!/^[+\-]?\d+(?:\.\d+)?$/.test(x)))throw Error('价格或成交量缺失／格式无效');
    const [open,high,low,close,volume]=raw.slice(1).map(Number);if([open,high,low,close,volume].some(x=>!Number.isFinite(x))||Math.min(open,high,low,close)<=0||volume<0||high<Math.max(open,close)||low>Math.min(open,close))throw Error('价格关系异常（最高价不得低于收盘等）或成交量无效');
-   if(kind==='hourly'?Date.parse(stamp)>now.getTime():date>today||date===today&&+p.hour<16){unfinished++;continue}
+   if(kind==='hourly'?Date.parse(stamp)>now.getTime():date>today||date===today&&+p.hour<15){unfinished++;continue}
    bars.push({code,name,...(kind==='hourly'?{endTime:stamp}:{date}),open,high,low,close,volume});
   }catch(e){issues.push({line:i+3,message:e.message})}
  }
