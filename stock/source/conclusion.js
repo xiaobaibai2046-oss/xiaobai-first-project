@@ -1,3 +1,4 @@
+import {expectedSignalTime} from './signal-model.js';
 import {analyzeHourlyMACD,makeTradeHints} from './macd.js';
 import {analyze} from './indicators.js';
 import {backtest,financialAnalysis} from './research.js';
@@ -34,8 +35,8 @@ export function summarizeStock({code,quote=null,history=null,hourly=null,financi
   if(includeSimulation&&history.bars.length>=22&&/^(60|00)\d{4}$/.test(code)&&!special){try{simulation=backtest(history.bars,{capital:1000000});simulationNote='仅 MA20 日线基准实验，未包含60分钟MACD；100 万元假设账户，单笔风险 0.5%，不复权价格实验'}catch(e){simulationNote=e.message}}else simulationNote='该板块、风险标识或日线数量不在首版回测支持范围';
  }
  let hourlyFresh=false;
- if(hourly?.bars?.length>=100){try{macd=analyzeHourlyMACD(hourly.bars);hourlyFresh=age(macd.asOf)>=0&&age(macd.asOf)<=10;if(!hourlyFresh)missing.push('近期的60分钟K线')}catch(e){missing.push(e.message)}}else missing.push('至少100根已完成60分钟K线');
- const dailyFresh=!!technical&&age(technical.date)>=0&&age(technical.date)<=10;
+ if(hourly?.bars?.length>=100){try{macd=analyzeHourlyMACD(hourly.bars);hourlyFresh=age(macd.asOf)>=0&&age(macd.asOf)<=10&&(!hourly.import_report||macd.asOf===expectedSignalTime(now));if(hourly.import_report&&!hourlyFresh)missing.push('导入60分钟行情未到最新已完成时段，仅供历史核对');if(!hourlyFresh)missing.push('近期的60分钟K线')}catch(e){missing.push(e.message)}}else missing.push('至少100根已完成60分钟K线');
+ const dailyFresh=!!technical&&age(technical.date)>=0&&age(technical.date)<=10&&(!history?.import_report||technical.date===expectedSignalTime(now,'daily'));if(history?.import_report&&!dailyFresh)missing.push('导入日线未到最新已完成交易日，仅供历史核对');
  let status='incomplete',title='数据不足，暂不下结论',action='缺失项目补齐后再判断；本次没有生成买入指令。';
  if(special||(validReport&&report.profit<=0)){status='risk';title='风险较高，暂不列入优先研究';action=special?'先核查风险警示、财务和交易状态，不依据技术信号追入。':'近期财报显示累计归母利润不为正，先核查亏损原因和持续经营能力。'}
  else if(!missing.length){
