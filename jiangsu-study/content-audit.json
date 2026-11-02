@@ -1,7 +1,10 @@
 {
-  "version": "2026-10-29-practice-900",
+  "version": "2026-11-02-practice-9000",
   "knowledgePoints": 900,
-  "originalExercises": 900,
+  "originalExercises": 9000,
+  "minimumExercisesPerPoint": 10,
+  "objectiveExercises": 4500,
+  "guidedSelfAssessmentExercises": 4500,
   "conceptNotesWithoutExercise": 0,
   "originalMultipleChoiceExercises": 129,
   "originalConceptChecks": 771,
@@ -16,7 +19,7 @@
     {
       "subject": "math",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 32,
       "units": 15,
       "name": "数学",
@@ -38,7 +41,7 @@
     {
       "subject": "chinese",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 17,
       "name": "语文",
@@ -60,7 +63,7 @@
     {
       "subject": "english",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 16,
       "name": "英语",
@@ -82,7 +85,7 @@
     {
       "subject": "physics",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 18,
       "name": "物理",
@@ -104,7 +107,7 @@
     {
       "subject": "chemistry",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 18,
       "name": "化学",
@@ -126,7 +129,7 @@
     {
       "subject": "biology",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 27,
       "units": 23,
       "name": "生物",
@@ -148,7 +151,7 @@
     {
       "subject": "history",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 14,
       "name": "历史",
@@ -170,7 +173,7 @@
     {
       "subject": "geography",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 17,
       "name": "地理",
@@ -192,7 +195,7 @@
     {
       "subject": "ethics",
       "knowledgePoints": 100,
-      "exercises": 100,
+      "exercises": 1000,
       "linked": 0,
       "units": 19,
       "name": "道德与法治",

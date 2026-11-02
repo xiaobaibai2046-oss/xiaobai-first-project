@@ -52,7 +52,7 @@ test('edition grade filters follow sourced book grades while generic recommendat
 });
 test('published audit counts agree with the actual notes, exercises and provenance',()=>{
  const audit=JSON.parse(readFileSync(new URL('./content-audit.json',import.meta.url),'utf8'));
- assert.equal(audit.knowledgePoints,lessons.length);assert.equal(audit.conceptNotesWithoutExercise,0);assert.equal(audit.originalExercises,900);assert.equal(audit.originalConceptChecks,771);
+ assert.equal(audit.knowledgePoints,lessons.length);assert.equal(audit.conceptNotesWithoutExercise,0);assert.equal(audit.originalExercises,9000);assert.equal(audit.originalConceptChecks,771);
  for(const row of audit.subjects){const actual=lessons.filter(l=>l.subject===row.subject);assert.equal(row.knowledgePoints,actual.length);assert.ok(row.knowledgePoints>=100);assert.equal(row.linked,actual.filter(l=>l.textbookRefs.length).length);}
  assert.equal(audit.verifiedPastPaperQuestions,verifiedQuestions.length);
 });
