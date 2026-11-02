@@ -4,12 +4,11 @@ export const STORAGE_KEY='zhixu-nanjing-v1';
 export const emptyState=()=>({completed:[],wrong:[],attempts:[]});
 export function normalizeState(raw){
  const ids=new Set(lessons.map(l=>l.id));
- const validIds=value=>Array.isArray(value)?[...new Set(value.filter(id=>ids.has(id)))]:[];
- const attempts=Array.isArray(raw?.attempts)?raw.attempts.filter(a=>a&&ids.has(a.id)&&typeof a.correct==='boolean'&&typeof a.at==='string'&&Number.isFinite(Date.parse(a.at))).slice(-1000):[];
- const result={completed:validIds(raw?.completed),wrong:validIds(raw?.wrong),attempts};
  const exerciseIds=new Set(lessons.flatMap(l=>l.exercises.map(q=>q.id)));
- if(Array.isArray(raw?.exerciseWrong))result.exerciseWrong=[...new Set(raw.exerciseWrong.filter(id=>exerciseIds.has(id)))];
- if(Array.isArray(raw?.selfAttempts))result.selfAttempts=raw.selfAttempts.filter(a=>exerciseIds.has(a?.exerciseId)&&typeof a.mastered==='boolean'&&Number.isFinite(Date.parse(a.at))).slice(-1000);
+ const validIds=value=>Array.isArray(value)?[...new Set(value.filter(id=>ids.has(id)))]:[];
+ const attempts=Array.isArray(raw?.attempts)?raw.attempts.filter(a=>a&&ids.has(a.id)&&(!a.exerciseId||exerciseIds.has(a.exerciseId))&&typeof a.correct==='boolean'&&typeof a.at==='string'&&Number.isFinite(Date.parse(a.at))).slice(-1000):[];
+ const result={completed:validIds(raw?.completed),wrong:validIds(raw?.wrong),attempts};
+ if(Array.isArray(raw?.exerciseWrong)){result.exerciseWrong=[...new Set(raw.exerciseWrong.filter(id=>exerciseIds.has(id)))];result.wrong=[...new Set(result.exerciseWrong.map(id=>id.split('::')[0]))];}
  return result;
 }
 export function filterLessons({subject='all',grade='all',query='',edition='all',unit='all'}={}){
@@ -32,11 +31,6 @@ export function recordExercise(state,exerciseId,selected,at=new Date().toISOStri
  const lesson=lessons.find(l=>l.exercises.some(q=>q.id===exerciseId)),q=lesson?.exercises.find(q=>q.id===exerciseId);
  if(!q)throw new Error('Invalid exercise');
  const wrong=new Set(state.exerciseWrong||state.wrong.map(id=>id+'::1'));
- if(q.type==='written'){
-  if(typeof selected!=='boolean')throw new Error('Invalid self assessment');
-  if(selected)wrong.delete(q.id);else wrong.add(q.id);
-  return {...state,exerciseWrong:[...wrong],wrong:[...new Set([...wrong].map(id=>id.split('::')[0]))],selfAttempts:[...(state.selfAttempts||[]),{exerciseId,mastered:selected,at}].slice(-1000)};
- }
  if(!Number.isInteger(selected)||selected<0||selected>=q.options.length)throw new Error('Invalid answer');
  const correct=selected===q.answer;if(correct)wrong.delete(q.id);else wrong.add(q.id);
  return {...state,exerciseWrong:[...wrong],wrong:[...new Set([...wrong].map(id=>id.split('::')[0]))],attempts:[...state.attempts,{id:lesson.id,exerciseId,correct,at}].slice(-1000)};

@@ -41,7 +41,7 @@
     "unit": "阅读与表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-5",
@@ -52,7 +52,7 @@
     "unit": "文言文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-6",
@@ -63,7 +63,7 @@
     "unit": "议论性文本",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-7",
@@ -173,7 +173,7 @@
     "unit": "细胞与生命",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-17",
@@ -184,7 +184,7 @@
     "unit": "绿色植物",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-18",
@@ -195,7 +195,7 @@
     "unit": "生态与环境",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-19",
@@ -206,7 +206,7 @@
     "unit": "中国古代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-20",
@@ -217,7 +217,7 @@
     "unit": "中国近代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-21",
@@ -228,7 +228,7 @@
     "unit": "世界近代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-22",
@@ -239,7 +239,7 @@
     "unit": "地球与地图",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 12
   },
   {
     "id": "lesson-23",
@@ -250,7 +250,7 @@
     "unit": "地图判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 12
   },
   {
     "id": "lesson-24",
@@ -261,7 +261,7 @@
     "unit": "中国地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-25",
@@ -272,7 +272,7 @@
     "unit": "成长与交往",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-26",
@@ -283,7 +283,7 @@
     "unit": "法治基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "lesson-27",
@@ -294,7 +294,7 @@
     "unit": "社会与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-1",
@@ -382,7 +382,7 @@
     "unit": "记叙性文本",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-9",
@@ -393,7 +393,7 @@
     "unit": "诗歌阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-10",
@@ -404,7 +404,7 @@
     "unit": "说明性文本",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-11",
@@ -415,7 +415,7 @@
     "unit": "语言运用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-12",
@@ -426,7 +426,7 @@
     "unit": "议论性文本",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-13",
@@ -437,7 +437,7 @@
     "unit": "写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-14",
@@ -448,7 +448,7 @@
     "unit": "文言文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-15",
@@ -690,7 +690,7 @@
     "unit": "科学探究",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-37",
@@ -701,7 +701,7 @@
     "unit": "生命活动",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-38",
@@ -712,7 +712,7 @@
     "unit": "人体生理",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-39",
@@ -723,7 +723,7 @@
     "unit": "遗传与进化",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-40",
@@ -734,7 +734,7 @@
     "unit": "健康与免疫",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-41",
@@ -745,7 +745,7 @@
     "unit": "遗传与进化",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-42",
@@ -756,7 +756,7 @@
     "unit": "生态与保护",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-43",
@@ -767,7 +767,7 @@
     "unit": "中国古代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-44",
@@ -778,7 +778,7 @@
     "unit": "中国古代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-45",
@@ -789,7 +789,7 @@
     "unit": "中国近代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-46",
@@ -800,7 +800,7 @@
     "unit": "中国近代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-47",
@@ -811,7 +811,7 @@
     "unit": "中国现代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-48",
@@ -822,7 +822,7 @@
     "unit": "世界近代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-49",
@@ -833,7 +833,7 @@
     "unit": "世界现代史",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-50",
@@ -855,7 +855,7 @@
     "unit": "地球与运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-52",
@@ -866,7 +866,7 @@
     "unit": "天气与气候",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-53",
@@ -877,7 +877,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-54",
@@ -888,7 +888,7 @@
     "unit": "河流与区域",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-55",
@@ -899,7 +899,7 @@
     "unit": "经济与环境",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-56",
@@ -910,7 +910,7 @@
     "unit": "区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-57",
@@ -921,7 +921,7 @@
     "unit": "成长与学习",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-58",
@@ -932,7 +932,7 @@
     "unit": "成长与自我",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-59",
@@ -943,7 +943,7 @@
     "unit": "权利与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-60",
@@ -954,7 +954,7 @@
     "unit": "法治与安全",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-61",
@@ -965,7 +965,7 @@
     "unit": "交往与规则",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-62",
@@ -976,7 +976,7 @@
     "unit": "发展与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "expanded-63",
@@ -987,7 +987,7 @@
     "unit": "文化与世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 4
   },
   {
     "id": "chapter-core-1",
@@ -998,7 +998,7 @@
     "unit": "图形与几何",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-2",
@@ -1009,7 +1009,7 @@
     "unit": "数与代数",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-3",
@@ -1020,7 +1020,7 @@
     "unit": "图形与坐标",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-4",
@@ -1031,7 +1031,7 @@
     "unit": "方程与应用",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-5",
@@ -1042,7 +1042,7 @@
     "unit": "不等式",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-6",
@@ -1053,7 +1053,7 @@
     "unit": "统计与概率",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-7",
@@ -1064,7 +1064,7 @@
     "unit": "图形与几何",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-8",
@@ -1075,7 +1075,7 @@
     "unit": "图形与几何",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-9",
@@ -1086,7 +1086,7 @@
     "unit": "图形与变换",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-10",
@@ -1097,7 +1097,7 @@
     "unit": "数与代数",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-11",
@@ -1108,7 +1108,7 @@
     "unit": "数与代数",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-12",
@@ -1119,7 +1119,7 @@
     "unit": "图形与几何",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-13",
@@ -1130,7 +1130,7 @@
     "unit": "统计与概率",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-14",
@@ -1141,7 +1141,7 @@
     "unit": "函数与图象",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-15",
@@ -1152,7 +1152,7 @@
     "unit": "图形与变换",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-16",
@@ -1163,7 +1163,7 @@
     "unit": "图形与几何",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-17",
@@ -1174,7 +1174,7 @@
     "unit": "函数与图象",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-18",
@@ -1185,7 +1185,7 @@
     "unit": "图形与测量",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-19",
@@ -1196,7 +1196,7 @@
     "unit": "图形与空间",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-20",
@@ -1207,7 +1207,7 @@
     "unit": "数学思考",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-21",
@@ -1218,7 +1218,7 @@
     "unit": "数与代数",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-22",
@@ -1229,7 +1229,7 @@
     "unit": "数学推理",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-23",
@@ -1240,7 +1240,7 @@
     "unit": "生物与环境",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-24",
@@ -1251,7 +1251,7 @@
     "unit": "细胞与生命",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-25",
@@ -1262,7 +1262,7 @@
     "unit": "绿色植物",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-26",
@@ -1273,7 +1273,7 @@
     "unit": "生态与环境",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-27",
@@ -1284,7 +1284,7 @@
     "unit": "人体与健康",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-28",
@@ -1295,7 +1295,7 @@
     "unit": "人体生理",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-29",
@@ -1306,7 +1306,7 @@
     "unit": "人体生理",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-30",
@@ -1317,7 +1317,7 @@
     "unit": "人体生理",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-31",
@@ -1328,7 +1328,7 @@
     "unit": "生态与责任",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-32",
@@ -1339,7 +1339,7 @@
     "unit": "生物多样性",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-33",
@@ -1350,7 +1350,7 @@
     "unit": "动物与行为",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-34",
@@ -1361,7 +1361,7 @@
     "unit": "动物与行为",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-35",
@@ -1372,7 +1372,7 @@
     "unit": "生态与环境",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-36",
@@ -1383,7 +1383,7 @@
     "unit": "生殖与发育",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-37",
@@ -1394,7 +1394,7 @@
     "unit": "生物技术",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-38",
@@ -1405,7 +1405,7 @@
     "unit": "生物技术",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "chapter-core-39",
@@ -1416,7 +1416,7 @@
     "unit": "健康与免疫",
     "alignmentStatus": "mirror-linked",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-1",
@@ -1427,7 +1427,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-2",
@@ -1438,7 +1438,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-3",
@@ -1449,7 +1449,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-4",
@@ -1460,7 +1460,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-5",
@@ -1471,7 +1471,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-6",
@@ -1482,7 +1482,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-7",
@@ -1493,7 +1493,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-8",
@@ -1504,7 +1504,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-9",
@@ -1515,7 +1515,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-10",
@@ -1526,7 +1526,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-11",
@@ -1537,7 +1537,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-12",
@@ -1548,7 +1548,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-13",
@@ -1559,7 +1559,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-14",
@@ -1570,7 +1570,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-15",
@@ -1581,7 +1581,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-16",
@@ -1592,7 +1592,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-17",
@@ -1603,7 +1603,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-18",
@@ -1614,7 +1614,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-19",
@@ -1625,7 +1625,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-20",
@@ -1636,7 +1636,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-21",
@@ -1647,7 +1647,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-22",
@@ -1658,7 +1658,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-23",
@@ -1669,7 +1669,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-24",
@@ -1680,7 +1680,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-25",
@@ -1691,7 +1691,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-26",
@@ -1702,7 +1702,7 @@
     "unit": "有理数与代数基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-27",
@@ -1713,7 +1713,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-28",
@@ -1724,7 +1724,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-29",
@@ -1735,7 +1735,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-30",
@@ -1746,7 +1746,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-31",
@@ -1757,7 +1757,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-32",
@@ -1768,7 +1768,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-33",
@@ -1779,7 +1779,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-34",
@@ -1790,7 +1790,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-35",
@@ -1801,7 +1801,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-36",
@@ -1812,7 +1812,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-37",
@@ -1823,7 +1823,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-38",
@@ -1834,7 +1834,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-39",
@@ -1845,7 +1845,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-40",
@@ -1856,7 +1856,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-41",
@@ -1867,7 +1867,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-42",
@@ -1878,7 +1878,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-43",
@@ -1889,7 +1889,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-44",
@@ -1900,7 +1900,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-45",
@@ -1911,7 +1911,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-46",
@@ -1922,7 +1922,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-47",
@@ -1933,7 +1933,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-48",
@@ -1944,7 +1944,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-49",
@@ -1955,7 +1955,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-50",
@@ -1966,7 +1966,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-51",
@@ -1977,7 +1977,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-52",
@@ -1988,7 +1988,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-53",
@@ -1999,7 +1999,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-54",
@@ -2010,7 +2010,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-55",
@@ -2021,7 +2021,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-56",
@@ -2032,7 +2032,7 @@
     "unit": "代数运算与几何推理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-57",
@@ -2043,7 +2043,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-58",
@@ -2054,7 +2054,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-59",
@@ -2065,7 +2065,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-60",
@@ -2076,7 +2076,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-61",
@@ -2087,7 +2087,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-62",
@@ -2098,7 +2098,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-63",
@@ -2109,7 +2109,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-64",
@@ -2120,7 +2120,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-65",
@@ -2131,7 +2131,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-66",
@@ -2142,7 +2142,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-67",
@@ -2153,7 +2153,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-math-68",
@@ -2164,7 +2164,7 @@
     "unit": "方程函数与综合应用",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-1",
@@ -2175,7 +2175,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-2",
@@ -2186,7 +2186,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-3",
@@ -2197,7 +2197,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-4",
@@ -2208,7 +2208,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-5",
@@ -2219,7 +2219,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-6",
@@ -2230,7 +2230,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-7",
@@ -2241,7 +2241,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-8",
@@ -2252,7 +2252,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-9",
@@ -2263,7 +2263,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-10",
@@ -2274,7 +2274,7 @@
     "unit": "字词积累",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-11",
@@ -2285,7 +2285,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-12",
@@ -2296,7 +2296,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-13",
@@ -2307,7 +2307,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-14",
@@ -2318,7 +2318,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-15",
@@ -2329,7 +2329,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-16",
@@ -2340,7 +2340,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-17",
@@ -2351,7 +2351,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-18",
@@ -2362,7 +2362,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-19",
@@ -2373,7 +2373,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-20",
@@ -2384,7 +2384,7 @@
     "unit": "词类与短语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-21",
@@ -2395,7 +2395,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-22",
@@ -2406,7 +2406,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-23",
@@ -2417,7 +2417,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-24",
@@ -2428,7 +2428,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-25",
@@ -2439,7 +2439,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-26",
@@ -2450,7 +2450,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-27",
@@ -2461,7 +2461,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-28",
@@ -2472,7 +2472,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-29",
@@ -2483,7 +2483,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-30",
@@ -2494,7 +2494,7 @@
     "unit": "句子与标点",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-31",
@@ -2505,7 +2505,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-32",
@@ -2516,7 +2516,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-33",
@@ -2527,7 +2527,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-34",
@@ -2538,7 +2538,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-35",
@@ -2549,7 +2549,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-36",
@@ -2560,7 +2560,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-37",
@@ -2571,7 +2571,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-38",
@@ -2582,7 +2582,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-39",
@@ -2593,7 +2593,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-40",
@@ -2604,7 +2604,7 @@
     "unit": "修辞与说明方法",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-41",
@@ -2615,7 +2615,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-42",
@@ -2626,7 +2626,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-43",
@@ -2637,7 +2637,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-44",
@@ -2648,7 +2648,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-45",
@@ -2659,7 +2659,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-46",
@@ -2670,7 +2670,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-47",
@@ -2681,7 +2681,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-48",
@@ -2692,7 +2692,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-49",
@@ -2703,7 +2703,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-50",
@@ -2714,7 +2714,7 @@
     "unit": "记叙文阅读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-51",
@@ -2725,7 +2725,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-52",
@@ -2736,7 +2736,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-53",
@@ -2747,7 +2747,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-54",
@@ -2758,7 +2758,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-55",
@@ -2769,7 +2769,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-56",
@@ -2780,7 +2780,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-57",
@@ -2791,7 +2791,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-58",
@@ -2802,7 +2802,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-59",
@@ -2813,7 +2813,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-60",
@@ -2824,7 +2824,7 @@
     "unit": "表现手法与文本理解",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-61",
@@ -2835,7 +2835,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-62",
@@ -2846,7 +2846,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-63",
@@ -2857,7 +2857,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-64",
@@ -2868,7 +2868,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-65",
@@ -2879,7 +2879,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-66",
@@ -2890,7 +2890,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-67",
@@ -2901,7 +2901,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-68",
@@ -2912,7 +2912,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-69",
@@ -2923,7 +2923,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-70",
@@ -2934,7 +2934,7 @@
     "unit": "古诗词与文言基础",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-71",
@@ -2945,7 +2945,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-72",
@@ -2956,7 +2956,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-73",
@@ -2967,7 +2967,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-74",
@@ -2978,7 +2978,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-75",
@@ -2989,7 +2989,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-76",
@@ -3000,7 +3000,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-77",
@@ -3011,7 +3011,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-78",
@@ -3022,7 +3022,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-79",
@@ -3033,7 +3033,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-80",
@@ -3044,7 +3044,7 @@
     "unit": "文言句式与虚词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-81",
@@ -3055,7 +3055,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-82",
@@ -3066,7 +3066,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-83",
@@ -3077,7 +3077,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-84",
@@ -3088,7 +3088,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-85",
@@ -3099,7 +3099,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-86",
@@ -3110,7 +3110,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-87",
@@ -3121,7 +3121,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-88",
@@ -3132,7 +3132,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-89",
@@ -3143,7 +3143,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chinese-90",
@@ -3154,7 +3154,7 @@
     "unit": "议论阅读与写作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-1",
@@ -3165,7 +3165,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-2",
@@ -3176,7 +3176,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-3",
@@ -3187,7 +3187,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-4",
@@ -3198,7 +3198,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-5",
@@ -3209,7 +3209,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-6",
@@ -3220,7 +3220,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-7",
@@ -3231,7 +3231,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-8",
@@ -3242,7 +3242,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-9",
@@ -3253,7 +3253,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-10",
@@ -3264,7 +3264,7 @@
     "unit": "名词与冠词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-11",
@@ -3275,7 +3275,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-12",
@@ -3286,7 +3286,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-13",
@@ -3297,7 +3297,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-14",
@@ -3308,7 +3308,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-15",
@@ -3319,7 +3319,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-16",
@@ -3330,7 +3330,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-17",
@@ -3341,7 +3341,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-18",
@@ -3352,7 +3352,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-19",
@@ -3363,7 +3363,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-20",
@@ -3374,7 +3374,7 @@
     "unit": "代词与限定词",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-21",
@@ -3385,7 +3385,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-22",
@@ -3396,7 +3396,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-23",
@@ -3407,7 +3407,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-24",
@@ -3418,7 +3418,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-25",
@@ -3429,7 +3429,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-26",
@@ -3440,7 +3440,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-27",
@@ -3451,7 +3451,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-28",
@@ -3462,7 +3462,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-29",
@@ -3473,7 +3473,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-30",
@@ -3484,7 +3484,7 @@
     "unit": "基础句型与词形",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-31",
@@ -3495,7 +3495,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-32",
@@ -3506,7 +3506,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-33",
@@ -3517,7 +3517,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-34",
@@ -3528,7 +3528,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-35",
@@ -3539,7 +3539,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-36",
@@ -3550,7 +3550,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-37",
@@ -3561,7 +3561,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-38",
@@ -3572,7 +3572,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-39",
@@ -3583,7 +3583,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-40",
@@ -3594,7 +3594,7 @@
     "unit": "时态与动词结构",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-41",
@@ -3605,7 +3605,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-42",
@@ -3616,7 +3616,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-43",
@@ -3627,7 +3627,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-44",
@@ -3638,7 +3638,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-45",
@@ -3649,7 +3649,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-46",
@@ -3660,7 +3660,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-47",
@@ -3671,7 +3671,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-48",
@@ -3682,7 +3682,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-49",
@@ -3693,7 +3693,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-50",
@@ -3704,7 +3704,7 @@
     "unit": "情态动词与非谓语",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-51",
@@ -3715,7 +3715,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-52",
@@ -3726,7 +3726,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-53",
@@ -3737,7 +3737,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-54",
@@ -3748,7 +3748,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-55",
@@ -3759,7 +3759,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-56",
@@ -3770,7 +3770,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-57",
@@ -3781,7 +3781,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-58",
@@ -3792,7 +3792,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-59",
@@ -3803,7 +3803,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-60",
@@ -3814,7 +3814,7 @@
     "unit": "形容词副词与比较",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-61",
@@ -3825,7 +3825,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-62",
@@ -3836,7 +3836,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-63",
@@ -3847,7 +3847,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-64",
@@ -3858,7 +3858,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-65",
@@ -3869,7 +3869,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-66",
@@ -3880,7 +3880,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-67",
@@ -3891,7 +3891,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-68",
@@ -3902,7 +3902,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-69",
@@ -3913,7 +3913,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-70",
@@ -3924,7 +3924,7 @@
     "unit": "复合句与语态",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-71",
@@ -3935,7 +3935,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-72",
@@ -3946,7 +3946,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-73",
@@ -3957,7 +3957,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-74",
@@ -3968,7 +3968,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-75",
@@ -3979,7 +3979,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-76",
@@ -3990,7 +3990,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-77",
@@ -4001,7 +4001,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-78",
@@ -4012,7 +4012,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-79",
@@ -4023,7 +4023,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-80",
@@ -4034,7 +4034,7 @@
     "unit": "常见搭配与语义辨析",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-81",
@@ -4045,7 +4045,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-82",
@@ -4056,7 +4056,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-83",
@@ -4067,7 +4067,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-84",
@@ -4078,7 +4078,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-85",
@@ -4089,7 +4089,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-86",
@@ -4100,7 +4100,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-87",
@@ -4111,7 +4111,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-88",
@@ -4122,7 +4122,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-89",
@@ -4133,7 +4133,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-english-90",
@@ -4144,7 +4144,7 @@
     "unit": "阅读与书面表达",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-1",
@@ -4155,7 +4155,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-2",
@@ -4166,7 +4166,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-3",
@@ -4177,7 +4177,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-4",
@@ -4188,7 +4188,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-5",
@@ -4199,7 +4199,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-6",
@@ -4210,7 +4210,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-7",
@@ -4221,7 +4221,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-8",
@@ -4232,7 +4232,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-9",
@@ -4243,7 +4243,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-10",
@@ -4254,7 +4254,7 @@
     "unit": "测量与机械运动",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-11",
@@ -4265,7 +4265,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-12",
@@ -4276,7 +4276,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-13",
@@ -4287,7 +4287,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-14",
@@ -4298,7 +4298,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-15",
@@ -4309,7 +4309,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-16",
@@ -4320,7 +4320,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-17",
@@ -4331,7 +4331,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-18",
@@ -4342,7 +4342,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-19",
@@ -4353,7 +4353,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-20",
@@ -4364,7 +4364,7 @@
     "unit": "声现象",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-21",
@@ -4375,7 +4375,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-22",
@@ -4386,7 +4386,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-23",
@@ -4397,7 +4397,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-24",
@@ -4408,7 +4408,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-25",
@@ -4419,7 +4419,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-26",
@@ -4430,7 +4430,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-27",
@@ -4441,7 +4441,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-28",
@@ -4452,7 +4452,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-29",
@@ -4463,7 +4463,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-30",
@@ -4474,7 +4474,7 @@
     "unit": "光现象与透镜",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-31",
@@ -4485,7 +4485,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-32",
@@ -4496,7 +4496,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-33",
@@ -4507,7 +4507,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-34",
@@ -4518,7 +4518,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-35",
@@ -4529,7 +4529,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-36",
@@ -4540,7 +4540,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-37",
@@ -4551,7 +4551,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-38",
@@ -4562,7 +4562,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-39",
@@ -4573,7 +4573,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-40",
@@ -4584,7 +4584,7 @@
     "unit": "物态变化与热量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-41",
@@ -4595,7 +4595,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-42",
@@ -4606,7 +4606,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-43",
@@ -4617,7 +4617,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-44",
@@ -4628,7 +4628,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-45",
@@ -4639,7 +4639,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-46",
@@ -4650,7 +4650,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-47",
@@ -4661,7 +4661,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-48",
@@ -4672,7 +4672,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-49",
@@ -4683,7 +4683,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-50",
@@ -4694,7 +4694,7 @@
     "unit": "质量与力",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-51",
@@ -4705,7 +4705,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-52",
@@ -4716,7 +4716,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-53",
@@ -4727,7 +4727,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-54",
@@ -4738,7 +4738,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-55",
@@ -4749,7 +4749,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-56",
@@ -4760,7 +4760,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-57",
@@ -4771,7 +4771,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-58",
@@ -4782,7 +4782,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-59",
@@ -4793,7 +4793,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-60",
@@ -4804,7 +4804,7 @@
     "unit": "压强与浮沉",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-61",
@@ -4815,7 +4815,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-62",
@@ -4826,7 +4826,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-63",
@@ -4837,7 +4837,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-64",
@@ -4848,7 +4848,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-65",
@@ -4859,7 +4859,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-66",
@@ -4870,7 +4870,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-67",
@@ -4881,7 +4881,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-68",
@@ -4892,7 +4892,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-69",
@@ -4903,7 +4903,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-70",
@@ -4914,7 +4914,7 @@
     "unit": "功、能与简单机械",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-71",
@@ -4925,7 +4925,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-72",
@@ -4936,7 +4936,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-73",
@@ -4947,7 +4947,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-74",
@@ -4958,7 +4958,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-75",
@@ -4969,7 +4969,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-76",
@@ -4980,7 +4980,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-77",
@@ -4991,7 +4991,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-78",
@@ -5002,7 +5002,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-79",
@@ -5013,7 +5013,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-80",
@@ -5024,7 +5024,7 @@
     "unit": "电路与测量",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-81",
@@ -5035,7 +5035,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-82",
@@ -5046,7 +5046,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-83",
@@ -5057,7 +5057,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-84",
@@ -5068,7 +5068,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-85",
@@ -5079,7 +5079,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-86",
@@ -5090,7 +5090,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-87",
@@ -5101,7 +5101,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-88",
@@ -5112,7 +5112,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-89",
@@ -5123,7 +5123,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-physics-90",
@@ -5134,7 +5134,7 @@
     "unit": "电能、电热与电磁",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-1",
@@ -5145,7 +5145,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-2",
@@ -5156,7 +5156,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-3",
@@ -5167,7 +5167,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-4",
@@ -5178,7 +5178,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-5",
@@ -5189,7 +5189,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-6",
@@ -5200,7 +5200,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-7",
@@ -5211,7 +5211,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-8",
@@ -5222,7 +5222,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-9",
@@ -5233,7 +5233,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-10",
@@ -5244,7 +5244,7 @@
     "unit": "实验基本操作",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-11",
@@ -5255,7 +5255,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-12",
@@ -5266,7 +5266,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-13",
@@ -5277,7 +5277,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-14",
@@ -5288,7 +5288,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-15",
@@ -5299,7 +5299,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-16",
@@ -5310,7 +5310,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-17",
@@ -5321,7 +5321,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-18",
@@ -5332,7 +5332,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-19",
@@ -5343,7 +5343,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-20",
@@ -5354,7 +5354,7 @@
     "unit": "空气、氧气与气体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-21",
@@ -5365,7 +5365,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-22",
@@ -5376,7 +5376,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-23",
@@ -5387,7 +5387,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-24",
@@ -5398,7 +5398,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-25",
@@ -5409,7 +5409,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-26",
@@ -5420,7 +5420,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-27",
@@ -5431,7 +5431,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-28",
@@ -5442,7 +5442,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-29",
@@ -5453,7 +5453,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-30",
@@ -5464,7 +5464,7 @@
     "unit": "微粒、元素与化学式",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-31",
@@ -5475,7 +5475,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-32",
@@ -5486,7 +5486,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-33",
@@ -5497,7 +5497,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-34",
@@ -5508,7 +5508,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-35",
@@ -5519,7 +5519,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-36",
@@ -5530,7 +5530,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-37",
@@ -5541,7 +5541,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-38",
@@ -5552,7 +5552,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-39",
@@ -5563,7 +5563,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-40",
@@ -5574,7 +5574,7 @@
     "unit": "水与化学反应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-41",
@@ -5585,7 +5585,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-42",
@@ -5596,7 +5596,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-43",
@@ -5607,7 +5607,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-44",
@@ -5618,7 +5618,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-45",
@@ -5629,7 +5629,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-46",
@@ -5640,7 +5640,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-47",
@@ -5651,7 +5651,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-48",
@@ -5662,7 +5662,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-49",
@@ -5673,7 +5673,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-50",
@@ -5684,7 +5684,7 @@
     "unit": "碳、二氧化碳与燃料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-51",
@@ -5695,7 +5695,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-52",
@@ -5706,7 +5706,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-53",
@@ -5717,7 +5717,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-54",
@@ -5728,7 +5728,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-55",
@@ -5739,7 +5739,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-56",
@@ -5750,7 +5750,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-57",
@@ -5761,7 +5761,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-58",
@@ -5772,7 +5772,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-59",
@@ -5783,7 +5783,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-60",
@@ -5794,7 +5794,7 @@
     "unit": "金属与腐蚀",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-61",
@@ -5805,7 +5805,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-62",
@@ -5816,7 +5816,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-63",
@@ -5827,7 +5827,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-64",
@@ -5838,7 +5838,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-65",
@@ -5849,7 +5849,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-66",
@@ -5860,7 +5860,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-67",
@@ -5871,7 +5871,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-68",
@@ -5882,7 +5882,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-69",
@@ -5893,7 +5893,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-70",
@@ -5904,7 +5904,7 @@
     "unit": "溶液与溶解度",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-71",
@@ -5915,7 +5915,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-72",
@@ -5926,7 +5926,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-73",
@@ -5937,7 +5937,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-74",
@@ -5948,7 +5948,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-75",
@@ -5959,7 +5959,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-76",
@@ -5970,7 +5970,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-77",
@@ -5981,7 +5981,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-78",
@@ -5992,7 +5992,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-79",
@@ -6003,7 +6003,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-80",
@@ -6014,7 +6014,7 @@
     "unit": "酸与碱",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-81",
@@ -6025,7 +6025,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-82",
@@ -6036,7 +6036,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-83",
@@ -6047,7 +6047,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-84",
@@ -6058,7 +6058,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-85",
@@ -6069,7 +6069,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-86",
@@ -6080,7 +6080,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-87",
@@ -6091,7 +6091,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-88",
@@ -6102,7 +6102,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-89",
@@ -6113,7 +6113,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-chemistry-90",
@@ -6124,7 +6124,7 @@
     "unit": "盐、化肥与营养材料",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-1",
@@ -6135,7 +6135,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-2",
@@ -6146,7 +6146,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-3",
@@ -6157,7 +6157,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-4",
@@ -6168,7 +6168,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-5",
@@ -6179,7 +6179,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-6",
@@ -6190,7 +6190,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-7",
@@ -6201,7 +6201,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-8",
@@ -6212,7 +6212,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-9",
@@ -6223,7 +6223,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-10",
@@ -6234,7 +6234,7 @@
     "unit": "科学探究与细胞",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-11",
@@ -6245,7 +6245,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-12",
@@ -6256,7 +6256,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-13",
@@ -6267,7 +6267,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-14",
@@ -6278,7 +6278,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-15",
@@ -6289,7 +6289,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-16",
@@ -6300,7 +6300,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-17",
@@ -6311,7 +6311,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-18",
@@ -6322,7 +6322,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-19",
@@ -6333,7 +6333,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-20",
@@ -6344,7 +6344,7 @@
     "unit": "绿色植物的结构与生理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-21",
@@ -6355,7 +6355,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-22",
@@ -6366,7 +6366,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-23",
@@ -6377,7 +6377,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-24",
@@ -6388,7 +6388,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-25",
@@ -6399,7 +6399,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-26",
@@ -6410,7 +6410,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-27",
@@ -6421,7 +6421,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-28",
@@ -6432,7 +6432,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-29",
@@ -6443,7 +6443,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-30",
@@ -6454,7 +6454,7 @@
     "unit": "人体营养与呼吸",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-31",
@@ -6465,7 +6465,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-32",
@@ -6476,7 +6476,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-33",
@@ -6487,7 +6487,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-34",
@@ -6498,7 +6498,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-35",
@@ -6509,7 +6509,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-36",
@@ -6520,7 +6520,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-37",
@@ -6531,7 +6531,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-38",
@@ -6542,7 +6542,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-39",
@@ -6553,7 +6553,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-40",
@@ -6564,7 +6564,7 @@
     "unit": "血液循环与排泄",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-41",
@@ -6575,7 +6575,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-42",
@@ -6586,7 +6586,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-43",
@@ -6597,7 +6597,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-44",
@@ -6608,7 +6608,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-45",
@@ -6619,7 +6619,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-46",
@@ -6630,7 +6630,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-47",
@@ -6641,7 +6641,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-48",
@@ -6652,7 +6652,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-49",
@@ -6663,7 +6663,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-50",
@@ -6674,7 +6674,7 @@
     "unit": "调节、发育与遗传",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-51",
@@ -6685,7 +6685,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-52",
@@ -6696,7 +6696,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-53",
@@ -6707,7 +6707,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-54",
@@ -6718,7 +6718,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-55",
@@ -6729,7 +6729,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-56",
@@ -6740,7 +6740,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-57",
@@ -6751,7 +6751,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-58",
@@ -6762,7 +6762,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-59",
@@ -6773,7 +6773,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-60",
@@ -6784,7 +6784,7 @@
     "unit": "生物类群与适应",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-61",
@@ -6795,7 +6795,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-62",
@@ -6806,7 +6806,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-63",
@@ -6817,7 +6817,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-64",
@@ -6828,7 +6828,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-65",
@@ -6839,7 +6839,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-66",
@@ -6850,7 +6850,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-67",
@@ -6861,7 +6861,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-68",
@@ -6872,7 +6872,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-69",
@@ -6883,7 +6883,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-70",
@@ -6894,7 +6894,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-71",
@@ -6905,7 +6905,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-72",
@@ -6916,7 +6916,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-biology-73",
@@ -6927,7 +6927,7 @@
     "unit": "遗传、生态与健康",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-1",
@@ -6938,7 +6938,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-2",
@@ -6949,7 +6949,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-3",
@@ -6960,7 +6960,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-4",
@@ -6971,7 +6971,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-5",
@@ -6982,7 +6982,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-6",
@@ -6993,7 +6993,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-7",
@@ -7004,7 +7004,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-8",
@@ -7015,7 +7015,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-9",
@@ -7026,7 +7026,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-10",
@@ -7037,7 +7037,7 @@
     "unit": "早期文明与先秦",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-11",
@@ -7048,7 +7048,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-12",
@@ -7059,7 +7059,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-13",
@@ -7070,7 +7070,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-14",
@@ -7081,7 +7081,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-15",
@@ -7092,7 +7092,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-16",
@@ -7103,7 +7103,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-17",
@@ -7114,7 +7114,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-18",
@@ -7125,7 +7125,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-19",
@@ -7136,7 +7136,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-20",
@@ -7147,7 +7147,7 @@
     "unit": "统一国家与隋唐发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-21",
@@ -7158,7 +7158,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-22",
@@ -7169,7 +7169,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-23",
@@ -7180,7 +7180,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-24",
@@ -7191,7 +7191,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-25",
@@ -7202,7 +7202,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-26",
@@ -7213,7 +7213,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-27",
@@ -7224,7 +7224,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-28",
@@ -7235,7 +7235,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-29",
@@ -7246,7 +7246,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-30",
@@ -7257,7 +7257,7 @@
     "unit": "宋元明清社会",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-31",
@@ -7268,7 +7268,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-32",
@@ -7279,7 +7279,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-33",
@@ -7290,7 +7290,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-34",
@@ -7301,7 +7301,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-35",
@@ -7312,7 +7312,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-36",
@@ -7323,7 +7323,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-37",
@@ -7334,7 +7334,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-38",
@@ -7345,7 +7345,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-39",
@@ -7356,7 +7356,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-40",
@@ -7367,7 +7367,7 @@
     "unit": "近代危机与探索",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-41",
@@ -7378,7 +7378,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-42",
@@ -7389,7 +7389,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-43",
@@ -7400,7 +7400,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-44",
@@ -7411,7 +7411,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-45",
@@ -7422,7 +7422,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-46",
@@ -7433,7 +7433,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-47",
@@ -7444,7 +7444,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-48",
@@ -7455,7 +7455,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-49",
@@ -7466,7 +7466,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-50",
@@ -7477,7 +7477,7 @@
     "unit": "新民主主义革命进程",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-51",
@@ -7488,7 +7488,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-52",
@@ -7499,7 +7499,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-53",
@@ -7510,7 +7510,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-54",
@@ -7521,7 +7521,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-55",
@@ -7532,7 +7532,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-56",
@@ -7543,7 +7543,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-57",
@@ -7554,7 +7554,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-58",
@@ -7565,7 +7565,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-59",
@@ -7576,7 +7576,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-60",
@@ -7587,7 +7587,7 @@
     "unit": "抗战与共和国建设",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-61",
@@ -7598,7 +7598,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-62",
@@ -7609,7 +7609,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-63",
@@ -7620,7 +7620,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-64",
@@ -7631,7 +7631,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-65",
@@ -7642,7 +7642,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-66",
@@ -7653,7 +7653,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-67",
@@ -7664,7 +7664,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-68",
@@ -7675,7 +7675,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-69",
@@ -7686,7 +7686,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-70",
@@ -7697,7 +7697,7 @@
     "unit": "古代与中古世界",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-71",
@@ -7708,7 +7708,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-72",
@@ -7719,7 +7719,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-73",
@@ -7730,7 +7730,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-74",
@@ -7741,7 +7741,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-75",
@@ -7752,7 +7752,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-76",
@@ -7763,7 +7763,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-77",
@@ -7774,7 +7774,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-78",
@@ -7785,7 +7785,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-79",
@@ -7796,7 +7796,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-80",
@@ -7807,7 +7807,7 @@
     "unit": "近代世界变革",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-81",
@@ -7818,7 +7818,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-82",
@@ -7829,7 +7829,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-83",
@@ -7840,7 +7840,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-84",
@@ -7851,7 +7851,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-85",
@@ -7862,7 +7862,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-86",
@@ -7873,7 +7873,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-87",
@@ -7884,7 +7884,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-88",
@@ -7895,7 +7895,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-89",
@@ -7906,7 +7906,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-history-90",
@@ -7917,7 +7917,7 @@
     "unit": "现代世界与国际关系",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-1",
@@ -7928,7 +7928,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-2",
@@ -7939,7 +7939,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-3",
@@ -7950,7 +7950,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-4",
@@ -7961,7 +7961,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-5",
@@ -7972,7 +7972,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-6",
@@ -7983,7 +7983,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-7",
@@ -7994,7 +7994,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-8",
@@ -8005,7 +8005,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-9",
@@ -8016,7 +8016,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-10",
@@ -8027,7 +8027,7 @@
     "unit": "地球与经纬网",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-11",
@@ -8038,7 +8038,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-12",
@@ -8049,7 +8049,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-13",
@@ -8060,7 +8060,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-14",
@@ -8071,7 +8071,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-15",
@@ -8082,7 +8082,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-16",
@@ -8093,7 +8093,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-17",
@@ -8104,7 +8104,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-18",
@@ -8115,7 +8115,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-19",
@@ -8126,7 +8126,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-20",
@@ -8137,7 +8137,7 @@
     "unit": "地图与地形判读",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-21",
@@ -8148,7 +8148,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-22",
@@ -8159,7 +8159,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-23",
@@ -8170,7 +8170,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-24",
@@ -8181,7 +8181,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-25",
@@ -8192,7 +8192,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-26",
@@ -8203,7 +8203,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-27",
@@ -8214,7 +8214,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-28",
@@ -8225,7 +8225,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-29",
@@ -8236,7 +8236,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-30",
@@ -8247,7 +8247,7 @@
     "unit": "天气与气候要素",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-31",
@@ -8258,7 +8258,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-32",
@@ -8269,7 +8269,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-33",
@@ -8280,7 +8280,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-34",
@@ -8291,7 +8291,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-35",
@@ -8302,7 +8302,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-36",
@@ -8313,7 +8313,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-37",
@@ -8324,7 +8324,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-38",
@@ -8335,7 +8335,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-39",
@@ -8346,7 +8346,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-40",
@@ -8357,7 +8357,7 @@
     "unit": "海陆分布与地球变化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-41",
@@ -8368,7 +8368,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-42",
@@ -8379,7 +8379,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-43",
@@ -8390,7 +8390,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-44",
@@ -8401,7 +8401,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-45",
@@ -8412,7 +8412,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-46",
@@ -8423,7 +8423,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-47",
@@ -8434,7 +8434,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-48",
@@ -8445,7 +8445,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-49",
@@ -8456,7 +8456,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-50",
@@ -8467,7 +8467,7 @@
     "unit": "世界区域与国家",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-51",
@@ -8478,7 +8478,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-52",
@@ -8489,7 +8489,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-53",
@@ -8500,7 +8500,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-54",
@@ -8511,7 +8511,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-55",
@@ -8522,7 +8522,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-56",
@@ -8533,7 +8533,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-57",
@@ -8544,7 +8544,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-58",
@@ -8555,7 +8555,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-59",
@@ -8566,7 +8566,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-60",
@@ -8577,7 +8577,7 @@
     "unit": "人口、聚落与发展",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-61",
@@ -8588,7 +8588,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-62",
@@ -8599,7 +8599,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-63",
@@ -8610,7 +8610,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-64",
@@ -8621,7 +8621,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-65",
@@ -8632,7 +8632,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-66",
@@ -8643,7 +8643,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-67",
@@ -8654,7 +8654,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-68",
@@ -8665,7 +8665,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-69",
@@ -8676,7 +8676,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-70",
@@ -8687,7 +8687,7 @@
     "unit": "中国自然地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-71",
@@ -8698,7 +8698,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-72",
@@ -8709,7 +8709,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-73",
@@ -8720,7 +8720,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-74",
@@ -8731,7 +8731,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-75",
@@ -8742,7 +8742,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-76",
@@ -8753,7 +8753,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-77",
@@ -8764,7 +8764,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-78",
@@ -8775,7 +8775,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-79",
@@ -8786,7 +8786,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-80",
@@ -8797,7 +8797,7 @@
     "unit": "资源、农业与工业",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-81",
@@ -8808,7 +8808,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-82",
@@ -8819,7 +8819,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-83",
@@ -8830,7 +8830,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-84",
@@ -8841,7 +8841,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-85",
@@ -8852,7 +8852,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-86",
@@ -8863,7 +8863,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-87",
@@ -8874,7 +8874,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-88",
@@ -8885,7 +8885,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-89",
@@ -8896,7 +8896,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-geography-90",
@@ -8907,7 +8907,7 @@
     "unit": "中国区域地理",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-1",
@@ -8918,7 +8918,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-2",
@@ -8929,7 +8929,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-3",
@@ -8940,7 +8940,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-4",
@@ -8951,7 +8951,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-5",
@@ -8962,7 +8962,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-6",
@@ -8973,7 +8973,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-7",
@@ -8984,7 +8984,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-8",
@@ -8995,7 +8995,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-9",
@@ -9006,7 +9006,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-10",
@@ -9017,7 +9017,7 @@
     "unit": "自我认识与成长",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-11",
@@ -9028,7 +9028,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-12",
@@ -9039,7 +9039,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-13",
@@ -9050,7 +9050,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-14",
@@ -9061,7 +9061,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-15",
@@ -9072,7 +9072,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-16",
@@ -9083,7 +9083,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-17",
@@ -9094,7 +9094,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-18",
@@ -9105,7 +9105,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-19",
@@ -9116,7 +9116,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-20",
@@ -9127,7 +9127,7 @@
     "unit": "情绪与心理调适",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-21",
@@ -9138,7 +9138,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-22",
@@ -9149,7 +9149,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-23",
@@ -9160,7 +9160,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-24",
@@ -9171,7 +9171,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-25",
@@ -9182,7 +9182,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-26",
@@ -9193,7 +9193,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-27",
@@ -9204,7 +9204,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-28",
@@ -9215,7 +9215,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-29",
@@ -9226,7 +9226,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-30",
@@ -9237,7 +9237,7 @@
     "unit": "交往、家庭与集体",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-31",
@@ -9248,7 +9248,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-32",
@@ -9259,7 +9259,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-33",
@@ -9270,7 +9270,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-34",
@@ -9281,7 +9281,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-35",
@@ -9292,7 +9292,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-36",
@@ -9303,7 +9303,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-37",
@@ -9314,7 +9314,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-38",
@@ -9325,7 +9325,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-39",
@@ -9336,7 +9336,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-40",
@@ -9347,7 +9347,7 @@
     "unit": "规则、道德与责任",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-41",
@@ -9358,7 +9358,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-42",
@@ -9369,7 +9369,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-43",
@@ -9380,7 +9380,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-44",
@@ -9391,7 +9391,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-45",
@@ -9402,7 +9402,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-46",
@@ -9413,7 +9413,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-47",
@@ -9424,7 +9424,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-48",
@@ -9435,7 +9435,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-49",
@@ -9446,7 +9446,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-50",
@@ -9457,7 +9457,7 @@
     "unit": "法律意识与未成年人保护",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-51",
@@ -9468,7 +9468,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-52",
@@ -9479,7 +9479,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-53",
@@ -9490,7 +9490,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-54",
@@ -9501,7 +9501,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-55",
@@ -9512,7 +9512,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-56",
@@ -9523,7 +9523,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-57",
@@ -9534,7 +9534,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-58",
@@ -9545,7 +9545,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-59",
@@ -9556,7 +9556,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-60",
@@ -9567,7 +9567,7 @@
     "unit": "宪法、权利与义务",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-61",
@@ -9578,7 +9578,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-62",
@@ -9589,7 +9589,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-63",
@@ -9600,7 +9600,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-64",
@@ -9611,7 +9611,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-65",
@@ -9622,7 +9622,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-66",
@@ -9633,7 +9633,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-67",
@@ -9644,7 +9644,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-68",
@@ -9655,7 +9655,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-69",
@@ -9666,7 +9666,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-70",
@@ -9677,7 +9677,7 @@
     "unit": "国家制度与民主法治",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-71",
@@ -9688,7 +9688,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-72",
@@ -9699,7 +9699,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-73",
@@ -9710,7 +9710,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-74",
@@ -9721,7 +9721,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-75",
@@ -9732,7 +9732,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-76",
@@ -9743,7 +9743,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-77",
@@ -9754,7 +9754,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-78",
@@ -9765,7 +9765,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-79",
@@ -9776,7 +9776,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-80",
@@ -9787,7 +9787,7 @@
     "unit": "发展、创新与文化",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-81",
@@ -9798,7 +9798,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-82",
@@ -9809,7 +9809,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-83",
@@ -9820,7 +9820,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-84",
@@ -9831,7 +9831,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-85",
@@ -9842,7 +9842,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-86",
@@ -9853,7 +9853,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-87",
@@ -9864,7 +9864,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-88",
@@ -9875,7 +9875,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-89",
@@ -9886,7 +9886,7 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   },
   {
     "id": "foundation-ethics-90",
@@ -9897,6 +9897,6 @@
     "unit": "国家、世界与未来",
     "alignmentStatus": "pending",
     "hasExercise": true,
-    "exerciseCount": 10
+    "exerciseCount": 1
   }
 ]

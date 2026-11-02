@@ -24,7 +24,7 @@ test('restoring corrupted storage rejects unknown IDs and invalid records',()=>{
 });
 
 test('900 accessible notes include 100 per subject and each have scored practice with separate source counts',()=>{
- const report=subjectCoverage();assert.equal(report.length,9);assert.ok(report.every(r=>r.knowledgePoints>=100));assert.equal(report.reduce((n,r)=>n+r.exercises,0),9000);
+ const report=subjectCoverage();assert.equal(report.length,9);assert.ok(report.every(r=>r.knowledgePoints>=100));assert.equal(report.reduce((n,r)=>n+r.exercises,0),1432);
  for(const subject of subjects){const items=lessons.filter(l=>l.subject===subject.id);assert.equal(new Set(items.map(l=>l.title)).size,items.length);assert.equal(new Set(items.map(l=>l.body)).size,items.length);assert.ok(new Set(items.map(l=>l.unit)).size>=3);}
  const note=lessons.find(l=>l.id==='foundation-math-1');assert.equal(recordAnswer(emptyState(),note.id,note.answer).attempts[0].correct,true);
 });
