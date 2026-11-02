@@ -1,5 +1,5 @@
 import {BOTTOM_PRICE_TOLERANCE} from './strategy-config.js';
-import {SIGNAL_RULE,signalRecord,signalState,signalCounts,mergeSignals} from './signal-model.js';
+import {SIGNAL_RULE,signalRecord,signalState,signalCounts,mergeSignals,expectedSignalTime} from './signal-model.js';
 import {createSignalScanner} from './signal-scan.js';
 import {api} from './integrations.js';
 import {validatePool,filterPool,displayPoolROE} from './pool-model.js';
@@ -12,7 +12,7 @@ export async function mountPool({esc,download,onSelect}){
   catch(e){root.querySelector('#backgroundstatus').textContent='后台结果暂未读取，保留已有缓存：'+e.message}
   finally{button.disabled=false}
  }
- function showBackground(){if(!background)return;if(background.rule!==SIGNAL_RULE){root.querySelector('#backgroundstatus').textContent='背离规则已更新：底部价格容差'+(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)+'%。等待后台按新规则核验，旧规则缓存不用于当前信号。';return;}const b=background.background;root.querySelector('#backgroundstatus').textContent='后台快照：'+showTime(b?.updated_at||background.finished_at)+'。'+(b?'最近批次检查 '+b.checked+'/'+b.batch_total+' 只。'+(b.message||''):'旧版快照，等待后台任务更新。')+' 工作日北京时间10:05至15:50每15分钟安排四组全池检查，16:05补查日线；任务可能延迟。刷新按钮只读取缓存，不会从手机发起全池请求。';}
+ function showBackground(){if(!background)return;if(background.rule!==SIGNAL_RULE){root.querySelector('#backgroundstatus').textContent='背离规则已更新：底部价格容差'+(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)+'%。等待后台按新规则核验，旧规则缓存不用于当前信号。';return;}const b=background.background,counts=signalCounts(pool.stocks,background.results||{}),warning=counts.stale?'【更新滞后】后台有 '+counts.stale+' 只股票的信号已过期，等待云端重新核验。':'';root.querySelector('#backgroundstatus').textContent=warning+'后台快照：'+showTime(b?.updated_at||background.finished_at)+'。'+(b?'最近批次检查 '+b.checked+'/'+b.batch_total+' 只。'+(b.message||''):'旧版快照，等待后台任务更新。')+' 当前应核验的60分钟时点：'+showTime(expectedSignalTime())+'。工作日北京时间10:05至15:50每15分钟安排四组全池检查，16:05补查日线；任务可能延迟。刷新按钮只读取缓存，不会从手机发起全池请求。';}
  const showTime=value=>value&&Number.isFinite(Date.parse(value))?new Date(value).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})+'（北京时间）':'未核查';
  const $=id=>root.querySelector(id);const persist=()=>{if(saveTimer)clearTimeout(saveTimer);saveTimer=null;try{localStorage.setItem('zhiheng-pool-signals-v1',JSON.stringify({rule:SIGNAL_RULE,results:records}));storageWarning=''}catch{storageWarning='本机缓存未保存（浏览器存储限制），关闭页面可能丢失本轮进度。'}}
  const saveSoon=()=>{if(!saveTimer)saveTimer=setTimeout(persist,1000)};
