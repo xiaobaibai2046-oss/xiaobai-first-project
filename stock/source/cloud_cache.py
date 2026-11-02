@@ -10,7 +10,7 @@ SH=ZoneInfo('Asia/Shanghai')
 def expected(now,kind):
     local=now.astimezone(SH);day=local.date();minute=local.hour*60+local.minute
     if kind=='history':
-        if day.weekday()<5 and minute>=960:return day.isoformat()
+        if day.weekday()<5 and minute>=900:return day.isoformat()
     elif kind=='hourly' and day.weekday()<5:
         closed=[x for x in (630,690,840,900) if x<=minute]
         if closed:return day.isoformat()+f'T{closed[-1]//60:02d}:{closed[-1]%60:02d}:00+08:00'

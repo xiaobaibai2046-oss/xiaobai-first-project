@@ -1,0 +1,46 @@
+name: Stock publish phase
+on:
+  workflow_call:
+    inputs:
+      phase:
+        required: true
+        type: string
+permissions:
+  contents: write
+  pages: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stock-signals-${{ inputs.phase }}-*
+          path: stock/source/scan-results
+          merge-multiple: true
+      - name: Merge current records and compute actual coverage
+        working-directory: stock/source
+        run: node scripts/merge-scans.mjs
+      - name: Build published snapshots
+        working-directory: stock/source
+        run: npm run build -- ..
+      - name: Save results and publish Pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stock/source/pool-signals.json stock/pool-signals.json stock/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh background stock signal snapshot"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Request Pages rebuild for bot commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/pages/builds

@@ -1,3 +1,4 @@
+import {expectedSignalTime} from './signal-model.js';
 import {POOL_SOURCE,parsePoolPage,assemblePool} from './pool-model.js';
 import {normalizeHourly} from './macd.js';
 // Static hosting transport: provider scripts run in an opaque-origin sandbox.
@@ -39,13 +40,14 @@ export function normalizeBrowserQuote(text,code){
 export function normalizeBrowserHistory(payload,code,clock=chinaClock()){
  const key=marketSymbol(code),obj=payload?.data?.[key],rows=obj?.day;if(payload?.code!==0||!Array.isArray(rows)||!rows.length)throw Error('未返回不复权日线；不会静默改用前复权');
  const seen=new Set(),name=Array.isArray(obj.qt?.[key])?obj.qt[key][1]||code:code;
- const bars=rows.map(row=>{
+ const parsed=rows.map(row=>{
   if(!Array.isArray(row)||row.length<6)throw Error('日线格式变化');const [date,...values]=row;
   const [open,close,high,low,volume]=values.map(providerNumber);
   if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date))||new Date(date).toISOString().slice(0,10)!==date||[open,close,high,low,volume].some(x=>x==null)||Math.min(open,close,high,low)<=0||volume<0||high<Math.max(open,close)||low>Math.min(open,close)||seen.has(date))throw Error('日线包含无效价格、日期或重复数据');seen.add(date);
   return {code,name,date,open,close,high,low,volume};
- }).filter(b=>b.date<clock.date||b.date===clock.date&&clock.hour>=16).sort((a,b)=>a.date.localeCompare(b.date));
- if(!bars.length)throw Error('没有已完成日线');return {code,name,bars,adjustment:'none',source:'腾讯财经公开日线',first_date:bars[0].date,last_date:bars.at(-1).date};
+ });const forming_bar=parsed.find(b=>b.date===clock.date&&clock.hour<15)||null;
+ const bars=parsed.filter(b=>b.date<clock.date||b.date===clock.date&&clock.hour>=15).sort((a,b)=>a.date.localeCompare(b.date));
+ if(!bars.length)throw Error('没有已完成日线');return {code,name,bars,forming_bar,adjustment:'none',source:'腾讯财经公开日线',first_date:bars[0].date,last_date:bars.at(-1).date};
 }
 export function normalizeBrowserFinancial(payload,code,today=chinaClock().date){
  if(payload?.success===false||!Array.isArray(payload?.result?.data))throw Error('财务源未返回可用报表');
@@ -60,7 +62,8 @@ export function normalizeBrowserFinancial(payload,code,today=chinaClock().date){
  return {code,reports,source:'东方财富数据中心 · 业绩报表 RPT_LICO_FN_CPD',period_basis:'年初至报告期末累计，非单季度、非 TTM；同比以供应商字段为准',warnings:['摘要不能替代公告及审计；未自动核验负债、关联交易和财务真实性','公告日期缺失时不可当作历史已知数据；修订报表不回填到技术回测']};
 }
 export async function browserAPI(path,options={}){
- const u=new URL(path,location.href),key=u.pathname+'?'+u.searchParams.toString(),old=browserCache.get(key);
+ const u=new URL(path,location.href),session=u.pathname==='/api/history'?expectedSignalTime(new Date(),'daily'):u.pathname==='/api/hourly'?expectedSignalTime():'';
+ const key=u.pathname+'?'+u.searchParams.toString()+'|'+session,old=browserCache.get(key);
  const ttl=u.pathname==='/api/quotes'?10000:u.pathname==='/api/history'?300000:u.pathname==='/api/hourly'?60000:3600000;
  if(u.searchParams.get('refresh')!=='1'&&old&&Date.now()-old.time<ttl)return {...old.data,cache_hit:true};
  let data;

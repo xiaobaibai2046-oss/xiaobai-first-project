@@ -1,5 +1,6 @@
 """Same-origin A-share market adapters. Python standard library only."""
 import argparse
+from cloud_cache import expected as expected_cache_session
 import datetime as dt
 import json
 import math
@@ -159,15 +160,16 @@ def parse_history(payload, code):
     bars.sort(key=lambda b: b['date'])
     # Intraday unfinished daily bars must not enter a close-based strategy.
     now = dt.datetime.now(SH)
+    forming = next((b for b in bars if b['date'] == now.date().isoformat() and now.hour < 15), None)
     bars = [b for b in bars if b['date'] < now.date().isoformat() or
-            (b['date'] == now.date().isoformat() and now.hour >= 16)]
+            (b['date'] == now.date().isoformat() and now.hour >= 15)]
     if not bars:
         raise DataError('没有已完成的日线')
     info = obj.get('qt', {}).get(key, [])
     name = info[1] if isinstance(info, list) and len(info) > 1 else code
     for bar in bars:
         bar['name'] = name
-    return dict(code=code, name=name, bars=bars, adjustment='none',
+    return dict(code=code, name=name, bars=bars, forming_bar=forming, adjustment='none',
                 source='腾讯财经公开日线', volume_unit='手（以供应商口径为准）',
                 first_date=bars[0]['date'], last_date=bars[-1]['date'],
                 warnings=['不复权价格；未包含现金分红、送转、配股及退市收益，除权窗口回测可能失真',
@@ -193,7 +195,7 @@ def get_history(code, count=640):
         raise InputError('日线条数仅支持80或640')
     def loader():
         return fetch_kline('/appstock/app/fqkline/get', {'param': key + ',day,,,' + str(count) + ','}, parse_history, code)
-    return cached(('history', code, count), 300, loader)
+    return cached(('history', code, count, expected_cache_session(dt.datetime.now(SH), 'history')), 300, loader)
 
 
 def parse_hourly(payload, code, now=None):
@@ -238,7 +240,7 @@ def get_hourly(code):
     key = symbol(code)
     def loader():
         return fetch_kline('/appstock/app/kline/mkline', {'param': key + ',m60,,320'}, parse_hourly, code)
-    return cached(('hourly', code), 60, loader)
+    return cached(('hourly', code, expected_cache_session(dt.datetime.now(SH), 'hourly')), 60, loader)
 
 
 FINANCE_FIELDS = {
