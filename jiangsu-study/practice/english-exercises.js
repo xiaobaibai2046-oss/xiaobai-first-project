@@ -32,7 +32,7 @@ const packs={
 ['The doors ___ at seven every morning.','are opened','opens / is opened / opening','门被打开，doors 为复数，使用 are opened。'],
 ['Chinese ___ by more and more learners today.','is learned','learns / learned / is learning','Chinese 是被学习的语言，使用 is learned。'],
 ['The windows ___ once a week.','are washed','wash / washes / is washed','复数主语 windows 是 wash 的承受者，选 are washed。'],
-['Rice ___ in many parts of southern China.','is grown','grows / grow / are grown','强调稻米被种植，rice 为不可数名词，使用 is grown。']
+['Rice ___ by local farmers in many parts of southern China.','is grown','grows / grow / are grown','强调稻米被种植，rice 为不可数名词，使用 is grown。']
 ],
 '可数名词的复数':[
 ['There are three ___ on the desk.','books','book / a book / booking','three 后用可数名词复数 books。'],

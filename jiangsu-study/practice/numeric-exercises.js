@@ -26,7 +26,7 @@ for(let i=0;i<3;i++){
  const volume=10+i*5,mass=volume*2.7;
  n('密度及计算',`金属块质量为 ${Number(mass.toFixed(1))} g，体积为 ${volume} cm³。密度是多少 g/cm³？`,2.7,[27,0.27,5.4],`ρ=m/V=${Number(mass.toFixed(1))}/${volume}=2.7 g/cm³。这里质量用 g、体积用 cm³，因此结果不能标成 kg/m³。`,i);
  const force=10+i*3;
- n('二力平衡的条件',`一个物体只受水平方向的拉力和摩擦力，正在水平面上匀速直线运动。拉力为 ${force} N，摩擦力大小是多少 N？`,force,[0,force*2,force/2],`匀速直线运动说明水平方向合力为零。两力作用在同一物体上、沿同一直线、大小相等、方向相反，所以摩擦力为 ${force} N。`,i);
+ n('二力平衡的条件',`一个物体在水平方向上只受拉力和摩擦力，正在水平面上匀速直线运动。拉力为 ${force} N，摩擦力大小是多少 N？`,force,[0,force*2,force/2],`匀速直线运动说明水平方向合力为零。两力作用在同一物体上、沿同一直线、大小相等、方向相反，所以摩擦力为 ${force} N。`,i);
  const weight=100+20*i,area=0.02;
  n('压强与受力面积',`重 ${weight} N 的箱子静止放在水平地面上，与地面接触面积为 0.02 m²。对地面压强是多少 Pa？`,weight/area,[weight*area,weight/2,weight*area*100],`水平地面上压力 F=G=${weight} N。p=F/S=${weight}/0.02=${weight/area} Pa。接触面积不能与压力相乘。`,i);
  const v=100+50*i;
