@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7ee"><meta name="description" content="按小学年级、上下册学习汉字。翻卡、拼音闯关、错字复习和自由描写，学习记录保存在本机。">
+  <title>字芽岛 · 小学识字小游戏</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="字芽岛首页"><span class="brand-icon">芽</span><span>字芽岛<small>每天认识一点点</small></span></a><button id="parent-open" class="quiet">家长小屋 <span aria-hidden="true">↗</span></button></header>
+  <main id="main">
+    <section class="hero"><div><p class="eyebrow">小小汉字，大大世界</p><h1>让汉字，<br>在游戏里发芽。</h1><p class="hero-copy">和小狐狸一起找汉字、读拼音。<br>不赶时间，每一次尝试都算进步。</p><span class="hero-tag">无需账号 · 手机和平板都能玩</span></div><svg class="island" viewBox="0 0 380 280" role="img" aria-label="小狐狸在汉字小岛上读书"><ellipse cx="190" cy="235" rx="169" ry="28" fill="#dce8ca"/><path d="M30 224Q90 140 173 208Q259 122 353 225" fill="#b7d2a7"/><path d="M273 190V97M246 150l27-53 30 53M240 176l33-59 38 59" fill="#779b77" stroke="#779b77" stroke-width="6" stroke-linejoin="round"/><g transform="translate(102 72)"><rect width="66" height="76" rx="13" fill="#fffdf5" transform="rotate(-12)"/><text x="20" y="47" font-size="37" fill="#638c70">山</text></g><g transform="translate(244 38) rotate(12)"><rect width="57" height="64" rx="12" fill="#fffdf5"/><text x="12" y="45" font-size="34" fill="#d98653">木</text></g><path d="M152 210q-23-37 8-78l-4-43 35 25q18-4 35 0l29-24-1 48q24 44-3 73" fill="#e59b61"/><path d="m160 102 22 18-20 9m84-27-18 17 20 11" fill="#794e41"/><path d="M162 153q42 31 84 0l-9 38h-66Z" fill="#fff3d7"/><ellipse cx="188" cy="150" rx="4" ry="6" fill="#413f36"/><ellipse cx="226" cy="150" rx="4" ry="6" fill="#413f36"/><path d="m201 166 7 7 7-7" fill="#413f36"/><path d="m145 192 58 12 59-12-5 47-54 9-51-10Z" fill="#739b7a"/><path d="M203 206v40" stroke="#f6f7ee" stroke-width="3"/><circle cx="67" cy="179" r="6" fill="#eecb70"/><path d="M329 93v16m-8-8h16M71 66v13m-7-7h14" stroke="#dfbc67" stroke-width="3" stroke-linecap="round"/></svg></section>
+    <section class="picker" aria-labelledby="grade-label"><div class="section-heading"><div><p class="eyebrow">从这里出发</p><h2 id="grade-label">选择你的年级</h2></div><span class="soft-label">随时可以换年级</span></div><div id="grades" class="grades" role="group" aria-label="年级"></div><div class="filters"><div id="terms" class="segmented" role="group" aria-label="学期"><button data-term="上">上册</button><button data-term="下">下册</button><button data-term="全年">全年</button></div><label class="scope-label">字表 <select id="scope"><option value="all">认读与写字</option><option value="recognize">识字表</option><option value="write">写字表</option></select></label></div><p id="coverage" class="coverage"></p></section>
+    <nav class="tabs" aria-label="玩法"><button data-tab="play" aria-selected="true">✦ 闯关乐园</button><button data-tab="cards" aria-selected="false">▤ 我的字卡</button><button data-tab="review" aria-selected="false">↻ 再见一面 <span id="review-count">0</span></button></nav>
+    <section id="content" aria-live="polite"><p class="loading">正在把汉字搬到岛上……</p></section>
+    <footer><span>字芽岛 · 每一颗小芽，都有自己的节奏</span><button class="text-button" id="source-open">字表来源与适用说明</button></footer>
+  </main>
+  <dialog id="card-dialog" aria-labelledby="card-title"><button class="close" data-close="card-dialog" aria-label="关闭字卡">×</button><div id="card-content"></div></dialog>
+  <dialog id="parent-dialog" aria-labelledby="parent-title"><button class="close" data-close="parent-dialog" aria-label="关闭家长小屋">×</button><p class="eyebrow">给陪伴孩子的你</p><h2 id="parent-title">家长小屋</h2><div id="parent-content"></div></dialog>
+  <div id="toast" role="status"></div><noscript>请启用 JavaScript 以使用识字游戏。字表与游戏不需要账号。</noscript><script type="module" src="app.js"></script>
+</body></html>
