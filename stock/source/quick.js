@@ -1,3 +1,4 @@
+import {signalState} from './signal-model.js';
 import {getDzhData} from './dzh-data.js';
 import {api} from './integrations.js';
 import {marketSymbol} from './providers.js';
@@ -11,6 +12,16 @@ export function mountQuick({esc,download,onHistory}){
  form.onsubmit=async event=>{
   event.preventDefault();const code=input.value.trim();try{marketSymbol(code)}catch(e){progress.textContent=e.message;output.innerHTML='';return}
   const run=++generation;last=null;output.innerHTML='';button.disabled=true;button.textContent='正在分析…';form.setAttribute('aria-busy','true');
+  // Give immediate, explicitly dated feedback while the four live requests run.
+  try{
+   const embedded=JSON.parse(document.querySelector('#pool-signal-data')?.textContent||'{}');
+   const local=JSON.parse(localStorage.getItem('zhiheng-pool-signals-v1')||'{}');
+   const candidates=[embedded.results?.[code],local.results?.[code]].filter(r=>r?.code===code&&!String(r.sources?.daily||'').startsWith('大智慧')&&!String(r.sources?.hourly||'').startsWith('大智慧')).sort((a,b)=>Date.parse(b.checked_at)-Date.parse(a.checked_at));
+   const cached=candidates[0];
+   if(cached){const state=signalState(cached),fresh=['buy','sell','none'].includes(state),label=fresh?{buy:'买入观察',sell:'卖出／减仓观察',none:'暂未触发'}[state]:'等待更新';
+    output.innerHTML=`<article class="quickverdict"><div class="eyebrow">已有云端记录 · 正在核对最新数据</div><h2>${esc(label)}</h2><p>${fresh?'这是已有云端判断，最新分析正在获取中。':'已有记录已过期或不完整，暂不作为当前买卖结论。'}</p><p class="small">上次检查 ${esc(cached.checked_at)}；日线 ${esc(cached.daily_as_of||'缺失')}；60分钟 ${esc(cached.hourly_as_of||'缺失')}。</p></article>`;
+   }
+  }catch{} // Cache problems cannot block the live analysis.
   const states={quote:'获取中',history:'获取中',hourly:'获取中',financial:'获取中'},values={},errors={};
   const update=()=>{if(run===generation)progress.textContent=`报价：${states.quote} · 日线：${states.history} · 60分钟：${states.hourly} · 财报：${states.financial}`};update();
   const tasks=[['quote','/api/quotes?codes='+code],['history','/api/history?code='+code],['hourly','/api/hourly?code='+code],['financial','/api/financial?code='+code]];

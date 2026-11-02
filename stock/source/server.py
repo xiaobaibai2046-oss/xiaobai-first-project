@@ -1,5 +1,6 @@
 """Same-origin A-share market adapters. Python standard library only."""
 import argparse
+from cloud_cache import expected as expected_cache_session
 import datetime as dt
 import json
 import math
@@ -193,7 +194,7 @@ def get_history(code, count=640):
         raise InputError('日线条数仅支持80或640')
     def loader():
         return fetch_kline('/appstock/app/fqkline/get', {'param': key + ',day,,,' + str(count) + ','}, parse_history, code)
-    return cached(('history', code, count), 300, loader)
+    return cached(('history', code, count, expected_cache_session(dt.datetime.now(SH), 'history')), 300, loader)
 
 
 def parse_hourly(payload, code, now=None):
@@ -238,7 +239,7 @@ def get_hourly(code):
     key = symbol(code)
     def loader():
         return fetch_kline('/appstock/app/kline/mkline', {'param': key + ',m60,,320'}, parse_hourly, code)
-    return cached(('hourly', code), 60, loader)
+    return cached(('hourly', code, expected_cache_session(dt.datetime.now(SH), 'hourly')), 60, loader)
 
 
 FINANCE_FIELDS = {

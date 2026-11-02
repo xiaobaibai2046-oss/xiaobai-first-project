@@ -1,0 +1,52 @@
+name: Stock scan phase
+on:
+  workflow_call:
+    inputs:
+      phase:
+        required: true
+        type: string
+      seconds:
+        required: true
+        type: number
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-market-cache
+          key: market-bars-v1-${{ matrix.shard }}-${{ github.run_id }}-${{ inputs.phase }}-${{ github.run_attempt }}
+          restore-keys: market-bars-v1-${{ matrix.shard }}-
+      - name: Scan with bounded concurrency and retain partial results
+        working-directory: stock/source
+        env:
+          SCAN_SHARD: ${{ matrix.shard }}
+          SCAN_SHARDS: '4'
+          SCAN_SECONDS: ${{ inputs.seconds }}
+          SCAN_PHASE: ${{ inputs.phase }}
+          SCAN_CONCURRENCY: '2'
+          CLOUD_MARKET_CACHE: ${{ runner.temp }}/stock-market-cache
+        run: npm run scan:pool
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stock-signals-${{ inputs.phase }}-${{ matrix.shard }}
+          path: stock/source/scan-results/shard-${{ matrix.shard }}.json
+          if-no-files-found: warn
+          retention-days: 2
