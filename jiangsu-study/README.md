@@ -87,7 +87,7 @@ node jiangsu-study/scripts/audit-content.mjs
 node --test jiangsu-study/*.test.js tests/*.test.js
 ```
 
-审计刷新 [content-audit.json](./content-audit.json) 和知识点索引，检查各科数量、去重、题目结构和来源边界。49 项 Node 测试通过。真实 Chromium 验证每科配题、判断/单选、提示、错后重试、计分不膨胀、17 道改编的地区与身份、27 个唯一入口的分页、其他地区导入恢复及 320/390/760 像素手机布局。结构化检查不能替代学科与官方来源核验。
+审计刷新 [content-audit.json](./content-audit.json) 和知识点索引，检查各科数量、去重、题目结构和来源边界。50 项 Node 测试通过。真实 Chromium 验证每科配题、判断/单选、提示、错后重试、计分不膨胀、17 道改编的地区与身份、27 个唯一入口的分页、其他地区导入恢复及 320/390/760 像素手机布局。结构化检查不能替代学科与官方来源核验。
 
 ### 撤回凑数练习并替换（2026-11-02）
 

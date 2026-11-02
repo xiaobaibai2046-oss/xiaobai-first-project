@@ -34,7 +34,7 @@ test('material and language answers follow the actual text instead of generic se
  ['文言词语的语境义','温故而知新','学过的知识'],['记叙文的六要素','社区图书室','事情发生的起因'],
  ['被动语态的基本结构','These books','are read'],['宾语从句的语序','schedule','when the train leaves'],
  ['显微镜成像与视野','左上方','左上方'],['鸦片战争与南京条约','双方协议','关税自主权'],
- ['经纬网定位','170°E','北半球、西半球'],['诚信与个人信息保护','验证码','停止提供，向家长或官方渠道核实']
+ ['经纬网定位','某点为 10°N、170°E','北半球、西半球'],['诚信与个人信息保护','验证码','停止提供，向家长或官方渠道核实']
  ]){const q=lessons.find(l=>l.title===title).exercises.find(q=>q.origin==='concrete-practice'&&q.question.includes(fragment));assert.ok(q);assert.equal(value(q),answer);}
 });
 test('withdrawn generated tasks and their history are removed, valid original history survives',()=>{
@@ -55,4 +55,11 @@ test('legacy wrong records remain until the original exercise is corrected',()=>
 test('diagrams and tables use supplied data and never increase the question count',()=>{
  const illustrated=all.filter(q=>q.figure);assert.equal(illustrated.length,15);
  for(const q of illustrated){const f=q.figure;if(['triangle','rectangle'].includes(f.type)){assert.ok(f.horizontal>0&&f.vertical>0);assert.equal(f.labels.length,3);assert.ok(f.labels.some(s=>s.includes('?')));}else if(f.type==='reflection')assert.ok(f.mirrorAngle>0&&f.mirrorAngle<90);else{assert.equal(f.type,'table');assert.equal(f.rows.length,2);assert.ok(f.rows.every(r=>r.length===f.headings.length));}}
+});
+
+test('hemisphere cases distinguish longitude labels from east-west hemispheres',()=>{
+ const bank=lessons.find(l=>l.title==='经纬网定位').exercises;
+ for(const [fragment,expected] of [['10°S、170°E','南半球、西半球'],['15°N、10°W','北半球、东半球'],['60°N、170°W','北半球、西半球'],['30°S、40°E','南半球、东半球']])assert.equal(value(bank.find(q=>q.question.includes(fragment))),expected);
+ const rice=lessons.find(l=>l.title==='被动语态的基本结构').exercises.find(q=>q.question.startsWith('Rice'));
+ assert.match(rice.question,/by local farmers/);assert.equal(value(rice),'is grown');
 });
