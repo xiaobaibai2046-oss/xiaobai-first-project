@@ -1,12 +1,15 @@
 """Build a self-contained HTML that works without a local server."""
 import json
+import re
 from pathlib import Path
 
 root = Path(__file__).resolve().parent
 html = (root / 'index.html').read_text()
 css = (root / 'style.css').read_text()
-core = (root / 'core.mjs').read_text().replace('export ', '')
-app = (root / 'app.mjs').read_text().split('\n', 1)[1]
+parts = [(root / name).read_text() for name in ['core.mjs','ledger.mjs','ledger-ui.mjs','app.mjs']]
+parts = [re.sub(r'^import .*;\n', '', part, flags=re.M).replace('export ', '') for part in parts]
+core = '\n'.join(parts[:-1])
+app = parts[-1]
 old = "const response=await fetch('./data/history.json');if(!response.ok)throw new Error('数据请求失败：'+response.status);\n  const data=await response.json();"
 assert old in app
 app = app.replace(old, "const data=JSON.parse(document.getElementById('embedded-history').textContent);")

@@ -1,7 +1,9 @@
 import {ZONES,key,validate,absent,zoneStats,generate,parseCSV} from './core.mjs';
+import {initLedger} from './ledger-ui.mjs';
 const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
 let draws=[],stats=[],selected=2,combos=[],eventPage=0,historyPage=0,source='';
 const pageSize=25;
+const ledger=initLedger({getDraws:()=>draws,getGroups:()=>combos,getZone:()=>selected});
 const ball=(n,blue=false)=>`<span class="ball${blue?' blue':''}">${pad(n)}</span>`;
 const balls=r=>`<span class="balls">${r.map(n=>ball(n)).join('')}</span>`;
 const zoneName=z=>['第一区','第二区','第三区'][z];
@@ -35,6 +37,7 @@ function renderCost(){
 function renderCombos(){
   $('export').disabled=!combos.length;
   $('recommendations').innerHTML=combos.length?combos.map((r,i)=>`<article class="combo"><span class="combo-index">组合 ${String(i+1).padStart(2,'0')}</span>${balls(r)}<small>蓝球全部覆盖 · 16注 / 32元</small><div class="all-blue">${Array.from({length:16},(_,j)=>ball(j+1,true)).join('')}</div></article>`).join(''):'<p class="muted">尚未生成组合。满足规则后，点击「按规则生成」。</p>';
+  ledger.refresh();
 }
 function paginate(id,page,total,onChange){
   const pages=Math.max(1,Math.ceil(total/pageSize)),el=$(id);el.innerHTML='';
