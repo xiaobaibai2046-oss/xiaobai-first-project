@@ -16,6 +16,7 @@ with sync_playwright() as p:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto(url)
     page.wait_for_selector('.zone')
+    page.locator('#structured').uncheck()
     assert page.locator('#save-record').is_disabled()
     page.locator('#generate').click()
     assert not page.locator('#save-record').is_disabled()
@@ -66,7 +67,7 @@ with sync_playwright() as p:
     denied=browser.new_context()
     denied.add_init_script("Storage.prototype.setItem=function(){throw new Error('quota denied')}")
     blocked=denied.new_page();blocked.clock.install(time=datetime(2026,11,4,0,0,tzinfo=timezone.utc))
-    blocked.goto(url);blocked.wait_for_selector('.zone');blocked.locator('#generate').click()
+    blocked.goto(url);blocked.wait_for_selector('.zone');blocked.locator('#structured').uncheck();blocked.locator('#generate').click()
     blocked.locator('#record-target').fill('2026127');blocked.locator('#record-cutoff').fill('2026-11-05T20:00')
     blocked.locator('#save-record').click();assert '未保存' in blocked.locator('#ledger-status').inner_text()
     assert blocked.locator('.ledger-record').count()==0

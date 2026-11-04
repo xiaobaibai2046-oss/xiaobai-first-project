@@ -1,4 +1,5 @@
 import {key,randomInt,zoneStats} from './core.mjs';
+import {checkSelection} from './conditions.mjs';
 export const LEDGER_VERSION=1;
 export function randomControl(count,rng=randomInt){
   const out=[],seen=new Set();let attempts=0;
@@ -16,7 +17,7 @@ export function checkGroups(groups){
   for(const r of groups)if(!Array.isArray(r)||r.length!==6||new Set(r).size!==6||r.some(n=>!Number.isInteger(n)||n<1||n>33))throw new Error('六红组合无效');
   if(new Set(groups.map(key)).size!==groups.length)throw new Error('批次内存在重复六红');
 }
-export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],now=new Date().toISOString()}){
+export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,now=new Date().toISOString()}){
   checkGroups(groups);
   if(!['simulation','purchased'].includes(mode))throw new Error('记录类型无效');
   if(!/^20\d{5}$/.test(target)||Number(target.slice(4))<1||target<=draws.at(-1).issue)throw new Error('目标期号必须晚于当前数据最新期号');
@@ -29,9 +30,10 @@ export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',re
   if(!s.trigger)throw new Error('所选区未触发规则');
   const past=new Set(draws.map(d=>key(d.red)));
   if(groups.some(r=>r.some(n=>n>=zone*11+1&&n<=zone*11+11)||past.has(key(r))))throw new Error('组合不符合缺区或历史排除规则');
+  if(selection)checkSelection(groups,selection,zone);
   return {version:LEDGER_VERSION,id:globalThis.crypto.randomUUID(),savedAt:now,cutoff:new Date(deadline).toISOString(),target,targetDate,mode,zone,
     source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current},
-    groups:groups.map(r=>[...r]),control:randomControl(groups.length),cost:groups.length*32};
+    groups:groups.map(r=>[...r]),control:randomControl(groups.length),cost:groups.length*32,...(selection?{selection:JSON.parse(JSON.stringify(selection))}:{})};
 }
 export function validateRecord(r){
   if(!r||r.version!==1||typeof r.id!=='string'||!/^[\da-f-]{36}$/i.test(r.id)||!/^20\d{5}$/.test(r.target)||!['simulation','purchased'].includes(r.mode)||!Number.isInteger(r.zone)||r.zone<0||r.zone>2)throw new Error('账本记录格式无效');
@@ -40,6 +42,7 @@ export function validateRecord(r){
   const date=new Date(Date.parse(r.cutoff)+8*3600000).toISOString().slice(0,10);
   if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule||r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
   if(r.groups.some(g=>g.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)))throw new Error('账本组合包含排除区号码');
+  if(r.selection)checkSelection(r.groups,r.selection,r.zone);
   if(r.resultDraw){const d=r.resultDraw;checkGroups([d.red]);if(d.issue!==r.target||d.date!==r.targetDate||!Number.isInteger(d.blue)||d.blue<1||d.blue>16)throw new Error('账本开奖快照无效');}
   return r;
 }

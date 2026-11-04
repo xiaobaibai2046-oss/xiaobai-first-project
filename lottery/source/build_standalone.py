@@ -6,7 +6,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parent
 html = (root / 'index.html').read_text()
 css = (root / 'style.css').read_text()
-parts = [(root / name).read_text() for name in ['core.mjs','ledger.mjs','ledger-ui.mjs','app.mjs']]
+parts = [(root / name).read_text() for name in ['core.mjs','conditions.mjs','ledger.mjs','ledger-ui.mjs','app.mjs']]
 parts = [re.sub(r'^import .*;\n', '', part, flags=re.M).replace('export ', '') for part in parts]
 core = '\n'.join(parts[:-1])
 app = parts[-1]

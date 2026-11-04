@@ -2,13 +2,15 @@
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>缺区观察 · 双色球研究台</title><style>:root{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;color:#193735;background:#f3f5ef;font-size:15px}*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1160px;margin:auto;padding:28px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d6dfd4}h1{font-size:32px;margin:10px 0}h1 span{display:block;font-size:14px;color:#687c70;font-weight:400;margin-top:6px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:#5c7768}h2{font-size:24px;margin:8px 0}section{padding:30px 0;border-bottom:1px solid #d6dfd4}.section-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.section-head p,.muted,section>p{color:#65776c}.notice{padding:16px 20px;background:#fff0d7;border-left:4px solid #bd8840;line-height:1.8;border-radius:5px}#status{padding:20px 0 0;color:#65776c;line-height:1.8;overflow-wrap:anywhere}.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.zone{display:block;background:#fff;border:2px solid transparent;border-radius:14px;text-align:left;padding:22px;color:inherit;cursor:pointer}.zone.selected{border-color:#347560}.zone strong{display:block;font-size:32px;margin:18px 0 6px}.zone .badge{float:right;font-size:12px;border-radius:20px;padding:4px 8px;background:#eff2ed}.zone .active{background:#fbe6c8;color:#845410}.zone p{margin:8px 0;font-size:13px;color:#65776c}.controls{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:18px 0}label{display:grid;gap:8px;font-size:13px}input,select{font:inherit;padding:11px 12px;border:1px solid #c4d2c6;background:white;border-radius:7px;max-width:100%}#count{width:140px}button,.import{font:inherit;border:0;background:#235e4c;color:#fff;border-radius:7px;padding:12px 17px;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button.secondary{background:#e3eade;color:#274f3e}.import{display:block;font-size:13px}details{margin-top:18px;color:#65776c;font-size:13px;line-height:1.9}summary{cursor:pointer}#cost{background:#e6ece1;padding:15px;border-radius:8px;line-height:1.8}.recommendations{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}.combo{background:white;padding:18px;border-radius:10px}.balls{display:inline-flex;gap:5px;white-space:nowrap}.ball{display:inline-grid;place-items:center;background:#fae8e3;color:#a34d39;border-radius:50%;width:30px;height:30px;font-size:13px;font-weight:650}.ball.blue{background:#e5edf8;color:#42628c}.combo small{display:block;color:#65776c;margin:12px 0 0}.combo .all-blue{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px}.all-blue .ball{width:25px;height:25px;font-size:11px}.combo-index{font-size:11px;color:#65776c;display:block;margin-bottom:10px}.table-wrap{overflow:auto;max-width:100%}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px;margin-top:12px}th{text-align:left;color:#65776c;font-size:12px;font-weight:500}td,th{padding:12px 9px;border-bottom:1px solid #dfe5db}.pager{display:flex;gap:15px;align-items:center;justify-content:flex-end;margin-top:16px;font-size:13px}.pager button{padding:8px 12px}footer{color:#65776c;text-align:center;font-size:12px}.error{color:#a03b2c!important}@media(max-width:720px){header,main,footer{padding:20px 16px}.zones,.recommendations{grid-template-columns:1fr}.zone strong{font-size:28px;margin-top:12px}.section-head{align-items:start;flex-direction:column}h1{font-size:27px}.ball{width:26px;height:26px}.pager{gap:8px}.import{padding:10px}}
 
 .ledger-summary{white-space:pre-line;background:#e6ece1;padding:16px;border-radius:8px;line-height:1.9;margin:16px 0}.ledger-text{white-space:pre-wrap;overflow-wrap:anywhere}.ledger-record{background:#fff;padding:16px;border-radius:8px}#ledger-status{color:#80571e;line-height:1.8;overflow-wrap:anywhere}#record-target{width:170px}.ledger-record summary{font-weight:600}
+
+.condition-panel{border:1px solid #c4d2c6;border-radius:10px;padding:16px;margin:18px 0;min-width:0;line-height:1.8}.condition-panel legend{font-weight:600;padding:0 8px}.condition-panel .check-label{display:flex;align-items:center;gap:9px}.check-label input{width:17px;height:17px;flex-shrink:0}.condition-panel p{font-size:13px;overflow-wrap:anywhere}#run-scope{max-width:100%;width:280px}
 </style></head>
 <body><header><div><span class="eyebrow">SSQ / RESEARCH DESK</span><h1>缺区观察<span>双色球研究台</span></h1></div><label class="import">导入开奖数据<input id="file" type="file" accept=".json,.csv" hidden></label></header>
 <main><div class="notice">研究规则，不是中奖预测。遗漏超过平均值、排除历史号码，均未被证实能提高同预算的一等奖概率。每组六红包全蓝球需要32元。</div>
 <div id="status" role="status">正在加载历史记录…</div>
 <section><div class="section-head"><div><span class="eyebrow">01 / SIGNALS</span><h2>先观察，再筛选</h2></div><p>点击卡片，选择要排除的区</p></div><div id="zones" class="zones"></div>
 <details><summary>计算口径与数据限制</summary><p>缺席：该区11个号码在当期开奖中一个也没出现。平均间隔：历史相邻两次缺席事件之间的开奖期数均值，不是日历天数。当前遗漏：最近一次缺席之后已完成的开奖期数。触发条件严格为：当前遗漏 &gt; 平均间隔 × 2。两者计数口径相差一个事件期，界面同时列明，未把当前未完成间隔计入平均值。</p><p>排除历史组合仅对当前数据有效：六红排序后比较，忽略蓝球及原始顺序。过去开过的组合仍可能再次开出，排除它们没有已知概率优势。缺少记录会影响间隔与排除结果，需核对数据完整性。</p></details></section>
-<section><div class="section-head"><div><span class="eyebrow">02 / COMBINATIONS</span><h2>两区六红 · 全部蓝球</h2></div></div><div class="controls"><label>六红组合数<input id="count" type="number" min="1" max="100" value="5"></label><button id="generate" disabled>按规则生成</button><button id="export" class="secondary" disabled>导出当前组合</button></div><p id="rule"></p><div id="cost"></div><div id="recommendations" class="recommendations"></div><p class="muted">每次为随机筛选；重新生成会替换当前结果。导出便于保存，请勿将多次生成结果直接叠加购买，避免跨批次重复。</p></section>
+<section><div class="section-head"><div><span class="eyebrow">02 / COMBINATIONS</span><h2>两区六红 · 全部蓝球</h2></div></div><div class="controls"><label>六红组合数<input id="count" type="number" min="1" max="100" value="5"></label><button id="generate" disabled>按规则生成</button><button id="export" class="secondary" disabled>导出当前组合</button></div><p id="rule"></p><fieldset class="condition-panel"><legend>附加条件选项</legend><label class="check-label"><input id="structured" type="checkbox" checked> 启用：1个热号＋1个冷号＋3个连续号＋1个随机号</label><div class="controls"><label>三连号排除范围<select id="run-scope"><option value="zoneHistory">排除所选两区历史六红中的三连号</option><option value="recent50">排除最近50期出现过的三连号</option><option value="all">排除全部历史出现过的三连号</option><option value="whole">只排历史整组六红，三连号可重复</option></select></label><label class="check-label"><input id="exact-run" type="checkbox" checked> 恰好一组三连号，不含四连号或额外两连号</label></div><p id="condition-info" aria-live="polite"></p><details><summary>查看已排除三连号的历史依据</summary><div id="run-evidence"></div></details><p class="muted">热池取剩余22个号码近50期频次前6名，冷池取后6名。频次相同时号码小的排前，两个池不重叠。6个角色的号码互不重复；三连号和随机号也可能来自冷热池，因此总冷热号个数可超过角色数量；1热＋1冷＋3连＋1随机共6个号码，互不重复。关闭本条件恢复基础缺区随机。历史整组六红始终排除。</p></fieldset><div id="cost"></div><div id="recommendations" class="recommendations"></div><p class="muted">每次为随机筛选；重新生成会替换当前结果。导出便于保存，请勿将多次生成结果直接叠加购买，避免跨批次重复。</p></section>
 <section id="ledger-section"><div class="section-head"><div><span class="eyebrow">LEDGER / VERIFY</span><h2>记账与同预算验证</h2></div><div class="controls"><button id="export-ledger" class="secondary">导出账本备份</button><label class="import">导入账本<input id="import-ledger" type="file" accept=".json" hidden></label></div></div>
 <p>一期一批：保存策略六红、全蓝成本、当时规则和同注数随机对照。随机对照从01—33均匀生成、同样包全蓝，仅供模拟，不计为实际支出。</p>
 <div class="controls"><label>目标期号（7位）<input id="record-target" inputmode="numeric" maxlength="7" placeholder="如 2026127"></label><label>本期记录截止（北京时间）<input id="record-cutoff" type="datetime-local"></label><label>记录类型<select id="record-mode"><option value="simulation">模拟验证（未购票）</option><option value="purchased">已实际购买（自行登记）</option></select></label><button id="save-record" disabled>保存当前组合与对照</button></div>
@@ -75,6 +77,59 @@ function parseCSV(text) {
   return validate(rows.slice(1).filter(r=>r.some(Boolean)).map(r=>({issue:r[0],date:r[1],red:r.slice(2,8),blue:r[8]})));
 }
 
+function conditionPools(draws,zone,{runScope='zoneHistory',exactRun=true}={}){
+  if(draws.length<50)throw new Error('冷热条件至少需要50期开奖');
+  if(!Number.isInteger(zone)||zone<0||zone>2||!['all','recent50','whole','zoneHistory'].includes(runScope)||typeof exactRun!=='boolean')throw new Error('条件选项无效');
+  const pool=Array.from({length:33},(_,i)=>i+1).filter(n=>n<zone*11+1||n>zone*11+11);
+  const recent=draws.slice(-50),frequency=Object.fromEntries(pool.map(n=>[n,0]));
+  for(const d of recent)for(const n of d.red)if(n in frequency)frequency[n]++;
+  const ranked=[...pool].sort((a,b)=>frequency[b]-frequency[a]||a-b);
+  const hot=ranked.slice(0,6),cold=ranked.slice(-6).reverse();
+  const runDraws=runScope==='zoneHistory'?draws.filter(d=>absent(d,zone)):runScope==='recent50'?recent:draws;
+  const eligible=pool.filter(n=>pool.includes(n+1)&&pool.includes(n+2)).map(n=>[n,n+1,n+2]);
+  const runs=[],excludedRuns=[];
+  for(const triple of eligible){
+    const events=runScope==='whole'?[]:runDraws.filter(d=>triple.every(n=>d.red.includes(n)));
+    if(events.length)excludedRuns.push({triple,count:events.length,first:events[0],last:events.at(-1)});
+    else runs.push(triple);
+  }
+  return {version:1,runLength:3,window:50,runScope,exactRun,hot,cold,frequency,runs,pool,runDrawCount:runScope==='whole'?0:runDraws.length,excludedRuns,windowStart:recent[0].issue,windowEnd:recent.at(-1).issue};
+}
+function structuredCandidates(draws,zone,options={}){
+  const summary=conditionPools(draws,zone,options),past=new Set(draws.map(d=>key(d.red))),found=new Map();
+  const {hot,cold,runs,exactRun,pool}=summary;
+  for(const triple of runs)for(const h of hot)for(const c of cold){
+    const base=[h,c,...triple];if(new Set(base).size!==5)continue;
+    for(const random of pool){
+    if(base.includes(random))continue;
+    const red=[...base,random].sort((x,y)=>x-y);
+    // Exactly two adjacent edges means a single length-3 run and no extra pair.
+    if(exactRun&&red.slice(1).filter((n,i)=>n===red[i]+1).length!==2)continue;
+    const k=key(red);if(past.has(k)||found.has(k))continue;
+    found.set(k,{red,roles:{hot:[h],cold:c,triple:[...triple],random}});
+    }
+  }
+  return {summary,candidates:[...found.values()]};
+}
+function generateStructured(draws,zone,count,options={},rng=randomInt){
+  if(!Number.isInteger(count)||count<1||count>100)throw new Error('每次生成1—100组');
+  if(!zoneStats(draws,zone).trigger)throw new Error('该区尚未满足超过平均间隔2倍的条件');
+  const {summary,candidates}=structuredCandidates(draws,zone,options);
+  if(candidates.length<count)throw new Error(`条件下仅有${candidates.length}组不同六红，无法生成${count}组。请调整数量或条件；不会自动放宽。`);
+  const available=candidates.length;
+  for(let i=0;i<count;i++){const j=i+rng(candidates.length-i);[candidates[i],candidates[j]]=[candidates[j],candidates[i]];}
+  const chosen=candidates.slice(0,count);
+  return {groups:chosen.map(c=>c.red),selection:{...summary,candidateCount:available,roles:chosen.map(c=>c.roles)}};
+}
+function checkSelection(groups,selection,zone){
+  if(!selection||selection.version!==1||selection.runLength!==3||selection.window!==50||!['all','recent50','whole','zoneHistory'].includes(selection.runScope)||typeof selection.exactRun!=='boolean'||!Array.isArray(selection.hot)||!Array.isArray(selection.cold)||selection.hot.length!==6||selection.cold.length!==6||new Set([...selection.hot,...selection.cold]).size!==12||[...selection.hot,...selection.cold].some(n=>!Number.isInteger(n)||n<1||n>33||(n>=zone*11+1&&n<=zone*11+11))||!Array.isArray(selection.roles)||selection.roles.length!==groups.length)throw new Error('冷热三连号条件快照无效');
+  for(let i=0;i<groups.length;i++){
+    const role=selection.roles[i];
+    if(!role||!Array.isArray(role.hot)||role.hot.length!==1||role.hot.some(n=>!selection.hot.includes(n))||!selection.cold.includes(role.cold)||!Number.isInteger(role.random)||!Array.isArray(role.triple)||role.triple.length!==3||role.triple.some(n=>!Number.isInteger(n))||role.triple[1]!==role.triple[0]+1||role.triple[2]!==role.triple[0]+2||!Array.isArray(selection.runs)||!selection.runs.some(r=>key(r)===key(role.triple))||key([...role.hot,role.cold,...role.triple,role.random])!==key(groups[i]))throw new Error('号码角色与三连号条件快照不一致');
+    const red=[...groups[i]].sort((a,b)=>a-b);if(selection.exactRun&&red.slice(1).filter((n,j)=>n===red[j]+1).length!==2)throw new Error('组合不满足恰好一组三连号');
+  }
+}
+
 const LEDGER_VERSION=1;
 function randomControl(count,rng=randomInt){
   const out=[],seen=new Set();let attempts=0;
@@ -92,7 +147,7 @@ function checkGroups(groups){
   for(const r of groups)if(!Array.isArray(r)||r.length!==6||new Set(r).size!==6||r.some(n=>!Number.isInteger(n)||n<1||n>33))throw new Error('六红组合无效');
   if(new Set(groups.map(key)).size!==groups.length)throw new Error('批次内存在重复六红');
 }
-function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],now=new Date().toISOString()}){
+function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,now=new Date().toISOString()}){
   checkGroups(groups);
   if(!['simulation','purchased'].includes(mode))throw new Error('记录类型无效');
   if(!/^20\d{5}$/.test(target)||Number(target.slice(4))<1||target<=draws.at(-1).issue)throw new Error('目标期号必须晚于当前数据最新期号');
@@ -105,9 +160,10 @@ function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[
   if(!s.trigger)throw new Error('所选区未触发规则');
   const past=new Set(draws.map(d=>key(d.red)));
   if(groups.some(r=>r.some(n=>n>=zone*11+1&&n<=zone*11+11)||past.has(key(r))))throw new Error('组合不符合缺区或历史排除规则');
+  if(selection)checkSelection(groups,selection,zone);
   return {version:LEDGER_VERSION,id:globalThis.crypto.randomUUID(),savedAt:now,cutoff:new Date(deadline).toISOString(),target,targetDate,mode,zone,
     source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current},
-    groups:groups.map(r=>[...r]),control:randomControl(groups.length),cost:groups.length*32};
+    groups:groups.map(r=>[...r]),control:randomControl(groups.length),cost:groups.length*32,...(selection?{selection:JSON.parse(JSON.stringify(selection))}:{})};
 }
 function validateRecord(r){
   if(!r||r.version!==1||typeof r.id!=='string'||!/^[\da-f-]{36}$/i.test(r.id)||!/^20\d{5}$/.test(r.target)||!['simulation','purchased'].includes(r.mode)||!Number.isInteger(r.zone)||r.zone<0||r.zone>2)throw new Error('账本记录格式无效');
@@ -116,6 +172,7 @@ function validateRecord(r){
   const date=new Date(Date.parse(r.cutoff)+8*3600000).toISOString().slice(0,10);
   if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule||r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
   if(r.groups.some(g=>g.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)))throw new Error('账本组合包含排除区号码');
+  if(r.selection)checkSelection(r.groups,r.selection,r.zone);
   if(r.resultDraw){const d=r.resultDraw;checkGroups([d.red]);if(d.issue!==r.target||d.date!==r.targetDate||!Number.isInteger(d.blue)||d.blue<1||d.blue>16)throw new Error('账本开奖快照无效');}
   return r;
 }
@@ -151,7 +208,7 @@ function assessRecord(r,draws){
   return {status:'settled',draw,strategy:settleGroups(r.groups,draw),control:settleGroups(r.control,draw)};
 }
 
-function initLedger({getDraws,getGroups,getZone}){
+function initLedger({getDraws,getGroups,getZone,getSelection=()=>null}){
   const L=id=>document.getElementById(id),storageKey='ssq-ledger-v1';
   let records=[],storageBroken=false;
   function message(s){L('ledger-status').textContent=s;}
@@ -170,13 +227,15 @@ function initLedger({getDraws,getGroups,getZone}){
     if(proposed.some((r,i)=>r!==records[i]))try{persist(proposed);}catch(e){message('开奖可核算，但快照保存失败：'+e.message);}
     const assessments=records.map(r=>({r,a:assessRecord(r,draws)}));
     const summary=[];
-    for(const mode of ['simulation','purchased']){
-      const subset=assessments.filter(x=>x.r.mode===mode),settled=subset.filter(x=>x.a.status==='settled'),pending=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)>Date.now()).length,overdue=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)<=Date.now()).length,conflict=subset.filter(x=>x.a.status==='conflict').length;
+    const strategyKey=r=>r.selection?`${r.selection.runScope}/${r.selection.exactRun}`:'zone-random';
+    for(const mode of ['simulation','purchased'])for(const sk of new Set(assessments.filter(x=>x.r.mode===mode).map(x=>strategyKey(x.r)))){
+      const subset=assessments.filter(x=>x.r.mode===mode&&strategyKey(x.r)===sk),settled=subset.filter(x=>x.a.status==='settled'),pending=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)>Date.now()).length,overdue=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)<=Date.now()).length,conflict=subset.filter(x=>x.a.status==='conflict').length;
       if(!subset.length)continue;
       const totalCost=subset.reduce((s,x)=>s+x.r.cost,0),cost=settled.reduce((s,x)=>s+x.r.cost,0),groups=settled.reduce((s,x)=>s+x.r.groups.length,0);
       const sum=(side,field)=>settled.reduce((s,x)=>s+x.a[side][field],0);
       const uncertain=settled.some(x=>x.a.strategy.unknownPayout||x.a.control.unknownPayout);
-      summary.push(`${mode==='simulation'?'模拟验证':'自报已购'}：共${subset.length}期，${settled.length}期已核奖、${pending}期待开奖、${overdue}期待补开奖数据、${conflict}期冲突。记录成本${format(totalCost)}；已核奖成本${format(cost)}。`);
+      const ss=subset[0].r.selection,label=ss?`冷热三连号 / ${{zoneHistory:'两区历史排三连号',all:'全历史排三连号',recent50:'近50期排三连号',whole:'只排整组六红'}[ss.runScope]} / ${ss.exactRun?'仅一组三连号':'可额外连号'}`:'基础缺区随机';
+      summary.push(`${mode==='simulation'?'模拟验证':'自报已购'} · ${label}：共${subset.length}期，${settled.length}期已核奖、${pending}期待开奖、${overdue}期待补开奖数据、${conflict}期冲突。记录成本${format(totalCost)}；已核奖成本${format(cost)}。`);
       if(settled.length){
         summary.push(`策略 / 随机对照：一等奖 ${sum('strategy','first')} / ${sum('control','first')} 注；每组六红平均命中 ${(sum('strategy','redTotal')/groups).toFixed(3)} / ${(sum('control','redTotal')/groups).toFixed(3)} 个。`);
         if(uncertain)summary.push(`已知固定奖奖金下限：${format(sum('strategy','knownPayout'))} / ${format(sum('control','knownPayout'))}。含一、二等奖，浮动奖金未知，暂不计算总盈亏或回报率。`);
@@ -190,6 +249,7 @@ function initLedger({getDraws,getGroups,getZone}){
       const title=document.createElement('summary');title.textContent=`${r.target}期 · ${r.mode==='simulation'?'模拟':'自报已购'} · ${r.groups.length}组 / ${r.cost}元 · ${a.status==='settled'?'已核奖':a.status==='pending'?(Date.parse(r.cutoff)>Date.now()?'待开奖':'待补开奖数据'):'开奖数据冲突'}`;
       const text=document.createElement('p');text.className='ledger-text';
       const lines=[`保存：${new Date(r.savedAt).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}（北京时间）`,`截止：${new Date(r.cutoff).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}；目标开奖日：${r.targetDate}`,`依据截至${r.source.issue}期，共${r.source.count}期。排除第${r.zone+1}区；当时遗漏${r.rule.current}期，平均间隔${r.rule.mean.toFixed(2)}期。`,`策略六红（每组全蓝）：\n${r.groups.map(g=>g.map(n=>String(n).padStart(2,'0')).join(' ')).join('\n')}`,`随机对照六红（每组全蓝）：\n${r.control.map(g=>g.map(n=>String(n).padStart(2,'0')).join(' ')).join('\n')}`];
+      if(r.selection){const s=r.selection;lines.push(`附加规则：最近50期（${s.windowStart}—${s.windowEnd}），热池${s.hot.join(' ')}，冷池${s.cold.join(' ')}；三连号排除范围${{zoneHistory:'所选两区完整历史开奖',all:'全部历史',recent50:'最近50期',whole:'只排除历史整组六红'}[s.runScope]}；${s.exactRun?'恰好一组三连号':'允许额外连号'}。`,...s.roles.map((v,i)=>`第${i+1}组角色：热${v.hot.join('/')}；冷${v.cold}；三连号${v.triple.join('/')}；随机${v.random}`));}
       if(a.status==='settled'){
         lines.push(`开奖：${a.draw.date} · ${a.draw.red.join(' ')} + ${a.draw.blue}`);
         for(const [side,label] of [['strategy','策略'],['control','随机对照']])lines.push(`${label}：一至六等奖注数 [${a[side].levels.join(', ')}]；最高命中${a[side].bestRed}红；${a[side].unknownPayout?'固定奖奖金下限':'模拟税前奖金'}${format(a[side].knownPayout)}。`);
@@ -201,7 +261,7 @@ function initLedger({getDraws,getGroups,getZone}){
     try{
       if(records.length>=1000)throw new Error('最多保存1000期，请先导出备份');
       const value=L('record-cutoff').value;if(!value)throw new Error('请填写北京时间的记录截止时间');
-      const r=makeRecord({draws:getDraws(),groups:getGroups(),zone:getZone(),target:L('record-target').value.trim(),cutoff:value+':00+08:00',mode:L('record-mode').value,records});
+      const r=makeRecord({draws:getDraws(),groups:getGroups(),zone:getZone(),selection:getSelection(),target:L('record-target').value.trim(),cutoff:value+':00+08:00',mode:L('record-mode').value,records});
       persist([...records,r]);message('已保存此期策略、成本和同注数随机对照。保存后不提供编辑或重抽；请导出备份。');refresh();
     }catch(e){message('未保存：'+e.message);}
   };
@@ -223,14 +283,14 @@ function initLedger({getDraws,getGroups,getZone}){
 }
 
 const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
-let draws=[],stats=[],selected=2,combos=[],eventPage=0,historyPage=0,source='';
+let draws=[],stats=[],selected=2,combos=[],selection=null,eventPage=0,historyPage=0,source='';
 const pageSize=25;
-const ledger=initLedger({getDraws:()=>draws,getGroups:()=>combos,getZone:()=>selected});
+const ledger=initLedger({getDraws:()=>draws,getGroups:()=>combos,getZone:()=>selected,getSelection:()=>selection});
 const ball=(n,blue=false)=>`<span class="ball${blue?' blue':''}">${pad(n)}</span>`;
 const balls=r=>`<span class="balls">${r.map(n=>ball(n)).join('')}</span>`;
 const zoneName=z=>['第一区','第二区','第三区'][z];
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
-function load(next,label){draws=next;source=label;stats=ZONES.map((_,z)=>zoneStats(draws,z));combos=[];eventPage=historyPage=0;render();}
+function load(next,label){draws=next;source=label;stats=ZONES.map((_,z)=>zoneStats(draws,z));combos=[];selection=null;eventPage=historyPage=0;render();}
 function render(){
   const first=draws[0],last=draws.at(-1);
   const issuesByYear=new Map();
@@ -242,23 +302,37 @@ function render(){
   for(const s of stats){
     const button=document.createElement('button');button.className='zone'+(s.z===selected?' selected':'');button.setAttribute('aria-pressed',String(s.z===selected));
     button.innerHTML=`<span class="badge ${s.trigger?'active':''}">${s.trigger?'规则已触发':'未触发'}</span><span>${zoneName(s.z)} · ${pad(ZONES[s.z][0])}—${ZONES[s.z][1]}</span><strong>${s.current??'—'} <small style="font-size:14px;font-weight:400">期当前遗漏</small></strong><p>历史平均间隔 ${s.mean===null?'—':s.mean.toFixed(2)} 期 · 2倍阈值 ${s.mean===null?'—':(2*s.mean).toFixed(2)} 期</p><p>缺席 ${s.events.length} 次（${(100*s.rate).toFixed(2)}%）· 最长事件间隔 ${s.max??'—'} 期</p>`;
-    button.onclick=()=>{selected=s.z;combos=[];eventPage=0;render();};$('zones').append(button);
+    button.onclick=()=>{selected=s.z;combos=[];selection=null;eventPage=0;render();};$('zones').append(button);
   }
   const s=stats[selected];
   $('generate').disabled=!s.trigger;
-  $('rule').textContent=s.trigger?`排除${zoneName(selected)}（${pad(ZONES[selected][0])}—${ZONES[selected][1]}），从另外22个号码中选6个；仅排除历史六红组合，不做热号排序。`:`${zoneName(selected)}未满足严格超过平均间隔2倍的条件，暂停生成。可选择其他已触发区。`;
+  $('rule').textContent=s.trigger?`排除${zoneName(selected)}（${pad(ZONES[selected][0])}—${ZONES[selected][1]}），从另外22个号码中选6个，历史六红组合一律排除；附加条件由下方开关控制。`:`${zoneName(selected)}未满足严格超过平均间隔2倍的条件，暂停生成。可选择其他已触发区。`;
   $('events-title').textContent=zoneName(selected)+' · 缺席事件时间线';
-  renderCost();renderCombos();renderEvents();renderHistory();
+  renderCost();renderConditions();renderCombos();renderEvents();renderHistory();
+}
+function conditionOptions(){return {runScope:$('run-scope').value,exactRun:$('exact-run').checked};}
+function renderConditions(){
+  const enabled=$('structured').checked;
+  $('run-scope').disabled=$('exact-run').disabled=!enabled;
+  $('run-evidence').replaceChildren();
+  if(!enabled){$('condition-info').textContent='附加条件关闭：在剩余22个号码中随机生成，仍排除历史六红。';return;}
+  try{
+    const s=conditionPools(draws,selected,conditionOptions());
+    const fmt=ns=>ns.map(n=>`${pad(n)}（${s.frequency[n]}次）`).join('、');
+    $('condition-info').textContent=`最近50期：${s.windowStart}—${s.windowEnd}。热号池（前6名）：${fmt(s.hot)}。冷号池（后6名）：${fmt(s.cold)}。三连号排除依据：${s.runDrawCount}期开奖，已排除${s.excludedRuns.length}组三连号。允许的角色三连号共${s.runs.length}组：${s.runs.map(p=>p.map(pad).join('—')).join('、')||'无'}。${s.runs.length?'':'当前排除范围无可用三连号，无法推荐；不会放宽。'}冷热仅代表相对频次排名，不是预测概率。`;
+    for(const e of s.excludedRuns){const p=document.createElement('p');p.textContent=`${e.triple.map(pad).join('—')}：出现${e.count}期，首次${e.first.issue}（${e.first.date}），最近${e.last.issue}（${e.last.date}）· 最近六红 ${e.last.red.map(pad).join(' ')}。`;$('run-evidence').append(p);}
+    if(!s.runs.length)$('generate').disabled=true;
+  }catch(e){$('condition-info').textContent=e.message;$('generate').disabled=true;}
 }
 function renderCost(){
   const count=Number($('count').value),valid=Number.isInteger(count)&&count>=1&&count<=100;
   $('generate').disabled=!stats[selected]?.trigger||!valid;
   const historical=new Set(draws.filter(d=>absent(d,selected)).map(d=>key(d.red))).size;
-  $('cost').textContent=valid?`计划 ${count} 组六红 × 16蓝 ＝ ${count*16} 注 · 单期总成本 ${count*32} 元。排除 ${historical} 组已开奖六红，剩余候选 ${74613-historical} 组。公平模型下，这 ${count} 组的一等奖概率仍为 ${count}/1,107,568（约 ${(100*count/1107568).toFixed(6)}%），不因本规则而提高。`:'请输入1—100之间的整数。';
+  $('cost').textContent=valid?`计划 ${count} 组六红 × 16蓝 ＝ ${count*16} 注 · 单期总成本 ${count*32} 元。排除 ${historical} 组已开奖六红，附加条件前的基础候选 ${74613-historical} 组。公平模型下，这 ${count} 组的一等奖概率仍为 ${count}/1,107,568（约 ${(100*count/1107568).toFixed(6)}%），不因本规则而提高。`:'请输入1—100之间的整数。';
 }
 function renderCombos(){
   $('export').disabled=!combos.length;
-  $('recommendations').innerHTML=combos.length?combos.map((r,i)=>`<article class="combo"><span class="combo-index">组合 ${String(i+1).padStart(2,'0')}</span>${balls(r)}<small>蓝球全部覆盖 · 16注 / 32元</small><div class="all-blue">${Array.from({length:16},(_,j)=>ball(j+1,true)).join('')}</div></article>`).join(''):'<p class="muted">尚未生成组合。满足规则后，点击「按规则生成」。</p>';
+  $('recommendations').innerHTML=combos.length?combos.map((r,i)=>{const v=selection?.roles[i];return `<article class="combo"><span class="combo-index">组合 ${String(i+1).padStart(2,'0')}</span>${balls(r)}${v?`<small>热号 ${v.hot.map(pad).join(' / ')} · 冷号 ${pad(v.cold)}<br>三连号 ${v.triple.map(pad).join('—')} · 随机号 ${pad(v.random)}</small>`:''}<small>蓝球全部覆盖 · 16注 / 32元</small><div class="all-blue">${Array.from({length:16},(_,j)=>ball(j+1,true)).join('')}</div></article>`;}).join(''):'<p class="muted">尚未生成组合。满足规则后，点击「按规则生成」。</p>';
   ledger.refresh();
 }
 function paginate(id,page,total,onChange){
@@ -283,12 +357,18 @@ function renderHistory(){
 function download(text,name,type='text/csv;charset=utf-8'){
   const url=URL.createObjectURL(new Blob(['\uFEFF',text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-$('generate').onclick=()=>{try{combos=generate(draws,selected,Number($('count').value));renderCombos();}catch(e){status(e.message,true);}};
-$('count').oninput=()=>{combos=[];renderCost();renderCombos();};
+$('generate').onclick=()=>{try{
+  combos=[];selection=null;
+  if($('structured').checked){const result=generateStructured(draws,selected,Number($('count').value),conditionOptions());combos=result.groups;selection=result.selection;renderConditions();$('condition-info').textContent+=` 全部附加条件过滤后共${selection.candidateCount}组不同六红，本批随机抽取${combos.length}组。`;}
+  else combos=generate(draws,selected,Number($('count').value));
+  renderCombos();
+}catch(e){renderCombos();$('condition-info').textContent=e.message;}};
+$('count').oninput=()=>{combos=[];selection=null;renderCost();renderConditions();renderCombos();};
+for(const id of ['structured','run-scope','exact-run'])$(id).onchange=()=>{combos=[];selection=null;renderCost();renderConditions();renderCombos();};
 $('search').oninput=$('filter').onchange=()=>{historyPage=0;renderHistory();};
 $('export').onclick=()=>{
-  const lines=['data_as_of,excluded_zone,red1,red2,red3,red4,red5,red6,blue,cost'];
-  for(const r of combos)for(let b=1;b<=16;b++)lines.push([draws.at(-1).date,selected+1,...r.map(pad),pad(b),2].join(','));
+  const lines=['data_as_of,excluded_zone,red1,red2,red3,red4,red5,red6,blue,cost,selection_rule,hot,cold,triple1,triple2,triple3,random,run_scope,exact_run'];
+  for(const [i,r] of combos.entries())for(let b=1;b<=16;b++){const v=selection?.roles[i];lines.push([draws.at(-1).date,selected+1,...r.map(pad),pad(b),2,v?'hot1-cold1-triple3-random1':'zone-random',...(v?[...v.hot,v.cold,...v.triple,v.random].map(pad):Array(6).fill('')),selection?.runScope??'',selection?.exactRun??''].join(','));}
   download(lines.join('\n'),`组合-排除${selected+1}区-${draws.at(-1).issue}.csv`);
 };
 $('export-history').onclick=()=>download(['issue,date,red1,red2,red3,red4,red5,red6,blue',...draws.map(d=>[d.issue,d.date,...d.red.map(pad),pad(d.blue)].join(','))].join('\n'),'双色球历史.csv');

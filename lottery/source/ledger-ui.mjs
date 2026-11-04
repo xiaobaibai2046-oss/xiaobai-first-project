@@ -1,5 +1,5 @@
 import {makeRecord,validateRecord,mergeRecords,assessRecord} from './ledger.mjs';
-export function initLedger({getDraws,getGroups,getZone}){
+export function initLedger({getDraws,getGroups,getZone,getSelection=()=>null}){
   const L=id=>document.getElementById(id),storageKey='ssq-ledger-v1';
   let records=[],storageBroken=false;
   function message(s){L('ledger-status').textContent=s;}
@@ -18,13 +18,15 @@ export function initLedger({getDraws,getGroups,getZone}){
     if(proposed.some((r,i)=>r!==records[i]))try{persist(proposed);}catch(e){message('开奖可核算，但快照保存失败：'+e.message);}
     const assessments=records.map(r=>({r,a:assessRecord(r,draws)}));
     const summary=[];
-    for(const mode of ['simulation','purchased']){
-      const subset=assessments.filter(x=>x.r.mode===mode),settled=subset.filter(x=>x.a.status==='settled'),pending=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)>Date.now()).length,overdue=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)<=Date.now()).length,conflict=subset.filter(x=>x.a.status==='conflict').length;
+    const strategyKey=r=>r.selection?`${r.selection.runScope}/${r.selection.exactRun}`:'zone-random';
+    for(const mode of ['simulation','purchased'])for(const sk of new Set(assessments.filter(x=>x.r.mode===mode).map(x=>strategyKey(x.r)))){
+      const subset=assessments.filter(x=>x.r.mode===mode&&strategyKey(x.r)===sk),settled=subset.filter(x=>x.a.status==='settled'),pending=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)>Date.now()).length,overdue=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)<=Date.now()).length,conflict=subset.filter(x=>x.a.status==='conflict').length;
       if(!subset.length)continue;
       const totalCost=subset.reduce((s,x)=>s+x.r.cost,0),cost=settled.reduce((s,x)=>s+x.r.cost,0),groups=settled.reduce((s,x)=>s+x.r.groups.length,0);
       const sum=(side,field)=>settled.reduce((s,x)=>s+x.a[side][field],0);
       const uncertain=settled.some(x=>x.a.strategy.unknownPayout||x.a.control.unknownPayout);
-      summary.push(`${mode==='simulation'?'模拟验证':'自报已购'}：共${subset.length}期，${settled.length}期已核奖、${pending}期待开奖、${overdue}期待补开奖数据、${conflict}期冲突。记录成本${format(totalCost)}；已核奖成本${format(cost)}。`);
+      const ss=subset[0].r.selection,label=ss?`冷热三连号 / ${{zoneHistory:'两区历史排三连号',all:'全历史排三连号',recent50:'近50期排三连号',whole:'只排整组六红'}[ss.runScope]} / ${ss.exactRun?'仅一组三连号':'可额外连号'}`:'基础缺区随机';
+      summary.push(`${mode==='simulation'?'模拟验证':'自报已购'} · ${label}：共${subset.length}期，${settled.length}期已核奖、${pending}期待开奖、${overdue}期待补开奖数据、${conflict}期冲突。记录成本${format(totalCost)}；已核奖成本${format(cost)}。`);
       if(settled.length){
         summary.push(`策略 / 随机对照：一等奖 ${sum('strategy','first')} / ${sum('control','first')} 注；每组六红平均命中 ${(sum('strategy','redTotal')/groups).toFixed(3)} / ${(sum('control','redTotal')/groups).toFixed(3)} 个。`);
         if(uncertain)summary.push(`已知固定奖奖金下限：${format(sum('strategy','knownPayout'))} / ${format(sum('control','knownPayout'))}。含一、二等奖，浮动奖金未知，暂不计算总盈亏或回报率。`);
@@ -38,6 +40,7 @@ export function initLedger({getDraws,getGroups,getZone}){
       const title=document.createElement('summary');title.textContent=`${r.target}期 · ${r.mode==='simulation'?'模拟':'自报已购'} · ${r.groups.length}组 / ${r.cost}元 · ${a.status==='settled'?'已核奖':a.status==='pending'?(Date.parse(r.cutoff)>Date.now()?'待开奖':'待补开奖数据'):'开奖数据冲突'}`;
       const text=document.createElement('p');text.className='ledger-text';
       const lines=[`保存：${new Date(r.savedAt).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}（北京时间）`,`截止：${new Date(r.cutoff).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}；目标开奖日：${r.targetDate}`,`依据截至${r.source.issue}期，共${r.source.count}期。排除第${r.zone+1}区；当时遗漏${r.rule.current}期，平均间隔${r.rule.mean.toFixed(2)}期。`,`策略六红（每组全蓝）：\n${r.groups.map(g=>g.map(n=>String(n).padStart(2,'0')).join(' ')).join('\n')}`,`随机对照六红（每组全蓝）：\n${r.control.map(g=>g.map(n=>String(n).padStart(2,'0')).join(' ')).join('\n')}`];
+      if(r.selection){const s=r.selection;lines.push(`附加规则：最近50期（${s.windowStart}—${s.windowEnd}），热池${s.hot.join(' ')}，冷池${s.cold.join(' ')}；三连号排除范围${{zoneHistory:'所选两区完整历史开奖',all:'全部历史',recent50:'最近50期',whole:'只排除历史整组六红'}[s.runScope]}；${s.exactRun?'恰好一组三连号':'允许额外连号'}。`,...s.roles.map((v,i)=>`第${i+1}组角色：热${v.hot.join('/')}；冷${v.cold}；三连号${v.triple.join('/')}；随机${v.random}`));}
       if(a.status==='settled'){
         lines.push(`开奖：${a.draw.date} · ${a.draw.red.join(' ')} + ${a.draw.blue}`);
         for(const [side,label] of [['strategy','策略'],['control','随机对照']])lines.push(`${label}：一至六等奖注数 [${a[side].levels.join(', ')}]；最高命中${a[side].bestRed}红；${a[side].unknownPayout?'固定奖奖金下限':'模拟税前奖金'}${format(a[side].knownPayout)}。`);
@@ -49,7 +52,7 @@ export function initLedger({getDraws,getGroups,getZone}){
     try{
       if(records.length>=1000)throw new Error('最多保存1000期，请先导出备份');
       const value=L('record-cutoff').value;if(!value)throw new Error('请填写北京时间的记录截止时间');
-      const r=makeRecord({draws:getDraws(),groups:getGroups(),zone:getZone(),target:L('record-target').value.trim(),cutoff:value+':00+08:00',mode:L('record-mode').value,records});
+      const r=makeRecord({draws:getDraws(),groups:getGroups(),zone:getZone(),selection:getSelection(),target:L('record-target').value.trim(),cutoff:value+':00+08:00',mode:L('record-mode').value,records});
       persist([...records,r]);message('已保存此期策略、成本和同注数随机对照。保存后不提供编辑或重抽；请导出备份。');refresh();
     }catch(e){message('未保存：'+e.message);}
   };
