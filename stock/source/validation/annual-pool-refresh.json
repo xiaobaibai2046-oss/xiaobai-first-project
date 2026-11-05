@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06T01:25:02+08:00",
+  "updated_at": "2026-11-06T01:28:08+08:00",
   "year": 2025,
   "metric": "2025年年报加权平均净资产收益率（%）",
   "source": "东方财富数据中心 · RPT_LICO_FN_CPD",
@@ -7,20 +7,20 @@
     "source_records": 5580,
     "source_pages": 12,
     "covered_a_shares": 5580,
-    "qualified": 1264,
+    "qualified": 1265,
     "missing_roe": 51,
-    "not_above_threshold": 4265,
+    "not_above_threshold": 4264,
     "outside_scope": 0,
     "future_notice": 0,
     "missing_notice": 0,
     "by_market": {
-      "深交所主板": 1422,
+      "深交所主板": 1421,
       "深交所风险警示板": 114,
       "深交所创业板": 1371,
       "上交所主板": 1632,
       "上交所风险警示板": 68,
       "上交所科创板": 618,
-      "北京证券交易所": 355
+      "北京证券交易所": 356
     }
   },
   "after": {
@@ -43,18 +43,7 @@
       "北京证券交易所": 356
     }
   },
-  "added": [
-    {
-      "code": "920309",
-      "name": "菊乐股份",
-      "roe": 23.19,
-      "report_date": "2025-12-31",
-      "notice_date": "2026-04-08",
-      "market": "北京证券交易所",
-      "exchange": "BJ",
-      "industry": "饮料乳品"
-    }
-  ],
+  "added": [],
   "removed": [],
   "missing_roe_stocks": [
     {
@@ -63,6 +52,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-24",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "房地产服务",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -71,6 +62,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-22",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "房地产开发",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -79,6 +72,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-24",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "旅游及景区",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -87,6 +82,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-27",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "医疗美容",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -95,6 +92,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-28",
       "exchange": "SZ",
+      "market": "深交所主板",
+      "industry": "房地产开发",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -103,6 +102,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "环境治理",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -111,6 +112,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-24",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "房地产开发",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -119,6 +122,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-23",
       "exchange": "SZ",
+      "market": "深交所主板",
+      "industry": "环保设备Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -127,6 +132,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "农产品加工",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -135,6 +142,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-17",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "农产品加工",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -143,6 +152,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-03-31",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "电网设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -151,6 +162,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-18",
       "exchange": "SZ",
+      "market": "深交所主板",
+      "industry": "农化制品",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -159,6 +172,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "通用设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -167,6 +182,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "计算机设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -175,6 +192,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-18",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "专业工程",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -183,6 +202,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "汽车零部件",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -191,6 +212,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "装修装饰Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -199,6 +222,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "其他电源设备Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -207,6 +232,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-25",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "服装家纺",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -215,6 +242,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-02-28",
       "exchange": "SZ",
+      "market": "深交所主板",
+      "industry": "多元金融",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -223,6 +252,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "专用设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -231,6 +262,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "装修建材",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -239,6 +272,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "基础建设",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -247,6 +282,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-28",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "装修装饰Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -255,6 +292,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "装修装饰Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -263,6 +302,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-21",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "IT服务Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -271,6 +312,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-25",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "通用设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -279,6 +322,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-03",
       "exchange": "SZ",
+      "market": "深交所创业板",
+      "industry": "光伏设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -287,6 +332,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "中药Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -295,6 +342,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所创业板",
+      "industry": "通用设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -303,6 +352,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-28",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "装修建材",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -311,6 +362,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "IT服务Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -319,6 +372,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-24",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "汽车零部件",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -327,6 +382,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-03-16",
       "exchange": "SZ",
+      "market": "深交所创业板",
+      "industry": "农产品加工",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -335,6 +392,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-25",
       "exchange": "SZ",
+      "market": "深交所创业板",
+      "industry": "养殖业",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -343,6 +402,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-28",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "教育",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -351,6 +412,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-09",
       "exchange": "SZ",
+      "market": "深交所创业板",
+      "industry": "电池",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -359,6 +422,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "塑料",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -367,6 +432,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "环保设备Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -375,6 +442,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-24",
       "exchange": "SH",
+      "market": "上交所主板",
+      "industry": "化学制品",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -383,6 +452,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SH",
+      "market": "上交所主板",
+      "industry": "房地产服务",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -391,6 +462,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "房地产开发",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -399,6 +472,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-28",
       "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "IT服务Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -407,6 +482,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-28",
       "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "光伏设备",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -415,6 +492,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-03-30",
       "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "普钢",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -423,6 +502,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-21",
       "exchange": "SH",
+      "market": "上交所主板",
+      "industry": "房地产开发",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -431,6 +512,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "家居用品",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -439,6 +522,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "装修建材",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -447,6 +532,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-30",
       "exchange": "SH",
+      "market": "上交所科创板",
+      "industry": "IT服务Ⅱ",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -455,6 +542,8 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-23",
       "exchange": "SH",
+      "market": "上交所科创板",
+      "industry": "生物制品",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     },
     {
@@ -463,9 +552,381 @@
       "report_date": "2025-12-31",
       "notice_date": "2026-04-29",
       "exchange": "BJ",
+      "market": "北京证券交易所",
+      "industry": "生物制品",
       "reason": "来源2025年年报加权ROE字段缺失或无效"
     }
   ],
-  "membership_changed": true,
+  "supplement_audit": {
+    "source": "东方财富 RPT_F10_FINANCE_MAINFINADATA",
+    "field": "ROEJQ",
+    "report_date": "2025-12-31",
+    "control": {
+      "status": "matched",
+      "code": "600519",
+      "annual_roe": 32.53
+    },
+    "records": [
+      {
+        "code": "000056",
+        "name": "*ST皇庭",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -2.006844316654
+      },
+      {
+        "code": "000609",
+        "name": "*ST中迪",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.918031951506
+      },
+      {
+        "code": "000610",
+        "name": "*ST西旅",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.230354289097
+      },
+      {
+        "code": "000615",
+        "name": "*ST美谷",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 1.03974780354
+      },
+      {
+        "code": "000656",
+        "name": "金科股份",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.390852435786
+      },
+      {
+        "code": "000826",
+        "name": "*ST启环",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.627531721435
+      },
+      {
+        "code": "000838",
+        "name": "*ST发展",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.181861352108
+      },
+      {
+        "code": "000890",
+        "name": "法尔胜",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.068495646029
+      },
+      {
+        "code": "000911",
+        "name": "*ST广糖",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.165632206847
+      },
+      {
+        "code": "000972",
+        "name": "*ST中基",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.033868605
+      },
+      {
+        "code": "002168",
+        "name": "ST惠程",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.020391167609
+      },
+      {
+        "code": "002513",
+        "name": "蓝丰生化",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.116320292787
+      },
+      {
+        "code": "002514",
+        "name": "*ST宝馨",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.053816267749
+      },
+      {
+        "code": "002528",
+        "name": "*ST英飞",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.09404501839
+      },
+      {
+        "code": "002542",
+        "name": "*ST中岩",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.072819356918
+      },
+      {
+        "code": "002547",
+        "name": "*ST春兴",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.34438006914
+      },
+      {
+        "code": "002620",
+        "name": "*ST瑞和",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.148323790338
+      },
+      {
+        "code": "002630",
+        "name": "*ST华西",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.049174411645
+      },
+      {
+        "code": "002634",
+        "name": "*ST棒杰",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.569874554795
+      },
+      {
+        "code": "002647",
+        "name": "仁东控股",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.496987287256
+      },
+      {
+        "code": "002667",
+        "name": "*ST威领",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.122994112433
+      },
+      {
+        "code": "002694",
+        "name": "*ST顾地",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.093762959026
+      },
+      {
+        "code": "002717",
+        "name": "*ST岭南",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.741534690467
+      },
+      {
+        "code": "002789",
+        "name": "*ST建艺",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 1.289369513943
+      },
+      {
+        "code": "002856",
+        "name": "*ST美芝",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.387739741828
+      },
+      {
+        "code": "300044",
+        "name": "*ST赛为",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.485426006557
+      },
+      {
+        "code": "300091",
+        "name": "*ST金灵",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.456305865096
+      },
+      {
+        "code": "300093",
+        "name": "金刚光伏",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 3.715029822407
+      },
+      {
+        "code": "300147",
+        "name": "*ST香雪",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.544889747943
+      },
+      {
+        "code": "300157",
+        "name": "新锦动力",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.244996234192
+      },
+      {
+        "code": "300198",
+        "name": "*ST纳川",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.143271648293
+      },
+      {
+        "code": "300212",
+        "name": "*ST易录",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -2.712420814273
+      },
+      {
+        "code": "300237",
+        "name": "ST美晨",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.037899960242
+      },
+      {
+        "code": "300268",
+        "name": "佳沃食品",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -5.884705746096
+      },
+      {
+        "code": "300313",
+        "name": "天山生物",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.131971681973
+      },
+      {
+        "code": "300338",
+        "name": "*ST开元",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.27557036939
+      },
+      {
+        "code": "300340",
+        "name": "科恒股份",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.311540168335
+      },
+      {
+        "code": "300716",
+        "name": "*ST泉为",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.021144886014
+      },
+      {
+        "code": "301030",
+        "name": "*ST仕净",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -2.309589550582
+      },
+      {
+        "code": "600165",
+        "name": "宁科生物",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.747545313913
+      },
+      {
+        "code": "600322",
+        "name": "津投城开",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": 0.068688964122
+      },
+      {
+        "code": "600340",
+        "name": "*ST华幸",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -4.557263302735
+      },
+      {
+        "code": "600476",
+        "name": "*ST湘邮",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -2.76002925014
+      },
+      {
+        "code": "600537",
+        "name": "*ST亿晶",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.067414222094
+      },
+      {
+        "code": "600581",
+        "name": "*ST八钢",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.167691005885
+      },
+      {
+        "code": "600683",
+        "name": "京投发展",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.460932224399
+      },
+      {
+        "code": "603021",
+        "name": "*ST华鹏",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.523137871686
+      },
+      {
+        "code": "603378",
+        "name": "*ST亚士",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.160369728935
+      },
+      {
+        "code": "688066",
+        "name": "*ST航图",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -4.312077250116
+      },
+      {
+        "code": "688520",
+        "name": "神州细胞",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -1.442157926099
+      },
+      {
+        "code": "920575",
+        "name": "*ST康乐",
+        "status": "still_missing",
+        "annual_weighted_roe": null,
+        "year_end_bps": -0.09
+      }
+    ],
+    "filled": 0
+  },
+  "membership_changed": false,
   "note": "Only verified 2025 annual weighted ROE > 10% enters the pool. Missing is not treated as failure or replaced with quarterly/diluted ROE."
 }
