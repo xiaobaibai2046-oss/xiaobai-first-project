@@ -1,0 +1,139 @@
+{
+  "rule": "roe2025-true-dif-waves-v5-stage60-vol3-first2",
+  "completed_at": "2026-11-05T15:36:57.951Z",
+  "market_as_of": "2026-11-05T15:00:00+08:00",
+  "workflow_run": "https://github.com/xiaobaibai2046-oss/xiaobai-first-project/actions/runs/42055812083",
+  "counts": {
+    "all": 1264,
+    "buy": 0,
+    "sell": 622,
+    "none": 632,
+    "incomplete": 10,
+    "pending": 0,
+    "unscanned": 0,
+    "stale": 0
+  },
+  "bottom_levels": {
+    "once": 0,
+    "twice": 0,
+    "risk_three_plus": 0
+  },
+  "official_hourly": 1250,
+  "sdk_calls": {
+    "quick": 62,
+    "complete": 65,
+    "total": 127
+  },
+  "incomplete": [
+    {
+      "code": "301569",
+      "name": "联亚药业",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "301718",
+      "name": "通则康威",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "688827",
+      "name": "钶锐锶",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 数据源没有返回 m60 K线，未用日线代替；web.ifzq.gtimg.cn: 数据源连接失败或响应超时，请稍后重试",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代；web.ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代"
+      ]
+    },
+    {
+      "code": "920085",
+      "name": "森峰激光",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 数据源没有返回 m60 K线，未用日线代替；web.ifzq.gtimg.cn: 数据源连接失败或响应超时，请稍后重试",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代；web.ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代"
+      ]
+    },
+    {
+      "code": "920162",
+      "name": "莫森泰克",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "920196",
+      "name": "南方乳业",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "920285",
+      "name": "远大健科",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "920296",
+      "name": "文峰光电",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "920306",
+      "name": "天元重工",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    },
+    {
+      "code": "001381",
+      "name": "皇冠新材",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ]
+    }
+  ],
+  "validation": {
+    "node_tests_passed": 102,
+    "python_tests_passed": 42,
+    "mobile_browser_checks_passed": 2
+  },
+  "interpretation": "No current strict true-DIF buys at latest closed hourly bar. Historical divergences are not carried forward. Incomplete stocks remain unknown."
+}
