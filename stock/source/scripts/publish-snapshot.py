@@ -20,7 +20,7 @@ def run(*args):
 
 run('git','config','user.name','github-actions[bot]')
 run('git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com')
-run('git','add','stock/source/pool-signals.json','stock/pool-signals.json','stock/index.html','stock/formulas')
+run('git','add','stock/source/pool-signals.json','stock/pool-signals.json','stock/index.html','stock/research-v6.html','stock/formulas')
 p=subprocess.run(['git','diff','--cached','--quiet'])
 if p.returncode:
     run('git','commit','-m','Refresh background stock signal snapshot')

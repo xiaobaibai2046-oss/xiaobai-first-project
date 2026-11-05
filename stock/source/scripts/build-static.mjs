@@ -15,6 +15,7 @@ html=html.replace('<script id="pool-signal-data" type="application/json">{}</scr
 if(process.env.MARKET_API_BASE){const api=new URL(process.env.MARKET_API_BASE);if(api.protocol!=='https:'||api.username||api.password||api.search||api.hash)throw Error('MARKET_API_BASE must be a public HTTPS backend origin without credentials');html=html.replace('</head>',()=>'<meta name="market-api-base" content="'+api.origin+'"></head>')}
 await writeFile(new URL('pool-signals.json',out),JSON.stringify(signals));
 await writeFile(new URL('index.html',out),html);
+await writeFile(new URL('research-v6.html',out),html.replace('规则版本：两金叉DIF v6','新版独立入口 · 2026-11-06 · 规则版本：两金叉DIF v6'));
 await writeFile(new URL('.nojekyll',out),'');
 await writeFile(new URL('manifest.webmanifest',out),JSON.stringify({name:'知衡 · A股研究台',short_name:'知衡研究',lang:'zh-CN',start_url:'./',scope:'./',display:'standalone',theme_color:'#24594c',background_color:'#f4f6f3',icons:[{src:'icon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]},null,2));
 await writeFile(new URL('icon.svg',out),'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="42" fill="#24594c"/><text x="96" y="127" text-anchor="middle" font-size="102" fill="white" font-family="sans-serif">衡</text></svg>');
