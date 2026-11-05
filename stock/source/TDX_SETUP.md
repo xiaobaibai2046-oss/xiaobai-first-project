@@ -83,6 +83,7 @@ Key仍仅在Python后端。后端不可用时手机可回退原公开源，并�
 1. 仓库 Settings → Secrets and variables → Actions，添加 Secret `TDX_DATA_KEY`（值仅在安全输入框中提供）。
    当前Codex的GitHub CLI认证不可用，不能代填该Secret；不要改成明文仓库变量。
 2. 手动运行工作流 **Verify official Tongdaxin data**，需要专业接口测试时勾选 `include_pro`。
+   也可以在Secret配置后告知助手，由助手通过提交不含密钥的 `stock/source/validation/tdx-request.json` 请求文件触发同一官方验收；此触发仅测两股，包含专业接口，总预算仍为20次SDK调用。
    输出只来自官方SDK；不通过验收会失败并保留安全报告artifact。脚本总预算20次SDK调用。
 3. 核验报告中两个代码的历史和报价确实success后，再将仓库变量 `TDX_ENABLED` 设置为`true`，
    现有四组云端扫描将安装SDK、读取加密Secret、优先使用通达信。未启用时仍走原免费路径。

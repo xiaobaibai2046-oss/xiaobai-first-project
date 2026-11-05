@@ -1,5 +1,8 @@
 name: Verify official Tongdaxin data
 on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/tdx-request.json']
   workflow_dispatch:
     inputs:
       include_pro:
@@ -21,7 +24,7 @@ jobs:
       - name: Real official-only checks, never substitute backup prices
         env:
           TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
-          INCLUDE_PRO: ${{ inputs.include_pro }}
+          INCLUDE_PRO: ${{ inputs.include_pro || github.event_name == 'push' }}
         run: |
           if [ "$INCLUDE_PRO" = "true" ]; then
             python stock/source/scripts/verify-tdx.py --include-pro --output /tmp/tdx-report.json
