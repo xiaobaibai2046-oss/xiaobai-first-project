@@ -1,3 +1,5 @@
-// Shared by scheduled scans and browser analysis. 0 restores strict lower lows.
-// A value of 0.003 permits the second price low to be at most 0.3% above the first.
-export const BOTTOM_PRICE_TOLERANCE=0.003;
+// Production bottom selection follows the strict TDX wave formula. No near-low tolerance.
+export const BOTTOM_PRICE_TOLERANCE=0;
+export const TRUE_DIF_STAGE_BARS=60;
+export const TRUE_DIF_MIN_BARS=100;
+export const TRUE_DIF_VOLUME_BARS=3;

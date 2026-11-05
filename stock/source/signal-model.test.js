@@ -2,8 +2,8 @@ import {test} from 'node:test';import assert from 'node:assert/strict';
 import {expectedSignalTime,signalState,signalRecord,signalCounts,mergeSignals,SIGNAL_RULE} from './signal-model.js';import {scanStock,createSignalScanner} from './signal-scan.js';
 const now=new Date('2026-10-27T08:10:00Z');
 function data(code='600001',kind='bottom',below=false){
- const knots=[[0,100],[60,100],[80,80],[90,90],[110,79],[116,87]],scale=12/(kind==='top'?213:87);
- const hourly={code,source:'TEST hourly',bars:Array.from({length:117},(_,i)=>{let k=1;while(knots[k][0]<i)k++;const [a,x]=knots[k-1],[z,y]=knots[k];let close=x+(y-x)*(i-a)/(z-a);if(kind==='top')close=300-close;close*=scale;const slot=i+3,date=new Date(Date.UTC(2026,9,27+Math.floor(slot/4)-29)).toISOString().slice(0,10);return {code,endTime:date+'T'+['10:30','11:30','14:00','15:00'][slot%4]+':00+08:00',open:close,close,high:close+.01,low:close-.01,volume:1000}})};
+ const knots=kind==='top'?[[0,100],[60,100],[80,80],[90,90],[110,79],[116,87]]:[[0,100],[20,105],[40,105],[65,60],[80,90],[116,59]],scale=12/(kind==='top'?213:59);
+ const hourly={code,source:'TEST hourly',bars:Array.from({length:117},(_,i)=>{let k=1;while(knots[k][0]<i)k++;const [a,x]=knots[k-1],[z,y]=knots[k];let close=x+(y-x)*(i-a)/(z-a);if(kind==='top')close=300-close;close*=scale;const slot=i+3,date=new Date(Date.UTC(2026,9,27+Math.floor(slot/4)-29)).toISOString().slice(0,10);return {code,endTime:date+'T'+['10:30','11:30','14:00','15:00'][slot%4]+':00+08:00',open:close,close,high:close+.01,low:close-.01,volume:kind==='bottom'&&i===116?400:1000}})};
  const bars=Array.from({length:80},(_,i)=>{const close=10+i*.025;return {code,name:'测试样本',date:new Date(Date.UTC(2026,9,27-79+i)).toISOString().slice(0,10),open:close,close,high:close+.1,low:close-.1,volume:1000}});if(below)Object.assign(bars.at(-1),{open:8,close:8,high:8.1,low:7.9});
  return {history:{code,name:'测试样本',source:'TEST daily',bars},hourly,quote:{quotes:[{code,name:'测试样本',price:12,exchange_time:'2026-10-27T15:00:00+08:00'}]},financial:{code,source:'TEST report',reports:[{period:'2026-06-30',notice_date:'2026-08-15',profit:100,revenue:1000,revenue_yoy:10,profit_yoy:10,eps:1,ocf_per_share:1,industry:'制造'}]}};
 }
@@ -53,4 +53,8 @@ test('source migration can force a fresh cached record through the scanner witho
  const scanner=createSignalScanner({stocks:()=>[{code:'600001'}],records:()=>records,request:async k=>{calls.push(k);return data()[k]},onResult:r=>{records[r.code]=r},onProgress:()=>{},delay:0,now:()=>now});
  await scanner.start();assert.equal(calls.length,0);
  await scanner.start({force:true});assert.equal(records['600001'].state,'buy');assert.deepEqual(calls,['hourly']);
+});
+test('cached buys require a current strict wave event with first or second level',async()=>{
+ const r=await scanStock('600001',async k=>data()[k],()=>now);assert.equal(signalState(r,now),'buy');
+ for(const bottom of [null,{...r.timing.bottom,mode:'pivot'},{...r.timing.bottom,level:3},{...r.timing.bottom,active:false}])assert.equal(signalState({...r,timing:{...r.timing,bottom}},now),'stale');
 });

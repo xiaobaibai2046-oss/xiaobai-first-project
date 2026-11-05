@@ -1,3 +1,4 @@
+import {findTrueDifBottoms} from './dif-bottom.js';
 import {BOTTOM_PRICE_TOLERANCE} from './strategy-config.js';
 // EMA seeds with the first close; discard 78 bars before looking for pivots.
 export function computeMACD(closes){
@@ -29,16 +30,21 @@ export function analyzeHourlyMACD(bars){
  for(let i=0;i<bars.length;i++){
   const b=bars[i];if(!b.endTime||!Number.isFinite(Date.parse(b.endTime))||i&&b.endTime<=bars[i-1].endTime||!['open','high','low','close','volume'].every(k=>Number.isFinite(b[k]))||Math.min(b.open,b.high,b.low,b.close)<=0||b.volume<0||b.low>Math.min(b.open,b.close)||b.high<Math.max(b.open,b.close))throw Error('60 分钟 K 线格式、顺序或价格无效');
  }
- const series=computeMACD(bars.map(x=>x.close));return {...findDivergences(bars,series),latest:series.at(-1),asOf:bars.at(-1).endTime,count:bars.length,parameters:{fast:12,slow:26,signal:9,warmup:78,pivotWidth:2,minGap:5,maxGap:60,activeBars:8,bottomPriceTolerance:BOTTOM_PRICE_TOLERANCE},method:`DIF 背离：底部第二低点允许比前低高最多${(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)}%，DIF仍须严格抬高；顶部仍须创新高。价格严格分型（左右各2根），相邻同类拐点间隔5—60根；底部 DIF 均<0且抬高，顶部 DIF 均>0且降低。确认后最近8根内有效。`};
+ const series=computeMACD(bars.map(x=>x.close)),legacyTop=findDivergences(bars,series).bearish,strict=findTrueDifBottoms(bars,series);
+ return {bullish:strict.bullish,bearish:legacyTop,latest:series.at(-1),asOf:bars.at(-1).endTime,count:bars.length,
+  parameters:{fast:12,slow:26,signal:9,bottom:{mode:'true_dif_waves',stageBars:60,minBars:100,volumeReferenceBars:3,allowedLevels:[1,2],priceTolerance:0,confirmation:'latest_closed_new_low_bar'},top:{warmup:78,pivotWidth:2,minGap:5,maxGap:60,activeBars:8}},
+  method:'真DIF底背离：最新收盘K线严格创前60根阶段新低，比较前一完整MACD绿柱波段；低点DIF及整轮最低DIF均抬高，绿柱峰值变浅，成交量低于前波低点及前两根均量。一、二次可选，三次及以上过滤；仅满足条件的当前K线收盘触发，不延续8根、不再等待右侧两根。顶背离仍按原分型、右侧两根确认和8根有效规则。'};
 }
 export function makeTradeHints({technical,macd,dailyFresh,hourlyFresh}){
- const bottom=!!(hourlyFresh&&macd?.bullish?.active),top=!!(hourlyFresh&&macd?.bearish?.active);
+ const bottom=!!(hourlyFresh&&macd?.bullish?.active&&!macd.bullish.riskActive&&(macd.bullish.level||1)<=2),top=!!(hourlyFresh&&macd?.bearish?.active);
  const below=!!(dailyFresh&&technical&&technical.close<technical.ma20);
  const sell=below||top,buy=bottom;
- const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':bottom?(macd.bullish.priceMatch==='near_low'?'近期已确认60分钟MACD近前低底背离（价格容差'+(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)+'%）':'近期已确认60分钟MACD底背离'):'暂无近期已确认的60分钟MACD底背离'];
+ const event=macd?.bullish,risk=!!(hourlyFresh&&event?.riskActive);
+ const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':risk?'三次及以上真DIF底背离：风险过滤，不列入买入':bottom?(event.level===2?'二次真DIF底背离':'一次真DIF底背离'):'最新已收盘60分钟K线未满足真DIF底背离'];
+ if(bottom&&event.mode==='true_dif_waves')buyReasons.push(`严格创前${event.stageBars}根新低；低点DIF ${event.firstDIF.toFixed(4)} → ${event.secondDIF.toFixed(4)}；整轮最低DIF抬高；绿柱峰值 ${event.firstGreenPeak.toFixed(4)} → ${event.secondGreenPeak.toFixed(4)}；新低成交量为前波低点附近均量的${(event.volumeRatio*100).toFixed(1)}%`);
  if(buy&&sell)buyReasons.push('同时存在卖出观察条件，请结合卖出提示核对；不取消底背离买入信号');
  const sellReasons=[];if(!dailyFresh)sellReasons.push('近期日线不足，不能判断是否跌破MA20');if(below)sellReasons.push('日线收盘低于 MA20');if(top)sellReasons.push('近期已确认60分钟MACD顶背离');if(!hourlyFresh)sellReasons.push('60分钟数据不足，不能判断顶背离');
- return {buy:{triggered:buy,title:buy?'触发买入观察':!hourlyFresh?'数据不足，暂不生成买入提示':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:`通过2025年ROE > 10%股票池筛选后，技术买入仅依据已确认且有效的60分钟MACD底背离，不受MA20限制；其他财务风险独立展示。卖出仍按跌破MA20或60分钟顶背离判断，可与买入提示同时出现。底背离价格容差${(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)}%，DIF抬高和右侧两根已收盘K线确认仍须满足，最近8根内有效；使用不复权数据，除权可能影响信号，不代表下单。`};
+ return {buy:{triggered:buy,title:buy?'触发买入观察':risk?'三次及以上背离，风险过滤':!hourlyFresh?'数据不足，暂不生成买入提示':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:`先满足2025年ROE > 10%。技术买入只选当前完整60分钟K线上成立的一次、二次真DIF底背离：严格阶段新低、低点DIF和整轮最低DIF抬高、绿柱峰值变浅、缩量；三次及以上过滤。无近前低容差，不再沿用旧底部右侧两根确认或8根延续。卖出仍按跌破MA20或原60分钟顶背离，可与买入提示并存。不复权价格可能受除权影响，不代表下单。`};
 }
 export function normalizeHourly(payload,code,now=new Date()){
  const sym=/^(60|68)/.test(code)?'sh'+code:/^(00|30)/.test(code)?'sz'+code:'bj'+code;
