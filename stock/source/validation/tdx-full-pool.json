@@ -1,0 +1,149 @@
+{
+  "run_id": "42041500300",
+  "snapshot_at": "2026-11-05T14:16:39.566Z",
+  "market_generation": "tdx-full-pool-2026-11-05-v1",
+  "pool_size": 1264,
+  "official_priority_attempted": 1264,
+  "counts": {
+    "all": 1264,
+    "buy": 123,
+    "sell": 516,
+    "none": 615,
+    "incomplete": 10,
+    "pending": 0,
+    "unscanned": 0,
+    "stale": 0
+  },
+  "latest_official_hourly_indicators": 1250,
+  "daily_sell_without_complete_hourly_indicators": 4,
+  "sdk_calls": {
+    "quick": 476,
+    "complete": 1890,
+    "total": 2366,
+    "maximum_per_round": 3600,
+    "billing_units": false
+  },
+  "missing_or_uncomputable": [
+    {
+      "code": "301569",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "301718",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "688827",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 数据源没有返回 m60 K线，未用日线代替；web.ifzq.gtimg.cn: 数据源连接失败或响应超时，请稍后重试",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代；web.ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代"
+      ],
+      "errors": {
+        "hourly": "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 数据源没有返回 m60 K线，未用日线代替；web.ifzq.gtimg.cn: 数据源连接失败或响应超时，请稍后重试",
+        "history": "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代；web.ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代"
+      }
+    },
+    {
+      "code": "920085",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 数据源没有返回 m60 K线，未用日线代替；web.ifzq.gtimg.cn: 数据源连接失败或响应超时，请稍后重试",
+        "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代；web.ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代"
+      ],
+      "errors": {
+        "hourly": "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 数据源没有返回 m60 K线，未用日线代替；web.ifzq.gtimg.cn: 数据源连接失败或响应超时，请稍后重试",
+        "history": "通达信 unavailable；备用来源：主备行情入口均失败：ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代；web.ifzq.gtimg.cn: 历史源没有返回不复权日线；不使用其他复权口径静默替代"
+      }
+    },
+    {
+      "code": "920162",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "920196",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "920285",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "920296",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "920306",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    },
+    {
+      "code": "001381",
+      "state": "incomplete",
+      "reasons": [
+        "日线未更新，卖出条件未完整核验",
+        "60分钟数据未更新至最新已完成时段",
+        "至少 20 根已完成日线",
+        "至少100根已完成60分钟K线"
+      ],
+      "errors": {}
+    }
+  ],
+  "note": "All 1264 pool records were revisited under official-source priority. No automatic orders. SDK calls are not points or monetary charges. No explicit permission or credits errors observed in this run."
+}

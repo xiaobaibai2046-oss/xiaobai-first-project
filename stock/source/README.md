@@ -197,3 +197,6 @@ MA20仍用于独立日线趋势展示、MA20卖出条件和原有日线回测；
 按照用户选择先接入现有GitHub Actions；在安全Secret配置及官方真实验收通过前，不自动启用收费全池采集。
 安装、启动、逐接口验收、GitHub加密Secret设置、调用预算和实际网络阻塞见 [TDX_SETUP.md](TDX_SETUP.md)。
 Codex本机受TCP策略限制；Key加入仓库Secret后，GitHub Actions已对两股完成官方真实行情及生产模型验收。结果见 `validation/tdx-live.json`；合成测试与真实验收分开记录。
+
+2026-11-05用户随后授权全池：现已开启通达信优先，并完成1264只首轮分析。
+结果与真实SDK调用统计见 `validation/tdx-full-pool.json`，实际来源和缺失状态分别展示，备用路径保留。
