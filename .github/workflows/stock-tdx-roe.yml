@@ -1,0 +1,46 @@
+name: Backfill missing annual ROE from official Tongdaxin
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/tdx-roe-request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  actions: write
+concurrency:
+  group: stock-snapshot-publish
+  cancel-in-progress: false
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -r stock/source/requirements-tdx.txt
+      - name: Read official 2025 annual weighted ROE with a verified control
+        env:
+          TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+        run: python stock/source/scripts/backfill-tdx-roe.py
+      - name: Build and publish validated results
+        run: |
+          node stock/source/scripts/reconcile-pool-signals.mjs
+          node stock/source/scripts/build-static.mjs stock
+          python stock/source/scripts/publish-snapshot.py
+      - name: Request Pages rebuild and scan newly qualified stocks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST repos/${{ github.repository }}/pages/builds
+          CHANGED=$(python -c 'import json; print(bool(json.load(open("stock/source/validation/tdx-roe-backfill.json"))["newly_qualified"]))')
+          if [ "$CHANGED" = "True" ]; then
+            gh api --method POST repos/${{ github.repository }}/actions/workflows/stock-signals.yml/dispatches -f ref=main
+          fi

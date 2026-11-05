@@ -11,6 +11,7 @@ from tdx_provider import Provider,TdxError,normalize_bars,normalize_snapshot,cla
 from tdx_sdk_worker import redact,has_data
 from market_metrics import metrics
 import server
+from tdx_annual_roe import extract_annual_roe
 
 
 def frames(code='600519',period='1d'):
@@ -18,6 +19,13 @@ def frames(code='600519',period='1d'):
     return {k:{'index':index,'columns':{code+'.SH':v}} for k,v in {'Open':[10,11],'High':[12,13],'Low':[9,10],'Close':[11,12],'Volume':[1000,2000],'Amount':[5,6]}.items()}
 
 class TdxTests(unittest.TestCase):
+    def test_official_annual_weighted_roe_parser_preserves_period_and_missing(self):
+        self.assertEqual(extract_annual_roe({'600519.SH':{'FN281':'32.53'}},'600519'),32.53)
+        self.assertEqual(extract_annual_roe({'Value':{'600519.SH':{'FN281':[{'Date':'20251231','Value':['-12.5']}]}}},'600519'),-12.5)
+        for value in [None,True,'nan',1e38,{'Date':'20260930','Value':[12]}]:
+            with self.assertRaises(TdxError):extract_annual_roe({'600519.SH':{'FN281':value}},'600519')
+        with self.assertRaises(TdxError):extract_annual_roe({'000001.SZ':{'FN281':12}},'600519')
+
     def test_official_units_and_schema_match_existing_model(self):
         d=normalize_bars(frames(),'600519','1d',dt.datetime(2026,11,3,16,tzinfo=SH))
         self.assertEqual(d['bars'][0]['close'],11);self.assertEqual(d['bars'][0]['volume'],10)

@@ -21,7 +21,7 @@ def run(*args):
 run('git','config','user.name','github-actions[bot]')
 run('git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com')
 from pathlib import Path
-artifacts=['stock/source/pool-signals.json','stock/pool-signals.json','stock/index.html','stock/research-v6.html','stock/formulas','stock/source/pool-2025.json','stock/source/validation/annual-pool-refresh.json']
+artifacts=['stock/source/pool-signals.json','stock/pool-signals.json','stock/index.html','stock/research-v6.html','stock/formulas','stock/source/pool-2025.json','stock/source/validation/annual-pool-refresh.json','stock/source/validation/tdx-roe-backfill.json']
 run('git','add',*[p for p in artifacts if Path(p).exists()])
 p=subprocess.run(['git','diff','--cached','--quiet'])
 if p.returncode:
