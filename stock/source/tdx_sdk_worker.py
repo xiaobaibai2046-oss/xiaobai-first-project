@@ -46,6 +46,12 @@ def plain(value):
     return value
 
 
+def has_data(value):
+    if isinstance(value,dict):return any(has_data(v) for v in value.values())
+    if isinstance(value,(list,tuple)):return any(has_data(v) for v in value)
+    return value is not None and value!=''
+
+
 def main():
     out=os.fdopen(os.dup(1),'w',buffering=1)
     # Redirect file descriptors permanently: C/C++ background threads may log outside a call.
@@ -68,7 +74,7 @@ def main():
                 elif op=='calendar':result=tqs.get_trading_dates(code.split('.')[-1],job['start'],job['date'],-1)
                 else:raise ValueError('Unsupported operation')
                 result=plain(result)
-                if not result or (isinstance(result,dict) and not any(v for v in result.values())):raise RuntimeError('SDK returned empty data')
+                if not has_data(result):raise RuntimeError('SDK returned empty data')
                 packet={'ok':True,'data':redact(result)}
             except Exception as exc:
                 # SDK 1.3.1 sometimes prints business errors and returns {} instead of raising.

@@ -6,7 +6,7 @@ import unittest
 from concurrent.futures import ThreadPoolExecutor
 from unittest.mock import patch,Mock
 from tdx_provider import Provider,TdxError,normalize_bars,normalize_snapshot,classify_error,SH,SOURCE
-from tdx_sdk_worker import redact
+from tdx_sdk_worker import redact,has_data
 from market_metrics import metrics
 import server
 
@@ -35,6 +35,11 @@ class TdxTests(unittest.TestCase):
         q=d['quotes'][0];self.assertAlmostEqual(q['change_pct'],20)
         self.assertIsNone(q['exchange_time']);self.assertIsNone(q['amount_10k_cny']);self.assertEqual(q['volume_lots'],50)
         self.assertEqual(d['depth']['status'],'field_unavailable')
+    def test_nested_empty_sdk_tables_are_not_successful_live_data(self):
+        self.assertFalse(has_data({'600519.SH':{'Date':[],'GP07':[]}}))
+        self.assertFalse(has_data({'columns':{'Price':[]},'index':[]}))
+        self.assertTrue(has_data({'Volume':[0]}))
+
     def test_error_categories_and_secret_redaction(self):
         for message,kind in [('积分余额不足','credits'),('接口权限不足','permission'),('token invalid','authentication'),('connection timed out','network'),('频率超限流','rate_limit'),('empty','unavailable')]:
             error=classify_error(message+' TDX-TEST_SECRET');self.assertEqual(error['category'],kind);self.assertNotIn('TEST_SECRET',str(error))
