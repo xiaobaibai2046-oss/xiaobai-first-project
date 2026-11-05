@@ -11,7 +11,7 @@ from tdx_provider import Provider,TdxError,normalize_bars,normalize_snapshot,cla
 from tdx_sdk_worker import redact,has_data
 from market_metrics import metrics
 import server
-from tdx_annual_roe import extract_annual_roe
+from tdx_annual_roe import extract_annual_roe,reuse_verified_backfill
 
 
 def frames(code='600519',period='1d'):
@@ -25,6 +25,12 @@ class TdxTests(unittest.TestCase):
         for value in [None,True,'nan',1e38,{'Date':'20260930','Value':[12]}]:
             with self.assertRaises(TdxError):extract_annual_roe({'600519.SH':{'FN281':value}},'600519')
         with self.assertRaises(TdxError):extract_annual_roe({'000001.SZ':{'FN281':12}},'600519')
+
+    def test_public_refresh_keeps_only_verified_same_year_official_backfill(self):
+        pool={'stocks':[],'missing_roe_stocks':[{'code':'000001','name':'TEST','exchange':'SZ','report_date':'2025-12-31'}],'stats':{'covered_a_shares':1,'missing_roe':1,'qualified':0,'not_above_threshold':0}}
+        report={'field':'FN281','source':'通达信官方 TdxAiData','report_date':'2025-12-31','controls':{'SZ':{'status':'matched'}},'results':[{'code':'000001','status':'verified','roe':12}]}
+        report['report_date']='2026-09-30';self.assertEqual(reuse_verified_backfill(pool,report),0)
+        report['report_date']='2025-12-31';self.assertEqual(reuse_verified_backfill(pool,report),1);self.assertEqual(pool['stocks'][0]['roe'],12);self.assertEqual(pool['stats']['missing_roe'],0)
 
     def test_official_units_and_schema_match_existing_model(self):
         d=normalize_bars(frames(),'600519','1d',dt.datetime(2026,11,3,16,tzinfo=SH))
