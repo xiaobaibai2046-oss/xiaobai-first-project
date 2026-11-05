@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+TdxAiData.ini
+**/TdxAiData.ini
+.tdx
+.venv*
+__pycache__
+scan-results
+tdx-validation-private*.json

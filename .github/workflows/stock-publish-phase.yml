@@ -28,6 +28,8 @@ jobs:
         working-directory: stock/source
         run: node scripts/merge-scans.mjs
       - name: Build published snapshots
+        env:
+          MARKET_API_BASE: ${{ vars.MARKET_API_BASE }}
         working-directory: stock/source
         run: npm run build -- ..
       - name: Save results and publish Pages

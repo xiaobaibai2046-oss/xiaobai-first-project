@@ -13,7 +13,9 @@ def run(job):
     try:
         code=job['code'];server.symbol(code)
         loaders={'history':lambda:server.get_history(code,80),'hourly':lambda:server.get_hourly(code),'quote':lambda:server.get_quotes([code]),'financial':lambda:server.get_financial(code)}
-        data=load_cached(os.environ.get('CLOUD_MARKET_CACHE'),job['kind'],code,loaders[job['kind']])
+        # With official credentials use its own bounded cache; never reuse public bars under an official label.
+        official=bool(os.environ.get('TDX_DATA_KEY') or os.environ.get('TDX_CONFIG_FILE'))
+        data=loaders[job['kind']]() if official else load_cached(os.environ.get('CLOUD_MARKET_CACHE'),job['kind'],code,loaders[job['kind']])
         out={'id':job['id'],'data':data}
     except Exception as exc:out={'id':job['id'],'error':str(exc)}
     with lock:print(json.dumps(out,ensure_ascii=False),flush=True)

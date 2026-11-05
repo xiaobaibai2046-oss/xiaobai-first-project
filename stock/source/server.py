@@ -1,5 +1,6 @@
-"""Same-origin A-share market adapters. Python standard library only."""
+"""Same-origin A-share adapters: optional official SDK first, original public backup."""
 import argparse
+import os
 from cloud_cache import expected as expected_cache_session
 import datetime as dt
 import json
@@ -117,7 +118,7 @@ def parse_quote(text, code):
                 source='腾讯财经公开报价', delay='供应商延迟无保证；非交易所授权逐笔行情')
 
 
-def get_quotes(codes):
+def public_get_quotes(codes):
     keys = [symbol(code) for code in codes]
     def loader():
         text = fetch('https://qt.gtimg.cn/q=' + ','.join(keys), 'gb18030')
@@ -189,7 +190,7 @@ def fetch_kline(path, params, parser, code):
     raise DataError('主备行情入口均失败：' + '；'.join(failures))
 
 
-def get_history(code, count=640):
+def public_get_history(code, count=640):
     key = symbol(code)
     if count not in (80,640):
         raise InputError('日线条数仅支持80或640')
@@ -236,7 +237,7 @@ def parse_hourly(payload, code, now=None):
                 session_ends='北京时间10:30、11:30、14:00、15:00；排除未完成K线')
 
 
-def get_hourly(code):
+def public_get_hourly(code):
     key = symbol(code)
     def loader():
         return fetch_kline('/appstock/app/kline/mkline', {'param': key + ',m60,,320'}, parse_hourly, code)
@@ -298,6 +299,34 @@ def get_financial(code):
     return cached(('financial', code), 3600, loader)
 
 
+def preferred_market(kind,code,count=80):
+    from tdx_provider import default_provider,TdxError
+    provider=default_provider()
+    # Source caches are separate: public results cannot masquerade as official-cache hits.
+    if provider.configured():
+        try:return provider.get(kind,code,count=count)
+        except TdxError as exc:failure=exc.public()
+    else:failure={'category':'not_configured','message':'通达信后端未配置，使用原有来源'}
+    try:fallback=public_get_quotes([code]) if kind=='quote' else public_get_history(code,count) if kind=='history' else public_get_hourly(code)
+    except DataError as exc:raise DataError('通达信 '+failure['category']+'；备用来源：'+str(exc)) from exc
+    return dict(fallback,provider='tencent_backup',primary_status=failure)
+
+
+def get_quotes(codes):
+    quotes=[];errors=[];statuses=[];sources=[]
+    for code in codes:
+        try:data=preferred_market('quote',code)
+        except DataError as exc:errors.append({'code':code,'error':str(exc)});continue
+        quotes.extend(data.get('quotes',[]));errors.extend(data.get('errors',[]));sources.append(data.get('source'))
+        if data.get('primary_status'):statuses.append({'code':code,**data['primary_status']})
+    if not quotes:raise DataError('；'.join(e['error'] for e in errors))
+    return {'quotes':quotes,'errors':errors,'source':'；'.join(dict.fromkeys(filter(None,sources))),'primary_status':statuses,'fetched_at':data.get('fetched_at'),'cache_hit':data.get('cache_hit',False)}
+
+
+def get_history(code,count=640):return preferred_market('history',code,count)
+def get_hourly(code):return preferred_market('hourly',code,320)
+
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -306,14 +335,24 @@ class Handler(SimpleHTTPRequestHandler):
         body = json.dumps(data, ensure_ascii=False, allow_nan=False).encode()
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
+        origin=self.headers.get('Origin');allowed=os.environ.get('MARKET_ALLOWED_ORIGIN')
+        if origin and allowed and origin==allowed:
+            self.send_header('Access-Control-Allow-Origin',allowed);self.send_header('Vary','Origin')
         self.send_header('Cache-Control', 'no-store')
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.send_header('Content-Length', str(len(body)))
         self.end_headers()
         self.wfile.write(body)
 
+    def log_message(self,format,*args):
+        safe=tuple(re.sub(r'TDX-[A-Za-z0-9]+','[REDACTED]',str(a)) for a in args)
+        super().log_message(format,*safe)
+
     def do_GET(self):
         url = urllib.parse.urlsplit(self.path)
+        parts=urllib.parse.unquote(url.path).split('/')
+        if any(p.startswith('.') or p.lower()=='tdxaidata.ini' for p in parts if p):
+            return self.respond(403,{'error':'私有配置不可通过网页访问'})
         if not url.path.startswith('/api/'):
             if url.path == '/':
                 self.path = '/index.html'
@@ -323,6 +362,15 @@ class Handler(SimpleHTTPRequestHandler):
             code = qs.get('code', [''])[0]
             if url.path == '/api/health':
                 return self.respond(200, dict(status='ok', upstream_checked=False, note='服务存活不代表数据源连接成功'))
+            if url.path.startswith('/api/tdx/'):
+                from tdx_provider import default_provider,TdxError
+                symbol(code)
+                kind=url.path.rsplit('/',1)[-1]
+                if kind not in ('depth','minutes','ticks','funds'):raise InputError('不支持的通达信接口')
+                try:
+                    return self.respond(200,default_provider().get(kind,code,count=30,period=qs.get('period',['5m'])[0]))
+                except TdxError as exc:
+                    return self.respond(503,dict(error=str(exc),category=exc.category,source='tdx_official',simulated=False))
             if url.path == '/api/quotes':
                 codes = list(dict.fromkeys(qs.get('codes', [''])[0].split(',')))
                 if not 1 <= len(codes) <= 20:

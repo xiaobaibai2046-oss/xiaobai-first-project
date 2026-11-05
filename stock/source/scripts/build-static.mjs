@@ -12,6 +12,7 @@ const pool=validatePool(JSON.parse(await readFile(new URL('pool-2025.json',root)
 html=html.replace('<script id="roe-pool-data" type="application/json">{}</script>',()=>'<script id="roe-pool-data" type="application/json">'+JSON.stringify(pool).replace(/</g,'\\u003c')+'</script>');
 let signals={schema_version:1,results:{}};try{signals=JSON.parse(await readFile(new URL('pool-signals.json',root),'utf8'))}catch{}
 html=html.replace('<script id="pool-signal-data" type="application/json">{}</script>',()=>'<script id="pool-signal-data" type="application/json">'+JSON.stringify(signals).replace(/</g,()=>String.fromCharCode(92)+'u003c')+'</script>');
+if(process.env.MARKET_API_BASE){const api=new URL(process.env.MARKET_API_BASE);if(api.protocol!=='https:'||api.username||api.password||api.search||api.hash)throw Error('MARKET_API_BASE must be a public HTTPS backend origin without credentials');html=html.replace('</head>',()=>'<meta name="market-api-base" content="'+api.origin+'"></head>')}
 await writeFile(new URL('pool-signals.json',out),JSON.stringify(signals));
 await writeFile(new URL('index.html',out),html);
 await writeFile(new URL('.nojekyll',out),'');

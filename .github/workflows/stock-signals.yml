@@ -16,6 +16,9 @@ on:
       - 'stock/source/signal-model.js'
       - 'stock/source/server.py'
       - 'stock/source/cloud_cache.py'
+      - 'stock/source/tdx_provider.py'
+      - 'stock/source/tdx_sdk_worker.py'
+      - 'stock/source/requirements-tdx.txt'
   workflow_dispatch:
   schedule:
     # Beijing 10:05–15:50 every 15 min; 16:05 completed daily-bar refresh.
@@ -31,6 +34,8 @@ concurrency:
 jobs:
   quick-scan:
     uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
     with:
       phase: quick
       seconds: 120
@@ -44,6 +49,8 @@ jobs:
     needs: quick-publish
     if: always()
     uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
     with:
       phase: complete
       seconds: 540

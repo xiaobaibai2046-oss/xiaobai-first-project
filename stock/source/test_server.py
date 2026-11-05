@@ -127,6 +127,18 @@ class HTTPTests(unittest.TestCase):
         with urllib.request.urlopen(self.base+'/') as response:
             self.assertIn('知衡'.encode(),response.read())
 
+    def test_private_ini_and_dotpaths_are_not_served(self):
+        for path in ['/TdxAiData.ini','/.env','/.venv-tdx/lib/TdxAiData.ini','/nested/%54dxAiData.ini']:
+            with self.assertRaises(urllib.error.HTTPError) as error:urllib.request.urlopen(self.base+path)
+            self.assertEqual(error.exception.code,403)
+
+    def test_official_only_endpoint_does_not_fake_a_backup_success(self):
+        from tdx_provider import TdxError
+        with patch('tdx_provider.default_provider') as factory,patch.object(server,'public_get_quotes') as fallback:
+            factory.return_value.get.side_effect=TdxError('permission')
+            with self.assertRaises(urllib.error.HTTPError) as error:urllib.request.urlopen(self.base+'/api/tdx/depth?code=600519')
+            self.assertEqual(error.exception.code,503);self.assertEqual(json.load(error.exception)['category'],'permission');fallback.assert_not_called()
+
     def test_api_failure_is_structured_and_not_demo(self):
         with patch.object(server,'get_quotes',side_effect=server.DataError('TEST network denied')):
             with self.assertRaises(urllib.error.HTTPError) as error:urllib.request.urlopen(self.base+'/api/quotes?codes=600519')

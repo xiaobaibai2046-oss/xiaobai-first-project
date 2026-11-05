@@ -1,3 +1,11 @@
 dist/
 __pycache__/
 *.tmp
+.env
+.env.*
+!.env.example
+TdxAiData.ini
+**/TdxAiData.ini
+.tdx/
+.venv*/
+tdx-validation-private*.json

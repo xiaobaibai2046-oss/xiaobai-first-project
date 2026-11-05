@@ -1,0 +1,37 @@
+name: Verify official Tongdaxin data
+on:
+  workflow_dispatch:
+    inputs:
+      include_pro:
+        description: 'Also request 10 ticks and one GP07 professional-data query per stock (may consume credits)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r stock/source/requirements-tdx.txt
+      - name: Real official-only checks, never substitute backup prices
+        env:
+          TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+          INCLUDE_PRO: ${{ inputs.include_pro }}
+        run: |
+          if [ "$INCLUDE_PRO" = "true" ]; then
+            python stock/source/scripts/verify-tdx.py --include-pro --output /tmp/tdx-report.json
+          else
+            python stock/source/scripts/verify-tdx.py --output /tmp/tdx-report.json
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-tdx-verification
+          path: /tmp/tdx-report.json
+          if-no-files-found: warn
+          retention-days: 3
