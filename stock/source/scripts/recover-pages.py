@@ -13,8 +13,8 @@ if not re.fullmatch(r'[0-9a-f]{40}',target):raise ValueError('Expected explicit 
 repo=os.environ['REPOSITORY']
 if not re.fullmatch(r'[\w.-]+/[\w.-]+',repo):raise ValueError('Invalid repository')
 base='https://api.github.com/repos/'+repo+'/pages'
-def call(path,method='GET'):
-    req=urllib.request.Request(base+path,method=method,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
+def call(path,method='GET',body=None):
+    req=urllib.request.Request(base+path,method=method,data=json.dumps(body).encode() if body is not None else None,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Content-Type':'application/json','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'})
     try:
         with urllib.request.urlopen(req,timeout=25) as response:
             raw=response.read();return response.status,json.loads(raw) if raw else {}
@@ -58,6 +58,18 @@ for _ in range(15):
     time.sleep(2)
 if not cleared:
     print('::error::GitHub still reports the old deployment active after cancellation. Rebuild withheld.');raise SystemExit(1)
+if request.get('reapply_existing_source'):
+    code,config=call('')
+    source=config.get('source');kind=config.get('build_type')
+    print('::notice::Current Pages configuration HTTP '+str(code)+'; build_type '+str(kind))
+    if code!=200 or not isinstance(source,dict) or source.get('branch')!='main' or source.get('path') not in ('/','/docs'):
+        print('::error::Refusing to guess or change the existing Pages source.');raise SystemExit(1)
+    body={'source':source}
+    if kind:body['build_type']=kind
+    code,_=call('','PUT',body)
+    print('::notice::Reapply identical Pages source HTTP '+str(code))
+    if code not in (200,201,202,204):
+        print('::error::GitHub denied the same-source Pages configuration refresh; HTTP '+str(code));raise SystemExit(1)
 code,_=call('/builds','POST')
 print('::notice::Pages rebuild request HTTP '+str(code))
 if code not in (201,202):
