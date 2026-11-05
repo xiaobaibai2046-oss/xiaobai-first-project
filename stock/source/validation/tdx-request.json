@@ -1,10 +1,11 @@
 {
-  "requested_at": "2026-11-05T13:45:02.108837+00:00",
+  "requested_at": "2026-11-05T13:47:31.581738+00:00",
   "symbols": [
     "600519.SH",
     "000001.SZ"
   ],
   "official_only": true,
-  "max_sdk_calls": 20,
-  "include_pro": true
+  "max_sdk_calls": 4,
+  "include_pro": false,
+  "mode": "model_only"
 }

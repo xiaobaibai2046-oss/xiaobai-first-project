@@ -20,13 +20,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - run: python -m pip install -r stock/source/requirements-tdx.txt
       - name: Real official-only checks, never substitute backup prices
         env:
           TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
           INCLUDE_PRO: ${{ inputs.include_pro || github.event_name == 'push' }}
         run: |
-          if [ "$INCLUDE_PRO" = "true" ]; then
+          MODEL_ONLY=$(python -c 'import json,pathlib; p=pathlib.Path("stock/source/validation/tdx-request.json"); print("true" if p.exists() and json.loads(p.read_text()).get("mode")=="model_only" else "false")')
+          if [ "$MODEL_ONLY" = "true" ]; then
+            python stock/source/scripts/verify-tdx.py --model-only --output /tmp/tdx-report.json
+          elif [ "$INCLUDE_PRO" = "true" ]; then
             python stock/source/scripts/verify-tdx.py --include-pro --output /tmp/tdx-report.json
           else
             python stock/source/scripts/verify-tdx.py --output /tmp/tdx-report.json
