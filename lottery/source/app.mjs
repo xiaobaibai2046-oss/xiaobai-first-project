@@ -1,6 +1,7 @@
 import {ZONES,key,validate,absent,zoneStats,generate,parseCSV} from './core.mjs';
 import {initLedger} from './ledger-ui.mjs';
 import {conditionPools,generateStructured} from './conditions.mjs';
+import {renderReferences} from './references.mjs';
 const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
 let draws=[],stats=[],selected=2,combos=[],selection=null,eventPage=0,historyPage=0,source='';
 const pageSize=25;
@@ -9,7 +10,7 @@ const ball=(n,blue=false)=>`<span class="ball${blue?' blue':''}">${pad(n)}</span
 const balls=r=>`<span class="balls">${r.map(n=>ball(n)).join('')}</span>`;
 const zoneName=z=>['第一区','第二区','第三区'][z];
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
-function load(next,label){draws=next;source=label;stats=ZONES.map((_,z)=>zoneStats(draws,z));combos=[];selection=null;eventPage=historyPage=0;render();}
+function load(next,label){draws=next;source=label;stats=ZONES.map((_,z)=>zoneStats(draws,z));combos=[];selection=null;eventPage=historyPage=0;render();renderReferences(draws);}
 function render(){
   const first=draws[0],last=draws.at(-1);
   const issuesByYear=new Map();
