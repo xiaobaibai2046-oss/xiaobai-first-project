@@ -1,0 +1,68 @@
+{
+  "rule": "roe2025-gold-cross-dif-v6-near5-dailyma20",
+  "completed_at": "2026-11-05T16:10:10.457Z",
+  "market_as_of": "2026-11-05T15:00:00+08:00",
+  "counts": {
+    "all": 1264,
+    "buy": 0,
+    "sell": 622,
+    "none": 632,
+    "incomplete": 10,
+    "pending": 0,
+    "unscanned": 0,
+    "stale": 0
+  },
+  "official_hourly": 1250,
+  "historical_same_session": [
+    {
+      "code": "301603",
+      "name": "乔锋智能",
+      "time": "2026-11-05T10:30:00+08:00",
+      "volume_risk": true
+    },
+    {
+      "code": "603088",
+      "name": "宁波精达",
+      "time": "2026-11-05T10:30:00+08:00",
+      "volume_risk": true
+    },
+    {
+      "code": "603119",
+      "name": "浙江荣泰",
+      "time": "2026-11-05T11:30:00+08:00",
+      "volume_risk": true
+    },
+    {
+      "code": "603277",
+      "name": "银都股份",
+      "time": "2026-11-05T11:30:00+08:00",
+      "volume_risk": true
+    },
+    {
+      "code": "920005",
+      "name": "鼎佳精密",
+      "time": "2026-11-05T14:00:00+08:00",
+      "volume_risk": true
+    },
+    {
+      "code": "920121",
+      "name": "江天科技",
+      "time": "2026-11-05T10:30:00+08:00",
+      "volume_risk": true
+    }
+  ],
+  "historical_note": "Historical triggers are separately labelled; not active buys at 15:00. Each record retains its latest qualifying DIF candidate, not a full intraday event archive. All six retained same-day historical signals have volume-risk warnings.",
+  "adjustment": "none; official front adjustment is supported as opt-in, not used for this rescan",
+  "sdk_calls": {
+    "quick": 17,
+    "complete": 26,
+    "note": "Republishing saved artifacts performs no SDK requests; calls are not billed point units."
+  },
+  "validation": {
+    "node_pass": 107,
+    "python_pass": 43,
+    "mobile_browser_pass": true,
+    "tdx_client_formula_compilation": "not_tested"
+  },
+  "cloud_run": "https://github.com/xiaobaibai2046-oss/xiaobai-first-project/actions/runs/42060667275"
+}
