@@ -2,7 +2,7 @@
   "source": "official SDK only",
   "sdk_version": "1.3.1",
   "connected": true,
-  "checked_at": "2026-11-05T21:45:20.045059+08:00",
+  "checked_at": "2026-11-05T21:47:46.608699+08:00",
   "results": {
     "600519": {
       "quote": {
@@ -242,5 +242,58 @@
     }
   },
   "billing": "官方随包文档未提供账号计费单价；未验证权限/积分时不能估算费用",
-  "native_requests": 11
+  "native_requests": 4,
+  "prior_checked_at": "2026-11-05T21:45:20.045059+08:00",
+  "mode": "model_only",
+  "note": "Only daily/hourly reread in this run; other interface results retained from prior_checked_at",
+  "model_results": {
+    "600519": {
+      "status": "success",
+      "daily_source": "通达信官方 TdxAiData 1.3.1",
+      "hourly_source": "通达信官方 TdxAiData 1.3.1",
+      "daily_as_of": "2026-11-05",
+      "hourly_as_of": "2026-11-05T15:00:00+08:00",
+      "MA20": 1348.7054999999998,
+      "MACD": {
+        "dif": 23.64668205346652,
+        "dea": 27.357769090483284,
+        "histogram": -7.422174074033528
+      },
+      "roe_gate": {
+        "year": 2025,
+        "verified": true,
+        "value": 32.53,
+        "eligible": true
+      },
+      "buy": false,
+      "sell": false,
+      "state": "none",
+      "research_status": "incomplete",
+      "note": "Real official OHLCV passed through existing summarizeStock/signalRecord; no trade orders; full financial summary was not requested"
+    },
+    "000001": {
+      "status": "success",
+      "daily_source": "通达信官方 TdxAiData 1.3.1",
+      "hourly_source": "通达信官方 TdxAiData 1.3.1",
+      "daily_as_of": "2026-11-05",
+      "hourly_as_of": "2026-11-05T15:00:00+08:00",
+      "MA20": 11.5125,
+      "MACD": {
+        "dif": 0.051551832382077833,
+        "dea": 0.06314666803270344,
+        "histogram": -0.023189671301251213
+      },
+      "roe_gate": {
+        "year": 2025,
+        "verified": false,
+        "value": null,
+        "eligible": false
+      },
+      "buy": false,
+      "sell": false,
+      "state": "none",
+      "research_status": "incomplete",
+      "note": "Real official OHLCV passed through existing summarizeStock/signalRecord; no trade orders; full financial summary was not requested"
+    }
+  }
 }
