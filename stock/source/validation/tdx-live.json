@@ -1,0 +1,70 @@
+{
+  "source": "official SDK only",
+  "sdk_version": "1.3.1",
+  "connected": false,
+  "checked_at": "2026-11-05T21:36:27.340649+08:00",
+  "results": {
+    "600519": {
+      "quote": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "history": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "hourly": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "minutes": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "depth": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "ticks": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "funds": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      }
+    },
+    "000001": {
+      "quote": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "history": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "hourly": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "minutes": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "depth": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "ticks": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      },
+      "funds": {
+        "status": "not_configured",
+        "message": "未配置通达信后端认证"
+      }
+    }
+  },
+  "billing": "官方随包文档未提供账号计费单价；未验证权限/积分时不能估算费用",
+  "native_requests": 0
+}
