@@ -1,70 +1,246 @@
 {
   "source": "official SDK only",
   "sdk_version": "1.3.1",
-  "connected": false,
-  "checked_at": "2026-11-05T21:36:27.340649+08:00",
+  "connected": true,
+  "checked_at": "2026-11-05T21:45:20.045059+08:00",
   "results": {
     "600519": {
       "quote": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "quote": {
+          "code": "600519",
+          "name": "600519",
+          "price": 1452.0,
+          "previous_close": 1446.44,
+          "change_pct": 0.3843920245568455,
+          "open": 1446.7,
+          "high": 1466.0,
+          "low": 1430.0,
+          "volume_lots": 46712.0,
+          "amount_raw": 675297.08,
+          "amount_unit": "SDK快照原值；官方字段表未明示倍率",
+          "amount_10k_cny": null,
+          "exchange_time": null,
+          "age_seconds": null,
+          "stale": true,
+          "timestamp_status": "供应商未提供已核验交易所时点",
+          "source": "通达信官方 TdxAiData 1.3.1"
+        },
+        "source": "通达信官方 TdxAiData 1.3.1"
       },
       "history": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "first_date": "2026-09-17",
+        "last_date": "2026-11-05",
+        "latest_close": 1452.0,
+        "latest_volume_shares": 4671220.0,
+        "metrics": {
+          "MA5": 1441.9180000000001,
+          "MA10": 1393.522,
+          "MA20": 1348.7055,
+          "MACD": {
+            "DIF": 45.08254612736164,
+            "DEA": 31.910850381335745,
+            "histogram": 26.343391492051786,
+            "ema_seed": "first_close"
+          },
+          "RSI14": 71.1048169132367,
+          "bar_count": 30,
+          "warmup_note": "30日验收可计算MA5/20；MACD正式策略仍要求至少100根完整小时线"
+        }
       },
       "hourly": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "rows": 120
       },
       "minutes": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "rows": 30
       },
       "depth": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "field_unavailable",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "depth": {
+          "bids": [
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            }
+          ],
+          "asks": [
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            }
+          ],
+          "status": "field_unavailable",
+          "note": "字段缺失不等于权限不足；官方说明非报价界面买二至买五可能为空"
+        }
       },
       "ticks": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "rows": null
       },
       "funds": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "unavailable",
+        "message": "通达信未返回可用数据，不能据此推定权限或积分不足"
       }
     },
     "000001": {
       "quote": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "quote": {
+          "code": "000001",
+          "name": "000001",
+          "price": 11.64,
+          "previous_close": 11.74,
+          "change_pct": -0.8517887563884163,
+          "open": 11.71,
+          "high": 11.77,
+          "low": 11.56,
+          "volume_lots": 1228997.0,
+          "amount_raw": 142943.3,
+          "amount_unit": "SDK快照原值；官方字段表未明示倍率",
+          "amount_10k_cny": null,
+          "exchange_time": null,
+          "age_seconds": null,
+          "stale": true,
+          "timestamp_status": "供应商未提供已核验交易所时点",
+          "source": "通达信官方 TdxAiData 1.3.1"
+        },
+        "source": "通达信官方 TdxAiData 1.3.1"
       },
       "history": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "first_date": "2026-09-17",
+        "last_date": "2026-11-05",
+        "latest_close": 11.64,
+        "latest_volume_shares": 122899704.0,
+        "metrics": {
+          "MA5": 11.666,
+          "MA10": 11.515,
+          "MA20": 11.5125,
+          "MACD": {
+            "DIF": 0.025105486044150638,
+            "DEA": -0.012914723335257805,
+            "histogram": 0.07604041875881688,
+            "ema_seed": "first_close"
+          },
+          "RSI14": 52.793623867358804,
+          "bar_count": 30,
+          "warmup_note": "30日验收可计算MA5/20；MACD正式策略仍要求至少100根完整小时线"
+        }
       },
       "hourly": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "rows": 120
       },
       "minutes": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "rows": 30
       },
       "depth": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "field_unavailable",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "depth": {
+          "bids": [
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            }
+          ],
+          "asks": [
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            },
+            {
+              "price": null,
+              "volume_raw": null
+            }
+          ],
+          "status": "field_unavailable",
+          "note": "字段缺失不等于权限不足；官方说明非报价界面买二至买五可能为空"
+        }
       },
       "ticks": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "success",
+        "source": "通达信官方 TdxAiData 1.3.1",
+        "rows": null
       },
       "funds": {
-        "status": "not_configured",
-        "message": "未配置通达信后端认证"
+        "status": "unavailable",
+        "message": "通达信未返回可用数据，不能据此推定权限或积分不足"
       }
     }
   },
   "billing": "官方随包文档未提供账号计费单价；未验证权限/积分时不能估算费用",
-  "native_requests": 0
+  "native_requests": 11
 }
