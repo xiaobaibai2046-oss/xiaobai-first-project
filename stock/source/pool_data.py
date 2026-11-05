@@ -3,6 +3,7 @@ import datetime as dt
 import json
 import math
 import re
+import time
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
@@ -83,14 +84,14 @@ def build_pool(pages, now=None, page_size=PAGE_SIZE):
             roe = None
         if roe is None or not math.isfinite(roe):
             stats['missing_roe'] += 1
-            missing_stocks.append(dict(code=code,name=row['SECURITY_NAME_ABBR'],report_date=REPORT_DATE,notice_date=notice or None,exchange=secucode[-2:],reason='来源2025年年报加权ROE字段缺失或无效'))
+            missing_stocks.append(dict(code=code,name=row['SECURITY_NAME_ABBR'],report_date=REPORT_DATE,notice_date=notice or None,exchange=secucode[-2:],market=market,industry=row.get('PUBLISHNAME') or '未提供',reason='来源2025年年报加权ROE字段缺失或无效'))
             continue
         if roe <= THRESHOLD:
             stats['not_above_threshold'] += 1
             continue
         stocks.append(dict(code=code, name=row['SECURITY_NAME_ABBR'], roe=roe,
                            report_date=REPORT_DATE, notice_date=notice or None,
-                           market=market, exchange=secucode[-2:], industry=row.get('PUBLISHNAME') or '未提供'))
+                           market=market, exchange=secucode[-2:], industry=row.get('PUBLISHNAME') or '未提供',roe_source=row.get('_ROE_SOURCE','RPT_LICO_FN_CPD.WEIGHTAVG_ROE')))
     stocks.sort(key=lambda s: (-s['roe'], s['code']))
     stats['qualified'] = len(stocks)
     if stats['covered_a_shares'] != stats['qualified'] + stats['missing_roe'] + stats['not_above_threshold']:
@@ -103,7 +104,7 @@ def build_pool(pages, now=None, page_size=PAGE_SIZE):
                 stats=stats, stocks=stocks, missing_roe_stocks=missing_stocks)
 
 
-def fetch_pool(progress=None):
+def fetch_pool(progress=None, supplement_missing=False):
     pages = []
     page_number = 1
     while True:
@@ -128,4 +129,57 @@ def fetch_pool(progress=None):
         if page_number == page['pages']:
             break
         page_number += 1
-    return build_pool(pages)
+    result=build_pool(pages)
+    if supplement_missing:
+        audit=backfill_annual_roe(pages,result)
+        result=build_pool(pages)
+        result['roe_supplement_audit']=audit
+    return result
+
+
+def read_annual_main_index(code,exchange):
+    # ROEJQ is the annual weighted ROE, not the diluted ROE or quarterly annualisation.
+    params=dict(reportName='RPT_F10_FINANCE_MAINFINADATA',columns='ALL',filter='(SECUCODE="'+code+'.'+exchange+'")' + "(REPORT_DATE='2025-12-31')",pageSize=1,pageNumber=1)
+    request=urllib.request.Request(BASE_URL+'?'+urllib.parse.urlencode(params),headers={'User-Agent':'Mozilla/5.0'})
+    with urllib.request.urlopen(request,timeout=10) as response:raw=response.read(4_000_001)
+    if len(raw)>4_000_000:raise PoolError('主要指标响应过大')
+    payload=json.loads(raw);rows=(payload.get('result') or {}).get('data')
+    if not payload.get('success') or not isinstance(rows,list) or len(rows)!=1:raise PoolError('主要指标表未返回唯一年度记录')
+    row=rows[0]
+    if str(row.get('REPORT_DATE',''))[:10]!=REPORT_DATE or row.get('SECUCODE')!=code+'.'+exchange:raise PoolError('补充指标年度或代码不匹配')
+    return row
+
+
+def backfill_annual_roe(pages,result):
+    audit={'source':'东方财富 RPT_F10_FINANCE_MAINFINADATA','field':'ROEJQ','report_date':REPORT_DATE,'control':{},'records':[],'filled':0}
+    control=next((s for s in result['stocks'] if s['code']=='600519'),None)
+    if not control:
+        audit['control']={'status':'unavailable'};return audit
+    try:
+        row=read_annual_main_index(control['code'],control['exchange']);value=finite_roe(row.get('ROEJQ'))
+        if value is None or abs(value-control['roe'])>0.0001:raise PoolError('加权ROE对照与原年报口径不一致')
+        audit['control']={'status':'matched','code':control['code'],'annual_roe':value}
+    except Exception as exc:
+        audit['control']={'status':'unavailable','reason':str(exc)[:180]};return audit
+    bycode={row['SECURITY_CODE']:row for page in pages for row in page['rows']};failures=0
+    for stock in result['missing_roe_stocks']:
+        item={'code':stock['code'],'name':stock['name']}
+        if failures>=3:
+            item['status']='not_checked_after_network_failures';audit['records'].append(item);continue
+        try:
+            row=read_annual_main_index(stock['code'],stock['exchange']);value=finite_roe(row.get('ROEJQ'));bps=finite_roe(row.get('BPS'))
+            item.update(status='filled' if value is not None else 'still_missing',annual_weighted_roe=value,year_end_bps=bps)
+            if value is not None:
+                bycode[stock['code']]['WEIGHTAVG_ROE']=value;bycode[stock['code']]['_ROE_SOURCE']='RPT_F10_FINANCE_MAINFINADATA.ROEJQ';audit['filled']+=1
+            failures=0
+        except Exception as exc:
+            failures+=1;item.update(status='source_unavailable',reason=str(exc)[:180])
+        audit['records'].append(item);time.sleep(0.15)
+    return audit
+
+
+def finite_roe(value):
+    if value is None or value=='' or isinstance(value,bool):return None
+    try:n=float(value)
+    except (ValueError,TypeError):return None
+    return n if math.isfinite(n) else None

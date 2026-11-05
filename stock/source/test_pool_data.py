@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
-from pool_data import build_pool, normalize_page, fetch_pool, PoolError, SH
+from pool_data import build_pool, normalize_page, fetch_pool, PoolError, SH, backfill_annual_roe
 
 
 def row(code='000001',roe=12,**extra):
@@ -19,6 +19,20 @@ class PoolTests(unittest.TestCase):
         self.assertEqual([s['code'] for s in p['missing_roe_stocks']],['000003','000004'])
         self.assertTrue(all(s['report_date']=='2025-12-31' for s in p['missing_roe_stocks']))
         self.assertEqual(p['stats']['not_above_threshold'],1)
+
+    def test_weighted_annual_backfill_requires_matching_control_and_never_invents_null_values(self):
+        control=row('600519',32.53);control['SECUCODE']='600519.SH'
+        pages=[dict(count=4,pages=1,rows=[control,row('000002',None),row('000003',None),row('000004',None)])]
+        result=build_pool(pages)
+        with patch('pool_data.read_annual_main_index',side_effect=[{'ROEJQ':32.53},{'ROEJQ':12.5},{'ROEJQ':None,'BPS':-2},{'ROEJQ':10}]),patch('pool_data.time.sleep'):
+            audit=backfill_annual_roe(pages,result)
+        refreshed=build_pool(pages)
+        self.assertEqual(audit['filled'],2);self.assertEqual(refreshed['stats']['missing_roe'],1)
+        self.assertEqual([s['code'] for s in refreshed['stocks']],['600519','000002'])
+        self.assertEqual(audit['records'][1]['year_end_bps'],-2)
+        other=[dict(count=2,pages=1,rows=[control,row('000009',None)])]
+        with patch('pool_data.read_annual_main_index',return_value={'ROEJQ':99}):audit=backfill_annual_roe(other,build_pool(other))
+        self.assertEqual(audit['control']['status'],'unavailable');self.assertEqual(build_pool(other)['stats']['missing_roe'],1)
 
     def test_missing_page_or_repeated_code_aborts(self):
         with self.assertRaises(PoolError):build_pool([dict(count=501,pages=2,rows=[row()])])

@@ -2,5 +2,7 @@
   "requested_at": "2026-11-05T17:24:21.661245+00:00",
   "year": 2025,
   "reason": "Refresh annual fundamental universe and recheck 51 previously missing weighted ROE records",
-  "keep_threshold_strictly_above": 10
+  "keep_threshold_strictly_above": 10,
+  "retry": 2,
+  "supplement": "Cross-check 2025 annual ROEJQ, validate control against existing weighted ROE before backfill"
 }
