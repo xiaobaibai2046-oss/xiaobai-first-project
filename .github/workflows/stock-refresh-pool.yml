@@ -1,0 +1,46 @@
+name: Refresh annual ROE stock universe
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/annual-pool-request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  actions: write
+concurrency:
+  group: stock-snapshot-publish
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Refresh all source-covered 2025 annual weighted ROE records
+        working-directory: stock/source
+        run: python scripts/refresh-pool.py
+      - name: Reconcile signals and rebuild both mobile entries
+        working-directory: stock/source
+        run: |
+          node scripts/reconcile-pool-signals.mjs
+          npm run build -- ..
+      - name: Publish verified universe and audit report
+        run: python stock/source/scripts/publish-snapshot.py
+      - name: Request website rebuild and scan newly eligible stocks if needed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST repos/${{ github.repository }}/pages/builds
+          CHANGED=$(python -c 'import json; print(str(json.load(open("stock/source/validation/annual-pool-refresh.json"))["membership_changed"]).lower())')
+          if [ "$CHANGED" = "true" ]; then
+            gh api --method POST repos/${{ github.repository }}/actions/workflows/stock-signals.yml/dispatches -f ref=main
+          fi

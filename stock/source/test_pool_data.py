@@ -16,6 +16,8 @@ class PoolTests(unittest.TestCase):
         p=build_pool([dict(count=4,pages=1,rows=rows)])
         self.assertEqual([s['code'] for s in p['stocks']],['000002'])
         self.assertEqual(p['stats']['missing_roe'],2)
+        self.assertEqual([s['code'] for s in p['missing_roe_stocks']],['000003','000004'])
+        self.assertTrue(all(s['report_date']=='2025-12-31' for s in p['missing_roe_stocks']))
         self.assertEqual(p['stats']['not_above_threshold'],1)
 
     def test_missing_page_or_repeated_code_aborts(self):

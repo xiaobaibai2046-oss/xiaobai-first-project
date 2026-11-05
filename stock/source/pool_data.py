@@ -44,6 +44,7 @@ def build_pool(pages, now=None, page_size=PAGE_SIZE):
             raise PoolError('分页记录数量不完整，保留原股票池')
     rows = [row for page in pages for row in page['rows']]
     stocks, seen = [], set()
+    missing_stocks = []
     stats = dict(source_records=len(rows), source_pages=len(pages), covered_a_shares=0, qualified=0,
                  missing_roe=0, not_above_threshold=0, outside_scope=0, future_notice=0,
                  missing_notice=0, by_market={})
@@ -82,6 +83,7 @@ def build_pool(pages, now=None, page_size=PAGE_SIZE):
             roe = None
         if roe is None or not math.isfinite(roe):
             stats['missing_roe'] += 1
+            missing_stocks.append(dict(code=code,name=row['SECURITY_NAME_ABBR'],report_date=REPORT_DATE,notice_date=notice or None,exchange=secucode[-2:],reason='来源2025年年报加权ROE字段缺失或无效'))
             continue
         if roe <= THRESHOLD:
             stats['not_above_threshold'] += 1
@@ -98,7 +100,7 @@ def build_pool(pages, now=None, page_size=PAGE_SIZE):
                 as_of=now.isoformat(timespec='seconds'), source='东方财富数据中心 · RPT_LICO_FN_CPD',
                 source_url=BASE_URL, source_filter=FILTER,
                 coverage='来源覆盖的沪深北A股2025年年报；不额外排除ST、行业或板块。未披露或来源未覆盖的公司数量不能由本年报表推定，未核验当前上市状态。',
-                stats=stats, stocks=stocks)
+                stats=stats, stocks=stocks, missing_roe_stocks=missing_stocks)
 
 
 def fetch_pool(progress=None):

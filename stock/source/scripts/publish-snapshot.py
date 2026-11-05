@@ -20,7 +20,9 @@ def run(*args):
 
 run('git','config','user.name','github-actions[bot]')
 run('git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com')
-run('git','add','stock/source/pool-signals.json','stock/pool-signals.json','stock/index.html','stock/research-v6.html','stock/formulas')
+from pathlib import Path
+artifacts=['stock/source/pool-signals.json','stock/pool-signals.json','stock/index.html','stock/research-v6.html','stock/formulas','stock/source/pool-2025.json','stock/source/validation/annual-pool-refresh.json']
+run('git','add',*[p for p in artifacts if Path(p).exists()])
 p=subprocess.run(['git','diff','--cached','--quiet'])
 if p.returncode:
     run('git','commit','-m','Refresh background stock signal snapshot')
