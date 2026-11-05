@@ -20,6 +20,15 @@ HTTP域名配置草稿已保存，但保存草稿不会应用到当前实例，�
 应在环境设置审查、保存并发布配置；若环境无法提供相应TCP授权，应在有这些权限的Python主机运行，
 或先用现有GitHub Actions执行官方验收和定时采集。不要通过取消代理或修改系统路由绕过策略。
 
+## GitHub Actions真实验收更新（2026-11-05）
+
+Key保存到Repository Secret后，官方验收已成功：600519.SH和000001.SZ的快照、最近30个完整交易日日线、120根小时线、5分钟线和分笔均有真实返回。
+随后以最多4次SDK调用补取两股日线和小时线，并通过现有Node生产模型 `summarizeStock/applyAnnualRoeGate/signalRecord`；MA20/MACD计算成功，ROE门槛保留。
+两轮实际SDK调用计数分别为11和4，合计15，不等于积分数或费用金额。完整研究总评的最新财报本次没有请求。
+五档没有识别到完整字段，GP07未返回可用数据；没有明确permission或credits错误，因此不能断言需要增购。
+最新真实结果为 `validation/tdx-live.json`；`validation/tdx-integration.json`保留的是此前Codex本机受限的环境记录，两者不可混为同一运行环境。
+正式全池仍由 `TDX_ENABLED` 和调用预算控制，没有因为验收而自动打开不明费用的高频调用。
+
 ## 后端认证和启动
 
 Key不进入仓库、前端、构建参数或URL。应用只从进程Secret `TDX_DATA_KEY` 或私有INI路径

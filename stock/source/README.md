@@ -196,4 +196,4 @@ MA20仍用于独立日线趋势展示、MA20卖出条件和原有日线回测；
 已加入可选 `tdxaidata==1.3.1` 官方Python后端适配器，保留腾讯备用源、原ROE池和既有策略。
 按照用户选择先接入现有GitHub Actions；在安全Secret配置及官方真实验收通过前，不自动启用收费全池采集。
 安装、启动、逐接口验收、GitHub加密Secret设置、调用预算和实际网络阻塞见 [TDX_SETUP.md](TDX_SETUP.md)。
-本次真实验收仍被环境TCP策略阻塞，不能把合成回归测试称为已经接通官方服务器。
+Codex本机受TCP策略限制；Key加入仓库Secret后，GitHub Actions已对两股完成官方真实行情及生产模型验收。结果见 `validation/tdx-live.json`；合成测试与真实验收分开记录。

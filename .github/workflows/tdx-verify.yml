@@ -29,7 +29,7 @@ jobs:
           TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
           INCLUDE_PRO: ${{ inputs.include_pro || github.event_name == 'push' }}
         run: |
-          MODEL_ONLY=$(python -c 'import json,pathlib; p=pathlib.Path("stock/source/validation/tdx-request.json"); print("true" if p.exists() and json.loads(p.read_text()).get("mode")=="model_only" else "false")')
+          MODEL_ONLY=$(python -c 'import json,os,pathlib; p=pathlib.Path("stock/source/validation/tdx-request.json"); print("true" if os.environ.get("GITHUB_EVENT_NAME")=="push" and p.exists() and json.loads(p.read_text()).get("mode")=="model_only" else "false")')
           if [ "$MODEL_ONLY" = "true" ]; then
             python stock/source/scripts/verify-tdx.py --model-only --output /tmp/tdx-report.json
           elif [ "$INCLUDE_PRO" = "true" ]; then
