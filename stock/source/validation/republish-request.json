@@ -1,6 +1,6 @@
 {
   "run_id": 42060667275,
-  "phase": "quick",
-  "reason": "Reuse completed official results; diagnose and recover failed publication, no SDK calls",
-  "retry": 2
+  "phase": "complete",
+  "reason": "Publish complete collected results with separately labelled same-day historical golden-cross signals; no SDK calls",
+  "retry": 3
 }

@@ -19,6 +19,7 @@ export async function mountPool({esc,download,onSelect}){
   const b=background.background,c=signalCounts(pool.stocks,background.results||{});
   const phase=b?.phase==='quick'?'首批结果已发布，剩余股票等待后续扫描。':'';
   target.textContent=(c.stale?'【更新滞后】':'')+'后台发布：'+showTime(b?.updated_at||background.finished_at)+'。'+phase+
+   (b?.historical_today?.length?'当日历史触发（不计入当前买入）'+b.historical_today.length+'只：'+b.historical_today.map(x=>x.code+' '+x.name+' '+showTime(x.time)+(x.volume_risk?'［放量新低风险］':'')).join('；')+'。':'')+
    (b?.bottom_levels?'两金叉买入 '+(b.bottom_levels.gold_cross||0)+'，放量新低候选 '+(b.bottom_levels.volume_risk||0)+'。':'')+(typeof b?.official_hourly==='number'?'通达信60分钟覆盖 '+b.official_hourly+'/'+c.all+'。':'')+'有效结果 '+(c.buy+c.sell+c.none)+'/'+c.all+'；待扫描或更新 '+c.pending+'；数据不足 '+c.incomplete+'。'+
    (b?'本批执行 '+b.checked+'/'+b.batch_total+' 次检查，不代表全池已有效核验。':'')+
    '目标日线 '+expectedSignalTime(new Date(),'daily')+'；目标60分钟 '+showTime(expectedSignalTime())+'。交易日北京时间10:35、11:35、14:05、15:05启动更新并分批发布；页面每30秒读取结果，返回页面立即刷新。GitHub任务可能排队。';
