@@ -1,11 +1,12 @@
+import {isTradingDay} from './trading-calendar.js';
 import {BOTTOM_PRICE_TOLERANCE} from './strategy-config.js';
 export const SIGNAL_RULE='m60-bottom-only-v3-tol-'+Math.round(BOTTOM_PRICE_TOLERANCE*1000000);
 const sessionCache=new Map();
 export function expectedSignalTime(now=new Date(),kind='hourly'){
  const cacheKey=kind+'|'+Math.floor(now.getTime()/60000);if(sessionCache.has(cacheKey))return sessionCache.get(cacheKey);
  const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now).map(x=>[x.type,x.value]));let d=new Date(Date.UTC(+p.year,+p.month-1,+p.day));const weekday=d.getUTCDay(),time=+p.hour*60+(+p.minute);let hm=null;
- if(weekday!==0&&weekday!==6){if(kind==='daily'&&time>=15*60)hm='1500';if(kind==='hourly')hm=['1030','1130','1400','1500'].filter(x=>(+x.slice(0,2))*60+(+x.slice(2))<=time).at(-1)||null}
- if(!hm){do{d.setUTCDate(d.getUTCDate()-1)}while([0,6].includes(d.getUTCDay()));hm='1500'}const date=d.toISOString().slice(0,10);const value=kind==='daily'?date:`${date}T${hm.slice(0,2)}:${hm.slice(2)}:00+08:00`;if(sessionCache.size>32)sessionCache.delete(sessionCache.keys().next().value);sessionCache.set(cacheKey,value);return value;
+ if(isTradingDay(d.toISOString().slice(0,10))){if(kind==='daily'&&time>=15*60)hm='1500';if(kind==='hourly')hm=['1030','1130','1400','1500'].filter(x=>(+x.slice(0,2))*60+(+x.slice(2))<=time).at(-1)||null}
+ if(!hm){do{d.setUTCDate(d.getUTCDate()-1)}while(!isTradingDay(d.toISOString().slice(0,10)));hm='1500'}const date=d.toISOString().slice(0,10);const value=kind==='daily'?date:`${date}T${hm.slice(0,2)}:${hm.slice(2)}:00+08:00`;if(sessionCache.size>32)sessionCache.delete(sessionCache.keys().next().value);sessionCache.set(cacheKey,value);return value;
 }
 export function signalRecord(summary,checkedAt=new Date()){
  const day=summary.technical?.date||null,hour=summary.macd?.asOf||null;

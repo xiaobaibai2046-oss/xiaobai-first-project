@@ -5,7 +5,7 @@
 
 ## 如何补漏
 
-原 GitHub 计划北京时间工作日10:05—15:50，每15分钟触发，16:05补查日线。
+原 GitHub 计划北京时间交易日10:35、11:35、14:05、15:05触发。
 Cloudflare 在各计划时点的3分钟后检查原工作流：
 
 - 已有运行或排队任务：跳过，避免继续堆积。
@@ -13,8 +13,8 @@ Cloudflare 在各计划时点的3分钟后检查原工作流：
 - 没有运行记录，或本时段运行已失败：通过 GitHub 官方 workflow_dispatch API 触发原工作流。
 - API查询失败或授权失效：报告错误，不盲目重复启动任务。
 
-北京时间备用时点为10:08—15:53（每15分钟），以及16:08。配置内使用UTC。
-与原程序一样按周一至周五安排，没有交易所节假日日历。
+北京时间备用时点为10:38、11:38、14:08、15:08。配置内使用UTC。
+备用时钟按周一至周五安排，原GitHub工作流通过交易日历跳过休市；备用方案仍未部署。
 
 它能减少依赖单一调度器造成的漏触发，不能保证 GitHub 运行器立即开工，也不能解决行情源缺失。
 备份触发器、GitHub Actions 和行情接口任何一环都可能失败；任务触发成功不等于数据分析或发布成功。
@@ -44,7 +44,7 @@ npx wrangler deploy
 也可以在 Cloudflare 控制台创建 Worker，将 `worker.mjs` 内容放入编辑器：
 
 - Settings → Variables and Secrets：添加文本变量 `GITHUB_REPOSITORY`，值为 `xiaobaibai2046-oss/xiaobai-first-project`；添加 Secret `GITHUB_TOKEN`。
-- Triggers/Cron Triggers：添加 `8,23,38,53 2-7 * * 1-5`、`8 8 * * 1-5`（均为UTC）。
+- Triggers/Cron Triggers：添加 `38 2,3 * * 1-5`、`8 6,7 * * 1-5`（均为UTC）。
 - 禁用公开 workers.dev 路由，无需配置自定义域名。
 
 界面名称可能随 Cloudflare 版本调整。先确认免费计划再部署。

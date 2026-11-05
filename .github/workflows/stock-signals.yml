@@ -3,29 +3,14 @@ run-name: Stock signals · ${{ github.event_name }} · ${{ github.sha }}
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/stock-signals.yml'
-      - '.github/workflows/stock-scan-phase.yml'
-      - '.github/workflows/stock-publish-phase.yml'
-      - 'stock/source/scripts/scan-*.mjs'
-      - 'stock/source/scripts/scan-*.py'
-      - 'stock/source/scripts/merge-scans.mjs'
-      - 'stock/source/scan-plan.js'
-      - 'stock/source/strategy-config.js'
-      - 'stock/source/macd.js'
-      - 'stock/source/signal-model.js'
-      - 'stock/source/server.py'
-      - 'stock/source/cloud_cache.py'
-      - 'stock/source/tdx_provider.py'
-      - 'stock/source/tdx_sdk_worker.py'
-      - 'stock/source/requirements-tdx.txt'
-      - 'stock/source/market-config.json'
+    # Explicit manual requests only; code publication does not start paid collection.
+    paths: ['stock/source/validation/pool-request.json']
   workflow_dispatch:
   schedule:
-    # Beijing 10:05–15:50 every 15 min; 16:05 completed daily-bar refresh.
+    # Beijing 10:35, 11:35, 14:05, 15:05; exchange-calendar gate skips holidays.
     # GitHub schedules are best effort and can run late.
-    - cron: '5,20,35,50 2-7 * * 1-5'
-    - cron: '5 8 * * 1-5'
+    - cron: '35 2,3 * * 1-5'
+    - cron: '5 6,7 * * 1-5'
 permissions:
   contents: write
   pages: write
@@ -33,7 +18,53 @@ concurrency:
   group: stock-signals
   cancel-in-progress: false
 jobs:
+  trading-day:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run: ${{ steps.decision.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exchange-calendar coverage without paid API calls
+        id: calendar
+        run: python stock/source/scripts/trading-day-gate.py
+      - name: Refresh calendar dependency only outside bundled coverage
+        if: steps.calendar.outputs.covered != 'true'
+        run: python -m pip install --upgrade exchange-calendars
+      - name: Verify uncovered date against current exchange calendar
+        id: refreshed
+        if: steps.calendar.outputs.covered != 'true'
+        run: python stock/source/scripts/trading-day-gate.py --refresh
+      - name: Preserve verified calendar refresh for the scanner and phone page
+        if: steps.refreshed.outputs.calendar_updated == 'true'
+        run: |
+          node stock/source/scripts/build-static.mjs stock
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stock/source/trading-calendar.json stock/source/trading-calendar.js stock/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh A-share exchange calendar"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Decide scheduled versus explicitly requested run
+        id: decision
+        env:
+          EVENT: ${{ github.event_name }}
+          SESSION: ${{ steps.calendar.outputs.is_session == 'true' || steps.refreshed.outputs.is_session == 'true' }}
+        run: |
+          if [ "$EVENT" != "schedule" ] || [ "$SESSION" = "true" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "A-share market closed today; scheduled paid collection skipped."
+          fi
   quick-scan:
+    needs: trading-day
+    if: needs.trading-day.outputs.run == 'true'
     uses: ./.github/workflows/stock-scan-phase.yml
     secrets:
       TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
@@ -41,14 +72,14 @@ jobs:
       phase: quick
       seconds: 120
   quick-publish:
-    needs: quick-scan
-    if: always()
+    needs: [trading-day, quick-scan]
+    if: always() && needs.trading-day.outputs.run == 'true'
     uses: ./.github/workflows/stock-publish-phase.yml
     with:
       phase: quick
   complete-scan:
-    needs: quick-publish
-    if: always()
+    needs: [trading-day, quick-publish]
+    if: always() && needs.trading-day.outputs.run == 'true'
     uses: ./.github/workflows/stock-scan-phase.yml
     secrets:
       TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
@@ -56,8 +87,8 @@ jobs:
       phase: complete
       seconds: 720
   complete-publish:
-    needs: complete-scan
-    if: always()
+    needs: [trading-day, complete-scan]
+    if: always() && needs.trading-day.outputs.run == 'true'
     uses: ./.github/workflows/stock-publish-phase.yml
     with:
       phase: complete

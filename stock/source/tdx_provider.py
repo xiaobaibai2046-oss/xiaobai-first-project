@@ -12,6 +12,7 @@ import sys
 import threading
 import time
 from zoneinfo import ZoneInfo
+from trading_sessions import is_trading_day
 
 SH=ZoneInfo('Asia/Shanghai')
 SOURCE='通达信官方 TdxAiData 1.3.1'
@@ -151,7 +152,7 @@ class Provider:
             if period not in ('1d','1h','1m','5m','15m','30m'):raise TdxError('schema')
             if not isinstance(count,int) or not 1<=count<=640:raise TdxError('schema')
             if kind in ('ticks','funds') and os.environ.get('TDX_ENABLE_PRO')!='true':raise TdxError('disabled')
-            trading=now.weekday()<5 and ('09:30'<=now.strftime('%H:%M')<='11:30' or '13:00'<=now.strftime('%H:%M')<='15:00')
+            trading=is_trading_day(now.date()) and ('09:30'<=now.strftime('%H:%M')<='11:30' or '13:00'<=now.strftime('%H:%M')<='15:00')
             ttl=(10 if trading else 300) if kind in ('quote','depth') else 60 if kind in ('hourly','minutes') else 300
             from cloud_cache import expected
             session=expected(now,'history' if kind=='history' else 'hourly')

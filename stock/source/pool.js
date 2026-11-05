@@ -21,7 +21,7 @@ export async function mountPool({esc,download,onSelect}){
   target.textContent=(c.stale?'【更新滞后】':'')+'后台发布：'+showTime(b?.updated_at||background.finished_at)+'。'+phase+
    (typeof b?.official_hourly==='number'?'通达信60分钟覆盖 '+b.official_hourly+'/'+c.all+'。':'')+'有效结果 '+(c.buy+c.sell+c.none)+'/'+c.all+'；待扫描或更新 '+c.pending+'；数据不足 '+c.incomplete+'。'+
    (b?'本批执行 '+b.checked+'/'+b.batch_total+' 次检查，不代表全池已有效核验。':'')+
-   '目标日线 '+expectedSignalTime(new Date(),'daily')+'；目标60分钟 '+showTime(expectedSignalTime())+'。页面每30秒读取新结果，返回页面时立即刷新；云端任务可能排队。';
+   '目标日线 '+expectedSignalTime(new Date(),'daily')+'；目标60分钟 '+showTime(expectedSignalTime())+'。交易日北京时间10:35、11:35、14:05、15:05启动更新并分批发布；页面每30秒读取结果，返回页面立即刷新。GitHub任务可能排队。';
  }
 
  const showTime=value=>value&&Number.isFinite(Date.parse(value))?new Date(value).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})+'（北京时间）':'未核查';

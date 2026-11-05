@@ -6,17 +6,18 @@ import os
 import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from trading_sessions import is_trading_day
 SH=ZoneInfo('Asia/Shanghai')
 def expected(now,kind):
     local=now.astimezone(SH);day=local.date();minute=local.hour*60+local.minute
     if kind=='history':
-        if day.weekday()<5 and minute>=900:return day.isoformat()
-    elif kind=='hourly' and day.weekday()<5:
+        if is_trading_day(day) and minute>=900:return day.isoformat()
+    elif kind=='hourly' and is_trading_day(day):
         closed=[x for x in (630,690,840,900) if x<=minute]
         if closed:return day.isoformat()+f'T{closed[-1]//60:02d}:{closed[-1]%60:02d}:00+08:00'
     while True:
         day-=dt.timedelta(days=1)
-        if day.weekday()<5:break
+        if is_trading_day(day):break
     return day.isoformat() if kind=='history' else day.isoformat()+'T15:00:00+08:00'
 def _encoded(value):return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')
 def load_cached(root,kind,code,loader,now=None,source_prefix=None):
