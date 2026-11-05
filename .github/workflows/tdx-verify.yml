@@ -10,7 +10,7 @@ on:
         type: boolean
         default: false
 permissions:
-  contents: read
+  contents: write
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -30,6 +30,34 @@ jobs:
             python stock/source/scripts/verify-tdx.py --include-pro --output /tmp/tdx-report.json
           else
             python stock/source/scripts/verify-tdx.py --output /tmp/tdx-report.json
+          fi
+      - name: Save safe acceptance summary for review
+        if: always()
+        env:
+          TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+        run: |
+          if [ -f /tmp/tdx-report.json ]; then
+            python - <<'PYREPORT'
+          import json, os
+          from pathlib import Path
+          report=json.loads(Path('/tmp/tdx-report.json').read_text())
+          for rows in report.get('results',{}).values():
+              for result in rows.values():
+                  result.pop('sample_bars',None)
+          output=json.dumps(report,ensure_ascii=False,indent=2)+'\n'
+          secret=os.environ.get('TDX_DATA_KEY','')
+          if secret and secret in output:
+              raise RuntimeError('Credential detected; refusing to publish report')
+          Path('stock/source/validation/tdx-live.json').write_text(output,encoding='utf-8')
+          PYREPORT
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add stock/source/validation/tdx-live.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Record official Tongdaxin acceptance results"
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
           fi
       - uses: actions/upload-artifact@v4
         if: always()
