@@ -68,7 +68,7 @@ def main():
                     ready=True
                 code=job['symbol'];op=job['operation']
                 if op=='snapshot':result=tqs.get_market_snapshot(code,[])
-                elif op=='bars':result=tqs.get_market_data(field_list=['Open','High','Low','Close','Volume','Amount'],stock_list=[code],period=job['period'],count=job['count'],dividend_type='none',fill_data=False)
+                elif op=='bars':result=tqs.get_market_data(field_list=['Open','High','Low','Close','Volume','Amount'],stock_list=[code],period=job['period'],count=job['count'],dividend_type=job.get('adjustment','none'),fill_data=False)
                 elif op=='ticks':result=tqs.get_tick_data(code,job['date'],0,10)
                 elif op=='funds':result=tqs.get_gpjy_value([code],['GP07'],job['date'],job['date'])
                 elif op=='calendar':result=tqs.get_trading_dates(code.split('.')[-1],job['start'],job['date'],-1)

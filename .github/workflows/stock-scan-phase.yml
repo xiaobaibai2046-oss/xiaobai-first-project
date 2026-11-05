@@ -67,6 +67,7 @@ jobs:
           SCAN_PHASE: ${{ inputs.phase }}
           SCAN_CONCURRENCY: '2'
           TDX_DATA_KEY: ${{ steps.market.outputs.enabled == 'true' && secrets.TDX_DATA_KEY || '' }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
           TDX_MAX_CALLS: ${{ steps.market.outputs.max_calls }}
           CLOUD_MARKET_CACHE: ${{ runner.temp }}/stock-market-cache
         run: npm run scan:pool

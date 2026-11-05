@@ -307,6 +307,7 @@ def preferred_market(kind,code,count=80):
         try:return provider.get(kind,code,count=count)
         except TdxError as exc:failure=exc.public()
     else:failure={'category':'not_configured','message':'通达信后端未配置，使用原有来源'}
+    if kind in ('history','hourly') and os.environ.get('TDX_ADJUSTMENT')=='front':raise RuntimeError('前复权官方行情不可用，保留未知；不混用不复权备用数据')
     try:fallback=public_get_quotes([code]) if kind=='quote' else public_get_history(code,count) if kind=='history' else public_get_hourly(code)
     except DataError as exc:raise DataError('通达信 '+failure['category']+'；备用来源：'+str(exc)) from exc
     return dict(fallback,provider='tencent_backup',primary_status=failure)

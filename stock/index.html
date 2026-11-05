@@ -35,8 +35,7 @@ return {isTradingDay};
 })();
 __modules["./signal-model.js"]=(()=>{
 const {isTradingDay}=__modules["./trading-calendar.js"];
-const {TRUE_DIF_STAGE_BARS,TRUE_DIF_VOLUME_BARS}=__modules["./strategy-config.js"];
-const SIGNAL_RULE='roe2025-true-dif-waves-v5-stage'+TRUE_DIF_STAGE_BARS+'-vol'+TRUE_DIF_VOLUME_BARS+'-first2';
+const SIGNAL_RULE='roe2025-gold-cross-dif-v6-near5-dailyma20';
 const sessionCache=new Map();
 function expectedSignalTime(now=new Date(),kind='hourly'){
  const cacheKey=kind+'|'+Math.floor(now.getTime()/60000);if(sessionCache.has(cacheKey))return sessionCache.get(cacheKey);
@@ -49,18 +48,18 @@ function signalRecord(summary,checkedAt=new Date()){
  const dailyOK=!!day&&day===expectedSignalTime(checkedAt,'daily'),hourlyOK=!!hour&&hour===expectedSignalTime(checkedAt);
  const daySell=dailyOK&&summary.technical?.close<summary.technical?.ma20,topSell=hourlyOK&&summary.macd?.bearish?.active;
  let state,dependencies={daily:true,hourly:true},reasons=[];
- if(hourlyOK&&summary.tradeHints.buy.triggered){state='buy';dependencies={daily:false,hourly:true};reasons=summary.tradeHints.buy.reasons}
+ if(dailyOK&&hourlyOK&&summary.tradeHints.buy.triggered){state='buy';dependencies={daily:true,hourly:true};reasons=summary.tradeHints.buy.reasons}
  else if(daySell||topSell){state='sell';dependencies={daily:!!daySell,hourly:!daySell};reasons=summary.tradeHints.sell.reasons}
  else if(!dailyOK||!hourlyOK){state='incomplete';reasons=[...(!dailyOK?['日线未更新，卖出条件未完整核验']:[]),...(!hourlyOK?['60分钟数据未更新至最新已完成时段']:[]),...summary.missing.filter(x=>/日线|60分钟|K线|成交量|MACD/.test(x)),...Object.values(summary.errors||{})]}
  else{state='none';reasons=[...summary.tradeHints.buy.reasons,...summary.tradeHints.sell.reasons]}
 
- const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,level:e.level||null,risk_active:!!e.riskActive,mode:e.mode||'pivot',previous_low_volume_mean:e.previousLowVolumeMean??null,current_volume:e.currentVolume??null,volume_ratio:e.volumeRatio??null,first_green_peak:e.firstGreenPeak??null,second_green_peak:e.secondGreenPeak??null,first_min_dif:e.firstMinDIF??null,second_min_dif:e.secondMinDIF??null,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
- return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,signals:{buy:state==='buy',sell:!!(daySell||topSell)},sell_reasons:summary.tradeHints.sell.reasons,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{},source_status:summary.signalStatus||{}};
+ const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,level:e.level||null,risk_active:!!e.riskActive,mode:e.mode||'pivot',first_dif:e.firstDIF,second_dif:e.secondDIF,low_time:e.lowTime,volume_risk:!!e.volumeRisk,previous_low_volume_mean:e.previousLowVolumeMean??null,current_volume:e.currentVolume??null,volume_ratio:e.volumeRatio??null,first_green_peak:e.firstGreenPeak??null,second_green_peak:e.secondGreenPeak??null,first_min_dif:e.firstMinDIF??null,second_min_dif:e.secondMinDIF??null,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
+ return {rule:SIGNAL_RULE,code:summary.code,state,adjustment:summary.adjustment||null,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),buy_ma20:summary.buyMA20||null,daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,signals:{buy:state==='buy',sell:!!(daySell||topSell)},sell_reasons:summary.tradeHints.sell.reasons,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{},source_status:summary.signalStatus||{}};
 }
 function signalState(record,now=new Date()){
  if(!record)return 'unscanned';if(record.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(record.state)||!Number.isFinite(Date.parse(record.checked_at))||Date.parse(record.checked_at)>now.getTime()+60000)return 'stale';
- if(record.state==='buy'&&!record.dependencies?.hourly||record.state==='sell'&&!record.dependencies?.daily&&!record.dependencies?.hourly||record.state==='none'&&(!record.dependencies?.daily||!record.dependencies?.hourly))return 'stale';
- if(record.state==='buy'&&(record.timing?.bottom?.mode!=='true_dif_waves'||![1,2].includes(record.timing.bottom.level)||!record.timing.bottom.active||record.timing.bottom.risk_active))return 'stale';
+ if(record.state==='buy'&&(!record.dependencies?.hourly||!record.dependencies?.daily)||record.state==='sell'&&!record.dependencies?.daily&&!record.dependencies?.hourly||record.state==='none'&&(!record.dependencies?.daily||!record.dependencies?.hourly))return 'stale';
+ if(record.state==='buy'&&(record.timing?.bottom?.mode!=='gold_cross_dif'||!record.timing.bottom.active||!record.timing?.buy_ma20?.passed))return 'stale';
  if(record.state==='incomplete')return record.checked_session===expectedSignalTime(now)?'incomplete':'stale';
  if(record.state==='sell'&&!record.dependencies?.hourly&&record.checked_session!==expectedSignalTime(now))return 'stale';
  if(record.dependencies?.daily&&(!record.daily_as_of||record.daily_as_of!==expectedSignalTime(now,'daily')))return 'stale';
@@ -119,8 +118,38 @@ function findTrueDifBottoms(bars,series,{stageBars=TRUE_DIF_STAGE_BARS,minBars=T
 
 return {findTrueDifBottoms};
 })();
+__modules["./gold-bottom.js"]=(()=>{
+// Adjacent confirmed golden crosses; all comparisons use information available at that close.
+function findGoldCrossBottoms(bars,series,{nearBars=5,minBars=100}={}){
+ if(bars.length!==series.length)throw Error('MACD与K线数量不一致');
+ let previous=null;const events=[];
+ for(let i=1;i<bars.length;i++){
+  if(!(series[i].dif>series[i].dea&&series[i-1].dif<=series[i-1].dea))continue;
+  if(previous!==null&&i+1>=minBars){
+   const start=Math.max(0,previous-nearBars+1);let firstLow=start;
+   for(let j=start;j<=previous;j++)if(bars[j].low<=bars[firstLow].low)firstLow=j;
+   let low=previous+1;for(let j=previous+1;j<=i;j++)if(bars[j].low<=bars[low].low)low=j;
+   if(series[i].dif>series[previous].dif&&bars[low].low<bars[firstLow].low){
+    const ref=bars.slice(Math.max(0,firstLow-2),firstLow+1).reduce((s,b)=>s+b.volume,0)/Math.min(3,firstLow+1);
+    events.push({kind:'bullish',mode:'gold_cross_dif',firstIndex:previous,secondIndex:i,confirmedIndex:i,firstTime:bars[previous].endTime,secondTime:bars[i].endTime,confirmedAt:bars[i].endTime,firstDIF:series[previous].dif,secondDIF:series[i].dif,firstPrice:bars[firstLow].low,secondPrice:bars[low].low,lowTime:bars[low].endTime,lowIndex:low,close:bars[i].close,previousLowVolumeMean:ref,currentVolume:bars[low].volume,volumeRatio:ref>0?bars[low].volume/ref:null,volumeRisk:ref>0&&bars[low].volume>ref,active:i===bars.length-1,priceMatch:'strict',priceTolerance:0,nearBars});
+   }
+  }
+  previous=i;
+ }
+ return {bullish:events.at(-1)||null,events};
+}
+function goldCrossDailyMA20(event,dailyBars){
+ if(!event)return null;
+ const date=event.secondTime.slice(0,10),past=(dailyBars||[]).filter(b=>b.date<date).slice(-19);
+ if(past.length!==19||past.some(b=>!Number.isFinite(b.close)))return null;
+ const ma20=(past.reduce((s,b)=>s+b.close,0)+event.close)/20;
+ return {ma20,close:event.close,date,passed:event.close>ma20,method:'前19个交易日收盘价＋金叉小时收盘价'};
+}
+
+return {findGoldCrossBottoms,goldCrossDailyMA20};
+})();
 __modules["./macd.js"]=(()=>{
-const {findTrueDifBottoms}=__modules["./dif-bottom.js"];
+const {findGoldCrossBottoms}=__modules["./gold-bottom.js"];
 const {BOTTOM_PRICE_TOLERANCE}=__modules["./strategy-config.js"];
 // EMA seeds with the first close; discard 78 bars before looking for pivots.
 function computeMACD(closes){
@@ -152,21 +181,18 @@ function analyzeHourlyMACD(bars){
  for(let i=0;i<bars.length;i++){
   const b=bars[i];if(!b.endTime||!Number.isFinite(Date.parse(b.endTime))||i&&b.endTime<=bars[i-1].endTime||!['open','high','low','close','volume'].every(k=>Number.isFinite(b[k]))||Math.min(b.open,b.high,b.low,b.close)<=0||b.volume<0||b.low>Math.min(b.open,b.close)||b.high<Math.max(b.open,b.close))throw Error('60 分钟 K 线格式、顺序或价格无效');
  }
- const series=computeMACD(bars.map(x=>x.close)),legacyTop=findDivergences(bars,series).bearish,strict=findTrueDifBottoms(bars,series);
+ const series=computeMACD(bars.map(x=>x.close)),legacyTop=findDivergences(bars,series).bearish,strict=findGoldCrossBottoms(bars,series);
  return {bullish:strict.bullish,bearish:legacyTop,latest:series.at(-1),asOf:bars.at(-1).endTime,count:bars.length,
-  parameters:{fast:12,slow:26,signal:9,bottom:{mode:'true_dif_waves',stageBars:60,minBars:100,volumeReferenceBars:3,allowedLevels:[1,2],priceTolerance:0,confirmation:'latest_closed_new_low_bar'},top:{warmup:78,pivotWidth:2,minGap:5,maxGap:60,activeBars:8}},
-  method:'真DIF底背离：最新收盘K线严格创前60根阶段新低，比较前一完整MACD绿柱波段；低点DIF及整轮最低DIF均抬高，绿柱峰值变浅，成交量低于前波低点及前两根均量。一、二次可选，三次及以上过滤；仅满足条件的当前K线收盘触发，不延续8根、不再等待右侧两根。顶背离仍按原分型、右侧两根确认和8根有效规则。'};
+  parameters:{fast:12,slow:26,signal:9,bottom:{mode:'gold_cross_dif',nearBars:5,minBars:100,ma20:'daily_as_of_cross'},top:{warmup:78,pivotWidth:2,minGap:5,maxGap:60,activeBars:8}},
+  method:'两次相邻60分钟金叉：第二次DIF高于第一次，两次之间最低价低于第一次金叉及前4根最低价；第二次金叉收盘价须高于当时日线MA20。无DIF零轴、绿柱峰值或缩量门槛；放量新低仅提示风险。顶背离卖出保持原规则。'};
 }
-function makeTradeHints({technical,macd,dailyFresh,hourlyFresh}){
- const bottom=!!(hourlyFresh&&macd?.bullish?.active&&!macd.bullish.riskActive&&(macd.bullish.level||1)<=2),top=!!(hourlyFresh&&macd?.bearish?.active);
- const below=!!(dailyFresh&&technical&&technical.close<technical.ma20);
- const sell=below||top,buy=bottom;
- const event=macd?.bullish,risk=!!(hourlyFresh&&event?.riskActive);
- const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':risk?'三次及以上真DIF底背离：风险过滤，不列入买入':bottom?(event.level===2?'二次真DIF底背离':'一次真DIF底背离'):'最新已收盘60分钟K线未满足真DIF底背离'];
- if(bottom&&event.mode==='true_dif_waves')buyReasons.push(`严格创前${event.stageBars}根新低；低点DIF ${event.firstDIF.toFixed(4)} → ${event.secondDIF.toFixed(4)}；整轮最低DIF抬高；绿柱峰值 ${event.firstGreenPeak.toFixed(4)} → ${event.secondGreenPeak.toFixed(4)}；新低成交量为前波低点附近均量的${(event.volumeRatio*100).toFixed(1)}%`);
- if(buy&&sell)buyReasons.push('同时存在卖出观察条件，请结合卖出提示核对；不取消底背离买入信号');
+function makeTradeHints({technical,macd,dailyFresh,hourlyFresh,buyMA20}){
+ const event=macd?.bullish,bottom=!!(hourlyFresh&&event?.active&&event.mode==='gold_cross_dif'),top=!!(hourlyFresh&&macd?.bearish?.active);
+ const below=!!(dailyFresh&&technical&&technical.close<technical.ma20),sell=below||top,buy=bottom&&!!buyMA20?.passed;
+ const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':!bottom?'最新已收盘60分钟K线未触发两金叉DIF背离':!buyMA20?'缺少金叉当时日线MA20所需历史':!buyMA20.passed?'第二次金叉收盘价未站上当时日线MA20':'两次金叉DIF抬高、区间价格创新低且金叉收盘站上日线MA20'];
+ if(bottom){buyReasons.push(`金叉DIF ${event.firstDIF.toFixed(4)} → ${event.secondDIF.toFixed(4)}；前低 ${event.firstPrice.toFixed(3)} → 区间低点 ${event.secondPrice.toFixed(3)}`);if(buyMA20)buyReasons.push(`金叉收盘 ${buyMA20.close.toFixed(3)}；当时日线MA20 ${buyMA20.ma20.toFixed(3)}`);if(event.volumeRisk)buyReasons.push('风险：区间创新低K线放量（高于前低及前两根均量），仅提示，不拦截买入')}
  const sellReasons=[];if(!dailyFresh)sellReasons.push('近期日线不足，不能判断是否跌破MA20');if(below)sellReasons.push('日线收盘低于 MA20');if(top)sellReasons.push('近期已确认60分钟MACD顶背离');if(!hourlyFresh)sellReasons.push('60分钟数据不足，不能判断顶背离');
- return {buy:{triggered:buy,title:buy?'触发买入观察':risk?'三次及以上背离，风险过滤':!hourlyFresh?'数据不足，暂不生成买入提示':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:`先满足2025年ROE > 10%。技术买入只选当前完整60分钟K线上成立的一次、二次真DIF底背离：严格阶段新低、低点DIF和整轮最低DIF抬高、绿柱峰值变浅、缩量；三次及以上过滤。无近前低容差，不再沿用旧底部右侧两根确认或8根延续。卖出仍按跌破MA20或原60分钟顶背离，可与买入提示并存。不复权价格可能受除权影响，不代表下单。`};
+ return {buy:{triggered:buy,title:buy?'触发买入观察':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:'买入保留2025年ROE > 10%；两次相邻60分钟金叉DIF抬高＋区间严格创新低＋第二次金叉收盘高于当时日线MA20。不强制缩量；放量创新低提示风险。仅当前已收盘金叉K线触发，不延续历史信号；卖出规则不变。'};
 }
 function normalizeHourly(payload,code,now=new Date()){
  const sym=/^(60|68)/.test(code)?'sh'+code:/^(00|30)/.test(code)?'sz'+code:'bj'+code;
@@ -671,6 +697,7 @@ function mountDzhAux({esc}){
 return {readDzhAux,mountDzhAux};
 })();
 __modules["./conclusion.js"]=(()=>{
+const {goldCrossDailyMA20}=__modules["./gold-bottom.js"];
 const {expectedSignalTime}=__modules["./signal-model.js"];
 const {analyzeHourlyMACD,makeTradeHints}=__modules["./macd.js"];
 const {analyze}=__modules["./indicators.js"];
@@ -719,10 +746,13 @@ function summarizeStock({code,quote=null,history=null,hourly=null,financial=null
    status='watch';title='可列入观察，值得进一步研究';action='基本面摘要与趋势规则同向；估值、公告和个人风险约束核查后再决定是否交易。';
   }else{status='caution';title='谨慎观察，暂不追入';action='财务与趋势条件尚未充分同向，先关注下列弱项和后续变化。'}
  }
- const tradeHints=makeTradeHints({technical,macd,dailyFresh,hourlyFresh:hourlyFresh&&macd?.asOf===expectedSignalTime(now)});
- return {macd,tradeHints,code,name,status,title,action,missing,risks,reasons,quote,report,technical,simulation,simulationNote,errors,financialChecks:report?financialAnalysis(report):null,
+ const sameAdjustment=(hourly?.adjustment||'none')===(history?.adjustment||'none');
+ const buyMA20=sameAdjustment?goldCrossDailyMA20(macd?.bullish,history?.bars):null;
+ if(!sameAdjustment)risks.push('日线与小时线复权口径不同，未生成买入信号');
+ const tradeHints=makeTradeHints({technical,macd,buyMA20,dailyFresh,hourlyFresh:hourlyFresh&&macd?.asOf===expectedSignalTime(now)});
+ return {macd,buyMA20,tradeHints,code,name,status,title,action,missing,risks,reasons,quote,report,technical,simulation,simulationNote,errors,financialChecks:report?financialAnalysis(report):null,
   valuation:quote&&finite(quote.pe_ttm)&&quote.pe_ttm>0?`当前供应商 PE(TTM) ${quote.pe_ttm.toFixed(2)} 倍；缺少行业可比估值和未来盈利假设，不能据此判断便宜或昂贵。`:'未取得有效正 PE(TTM)；没有生成估值或目标价。',
-  generatedAt:now.toISOString()};
+  adjustment:{daily:history?.adjustment||'none',hourly:hourly?.adjustment||'none'},generatedAt:now.toISOString()};
 }
 
 function applyAnnualRoeGate(summary,stock){
@@ -731,7 +761,7 @@ function applyAnnualRoeGate(summary,stock){
  const eligible=!!(verified&&stock.roe>10),value=verified?stock.roe:null;
  const reason=eligible?`2025年年报ROE ${value}% > 10%，财务门槛通过`:verified?`2025年年报ROE ${value}% 未超过10%，不生成买入提示`:'未在已核验的2025年ROE > 10%股票池中，暂不生成买入提示';
  const buy=summary.tradeHints.buy;
- return {...summary,roeGate:{year:2025,verified:!!verified,value,eligible},tradeHints:{...summary.tradeHints,buy:{...buy,triggered:eligible&&buy.triggered,title:eligible?buy.title:'ROE门槛未通过，暂不生成买入提示',reasons:[reason,...buy.reasons]},note:'买入须先满足2025年年报ROE > 10%，再判断已确认且有效的60分钟MACD底背离；MA20不作为买入门槛。'+summary.tradeHints.note}};
+ return {...summary,roeGate:{year:2025,verified:!!verified,value,eligible},tradeHints:{...summary.tradeHints,buy:{...buy,triggered:eligible&&buy.triggered,title:eligible?buy.title:'ROE门槛未通过，暂不生成买入提示',reasons:[reason,...buy.reasons]},note:'买入须先满足2025年年报ROE > 10%，再判断两次金叉DIF背离与金叉收盘站上日线MA20。'+summary.tradeHints.note}};
 }
 
 return {summarizeStock,applyAnnualRoeGate};
@@ -743,7 +773,7 @@ async function scanStock(code,request,now=()=>new Date()){
  const values={},errors={};async function load(kind){try{const data=await request(kind,code);if(kind==='quote'){const q=data.quotes?.find(x=>x.code===code);if(!q)throw Error('报价中缺少股票');values.quote=q;values.quoteSource=data.source}else values[kind]=data}catch(e){errors[kind]=e.message}}
  function summary(){const s=summarizeStock({code,...values,errors,now:now(),includeSimulation:false});s.signalStatus={daily:values.history?.primary_status||null,hourly:values.hourly?.primary_status||null};s.signalSources={daily:values.history?.source||null,hourly:values.hourly?.source||null,quote:values.quoteSource||null,financial:values.financial?.source||null};return s}
  await load('hourly');let s=summary();let r=signalRecord(s,now());
- if(r.state==='buy'||r.state==='sell')return r;
+ // Always load daily history: a golden-cross buy requires the as-of daily MA20.
  await load('history');s=summary();
  return signalRecord(s,now());
 }
@@ -797,7 +827,7 @@ function mountQuick({esc,download,onHistory}){
    const r=applyAnnualRoeGate(summarizeStock({code,quote:values.quote,history:values.history,hourly:values.hourly,financial:values.financial,errors}),roeStocks.get(code));r.signalSources={daily:values.history?.source||null,hourly:values.hourly?.source||null,quote:values.quoteSource||null,financial:values.financial?.source||null};last=r;if(!values.history?.import_report&&!values.hourly?.import_report)window.dispatchEvent(new CustomEvent('stock-analysis-complete',{detail:r}));
    if(values.history&&values.history.bars.length>=20)onHistory(values.history);
    const list=(xs,empty)=>xs.length?`<ul>${xs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<p class="small">${empty}</p>`;
-   output.innerHTML=`<article class="quickverdict ${r.status}">${values.history?.import_report||values.hourly?.import_report?'<p class="small">本次含大智慧导入行情，仅作辅助分析，不写入云端股票池。</p>':''}<div class="eyebrow">${esc(r.code)} · ${esc(r.name)}</div><h2>${esc(r.title)}</h2><p>${esc(r.action)}</p><div class="tradehints"><section class="tradehint ${r.tradeHints.buy.triggered?'triggerbuy':''}"><h3>买入提示</h3><b>${esc(r.tradeHints.buy.title)}</b>${list(r.tradeHints.buy.reasons,'等待条件')}</section><section class="tradehint ${r.tradeHints.sell.triggered?'triggersell':''}"><h3>卖出提示</h3><b>${esc(r.tradeHints.sell.title)}</b>${list(r.tradeHints.sell.reasons,'等待条件')}</section></div><p class="small">${esc(r.tradeHints.note)}</p>${r.macd?.bullish?`<p class="small">${r.macd.bullish.level>=3?'三次及以上：风险过滤':r.macd.bullish.level===2?'二次真DIF底背离':'一次真DIF底背离'}；本次新低：${esc(r.macd.bullish.secondTime)}；信号收盘：${esc(r.macd.bullish.confirmedAt)}；本次检查：${esc(r.generatedAt)}。买入仍需2025年ROE > 10%，MA20不作为买入门槛。</p>`:''}${values.history?.forming_bar?'<p class="small">盘中日线正在形成，报价照常更新；正式买卖条件使用最近已收盘K线，不额外等待16点。</p>':''}<div class="quickmetrics"><div>最新价<strong>${fmt(r.quote?.price)}</strong></div><div>日线趋势<strong>${r.technical?(r.technical.trend?'满足规则':'尚未满足'):'未取得'}</strong></div><div>财报期<strong>${esc(r.report?.period||'未取得')}</strong></div></div>${r.missing.length?`<p class="error">未完成：${esc(r.missing.join('；'))}</p>`:''}</article><div class="grid"><section class="finding"><h3>主要依据</h3>${list(r.reasons,'尚无足够的可核对依据')}</section><section class="finding riskfinding"><h3>需要留意</h3>${list(r.risks,'本次规则未检出明显弱项，不代表没有风险')}</section><section class="finding"><h3>估值判断</h3><p>${esc(r.valuation)}</p></section></div><details class="quickdetails"><summary>查看自动分析的六步明细</summary><ol class="sixsummary"><li><b>约束</b><p>采用通用研究模式；未假定你的资金、期限与可承受亏损，因此不输出个性化买入仓位。</p></li><li><b>股票池</b><p>${esc(r.code)} ${esc(r.name)}；历史 ST、停牌、退市和治理信息未完整核验。</p></li><li><b>企业分析</b><p>报告期 ${esc(r.report?.period||'未取得')}，公告日 ${esc(r.report?.notice_date||'缺失')}；累计归母利润 ${fmt(r.report?.profit)} 元。</p>${list(r.financialChecks?.messages.filter(x=>x.title!=='分析边界').map(x=>x.detail)||[],'财报暂不可用')}</li><li><b>价格</b><p>${esc(r.valuation)} 不把季报 EPS 直接乘以全年市盈率生成目标价。</p></li><li><b>交易条件</b>${r.macd?`<p>60分钟截至 ${esc(r.macd.asOf)}：DIF ${fmt(r.macd.latest.dif)} / DEA ${fmt(r.macd.latest.dea)}；${esc(r.macd.method)}</p>${[r.macd.bullish,r.macd.bearish].filter(Boolean).map(e=>`<p>${e.kind==='bullish'?'底背离':'顶背离'}：拐点 ${esc(e.firstTime)} → ${esc(e.secondTime)}；确认 ${esc(e.confirmedAt)}；${e.kind==='bullish'?(e.riskActive?'三次及以上风险，排除买入':e.active?'当前K线真DIF底背离成立':'历史触发，当前未满足'):(e.active?'顶背离最近8根内':'顶背离已过有效窗口')}。</p>`).join('')}`:'<p>60分钟数据不足，未判断MACD背离。</p>'}${r.technical?`<p>日线 ${esc(r.technical.date)}：MA20 ${fmt(r.technical.ma20)}；量比 ${fmt(r.technical.ratio)}（当日量 / 前20日均量）；ATR14 ${fmt(r.technical.atr)}。收盘减 2×ATR 为 ${fmt(r.technical.stop)}，仅为波动参考，不是承诺可成交的止损价。</p>`:'<p>缺少日线，未生成趋势和风险距离。</p>'}</li><li><b>复盘与MA20日线独立实验</b><p>${esc(r.simulationNote)}</p>${r.simulation?`<p>${r.simulation.start}—${r.simulation.end}：价格策略收益 ${pc(r.simulation.totalReturn)}，价格基准 ${pc(r.simulation.benchmarkReturn)}，最大回撤 ${pc(r.simulation.maxDrawdown)}，已平仓 ${r.simulation.closedTrades} 笔。${r.simulation.closedTrades<5?'交易样本不足，不能据此判断策略有效。':''}</p><p class="small">收盘信号、下一开盘成交，含费用与滑点；未计分红送转和完整历史涨跌停状态，期末持仓不强制平仓。最新财报没有用于历史交易信号。</p>`:''}</li></ol></details><p class="small">报价时间：${esc(r.quote?.exchange_time||'未取得')}；${esc(values.quoteSource||'报价源未连接')}。日线来源：${esc(values.history?.source||'未取得')}；60分钟来源：${esc(values.hourly?.source||'未取得')}；财报来源：${esc(values.financial?.source||'未取得')}。结论为明确规则生成的研究摘要，不预测收益。</p>${Object.keys(errors).length?`<details><summary>查看未完成的请求</summary>${Object.entries(errors).map(([k,v])=>`<p class="small">${esc({quote:'报价',history:'日线',hourly:'60分钟',financial:'财报'}[k])}：${esc(v)}</p>`).join('')}</details>`:''}<div class="actions"><button id="quickexport">导出这次分析</button></div>`;
+   output.innerHTML=`<article class="quickverdict ${r.status}">${values.history?.import_report||values.hourly?.import_report?'<p class="small">本次含大智慧导入行情，仅作辅助分析，不写入云端股票池。</p>':''}<div class="eyebrow">${esc(r.code)} · ${esc(r.name)}</div><h2>${esc(r.title)}</h2><p>${esc(r.action)}</p><div class="tradehints"><section class="tradehint ${r.tradeHints.buy.triggered?'triggerbuy':''}"><h3>买入提示</h3><b>${esc(r.tradeHints.buy.title)}</b>${list(r.tradeHints.buy.reasons,'等待条件')}</section><section class="tradehint ${r.tradeHints.sell.triggered?'triggersell':''}"><h3>卖出提示</h3><b>${esc(r.tradeHints.sell.title)}</b>${list(r.tradeHints.sell.reasons,'等待条件')}</section></div><p class="small">${esc(r.tradeHints.note)}</p>${r.macd?.bullish?`<p class="small">两金叉DIF背离；金叉 ${esc(r.macd.bullish.firstTime)} → ${esc(r.macd.bullish.secondTime)}；区间新低 ${esc(r.macd.bullish.lowTime)}；买入还须金叉收盘站上日线MA20及2025年ROE > 10%。${r.macd.bullish.volumeRisk?'风险：放量创新低。':''}</p>`:''}${values.history?.forming_bar?'<p class="small">盘中日线正在形成，报价照常更新；正式买卖条件使用最近已收盘K线，不额外等待16点。</p>':''}<div class="quickmetrics"><div>最新价<strong>${fmt(r.quote?.price)}</strong></div><div>日线趋势<strong>${r.technical?(r.technical.trend?'满足规则':'尚未满足'):'未取得'}</strong></div><div>财报期<strong>${esc(r.report?.period||'未取得')}</strong></div></div>${r.missing.length?`<p class="error">未完成：${esc(r.missing.join('；'))}</p>`:''}</article><div class="grid"><section class="finding"><h3>主要依据</h3>${list(r.reasons,'尚无足够的可核对依据')}</section><section class="finding riskfinding"><h3>需要留意</h3>${list(r.risks,'本次规则未检出明显弱项，不代表没有风险')}</section><section class="finding"><h3>估值判断</h3><p>${esc(r.valuation)}</p></section></div><details class="quickdetails"><summary>查看自动分析的六步明细</summary><ol class="sixsummary"><li><b>约束</b><p>采用通用研究模式；未假定你的资金、期限与可承受亏损，因此不输出个性化买入仓位。</p></li><li><b>股票池</b><p>${esc(r.code)} ${esc(r.name)}；历史 ST、停牌、退市和治理信息未完整核验。</p></li><li><b>企业分析</b><p>报告期 ${esc(r.report?.period||'未取得')}，公告日 ${esc(r.report?.notice_date||'缺失')}；累计归母利润 ${fmt(r.report?.profit)} 元。</p>${list(r.financialChecks?.messages.filter(x=>x.title!=='分析边界').map(x=>x.detail)||[],'财报暂不可用')}</li><li><b>价格</b><p>${esc(r.valuation)} 不把季报 EPS 直接乘以全年市盈率生成目标价。</p></li><li><b>交易条件</b>${r.macd?`<p>60分钟截至 ${esc(r.macd.asOf)}：DIF ${fmt(r.macd.latest.dif)} / DEA ${fmt(r.macd.latest.dea)}；${esc(r.macd.method)}</p>${[r.macd.bullish,r.macd.bearish].filter(Boolean).map(e=>`<p>${e.kind==='bullish'?'底背离':'顶背离'}：拐点 ${esc(e.firstTime)} → ${esc(e.secondTime)}；确认 ${esc(e.confirmedAt)}；${e.kind==='bullish'?(e.active?'当前金叉DIF背离候选':'历史触发，当前未满足'):(e.active?'顶背离最近8根内':'顶背离已过有效窗口')}。</p>`).join('')}`:'<p>60分钟数据不足，未判断MACD背离。</p>'}${r.technical?`<p>日线 ${esc(r.technical.date)}：MA20 ${fmt(r.technical.ma20)}；量比 ${fmt(r.technical.ratio)}（当日量 / 前20日均量）；ATR14 ${fmt(r.technical.atr)}。收盘减 2×ATR 为 ${fmt(r.technical.stop)}，仅为波动参考，不是承诺可成交的止损价。</p>`:'<p>缺少日线，未生成趋势和风险距离。</p>'}</li><li><b>复盘与MA20日线独立实验</b><p>${esc(r.simulationNote)}</p>${r.simulation?`<p>${r.simulation.start}—${r.simulation.end}：价格策略收益 ${pc(r.simulation.totalReturn)}，价格基准 ${pc(r.simulation.benchmarkReturn)}，最大回撤 ${pc(r.simulation.maxDrawdown)}，已平仓 ${r.simulation.closedTrades} 笔。${r.simulation.closedTrades<5?'交易样本不足，不能据此判断策略有效。':''}</p><p class="small">收盘信号、下一开盘成交，含费用与滑点；未计分红送转和完整历史涨跌停状态，期末持仓不强制平仓。最新财报没有用于历史交易信号。</p>`:''}</li></ol></details><p class="small">报价时间：${esc(r.quote?.exchange_time||'未取得')}；${esc(values.quoteSource||'报价源未连接')}。日线来源：${esc(values.history?.source||'未取得')}；60分钟来源：${esc(values.hourly?.source||'未取得')}；财报来源：${esc(values.financial?.source||'未取得')}。结论为明确规则生成的研究摘要，不预测收益。</p>${Object.keys(errors).length?`<details><summary>查看未完成的请求</summary>${Object.entries(errors).map(([k,v])=>`<p class="small">${esc({quote:'报价',history:'日线',hourly:'60分钟',financial:'财报'}[k])}：${esc(v)}</p>`).join('')}</details>`:''}<div class="actions"><button id="quickexport">导出这次分析</button></div>`;
    document.querySelector('#quickexport').onclick=()=>{if(last)download('analysis-'+last.code+'.json',JSON.stringify(last,null,2),'application/json')};
    progress.textContent=Object.keys(errors).length?'部分数据未取得；已展示已知信息及缺失项目。':'分析完成，先看结论，再按需展开依据。';
   }catch(e){output.innerHTML='';progress.textContent='分析未完成：'+e.message}
@@ -815,7 +845,7 @@ const {api}=__modules["./integrations.js"];
 const {validatePool,filterPool,displayPoolROE}=__modules["./pool-model.js"];
 async function mountPool({esc,download,onSelect}){
  const root=document.querySelector('#roe-pool');if(!root)return;let pool=null,page=0,updating=false,records={},tab='all',saveTimer=null,scanInfo=null,storageWarning='',background=null,refreshing=false;const size=30;
- root.innerHTML=`<div class="sectionhead"><div><span class="eyebrow">年度基本面股票池</span><h2>2025 年 ROE &gt; 10%</h2></div><button id="poolrefresh">更新来源数据</button></div><p>按2025年年报加权平均ROE筛选，沪深北A股均纳入，保留ST及所有行业。ROE恰好10%不入池。</p><p id="poolstatus" class="small" role="status">正在读取已核验股票池…</p><div id="poolsummary"></div><nav class="signalnav" aria-label="股票池买卖信号导航">${[['all','全部股票'],['buy','买入信号 · 红'],['sell','卖出信号 · 绿'],['none','暂未触发'],['pending','待扫描／更新'],['incomplete','信号数据不足']].map(([key,name])=>`<button type="button" id="pool-${key}" data-signal-tab="${key}" class="signalnav-${key}" aria-pressed="${key==='all'}"><span>${name}</span><b data-signal-count="${key}">0</b></button>`).join('')}</nav><div class="actions"><button id="backgroundrefresh" class="primary">刷新后台结果</button><details><summary>手机临时扫描（可选）</summary><p class="small">后台自动分批扫描，无需保持页面打开。临时扫描仍受手机网络与接口限制。</p><button id="signalscan" disabled>手机补充扫描</button><button id="signalpause" disabled>暂停手机扫描</button></details></div><p id="backgroundstatus" class="small" role="status">正在读取后台缓存…</p><p id="signalstatus" class="small" role="status">尚未扫描买卖条件，ROE达标不等于买入信号。</p><p class="small">买入须先满足2025年ROE > 10%，再满足当前完整60分钟K线的一次或二次真DIF底背离：严格创前60根新低、低点DIF与整轮最低DIF抬高、绿柱峰值变浅、新低缩量。三次及以上不选入，标注风险；不再允许近前低容差或沿用旧底部右侧两根确认、8根延续。卖出仍按日线跌破MA20或原60分钟顶背离判断。过期、未扫描和数据不足分别列示。</p><div class="poolcontrols"><label>搜索股票或行业<input id="poolsearch" placeholder="代码、名称、行业" type="search"></label><label>市场<select id="poolexchange"><option value="all">全部A股</option><option value="SH">沪市</option><option value="SZ">深市</option><option value="BJ">北交所</option></select></label><label>排序<select id="poolsort"><option value="roe">ROE从高到低</option><option value="code">代码从小到大</option></select></label></div><div class="actions"><button id="poolexport" disabled>导出全池 CSV</button><span id="poolcount" class="small"></span></div><div id="poolrows"></div><div class="actions poolpages"><button id="poolprev">上一页</button><span id="poolpage" class="small"></span><button id="poolnext">下一页</button></div><details><summary>数据口径与覆盖范围</summary><p id="poolcoverage"></p><p>股票池使用2025年年报；点击分析后读取的是最新可得财报，两者报告期可能不同。高ROE可能受非经常性损益或净资产规模影响，达标不等于当前买入信号。</p></details>`;
+ root.innerHTML=`<div class="sectionhead"><div><span class="eyebrow">年度基本面股票池</span><h2>2025 年 ROE &gt; 10%</h2></div><button id="poolrefresh">更新来源数据</button></div><p>按2025年年报加权平均ROE筛选，沪深北A股均纳入，保留ST及所有行业。ROE恰好10%不入池。</p><p id="poolstatus" class="small" role="status">正在读取已核验股票池…</p><div id="poolsummary"></div><nav class="signalnav" aria-label="股票池买卖信号导航">${[['all','全部股票'],['buy','买入信号 · 红'],['sell','卖出信号 · 绿'],['none','暂未触发'],['pending','待扫描／更新'],['incomplete','信号数据不足']].map(([key,name])=>`<button type="button" id="pool-${key}" data-signal-tab="${key}" class="signalnav-${key}" aria-pressed="${key==='all'}"><span>${name}</span><b data-signal-count="${key}">0</b></button>`).join('')}</nav><div class="actions"><button id="backgroundrefresh" class="primary">刷新后台结果</button><details><summary>手机临时扫描（可选）</summary><p class="small">后台自动分批扫描，无需保持页面打开。临时扫描仍受手机网络与接口限制。</p><button id="signalscan" disabled>手机补充扫描</button><button id="signalpause" disabled>暂停手机扫描</button></details></div><p id="backgroundstatus" class="small" role="status">正在读取后台缓存…</p><p id="signalstatus" class="small" role="status">尚未扫描买卖条件，ROE达标不等于买入信号。</p><p class="small">买入保留2025年ROE > 10%。比较两次相邻60分钟金叉DIF，后者须更高；区间最低价须低于第一次金叉及前4根最低价；第二次金叉收盘须高于当时日线MA20。无缩量、绿柱峰值或DIF零轴门槛；放量新低标注风险。只在当前金叉收盘触发。卖出规则保持不变。<a href="formulas/两金叉DIF背离_60分钟_副图.tdx" download>下载通达信副图公式</a> · <a href="formulas/两金叉DIF背离_60分钟_选股.tdx" download>下载选股公式</a></p><div class="poolcontrols"><label>搜索股票或行业<input id="poolsearch" placeholder="代码、名称、行业" type="search"></label><label>市场<select id="poolexchange"><option value="all">全部A股</option><option value="SH">沪市</option><option value="SZ">深市</option><option value="BJ">北交所</option></select></label><label>排序<select id="poolsort"><option value="roe">ROE从高到低</option><option value="code">代码从小到大</option></select></label></div><div class="actions"><button id="poolexport" disabled>导出全池 CSV</button><span id="poolcount" class="small"></span></div><div id="poolrows"></div><div class="actions poolpages"><button id="poolprev">上一页</button><span id="poolpage" class="small"></span><button id="poolnext">下一页</button></div><details><summary>数据口径与覆盖范围</summary><p id="poolcoverage"></p><p>股票池使用2025年年报；点击分析后读取的是最新可得财报，两者报告期可能不同。高ROE可能受非经常性损益或净资产规模影响，达标不等于当前买入信号。</p></details>`;
  async function refreshBackground(){
   if(refreshing)return;refreshing=true;const button=root.querySelector('#backgroundrefresh');button.disabled=true;
   try{const response=await fetch(new URL('pool-signals.json?t='+Date.now(),location.href),{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('HTTP '+response.status);const saved=await response.json();if(saved.rule!==SIGNAL_RULE||!saved.results)throw Error('后台尚未完成新规则核验，旧规则结果不用于当前信号');if(!pool)return;records=mergeSignals(records,cloudOnly(saved.results),new Set(pool.stocks.map(s=>s.code)));if(!background?.finished_at||Date.parse(saved.finished_at)>=Date.parse(background.finished_at))background=saved;saveSoon();render();showBackground()}
@@ -829,7 +859,7 @@ async function mountPool({esc,download,onSelect}){
   const b=background.background,c=signalCounts(pool.stocks,background.results||{});
   const phase=b?.phase==='quick'?'首批结果已发布，剩余股票等待后续扫描。':'';
   target.textContent=(c.stale?'【更新滞后】':'')+'后台发布：'+showTime(b?.updated_at||background.finished_at)+'。'+phase+
-   (b?.bottom_levels?'一次买入 '+b.bottom_levels.once+'，二次买入 '+b.bottom_levels.twice+'，三次及以上风险 '+b.bottom_levels.risk_three_plus+'。':'')+(typeof b?.official_hourly==='number'?'通达信60分钟覆盖 '+b.official_hourly+'/'+c.all+'。':'')+'有效结果 '+(c.buy+c.sell+c.none)+'/'+c.all+'；待扫描或更新 '+c.pending+'；数据不足 '+c.incomplete+'。'+
+   (b?.bottom_levels?'两金叉买入 '+(b.bottom_levels.gold_cross||0)+'，放量新低候选 '+(b.bottom_levels.volume_risk||0)+'。':'')+(typeof b?.official_hourly==='number'?'通达信60分钟覆盖 '+b.official_hourly+'/'+c.all+'。':'')+'有效结果 '+(c.buy+c.sell+c.none)+'/'+c.all+'；待扫描或更新 '+c.pending+'；数据不足 '+c.incomplete+'。'+
    (b?'本批执行 '+b.checked+'/'+b.batch_total+' 次检查，不代表全池已有效核验。':'')+
    '目标日线 '+expectedSignalTime(new Date(),'daily')+'；目标60分钟 '+showTime(expectedSignalTime())+'。交易日北京时间10:35、11:35、14:05、15:05启动更新并分批发布；页面每30秒读取结果，返回页面立即刷新。GitHub任务可能排队。';
  }
@@ -847,7 +877,7 @@ async function mountPool({esc,download,onSelect}){
   root.querySelectorAll('[data-signal-tab]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.signalTab===tab));b.querySelector('b').textContent=counts[b.dataset.signalTab]});
   const all=base.length===pool.stocks.length?counts:signalCounts(pool.stocks,records,now);if(!scanInfo?.running)$('#signalstatus').textContent=`当前已核验 ${all.buy+all.sell+all.none} / ${all.all} 只；未扫描 ${all.unscanned}，待更新 ${all.stale}，数据不足 ${all.incomplete}。${scanInfo?.reason||''}${storageWarning}`;
   $('#signalscan').disabled=updating||scanner.isRunning();$('#signalpause').disabled=!scanner.isRunning();
-  $('#poolrows').innerHTML=rows.slice(page*size,(page+1)*size).map(s=>{const record=records[s.code],state=signalState(record,now),label={buy:'买入观察',sell:'卖出／减仓观察',none:'暂未触发',incomplete:'数据不足',unscanned:'未扫描',stale:'待更新'}[state];return `<article class="poolrow signal-${state}"><button class="poolselect" data-pool-code="${s.code}"><strong>${esc(s.name)}</strong><span>${s.code} · 查看结论 →</span><span class="signalbadge signal-${state}">${label}</span></button><div class="poolroe"><strong>${esc(displayPoolROE(s.roe))}%</strong><span>2025年ROE</span></div><p>${esc(s.market)} · ${esc(s.industry)} · 公告 ${esc(s.notice_date||'缺失')}</p>${record?`${record.timing?.bottom?`<p class="small">${record.timing.bottom.level>=3?'三次及以上真DIF底背离：风险过滤':record.timing.bottom.level===2?'二次真DIF底背离':'一次真DIF底背离'}：新低 ${esc(showTime(record.timing.bottom.second_time))}；收盘信号 ${esc(showTime(record.timing.bottom.confirmed_at))}（${record.timing.bottom.active?'当前K线符合条件':record.timing.bottom.risk_active?'当前风险信号，不买入':'历史触发，当前不延续'}）。MA20不限制买入。</p>`:''}<p class="small">K线来源：日线 ${esc(record.sources?.daily||'未核查')}；60分钟 ${esc(record.sources?.hourly||'未核查')}。</p><p class="signalreason">${esc((record.reasons||[]).join('；'))}</p>${state==='buy'&&record.signals?.sell?`<p class="small">同时存在卖出观察：${esc((record.sell_reasons||[]).join('；'))}</p>`:''}<p class="small">本次检查 ${esc(showTime(record.checked_at))}；日线 ${esc(record.daily_as_of||'未核查')}；60分钟 ${esc(showTime(record.hourly_as_of))}。</p>`:''}</article>`}).join('')||`<p class="small">当前分类／筛选暂无结果。未扫描或待更新 ${counts.pending} 只，数据不足 ${counts.incomplete} 只，不能据此认定全池没有信号。</p>`;
+  $('#poolrows').innerHTML=rows.slice(page*size,(page+1)*size).map(s=>{const record=records[s.code],state=signalState(record,now),label={buy:'买入观察',sell:'卖出／减仓观察',none:'暂未触发',incomplete:'数据不足',unscanned:'未扫描',stale:'待更新'}[state];return `<article class="poolrow signal-${state}"><button class="poolselect" data-pool-code="${s.code}"><strong>${esc(s.name)}</strong><span>${s.code} · 查看结论 →</span><span class="signalbadge signal-${state}">${label}</span></button><div class="poolroe"><strong>${esc(displayPoolROE(s.roe))}%</strong><span>2025年ROE</span></div><p>${esc(s.market)} · ${esc(s.industry)} · 公告 ${esc(s.notice_date||'缺失')}</p>${record?`${record.timing?.bottom?`<p class="small">两金叉DIF背离：金叉 ${esc(showTime(record.timing.bottom.first_time))} → ${esc(showTime(record.timing.bottom.second_time))}（${record.timing.bottom.active?'当前金叉候选；买入还须站上日线MA20':'历史触发，不延续'}）。${record.timing.bottom.volume_risk?'风险：区间放量新低。':''}</p>`:''}<p class="small">K线来源：日线 ${esc(record.sources?.daily||'未核查')}；60分钟 ${esc(record.sources?.hourly||'未核查')}。</p><p class="signalreason">${esc((record.reasons||[]).join('；'))}</p>${state==='buy'&&record.signals?.sell?`<p class="small">同时存在卖出观察：${esc((record.sell_reasons||[]).join('；'))}</p>`:''}<p class="small">本次检查 ${esc(showTime(record.checked_at))}；日线 ${esc(record.daily_as_of||'未核查')}；60分钟 ${esc(showTime(record.hourly_as_of))}。</p>`:''}</article>`}).join('')||`<p class="small">当前分类／筛选暂无结果。未扫描或待更新 ${counts.pending} 只，数据不足 ${counts.incomplete} 只，不能据此认定全池没有信号。</p>`;
   $('#poolpage').textContent=`第 ${page+1} / ${total} 页`;$('#poolprev').disabled=page===0;$('#poolnext').disabled=page+1>=total;
   root.querySelectorAll('[data-pool-code]').forEach(b=>b.onclick=()=>{const stock=pool.stocks.find(s=>s.code===b.dataset.poolCode);if(stock)onSelect(stock)});
  }

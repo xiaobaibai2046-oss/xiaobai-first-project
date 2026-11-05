@@ -1,4 +1,4 @@
-import {findTrueDifBottoms} from './dif-bottom.js';
+import {findGoldCrossBottoms} from './gold-bottom.js';
 import {BOTTOM_PRICE_TOLERANCE} from './strategy-config.js';
 // EMA seeds with the first close; discard 78 bars before looking for pivots.
 export function computeMACD(closes){
@@ -30,21 +30,18 @@ export function analyzeHourlyMACD(bars){
  for(let i=0;i<bars.length;i++){
   const b=bars[i];if(!b.endTime||!Number.isFinite(Date.parse(b.endTime))||i&&b.endTime<=bars[i-1].endTime||!['open','high','low','close','volume'].every(k=>Number.isFinite(b[k]))||Math.min(b.open,b.high,b.low,b.close)<=0||b.volume<0||b.low>Math.min(b.open,b.close)||b.high<Math.max(b.open,b.close))throw Error('60 分钟 K 线格式、顺序或价格无效');
  }
- const series=computeMACD(bars.map(x=>x.close)),legacyTop=findDivergences(bars,series).bearish,strict=findTrueDifBottoms(bars,series);
+ const series=computeMACD(bars.map(x=>x.close)),legacyTop=findDivergences(bars,series).bearish,strict=findGoldCrossBottoms(bars,series);
  return {bullish:strict.bullish,bearish:legacyTop,latest:series.at(-1),asOf:bars.at(-1).endTime,count:bars.length,
-  parameters:{fast:12,slow:26,signal:9,bottom:{mode:'true_dif_waves',stageBars:60,minBars:100,volumeReferenceBars:3,allowedLevels:[1,2],priceTolerance:0,confirmation:'latest_closed_new_low_bar'},top:{warmup:78,pivotWidth:2,minGap:5,maxGap:60,activeBars:8}},
-  method:'真DIF底背离：最新收盘K线严格创前60根阶段新低，比较前一完整MACD绿柱波段；低点DIF及整轮最低DIF均抬高，绿柱峰值变浅，成交量低于前波低点及前两根均量。一、二次可选，三次及以上过滤；仅满足条件的当前K线收盘触发，不延续8根、不再等待右侧两根。顶背离仍按原分型、右侧两根确认和8根有效规则。'};
+  parameters:{fast:12,slow:26,signal:9,bottom:{mode:'gold_cross_dif',nearBars:5,minBars:100,ma20:'daily_as_of_cross'},top:{warmup:78,pivotWidth:2,minGap:5,maxGap:60,activeBars:8}},
+  method:'两次相邻60分钟金叉：第二次DIF高于第一次，两次之间最低价低于第一次金叉及前4根最低价；第二次金叉收盘价须高于当时日线MA20。无DIF零轴、绿柱峰值或缩量门槛；放量新低仅提示风险。顶背离卖出保持原规则。'};
 }
-export function makeTradeHints({technical,macd,dailyFresh,hourlyFresh}){
- const bottom=!!(hourlyFresh&&macd?.bullish?.active&&!macd.bullish.riskActive&&(macd.bullish.level||1)<=2),top=!!(hourlyFresh&&macd?.bearish?.active);
- const below=!!(dailyFresh&&technical&&technical.close<technical.ma20);
- const sell=below||top,buy=bottom;
- const event=macd?.bullish,risk=!!(hourlyFresh&&event?.riskActive);
- const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':risk?'三次及以上真DIF底背离：风险过滤，不列入买入':bottom?(event.level===2?'二次真DIF底背离':'一次真DIF底背离'):'最新已收盘60分钟K线未满足真DIF底背离'];
- if(bottom&&event.mode==='true_dif_waves')buyReasons.push(`严格创前${event.stageBars}根新低；低点DIF ${event.firstDIF.toFixed(4)} → ${event.secondDIF.toFixed(4)}；整轮最低DIF抬高；绿柱峰值 ${event.firstGreenPeak.toFixed(4)} → ${event.secondGreenPeak.toFixed(4)}；新低成交量为前波低点附近均量的${(event.volumeRatio*100).toFixed(1)}%`);
- if(buy&&sell)buyReasons.push('同时存在卖出观察条件，请结合卖出提示核对；不取消底背离买入信号');
+export function makeTradeHints({technical,macd,dailyFresh,hourlyFresh,buyMA20}){
+ const event=macd?.bullish,bottom=!!(hourlyFresh&&event?.active&&event.mode==='gold_cross_dif'),top=!!(hourlyFresh&&macd?.bearish?.active);
+ const below=!!(dailyFresh&&technical&&technical.close<technical.ma20),sell=below||top,buy=bottom&&!!buyMA20?.passed;
+ const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':!bottom?'最新已收盘60分钟K线未触发两金叉DIF背离':!buyMA20?'缺少金叉当时日线MA20所需历史':!buyMA20.passed?'第二次金叉收盘价未站上当时日线MA20':'两次金叉DIF抬高、区间价格创新低且金叉收盘站上日线MA20'];
+ if(bottom){buyReasons.push(`金叉DIF ${event.firstDIF.toFixed(4)} → ${event.secondDIF.toFixed(4)}；前低 ${event.firstPrice.toFixed(3)} → 区间低点 ${event.secondPrice.toFixed(3)}`);if(buyMA20)buyReasons.push(`金叉收盘 ${buyMA20.close.toFixed(3)}；当时日线MA20 ${buyMA20.ma20.toFixed(3)}`);if(event.volumeRisk)buyReasons.push('风险：区间创新低K线放量（高于前低及前两根均量），仅提示，不拦截买入')}
  const sellReasons=[];if(!dailyFresh)sellReasons.push('近期日线不足，不能判断是否跌破MA20');if(below)sellReasons.push('日线收盘低于 MA20');if(top)sellReasons.push('近期已确认60分钟MACD顶背离');if(!hourlyFresh)sellReasons.push('60分钟数据不足，不能判断顶背离');
- return {buy:{triggered:buy,title:buy?'触发买入观察':risk?'三次及以上背离，风险过滤':!hourlyFresh?'数据不足，暂不生成买入提示':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:`先满足2025年ROE > 10%。技术买入只选当前完整60分钟K线上成立的一次、二次真DIF底背离：严格阶段新低、低点DIF和整轮最低DIF抬高、绿柱峰值变浅、缩量；三次及以上过滤。无近前低容差，不再沿用旧底部右侧两根确认或8根延续。卖出仍按跌破MA20或原60分钟顶背离，可与买入提示并存。不复权价格可能受除权影响，不代表下单。`};
+ return {buy:{triggered:buy,title:buy?'触发买入观察':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:'买入保留2025年ROE > 10%；两次相邻60分钟金叉DIF抬高＋区间严格创新低＋第二次金叉收盘高于当时日线MA20。不强制缩量；放量创新低提示风险。仅当前已收盘金叉K线触发，不延续历史信号；卖出规则不变。'};
 }
 export function normalizeHourly(payload,code,now=new Date()){
  const sym=/^(60|68)/.test(code)?'sh'+code:/^(00|30)/.test(code)?'sz'+code:'bj'+code;

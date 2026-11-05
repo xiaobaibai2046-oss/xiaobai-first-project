@@ -4,7 +4,7 @@ export async function scanStock(code,request,now=()=>new Date()){
  const values={},errors={};async function load(kind){try{const data=await request(kind,code);if(kind==='quote'){const q=data.quotes?.find(x=>x.code===code);if(!q)throw Error('报价中缺少股票');values.quote=q;values.quoteSource=data.source}else values[kind]=data}catch(e){errors[kind]=e.message}}
  function summary(){const s=summarizeStock({code,...values,errors,now:now(),includeSimulation:false});s.signalStatus={daily:values.history?.primary_status||null,hourly:values.hourly?.primary_status||null};s.signalSources={daily:values.history?.source||null,hourly:values.hourly?.source||null,quote:values.quoteSource||null,financial:values.financial?.source||null};return s}
  await load('hourly');let s=summary();let r=signalRecord(s,now());
- if(r.state==='buy'||r.state==='sell')return r;
+ // Always load daily history: a golden-cross buy requires the as-of daily MA20.
  await load('history');s=summary();
  return signalRecord(s,now());
 }

@@ -1,7 +1,7 @@
 {
-  "requested_at": "2026-11-05T15:29:05.737148+00:00",
-  "reason": "Apply strict true-DIF completed-wave rules and rescan all 2025 ROE > 10% pool stocks",
-  "strategy": "roe2025-true-dif-waves-v5-stage60-vol3-first2",
+  "requested_at": "2026-11-05T15:59:57.776676+00:00",
+  "reason": "Apply user confirmed 60-minute golden-cross DIF + as-of daily MA20 rule; rescan full annual ROE > 10% pool",
+  "strategy": "roe2025-gold-cross-dif-v6-near5-dailyma20",
   "official_primary": true,
   "reuse_official_market_cache": true
 }

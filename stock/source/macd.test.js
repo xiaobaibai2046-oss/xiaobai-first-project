@@ -8,14 +8,15 @@ test('top divergence has the opposite price/DIF relationship and expires after 8
 test('same-direction DIF and pivots across zero do not become divergence signals',()=>{const {bars,macd}=swing();macd[20].dif=-3;assert.equal(findDivergences(bars,macd,{warmup:0}).bullish,null);macd[20].dif=1;assert.equal(findDivergences(bars,macd,{warmup:0}).bullish,null)});
 test('warmup and min/max pivot separation prevent noisy or unseeded signals',()=>{const {bars,macd}=swing();assert.equal(findDivergences(bars,macd).bullish,null);assert.equal(findDivergences(bars,macd,{warmup:0,minGap:11}).bullish,null);assert.equal(findDivergences(bars,macd,{warmup:0,maxGap:9}).bullish,null)});
 test('MA20 trend works when MA60 would disagree, and accepts only 20 observations',()=>{const values=[...Array(41).fill(100),...Array.from({length:20},(_,i)=>10+i*.1)];const b=values.map(close=>({open:close,close,high:close+.1,low:close-.1,volume:100}));const r=analyze(b);assert.equal(r.trend,true);assert.ok(!('ma60' in r));assert.equal(analyze(b.slice(-20)).trend,true)});
-test('buy needs only a fresh active bottom divergence, including below MA20 and missing finance',()=>{
- const base={technical:{trend:false,close:9,ma20:10},macd:{bullish:{active:true},bearish:null},dailyFresh:true,hourlyFresh:true};
- const hints=makeTradeHints(base);assert.equal(hints.buy.triggered,true);assert.equal(hints.sell.triggered,true);
- assert.equal(makeTradeHints({...base,technical:null,dailyFresh:false,blocked:['财报缺失','报价缺失']}).buy.triggered,true);
+test('gold-cross buy requires cross-time MA20; volume risk does not block it',()=>{
+ const event={mode:'gold_cross_dif',active:true,firstDIF:-2,secondDIF:-1,firstPrice:10,secondPrice:9,volumeRisk:true};
+ const base={technical:{close:12,ma20:11},macd:{bullish:event,bearish:null},dailyFresh:true,hourlyFresh:true,buyMA20:{passed:true,close:12,ma20:11}};
+ assert.equal(makeTradeHints(base).buy.triggered,true);
+ assert.ok(makeTradeHints(base).buy.reasons.some(x=>x.includes('放量')));
+ assert.equal(makeTradeHints({...base,buyMA20:null}).buy.triggered,false);
+ assert.equal(makeTradeHints({...base,buyMA20:{passed:false,close:10,ma20:11}}).buy.triggered,false);
  assert.equal(makeTradeHints({...base,hourlyFresh:false}).buy.triggered,false);
- assert.equal(makeTradeHints({...base,macd:{bullish:{active:false}}}).buy.triggered,false);
- assert.equal(makeTradeHints({...base,macd:{bullish:null}}).buy.triggered,false);
- const both=makeTradeHints({...base,macd:{bullish:{active:true},bearish:{active:true}}});assert.equal(both.buy.triggered,true);assert.equal(both.sell.triggered,true);
+ assert.equal(makeTradeHints({...base,macd:{bullish:{...event,active:false}}}).buy.triggered,false);
 });
 test('daily MA20 loss can trigger sell when hourly is unavailable, but stale daily bars cannot',()=>{const p={technical:{trend:false,close:9,ma20:10},macd:null,dailyFresh:true,hourlyFresh:false};assert.equal(makeTradeHints(p).sell.triggered,true);assert.equal(makeTradeHints({...p,dailyFresh:false}).sell.triggered,false)});
 test('hourly normalization excludes unfinished bars and validates true 60m structure',()=>{const payload={code:0,data:{sh600519:{m60:[['202510271030','10','11','12','9','100'],['202510271130','11','12','13','10','200'],['202510271400','12','13','14','11','300'],['202510271500','13','14','15','12','400']]}}};const r=normalizeHourly(payload,'600519',new Date('2025-10-27T03:40:00Z'));assert.equal(r.bars.length,2);assert.equal(r.excluded_bars,2);assert.equal(r.last_time,'2025-10-27T11:30:00+08:00');assert.equal(r.bars[0].close,11);assert.throws(()=>normalizeHourly({code:0,data:{sh600519:{day:[]}}},'600519'),/m60/);payload.data.sh600519.m60[0][3]='1';assert.throws(()=>normalizeHourly(payload,'600519'),/价格/)});
@@ -26,7 +27,6 @@ test('missing daily bars are not represented as a verified MA20 non-signal',()=>
 test('legacy pivot helper compatibility: 0.3% near-low tolerance accepts the 0.194% case, exact boundary and strict-zero opt-out',()=>{const {bars,macd}=swing();bars[20].low=8*(1+.00194);let e=findDivergences(bars.slice(0,23),macd.slice(0,23),{warmup:0,priceTolerance:.003}).bullish;assert.ok(e);assert.equal(e.priceMatch,'near_low');assert.equal(e.confirmedIndex,22);assert.equal(e.priceTolerance,.003);assert.equal(findDivergences(bars,macd,{warmup:0,priceTolerance:0}).bullish,null);bars[20].low=8*1.003;assert.ok(findDivergences(bars,macd,{warmup:0,priceTolerance:.003}).bullish);bars[20].low=8*1.00301;assert.equal(findDivergences(bars,macd,{warmup:0,priceTolerance:.003}).bullish,null)});
 test('price tolerance never relaxes DIF improvement, zero-axis guards or confirmation timing',()=>{const {bars,macd}=swing();bars[20].low=8*1.002;assert.equal(findDivergences(bars.slice(0,22),macd.slice(0,22),{warmup:0,priceTolerance:.003}).bullish,null);macd[20].dif=-3;assert.equal(findDivergences(bars,macd,{warmup:0,priceTolerance:.003}).bullish,null);macd[20].dif=1;assert.equal(findDivergences(bars,macd,{warmup:0,priceTolerance:.003}).bullish,null);for(const priceTolerance of [-.1,.011,NaN])assert.throws(()=>findDivergences(bars,macd,{warmup:0,priceTolerance}),/容差/)});
 test('top divergence still requires a strict higher high when bottom tolerance is enabled',()=>{const {bars,macd}=swing('bearish');bars[20].high=12*.999;assert.equal(findDivergences(bars,macd,{warmup:0}).bearish,null);bars[20].high=13;assert.equal(findDivergences(bars,macd,{warmup:0}).bearish.priceMatch,'strict')});
-test('third-plus bottom divergence cannot produce a buy even if an upstream active flag is wrong',()=>{
- const hints=makeTradeHints({technical:null,macd:{bullish:{active:true,level:3,riskActive:true}},dailyFresh:false,hourlyFresh:true});
- assert.equal(hints.buy.triggered,false);assert.match(hints.buy.title,/风险过滤/);
+test('old strict-wave cached events never produce golden-cross buys',()=>{
+ assert.equal(makeTradeHints({macd:{bullish:{active:true,mode:'true_dif_waves'}},hourlyFresh:true,buyMA20:{passed:true}}).buy.triggered,false);
 });

@@ -62,7 +62,7 @@ def optional(value):
     try:return num(value)
     except TdxError:return None
 
-def normalize_bars(payload,code,period,now=None):
+def normalize_bars(payload,code,period,now=None,adjustment='none'):
     now=now or dt.datetime.now(SH);sid=symbol(code)
     try:
         frame=payload['Close'];index=frame['index'];columns={k:payload[k]['columns'][sid] for k in ('Open','High','Low','Close','Volume','Amount')}
@@ -84,7 +84,7 @@ def normalize_bars(payload,code,period,now=None):
         bars.sort(key=lambda b:b.get('date',b.get('endTime')))
         if not bars:raise TdxError('unavailable')
     except (KeyError,TypeError,ValueError):raise TdxError('schema')
-    data=dict(code=code,name=code,bars=bars,forming_bar=forming[-1] if forming else None,adjustment='none',source=SOURCE,volume_unit='手（SDK股数÷100）',amount_unit='元（SDK万元×10000）',timeframe=period)
+    data=dict(code=code,name=code,bars=bars,forming_bar=forming[-1] if forming else None,adjustment=adjustment,source=SOURCE,volume_unit='手（SDK股数÷100）',amount_unit='元（SDK万元×10000）',timeframe=period)
     if period=='1d':data.update(first_date=bars[0]['date'],last_date=bars[-1]['date'])
     else:data.update(last_time=bars[-1]['endTime'])
     return data
@@ -145,8 +145,10 @@ class Provider:
                 # Never retry chargeable entitlement failures. Retry only an explicit native network response.
                 if exc.category=='network' and attempt==0 and self.process is not None:time.sleep(1);continue
                 raise
-    def get(self,kind,code,count=80,period=None):
+    def get(self,kind,code,count=80,period=None,adjustment=None):
         with self.lock:
+            adjustment=adjustment or os.environ.get('TDX_ADJUSTMENT','none')
+            if adjustment not in ('none','front'):raise TdxError('schema')
             now=dt.datetime.now(SH);period=period or ('1d' if kind=='history' else '1h')
             if kind not in ('quote','history','hourly','minutes','depth','ticks','funds'):raise TdxError('schema')
             if period not in ('1d','1h','1m','5m','15m','30m'):raise TdxError('schema')
@@ -156,7 +158,7 @@ class Provider:
             ttl=(10 if trading else 300) if kind in ('quote','depth') else 60 if kind in ('hourly','minutes') else 300
             from cloud_cache import expected
             session=expected(now,'history' if kind=='history' else 'hourly')
-            key=(kind,code,count,period,session)
+            key=(kind,code,count,period,session,adjustment)
             old=self.cache.get(key)
             if old and time.monotonic()-old[0]<ttl:return dict(old[1],cache_hit=True)
             if kind in ('quote','depth'):
@@ -164,7 +166,7 @@ class Provider:
                 cached=self.cache.get(shared)
                 if cached and time.monotonic()-cached[0]<ttl:data=cached[1]
                 else:data=normalize_snapshot(self.raw('snapshot',code),code);self.cache[shared]=(time.monotonic(),data)
-            elif kind in ('history','hourly','minutes'):data=normalize_bars(self.raw('bars',code,period=period,count=count),code,period,now)
+            elif kind in ('history','hourly','minutes'):data=normalize_bars(self.raw('bars',code,period=period,count=count,adjustment=adjustment),code,period,now,adjustment)
             else:
                 raw=self.raw(kind,code,date=now.date().isoformat());data={'code':code,'data':raw,'source':SOURCE,'date':now.date().isoformat()}
             if 'bars' in data:

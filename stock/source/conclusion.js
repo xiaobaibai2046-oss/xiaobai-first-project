@@ -1,3 +1,4 @@
+import {goldCrossDailyMA20} from './gold-bottom.js';
 import {expectedSignalTime} from './signal-model.js';
 import {analyzeHourlyMACD,makeTradeHints} from './macd.js';
 import {analyze} from './indicators.js';
@@ -46,10 +47,13 @@ export function summarizeStock({code,quote=null,history=null,hourly=null,financi
    status='watch';title='可列入观察，值得进一步研究';action='基本面摘要与趋势规则同向；估值、公告和个人风险约束核查后再决定是否交易。';
   }else{status='caution';title='谨慎观察，暂不追入';action='财务与趋势条件尚未充分同向，先关注下列弱项和后续变化。'}
  }
- const tradeHints=makeTradeHints({technical,macd,dailyFresh,hourlyFresh:hourlyFresh&&macd?.asOf===expectedSignalTime(now)});
- return {macd,tradeHints,code,name,status,title,action,missing,risks,reasons,quote,report,technical,simulation,simulationNote,errors,financialChecks:report?financialAnalysis(report):null,
+ const sameAdjustment=(hourly?.adjustment||'none')===(history?.adjustment||'none');
+ const buyMA20=sameAdjustment?goldCrossDailyMA20(macd?.bullish,history?.bars):null;
+ if(!sameAdjustment)risks.push('日线与小时线复权口径不同，未生成买入信号');
+ const tradeHints=makeTradeHints({technical,macd,buyMA20,dailyFresh,hourlyFresh:hourlyFresh&&macd?.asOf===expectedSignalTime(now)});
+ return {macd,buyMA20,tradeHints,code,name,status,title,action,missing,risks,reasons,quote,report,technical,simulation,simulationNote,errors,financialChecks:report?financialAnalysis(report):null,
   valuation:quote&&finite(quote.pe_ttm)&&quote.pe_ttm>0?`当前供应商 PE(TTM) ${quote.pe_ttm.toFixed(2)} 倍；缺少行业可比估值和未来盈利假设，不能据此判断便宜或昂贵。`:'未取得有效正 PE(TTM)；没有生成估值或目标价。',
-  generatedAt:now.toISOString()};
+  adjustment:{daily:history?.adjustment||'none',hourly:hourly?.adjustment||'none'},generatedAt:now.toISOString()};
 }
 
 export function applyAnnualRoeGate(summary,stock){
@@ -58,5 +62,5 @@ export function applyAnnualRoeGate(summary,stock){
  const eligible=!!(verified&&stock.roe>10),value=verified?stock.roe:null;
  const reason=eligible?`2025年年报ROE ${value}% > 10%，财务门槛通过`:verified?`2025年年报ROE ${value}% 未超过10%，不生成买入提示`:'未在已核验的2025年ROE > 10%股票池中，暂不生成买入提示';
  const buy=summary.tradeHints.buy;
- return {...summary,roeGate:{year:2025,verified:!!verified,value,eligible},tradeHints:{...summary.tradeHints,buy:{...buy,triggered:eligible&&buy.triggered,title:eligible?buy.title:'ROE门槛未通过，暂不生成买入提示',reasons:[reason,...buy.reasons]},note:'买入须先满足2025年年报ROE > 10%，再判断已确认且有效的60分钟MACD底背离；MA20不作为买入门槛。'+summary.tradeHints.note}};
+ return {...summary,roeGate:{year:2025,verified:!!verified,value,eligible},tradeHints:{...summary.tradeHints,buy:{...buy,triggered:eligible&&buy.triggered,title:eligible?buy.title:'ROE门槛未通过，暂不生成买入提示',reasons:[reason,...buy.reasons]},note:'买入须先满足2025年年报ROE > 10%，再判断两次金叉DIF背离与金叉收盘站上日线MA20。'+summary.tradeHints.note}};
 }

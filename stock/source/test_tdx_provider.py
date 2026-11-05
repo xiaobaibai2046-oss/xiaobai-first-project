@@ -23,6 +23,17 @@ class TdxTests(unittest.TestCase):
         self.assertEqual(d['bars'][0]['close'],11);self.assertEqual(d['bars'][0]['volume'],10)
         self.assertEqual(d['bars'][0]['volume_shares'],1000);self.assertEqual(d['bars'][0]['amount_cny'],50000)
         self.assertEqual(d['adjustment'],'none');self.assertEqual(d['source'],SOURCE)
+    def test_front_adjustment_is_sent_to_sdk_and_separates_cache(self):
+        p=Provider();p.raw=Mock(return_value=frames())
+        p.get('history','600519',adjustment='front')
+        self.assertEqual(p.raw.call_args.kwargs['adjustment'],'front')
+        self.assertEqual(p.get('history','600519',adjustment='front')['adjustment'],'front')
+        self.assertEqual(p.raw.call_count,1)
+        p.get('history','600519',adjustment='none');self.assertEqual(p.raw.call_count,2)
+        provider=Mock();provider.configured.return_value=True;provider.get.side_effect=TdxError('permission')
+        with patch.dict(os.environ,{'TDX_ADJUSTMENT':'front'}),patch('tdx_provider.default_provider',return_value=provider),patch.object(server,'public_get_history') as fallback:
+            with self.assertRaises(RuntimeError):server.get_history('600519')
+            fallback.assert_not_called()
     def test_forming_daily_and_hourly_never_enter_closed_strategy(self):
         d=normalize_bars(frames(),'600519','1d',dt.datetime(2026,11,3,10,tzinfo=SH))
         self.assertEqual(len(d['bars']),1);self.assertEqual(d['forming_bar']['date'],'2026-11-03')

@@ -10,7 +10,7 @@ const shard=Number(process.env.SCAN_SHARD||0),shards=Number(process.env.SCAN_SHA
 const root=new URL('../',import.meta.url),file=new URL(shards>1?'scan-results/shard-'+shard+'.json':'pool-signals.json',root);
 const pool=JSON.parse(await readFile(new URL('pool-2025.json',root),'utf8'));
 const config=JSON.parse(await readFile(new URL('market-config.json',root),'utf8'));
-const marketGeneration=(process.env.TDX_DATA_KEY||process.env.TDX_CONFIG_FILE)?config.refresh_generation:null;
+const marketGeneration=(process.env.TDX_DATA_KEY||process.env.TDX_CONFIG_FILE)?config.refresh_generation+':'+(process.env.TDX_ADJUSTMENT||'none'):null;
 const data={schema_version:1,rule:SIGNAL_RULE,started_at:new Date().toISOString(),finished_at:null,attempted_all:false,results:{}};
 try{const old=JSON.parse(await readFile(new URL('pool-signals.json',root),'utf8'));if(old.rule===SIGNAL_RULE)data.results=old.results||{}}catch{}
 const child=spawn('python3',[fileURLToPath(new URL('./scan-fetch.py',import.meta.url))],{stdio:['pipe','pipe','inherit']});
