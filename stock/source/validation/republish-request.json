@@ -1,5 +1,6 @@
 {
   "run_id": 42060667275,
   "phase": "quick",
-  "reason": "Reuse completed official results; diagnose and recover failed publication, no SDK calls"
+  "reason": "Reuse completed official results; diagnose and recover failed publication, no SDK calls",
+  "retry": 2
 }

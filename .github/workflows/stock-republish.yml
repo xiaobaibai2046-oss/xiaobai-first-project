@@ -11,6 +11,9 @@ permissions:
 jobs:
   republish:
     runs-on: ubuntu-latest
+    concurrency:
+      group: stock-snapshot-publish
+      cancel-in-progress: false
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4

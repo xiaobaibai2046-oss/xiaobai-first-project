@@ -25,4 +25,13 @@ p=subprocess.run(['git','diff','--cached','--quiet'])
 if p.returncode:
     run('git','commit','-m','Refresh background stock signal snapshot')
     run('git','pull','--rebase','origin','main')
-    run('git','push','origin','HEAD:main')
+    for attempt in range(3):
+        pushed=subprocess.run(['git','push','origin','HEAD:main'],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        if pushed.returncode==0:break
+        if attempt<2 and any(x in pushed.stdout for x in ("cannot lock ref", "fetch first", "non-fast-forward", "fatal error in commit_refs_rules")):
+            time.sleep(2+attempt*3)
+            run('git','pull','--rebase','origin','main')
+            continue
+        # Run once through the sanitizer for a useful public annotation.
+        run('git','push','origin','HEAD:main')
+        break
