@@ -1,0 +1,23 @@
+name: Recover blocked Pages deployment
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/pages-recovery-request.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    concurrency:
+      group: pages-recovery
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cancel the explicitly identified stale deployment and rebuild
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: python stock/source/scripts/recover-pages.py
