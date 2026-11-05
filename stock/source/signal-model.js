@@ -1,5 +1,5 @@
 import {BOTTOM_PRICE_TOLERANCE} from './strategy-config.js';
-export const SIGNAL_RULE='ma20-m60-dif-v2-bottom-tol-'+Math.round(BOTTOM_PRICE_TOLERANCE*1000000);
+export const SIGNAL_RULE='m60-bottom-only-v3-tol-'+Math.round(BOTTOM_PRICE_TOLERANCE*1000000);
 const sessionCache=new Map();
 export function expectedSignalTime(now=new Date(),kind='hourly'){
  const cacheKey=kind+'|'+Math.floor(now.getTime()/60000);if(sessionCache.has(cacheKey))return sessionCache.get(cacheKey);
@@ -12,22 +12,21 @@ export function signalRecord(summary,checkedAt=new Date()){
  const dailyOK=!!day&&day===expectedSignalTime(checkedAt,'daily'),hourlyOK=!!hour&&hour===expectedSignalTime(checkedAt);
  const daySell=dailyOK&&summary.technical?.close<summary.technical?.ma20,topSell=hourlyOK&&summary.macd?.bearish?.active;
  let state,dependencies={daily:true,hourly:true},reasons=[];
- if(daySell||topSell){state='sell';dependencies={daily:!!daySell,hourly:!daySell};reasons=summary.tradeHints.sell.reasons}
- else if(summary.tradeHints.buy.triggered&&dailyOK&&hourlyOK){state='buy';reasons=summary.tradeHints.buy.reasons}
- else if(!dailyOK||!hourlyOK){state='incomplete';reasons=[...(!dailyOK?['日线未更新至最新已完成交易日']:[]),...(!hourlyOK?['60分钟数据未更新至最新已完成时段']:[]),...summary.missing.filter(x=>/日线|60分钟|K线|成交量|MACD/.test(x)),...Object.values(summary.errors||{})];}
- else{
-  const candidate=summary.technical?.trend&&summary.macd?.bullish?.active;
-  state=candidate&&summary.missing.length?'incomplete':'none';reasons=state==='incomplete'?summary.missing:[...summary.tradeHints.buy.reasons,...(summary.status==='risk'?summary.risks:[])];
- }
+ if(hourlyOK&&summary.tradeHints.buy.triggered){state='buy';dependencies={daily:false,hourly:true};reasons=summary.tradeHints.buy.reasons}
+ else if(daySell||topSell){state='sell';dependencies={daily:!!daySell,hourly:!daySell};reasons=summary.tradeHints.sell.reasons}
+ else if(!dailyOK||!hourlyOK){state='incomplete';reasons=[...(!dailyOK?['日线未更新，卖出条件未完整核验']:[]),...(!hourlyOK?['60分钟数据未更新至最新已完成时段']:[]),...summary.missing.filter(x=>/日线|60分钟|K线|成交量|MACD/.test(x)),...Object.values(summary.errors||{})]}
+ else{state='none';reasons=[...summary.tradeHints.buy.reasons,...summary.tradeHints.sell.reasons]}
+
  const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
- return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
+ return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,signals:{buy:state==='buy',sell:!!(daySell||topSell)},sell_reasons:summary.tradeHints.sell.reasons,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
 }
 export function signalState(record,now=new Date()){
  if(!record)return 'unscanned';if(record.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(record.state)||!Number.isFinite(Date.parse(record.checked_at))||Date.parse(record.checked_at)>now.getTime()+60000)return 'stale';
- if(record.state==='buy'&&(!record.dependencies?.daily||!record.dependencies?.hourly)||record.state==='sell'&&!record.dependencies?.daily&&!record.dependencies?.hourly||record.state==='none'&&(!record.dependencies?.daily||!record.dependencies?.hourly))return 'stale';
+ if(record.state==='buy'&&!record.dependencies?.hourly||record.state==='sell'&&!record.dependencies?.daily&&!record.dependencies?.hourly||record.state==='none'&&(!record.dependencies?.daily||!record.dependencies?.hourly))return 'stale';
  if(record.state==='incomplete')return record.checked_session===expectedSignalTime(now)?'incomplete':'stale';
+ if(record.state==='sell'&&!record.dependencies?.hourly&&record.checked_session!==expectedSignalTime(now))return 'stale';
  if(record.dependencies?.daily&&(!record.daily_as_of||record.daily_as_of!==expectedSignalTime(now,'daily')))return 'stale';
  if(record.dependencies?.hourly&&(!record.hourly_as_of||record.hourly_as_of!==expectedSignalTime(now)))return 'stale';return record.state;
 }
 export function signalCounts(stocks,records,now=new Date()){const counts={all:stocks.length,buy:0,sell:0,none:0,incomplete:0,pending:0,unscanned:0,stale:0};for(const s of stocks){const k=signalState(records[s.code],now);counts[k]++;if(k==='unscanned'||k==='stale')counts.pending++}return counts}
-export function mergeSignals(old,incoming,codes){const out={...old};for(const [code,r] of Object.entries(incoming||{})){if(!r||typeof r!=='object'||!codes.has(code)||r.code!==code||r.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(r.state)||!Array.isArray(r.reasons)||!Number.isFinite(Date.parse(r.checked_at)))continue;if(!out[code]||Date.parse(r.checked_at)>=Date.parse(out[code].checked_at))out[code]=r}return out}
+export function mergeSignals(old,incoming,codes){const out={...old};for(const [code,r] of Object.entries(incoming||{})){if(!r||typeof r!=='object'||!codes.has(code)||r.code!==code||r.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(r.state)||!Array.isArray(r.reasons)||!Number.isFinite(Date.parse(r.checked_at)))continue;if(!out[code]||out[code].rule!==SIGNAL_RULE||Date.parse(r.checked_at)>=Date.parse(out[code].checked_at))out[code]=r}return out}

@@ -46,7 +46,7 @@ export function summarizeStock({code,quote=null,history=null,hourly=null,financi
    status='watch';title='可列入观察，值得进一步研究';action='基本面摘要与趋势规则同向；估值、公告和个人风险约束核查后再决定是否交易。';
   }else{status='caution';title='谨慎观察，暂不追入';action='财务与趋势条件尚未充分同向，先关注下列弱项和后续变化。'}
  }
- const tradeHints=makeTradeHints({technical,macd,dailyFresh,hourlyFresh,blocked:[...missing,...(status==='risk'?['基本面或风险警示']:[])]});
+ const tradeHints=makeTradeHints({technical,macd,dailyFresh,hourlyFresh:hourlyFresh&&macd?.asOf===expectedSignalTime(now)});
  return {macd,tradeHints,code,name,status,title,action,missing,risks,reasons,quote,report,technical,simulation,simulationNote,errors,financialChecks:report?financialAnalysis(report):null,
   valuation:quote&&finite(quote.pe_ttm)&&quote.pe_ttm>0?`当前供应商 PE(TTM) ${quote.pe_ttm.toFixed(2)} 倍；缺少行业可比估值和未来盈利假设，不能据此判断便宜或昂贵。`:'未取得有效正 PE(TTM)；没有生成估值或目标价。',
   generatedAt:now.toISOString()};
