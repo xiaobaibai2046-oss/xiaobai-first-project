@@ -2,9 +2,14 @@
 import re
 import subprocess
 import sys
+import time
 
 def run(*args):
-    p=subprocess.run(args,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    for attempt in range(3):
+        p=subprocess.run(args,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        if p.returncode and "fatal error in commit_refs_rules" in p.stdout and attempt<2:
+            time.sleep(2+attempt*3);continue
+        break
     if p.returncode:
         # No credentials are printed: strip URL userinfo and recognized token patterns.
         error=re.sub(r'https://[^/\s@]+@','https://[REDACTED]@',p.stdout)
