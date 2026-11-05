@@ -51,3 +51,12 @@ export function summarizeStock({code,quote=null,history=null,hourly=null,financi
   valuation:quote&&finite(quote.pe_ttm)&&quote.pe_ttm>0?`当前供应商 PE(TTM) ${quote.pe_ttm.toFixed(2)} 倍；缺少行业可比估值和未来盈利假设，不能据此判断便宜或昂贵。`:'未取得有效正 PE(TTM)；没有生成估值或目标价。',
   generatedAt:now.toISOString()};
 }
+
+export function applyAnnualRoeGate(summary,stock){
+ const notice=stock?.notice_date,now=summary.generatedAt;
+ const verified=stock?.code===summary.code&&stock.report_date==='2025-12-31'&&finite(stock.roe)&&!!notice&&Number.isFinite(Date.parse(notice))&&Date.parse(notice)<=Date.parse(now);
+ const eligible=!!(verified&&stock.roe>10),value=verified?stock.roe:null;
+ const reason=eligible?`2025年年报ROE ${value}% > 10%，财务门槛通过`:verified?`2025年年报ROE ${value}% 未超过10%，不生成买入提示`:'未在已核验的2025年ROE > 10%股票池中，暂不生成买入提示';
+ const buy=summary.tradeHints.buy;
+ return {...summary,roeGate:{year:2025,verified:!!verified,value,eligible},tradeHints:{...summary.tradeHints,buy:{...buy,triggered:eligible&&buy.triggered,title:eligible?buy.title:'ROE门槛未通过，暂不生成买入提示',reasons:[reason,...buy.reasons]},note:'买入须先满足2025年年报ROE > 10%，再判断已确认且有效的60分钟MACD底背离；MA20不作为买入门槛。'+summary.tradeHints.note}};
+}

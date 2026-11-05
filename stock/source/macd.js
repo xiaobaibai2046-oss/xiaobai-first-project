@@ -38,7 +38,7 @@ export function makeTradeHints({technical,macd,dailyFresh,hourlyFresh}){
  const buyReasons=[!hourlyFresh?'60分钟数据不足或过期':bottom?(macd.bullish.priceMatch==='near_low'?'近期已确认60分钟MACD近前低底背离（价格容差'+(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)+'%）':'近期已确认60分钟MACD底背离'):'暂无近期已确认的60分钟MACD底背离'];
  if(buy&&sell)buyReasons.push('同时存在卖出观察条件，请结合卖出提示核对；不取消底背离买入信号');
  const sellReasons=[];if(!dailyFresh)sellReasons.push('近期日线不足，不能判断是否跌破MA20');if(below)sellReasons.push('日线收盘低于 MA20');if(top)sellReasons.push('近期已确认60分钟MACD顶背离');if(!hourlyFresh)sellReasons.push('60分钟数据不足，不能判断顶背离');
- return {buy:{triggered:buy,title:buy?'触发买入观察':!hourlyFresh?'数据不足，暂不生成买入提示':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:`买入仅依据已确认且有效的60分钟MACD底背离，不受MA20、报价或财务条件限制；财务风险独立展示。卖出仍按跌破MA20或60分钟顶背离判断，可与买入提示同时出现。底背离价格容差${(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)}%，DIF抬高和右侧两根已收盘K线确认仍须满足，最近8根内有效；使用不复权数据，除权可能影响信号，不代表下单。`};
+ return {buy:{triggered:buy,title:buy?'触发买入观察':!hourlyFresh?'数据不足，暂不生成买入提示':'暂未触发买入条件',reasons:buyReasons},sell:{triggered:sell,title:sell?'触发卖出／减仓观察':!dailyFresh||!hourlyFresh?'卖出条件暂不能完整判断':'暂未触发卖出条件',reasons:sellReasons.length?sellReasons:['未发现跌破 MA20 或近期已确认的60分钟MACD顶背离']},bottom,top,note:`通过2025年ROE > 10%股票池筛选后，技术买入仅依据已确认且有效的60分钟MACD底背离，不受MA20限制；其他财务风险独立展示。卖出仍按跌破MA20或60分钟顶背离判断，可与买入提示同时出现。底背离价格容差${(BOTTOM_PRICE_TOLERANCE*100).toFixed(1)}%，DIF抬高和右侧两根已收盘K线确认仍须满足，最近8根内有效；使用不复权数据，除权可能影响信号，不代表下单。`};
 }
 export function normalizeHourly(payload,code,now=new Date()){
  const sym=/^(60|68)/.test(code)?'sh'+code:/^(00|30)/.test(code)?'sz'+code:'bj'+code;

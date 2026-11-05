@@ -9,3 +9,14 @@ test('empty sources produce an honest incomplete report rather than simulated va
 
 test('known recent losses remain a risk conclusion even when EPS cannot support cash ratio',()=>{const s=sample();s.financial.reports[0].profit=-100;s.financial.reports[0].eps=-1;const r=summarizeStock(s);assert.equal(r.status,'risk');assert.ok(r.missing.length>0);assert.match(r.action,/亏损/)});
 test('zero-volume last bar does not produce a favorable tradeable verdict',()=>{const s=sample();s.history.bars.at(-1).volume=0;const r=summarizeStock(s);assert.equal(r.status,'incomplete');assert.ok(r.missing.some(x=>x.includes('零成交量')))});
+
+test('annual ROE gate is strict, requires verified 2025 data, and leaves sell unchanged',async()=>{
+ const {applyAnnualRoeGate}=await import('./conclusion.js');
+ const summary={code:'600001',generatedAt:'2026-11-05T08:00:00Z',tradeHints:{buy:{triggered:true,title:'触发买入观察',reasons:['TEST 底背离']},sell:{triggered:true,reasons:['TEST 跌破MA20']},note:''}};
+ const stock={code:'600001',roe:10.01,report_date:'2025-12-31',notice_date:'2026-04-01'};
+ assert.equal(applyAnnualRoeGate(summary,stock).tradeHints.buy.triggered,true);
+ for(const invalid of [null,{...stock,roe:10},{...stock,roe:9},{...stock,roe:null},{...stock,report_date:'2026-06-30'},{...stock,code:'600002'},{...stock,notice_date:'2099-01-01'}]){
+  const r=applyAnnualRoeGate(summary,invalid);assert.equal(r.tradeHints.buy.triggered,false);assert.equal(r.tradeHints.sell.triggered,true);
+ }
+ assert.equal(applyAnnualRoeGate({...summary,tradeHints:{...summary.tradeHints,buy:{...summary.tradeHints.buy,triggered:false}}},stock).tradeHints.buy.triggered,false);
+});
