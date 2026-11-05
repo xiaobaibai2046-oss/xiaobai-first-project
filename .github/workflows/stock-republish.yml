@@ -1,0 +1,50 @@
+name: Republish collected stock results
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/republish-request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+  pages: write
+jobs:
+  republish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Read explicit saved-result request
+        id: request
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          r=json.loads(Path('stock/source/validation/republish-request.json').read_text())
+          assert isinstance(r['run_id'],int) and r['phase'] in ('quick','complete')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('run_id='+str(r['run_id'])+'\nphase='+r['phase']+'\n')
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ steps.request.outputs.run_id }}
+          pattern: stock-signals-${{ steps.request.outputs.phase }}-*
+          path: stock/source/scan-results
+          merge-multiple: true
+      - name: Merge and build saved analysis without market requests
+        working-directory: stock/source
+        run: |
+          node scripts/merge-scans.mjs
+          npm run build -- ..
+      - name: Publish saved results
+        run: python stock/source/scripts/publish-snapshot.py
+      - name: Request Pages rebuild
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/pages/builds
