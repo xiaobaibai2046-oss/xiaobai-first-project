@@ -1,0 +1,376 @@
+{
+  "field": "FN281",
+  "metric": "2025年年报加权净资产收益率（%）",
+  "source": "通达信官方 TdxAiData",
+  "report_date": "2025-12-31",
+  "before_missing": 51,
+  "filled": 19,
+  "newly_qualified": [
+    {
+      "code": "000911",
+      "name": "*ST广糖",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "农产品加工",
+      "roe": 1982.89,
+      "roe_source": "通达信官方 FN281；2025年年报"
+    },
+    {
+      "code": "300338",
+      "name": "*ST开元",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SZ",
+      "market": "深交所风险警示板",
+      "industry": "教育",
+      "roe": 320.15,
+      "roe_source": "通达信官方 FN281；2025年年报"
+    },
+    {
+      "code": "600476",
+      "name": "*ST湘邮",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SH",
+      "market": "上交所风险警示板",
+      "industry": "IT服务Ⅱ",
+      "roe": 228.49,
+      "roe_source": "通达信官方 FN281；2025年年报"
+    }
+  ],
+  "results": [
+    {
+      "code": "000056",
+      "name": "*ST皇庭",
+      "status": "verified",
+      "roe": -261.92
+    },
+    {
+      "code": "000609",
+      "name": "*ST中迪",
+      "status": "verified",
+      "roe": -627.1
+    },
+    {
+      "code": "000610",
+      "name": "*ST西旅",
+      "status": "verified",
+      "roe": -319.76
+    },
+    {
+      "code": "000615",
+      "name": "*ST美谷",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "000656",
+      "name": "金科股份",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "000826",
+      "name": "*ST启环",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "000838",
+      "name": "*ST发展",
+      "status": "verified",
+      "roe": -548.29
+    },
+    {
+      "code": "000890",
+      "name": "法尔胜",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "000911",
+      "name": "*ST广糖",
+      "status": "verified",
+      "roe": 1982.89
+    },
+    {
+      "code": "000972",
+      "name": "*ST中基",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002168",
+      "name": "ST惠程",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002513",
+      "name": "蓝丰生化",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002514",
+      "name": "*ST宝馨",
+      "status": "verified",
+      "roe": -304.26
+    },
+    {
+      "code": "002528",
+      "name": "*ST英飞",
+      "status": "verified",
+      "roe": -926.72
+    },
+    {
+      "code": "002542",
+      "name": "*ST中岩",
+      "status": "verified",
+      "roe": -277.38
+    },
+    {
+      "code": "002547",
+      "name": "*ST春兴",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002620",
+      "name": "*ST瑞和",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002630",
+      "name": "*ST华西",
+      "status": "verified",
+      "roe": -351.99
+    },
+    {
+      "code": "002634",
+      "name": "*ST棒杰",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002647",
+      "name": "仁东控股",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002667",
+      "name": "*ST威领",
+      "status": "verified",
+      "roe": -257.1
+    },
+    {
+      "code": "002694",
+      "name": "*ST顾地",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002717",
+      "name": "*ST岭南",
+      "status": "verified",
+      "roe": -2257.15
+    },
+    {
+      "code": "002789",
+      "name": "*ST建艺",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "002856",
+      "name": "*ST美芝",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300044",
+      "name": "*ST赛为",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300091",
+      "name": "*ST金灵",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300093",
+      "name": "金刚光伏",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300147",
+      "name": "*ST香雪",
+      "status": "verified",
+      "roe": -387.99
+    },
+    {
+      "code": "300157",
+      "name": "新锦动力",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300198",
+      "name": "*ST纳川",
+      "status": "verified",
+      "roe": -2639.06
+    },
+    {
+      "code": "300212",
+      "name": "*ST易录",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300237",
+      "name": "ST美晨",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300268",
+      "name": "佳沃食品",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300313",
+      "name": "天山生物",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300338",
+      "name": "*ST开元",
+      "status": "verified",
+      "roe": 320.15
+    },
+    {
+      "code": "300340",
+      "name": "科恒股份",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "300716",
+      "name": "*ST泉为",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "301030",
+      "name": "*ST仕净",
+      "status": "verified",
+      "roe": -53.5
+    },
+    {
+      "code": "600165",
+      "name": "宁科生物",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "600322",
+      "name": "津投城开",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "600340",
+      "name": "*ST华幸",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "600476",
+      "name": "*ST湘邮",
+      "status": "verified",
+      "roe": 228.49
+    },
+    {
+      "code": "600537",
+      "name": "*ST亿晶",
+      "status": "verified",
+      "roe": -287.74
+    },
+    {
+      "code": "600581",
+      "name": "*ST八钢",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "600683",
+      "name": "京投发展",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "603021",
+      "name": "*ST华鹏",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "603378",
+      "name": "*ST亚士",
+      "status": "verified",
+      "roe": -223.05
+    },
+    {
+      "code": "688066",
+      "name": "*ST航图",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "688520",
+      "name": "神州细胞",
+      "status": "zero_unverified",
+      "roe": 0
+    },
+    {
+      "code": "920575",
+      "name": "*ST康乐",
+      "status": "verified",
+      "roe": -220.37
+    }
+  ],
+  "control": {
+    "code": "600519",
+    "status": "matched",
+    "roe": 32.53
+  },
+  "controls": {
+    "SH": {
+      "code": "600519",
+      "status": "matched",
+      "roe": 32.53
+    },
+    "SZ": {
+      "code": "000333",
+      "status": "matched",
+      "roe": 19.7
+    },
+    "BJ": {
+      "code": "920005",
+      "status": "matched",
+      "roe": 11.32
+    }
+  },
+  "sdk_calls": 54,
+  "remaining_missing": 32,
+  "updated_at": "2026-11-05T17:32:33.825250+00:00"
+}
