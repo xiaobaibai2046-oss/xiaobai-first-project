@@ -1,0 +1,471 @@
+{
+  "updated_at": "2026-11-06T01:25:02+08:00",
+  "year": 2025,
+  "metric": "2025年年报加权平均净资产收益率（%）",
+  "source": "东方财富数据中心 · RPT_LICO_FN_CPD",
+  "before": {
+    "source_records": 5580,
+    "source_pages": 12,
+    "covered_a_shares": 5580,
+    "qualified": 1264,
+    "missing_roe": 51,
+    "not_above_threshold": 4265,
+    "outside_scope": 0,
+    "future_notice": 0,
+    "missing_notice": 0,
+    "by_market": {
+      "深交所主板": 1422,
+      "深交所风险警示板": 114,
+      "深交所创业板": 1371,
+      "上交所主板": 1632,
+      "上交所风险警示板": 68,
+      "上交所科创板": 618,
+      "北京证券交易所": 355
+    }
+  },
+  "after": {
+    "source_records": 5580,
+    "source_pages": 12,
+    "covered_a_shares": 5580,
+    "qualified": 1265,
+    "missing_roe": 51,
+    "not_above_threshold": 4264,
+    "outside_scope": 0,
+    "future_notice": 0,
+    "missing_notice": 0,
+    "by_market": {
+      "深交所主板": 1421,
+      "深交所风险警示板": 114,
+      "深交所创业板": 1371,
+      "上交所主板": 1632,
+      "上交所风险警示板": 68,
+      "上交所科创板": 618,
+      "北京证券交易所": 356
+    }
+  },
+  "added": [
+    {
+      "code": "920309",
+      "name": "菊乐股份",
+      "roe": 23.19,
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-08",
+      "market": "北京证券交易所",
+      "exchange": "BJ",
+      "industry": "饮料乳品"
+    }
+  ],
+  "removed": [],
+  "missing_roe_stocks": [
+    {
+      "code": "000056",
+      "name": "*ST皇庭",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-24",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000609",
+      "name": "*ST中迪",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-22",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000610",
+      "name": "*ST西旅",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-24",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000615",
+      "name": "*ST美谷",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-27",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000656",
+      "name": "金科股份",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000826",
+      "name": "*ST启环",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000838",
+      "name": "*ST发展",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-24",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000890",
+      "name": "法尔胜",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-23",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000911",
+      "name": "*ST广糖",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "000972",
+      "name": "*ST中基",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-17",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002168",
+      "name": "ST惠程",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-03-31",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002513",
+      "name": "蓝丰生化",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-18",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002514",
+      "name": "*ST宝馨",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002528",
+      "name": "*ST英飞",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002542",
+      "name": "*ST中岩",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-18",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002547",
+      "name": "*ST春兴",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002620",
+      "name": "*ST瑞和",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002630",
+      "name": "*ST华西",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002634",
+      "name": "*ST棒杰",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-25",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002647",
+      "name": "仁东控股",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-02-28",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002667",
+      "name": "*ST威领",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002694",
+      "name": "*ST顾地",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002717",
+      "name": "*ST岭南",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002789",
+      "name": "*ST建艺",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "002856",
+      "name": "*ST美芝",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300044",
+      "name": "*ST赛为",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-21",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300091",
+      "name": "*ST金灵",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-25",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300093",
+      "name": "金刚光伏",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-03",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300147",
+      "name": "*ST香雪",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300157",
+      "name": "新锦动力",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300198",
+      "name": "*ST纳川",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300212",
+      "name": "*ST易录",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300237",
+      "name": "ST美晨",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-24",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300268",
+      "name": "佳沃食品",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-03-16",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300313",
+      "name": "天山生物",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-25",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300338",
+      "name": "*ST开元",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300340",
+      "name": "科恒股份",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-09",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "300716",
+      "name": "*ST泉为",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "301030",
+      "name": "*ST仕净",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SZ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600165",
+      "name": "宁科生物",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-24",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600322",
+      "name": "津投城开",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600340",
+      "name": "*ST华幸",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600476",
+      "name": "*ST湘邮",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600537",
+      "name": "*ST亿晶",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-28",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600581",
+      "name": "*ST八钢",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-03-30",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "600683",
+      "name": "京投发展",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-21",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "603021",
+      "name": "*ST华鹏",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "603378",
+      "name": "*ST亚士",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "688066",
+      "name": "*ST航图",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-30",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "688520",
+      "name": "神州细胞",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-23",
+      "exchange": "SH",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    },
+    {
+      "code": "920575",
+      "name": "*ST康乐",
+      "report_date": "2025-12-31",
+      "notice_date": "2026-04-29",
+      "exchange": "BJ",
+      "reason": "来源2025年年报加权ROE字段缺失或无效"
+    }
+  ],
+  "membership_changed": true,
+  "note": "Only verified 2025 annual weighted ROE > 10% enters the pool. Missing is not treated as failure or replaced with quarterly/diluted ROE."
+}
