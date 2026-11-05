@@ -1,4 +1,6 @@
 {
   "stale_deployment": "4597e7366c28231bf3b6a1b8d9481d97e5d35505",
-  "reason": "GitHub Pages rejected latest build because this timed-out deployment remains in progress; cancel only this stale version and rebuild main."
+  "reason": "GitHub Pages rejected latest build because this timed-out deployment remains in progress; cancel only this stale version and rebuild main.",
+  "stale_job_id": 127370021791,
+  "retry": 2
 }

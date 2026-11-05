@@ -5,6 +5,7 @@ on:
     paths: ['stock/source/validation/pages-recovery-request.json']
   workflow_dispatch:
 permissions:
+  actions: read
   contents: read
   pages: write
 jobs:

@@ -21,20 +21,45 @@ def call(path,method='GET'):
     except urllib.error.HTTPError as exc:
         return exc.code,{}
 
+# The error displays a build SHA; the cancel API may require the separate deployment ID.
+# Read only this explicit old job's log, extract its matching ID, never print raw logs.
+job=request.get('stale_job_id')
+if job:
+    if not isinstance(job,int) or job<1:raise ValueError('Invalid explicit old job ID')
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self,req,fp,code,msg,headers,newurl):return None
+    req=urllib.request.Request('https://api.github.com/repos/'+repo+'/actions/jobs/'+str(job)+'/logs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+    try:
+        with urllib.request.build_opener(NoRedirect).open(req,timeout=25) as response:raw=response.read(5*1024*1024)
+    except urllib.error.HTTPError as exc:
+        if exc.code not in (301,302,303,307,308):
+            print('::error::Cannot inspect old deployment job; HTTP '+str(exc.code));raise SystemExit(1)
+        location=exc.headers.get('Location','')
+        if not location.startswith('https://'):raise ValueError('Unsafe log redirect')
+        # Signed log URL is followed without the GitHub authorization header and never logged.
+        with urllib.request.urlopen(location,timeout=25) as response:raw=response.read(5*1024*1024)
+    match=re.search(r'Created deployment for '+re.escape(target)+r', ID:\s*([A-Za-z0-9_-]+)',raw.decode('utf-8',errors='replace'))
+    if match:
+        target=match[1]
+        print('::notice::Resolved actual stale deployment ID: '+target)
+    else:
+        print('::warning::Old job did not expose a separate deployment ID; checking the explicit build SHA.')
 code,_=call('/deployments/'+target+'/cancel','POST')
-print('Explicit stale Pages deployment cancellation HTTP',code)
+print('::notice::Explicit stale Pages cancellation HTTP '+str(code))
 if code not in (204,404):
-    print('::error::Cannot cancel stale Pages deployment; HTTP '+str(code))
-    raise SystemExit(1)
-# Cancellation may settle asynchronously. Inspect only the safe status field.
-for _ in range(10):
+    print('::error::Cannot cancel stale Pages deployment; HTTP '+str(code));raise SystemExit(1)
+cleared=False
+for _ in range(15):
     status,data=call('/deployments/'+target)
-    state=data.get('status','unknown');print('Stale deployment status:',status,state)
-    if status==404 or state in ('deployment_cancelled','deployment_failed','succeed','cancelled','failure','success'):break
+    state=data.get('status','unknown')
+    print('::notice::Stale deployment status HTTP '+str(status)+'; state '+str(state))
+    if status==404 or state in ('deployment_cancelled','deployment_failed','succeed','cancelled','failure','success'):
+        cleared=True;break
     time.sleep(2)
+if not cleared:
+    print('::error::GitHub still reports the old deployment active after cancellation. Rebuild withheld.');raise SystemExit(1)
 code,_=call('/builds','POST')
-print('Pages rebuild request HTTP',code)
+print('::notice::Pages rebuild request HTTP '+str(code))
 if code not in (201,202):
-    print('::error::Pages rebuild request failed; HTTP '+str(code))
-    raise SystemExit(1)
-print('::notice::Stale deployment cancellation accepted and latest Pages rebuild requested; no SDK calls.')
+    print('::error::Pages rebuild request failed; HTTP '+str(code));raise SystemExit(1)
+print('::notice::Latest Pages rebuild requested; no SDK calls.')
