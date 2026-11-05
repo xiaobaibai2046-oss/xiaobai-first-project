@@ -18,7 +18,7 @@ export function signalRecord(summary,checkedAt=new Date()){
  else{state='none';reasons=[...summary.tradeHints.buy.reasons,...summary.tradeHints.sell.reasons]}
 
  const event=e=>e?{first_time:e.firstTime,second_time:e.secondTime,confirmed_at:e.confirmedAt,active:e.active,price_match:e.priceMatch,price_change_pct:e.priceChangePct,price_tolerance:e.priceTolerance}:null;
- return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,signals:{buy:state==='buy',sell:!!(daySell||topSell)},sell_reasons:summary.tradeHints.sell.reasons,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{}};
+ return {rule:SIGNAL_RULE,code:summary.code,state,timing:{bottom:event(summary.macd?.bullish),top:event(summary.macd?.bearish),daily_above_ma20:dailyOK?!!summary.technical?.trend:null},checked_at:checkedAt.toISOString(),checked_session:expectedSignalTime(checkedAt),daily_as_of:day,hourly_as_of:hour,dependencies,signals:{buy:state==='buy',sell:!!(daySell||topSell)},sell_reasons:summary.tradeHints.sell.reasons,reasons:[...new Set(reasons)].slice(0,12),errors:summary.errors||{},sources:summary.signalSources||{},source_status:summary.signalStatus||{}};
 }
 export function signalState(record,now=new Date()){
  if(!record)return 'unscanned';if(record.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(record.state)||!Number.isFinite(Date.parse(record.checked_at))||Date.parse(record.checked_at)>now.getTime()+60000)return 'stale';

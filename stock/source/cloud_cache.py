@@ -19,11 +19,12 @@ def expected(now,kind):
         if day.weekday()<5:break
     return day.isoformat() if kind=='history' else day.isoformat()+'T15:00:00+08:00'
 def _encoded(value):return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')
-def load_cached(root,kind,code,loader,now=None):
+def load_cached(root,kind,code,loader,now=None,source_prefix=None):
     if not root or kind not in ('history','hourly','financial'):return loader()
     if not re.fullmatch(r'\d{6}',code):raise ValueError('invalid cache code')
     now=now or dt.datetime.now(SH);path=Path(root)/(kind+'-'+code+'.json')
     def valid(data,saved_at):
+        if source_prefix and (not isinstance(data,dict) or not str(data.get('source','')).startswith(source_prefix)):return False
         if not isinstance(data,dict) or data.get('code')!=code or not 0<=now.timestamp()-saved_at<=172800:return False
         if kind in ('history','hourly'):
             bars=data.get('bars');field='date' if kind=='history' else 'endTime'

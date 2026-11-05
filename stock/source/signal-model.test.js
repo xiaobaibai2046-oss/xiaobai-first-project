@@ -48,3 +48,9 @@ test('a stale public hourly series never becomes a current bottom-divergence buy
  const summary=summarizeStock({code:'600001',hourly:inputs.hourly,now:new Date('2026-10-28T03:45:00Z'),includeSimulation:false});
  assert.ok(summary.macd.bullish.active);assert.equal(summary.tradeHints.buy.triggered,false);
 });
+test('source migration can force a fresh cached record through the scanner without changing strategy',async()=>{
+ const records={'600001':{code:'600001',rule:SIGNAL_RULE,state:'none',checked_at:now.toISOString(),checked_session:expectedSignalTime(now),daily_as_of:expectedSignalTime(now,'daily'),hourly_as_of:expectedSignalTime(now),dependencies:{daily:true,hourly:true},reasons:[]}},calls=[];
+ const scanner=createSignalScanner({stocks:()=>[{code:'600001'}],records:()=>records,request:async k=>{calls.push(k);return data()[k]},onResult:r=>{records[r.code]=r},onProgress:()=>{},delay:0,now:()=>now});
+ await scanner.start();assert.equal(calls.length,0);
+ await scanner.start({force:true});assert.equal(records['600001'].state,'buy');assert.deepEqual(calls,['hourly']);
+});

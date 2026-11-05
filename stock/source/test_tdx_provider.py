@@ -1,5 +1,7 @@
 """Explicit synthetic SDK contracts; these tests are NOT evidence of live TDX access."""
 import datetime as dt
+import io
+import json
 import os
 import time
 import unittest
@@ -57,6 +59,26 @@ class TdxTests(unittest.TestCase):
             p.max_calls=10;p.circuit['global']=(time.monotonic()+300,'credits')
             with self.assertRaises(TdxError) as e:p.raw('snapshot','600519')
             self.assertEqual(e.exception.category,'credits');spawn.assert_not_called()
+    def test_one_market_permission_failure_does_not_disable_other_markets(self):
+        p=Provider(min_interval=0);proc=Mock();proc.poll.return_value=None;proc.stdin=io.StringIO();p.process=proc
+        proc.stdout=io.StringIO(json.dumps({'ok':False,'error':{'category':'permission'}})+'\n')
+        with patch.dict(os.environ,{'TDX_DATA_KEY':'TEST_NOT_A_REAL_KEY'}),patch('tdx_provider.check_network_policy'),patch('tdx_provider.selectors.DefaultSelector') as factory:
+            factory.return_value.__enter__.return_value.select.return_value=[True]
+            with self.assertRaises(TdxError):p.raw('snapshot','920001')
+            proc.stdout=io.StringIO(json.dumps({'ok':True,'data':{'Now':'12'}})+'\n')
+            self.assertEqual(p.raw('snapshot','600519')['Now'],'12')
+            with self.assertRaises(TdxError) as e:p.raw('snapshot','920002')
+            self.assertEqual(e.exception.category,'permission');self.assertEqual(p.calls,2)
+
+    def test_empty_symbol_does_not_disable_other_stocks(self):
+        p=Provider(min_interval=0);proc=Mock();proc.poll.return_value=None;proc.stdin=io.StringIO();p.process=proc
+        proc.stdout=io.StringIO(json.dumps({'ok':False,'error':{'category':'unavailable'}})+'\n')
+        with patch.dict(os.environ,{'TDX_DATA_KEY':'TEST_NOT_A_REAL_KEY'}),patch('tdx_provider.check_network_policy'),patch('tdx_provider.selectors.DefaultSelector') as factory:
+            factory.return_value.__enter__.return_value.select.return_value=[True]
+            with self.assertRaises(TdxError):p.raw('snapshot','600001')
+            proc.stdout=io.StringIO(json.dumps({'ok':True,'data':{'Now':'12'}})+'\n')
+            self.assertEqual(p.raw('snapshot','600519')['Now'],'12');self.assertEqual(p.calls,2)
+
     def test_quote_depth_cache_and_parallel_request_coalescing(self):
         p=Provider();p.raw=Mock(return_value={'Now':'12','LastClose':'10'})
         with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(lambda _:p.get('quote','600519'),range(8)))

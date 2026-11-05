@@ -116,3 +116,12 @@ Key仍仅在Python后端。后端不可用时手机可回退原公开源，并�
 `permission`、`credits`、`authentication`、`network`、`network_policy`、`rate_limit`、`budget`、`schema`、`unavailable`分别报告。
 
 本地回归：`npm test` 和 `npm run test:api`。`test_tdx_provider.py`是明确合成契约测试，不能替代上述真实验收。
+
+## 全池启用（用户授权：2026-11-05）
+
+`market-config.json` 已启用通达信优先；仓库变量TDX_ENABLED如未设置，则读取项目配置，明确设false仍可停用。
+用户已授权全池调用，首轮按新的refresh_generation重查1264只，即使备用源同一时段结果尚有效也不跳过。
+后续按完整K线时段复用官方缓存，不重复消耗同一时段的SDK请求；官方缓存命名空间不接收备用数据。
+首批每组150次、补扫每组750次，4组上限3600次SDK调用/轮，实际调用数另行报告；这不是积分或金额承诺。
+正式扫描仅按需获取小时和日线，不拉全池逐笔、盘口或资金数据；异常或预算用尽继续使用原备用源，并保留来源信息。
+补扫扫描预算由540秒改为720秒，任务总超时保护保留。新快照报告官方小时线覆盖数和本阶段实际SDK调用数。

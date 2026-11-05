@@ -19,6 +19,7 @@ on:
       - 'stock/source/tdx_provider.py'
       - 'stock/source/tdx_sdk_worker.py'
       - 'stock/source/requirements-tdx.txt'
+      - 'stock/source/market-config.json'
   workflow_dispatch:
   schedule:
     # Beijing 10:05–15:50 every 15 min; 16:05 completed daily-bar refresh.
@@ -53,7 +54,7 @@ jobs:
       TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
     with:
       phase: complete
-      seconds: 540
+      seconds: 720
   complete-publish:
     needs: complete-scan
     if: always()

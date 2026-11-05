@@ -9,6 +9,8 @@ import {runScanCycles} from './scan-cycles.mjs';
 const shard=Number(process.env.SCAN_SHARD||0),shards=Number(process.env.SCAN_SHARDS||1);
 const root=new URL('../',import.meta.url),file=new URL(shards>1?'scan-results/shard-'+shard+'.json':'pool-signals.json',root);
 const pool=JSON.parse(await readFile(new URL('pool-2025.json',root),'utf8'));
+const config=JSON.parse(await readFile(new URL('market-config.json',root),'utf8'));
+const marketGeneration=(process.env.TDX_DATA_KEY||process.env.TDX_CONFIG_FILE)?config.refresh_generation:null;
 const data={schema_version:1,rule:SIGNAL_RULE,started_at:new Date().toISOString(),finished_at:null,attempted_all:false,results:{}};
 try{const old=JSON.parse(await readFile(new URL('pool-signals.json',root),'utf8'));if(old.rule===SIGNAL_RULE)data.results=old.results||{}}catch{}
 const child=spawn('python3',[fileURLToPath(new URL('./scan-fetch.py',import.meta.url))],{stdio:['pipe','pipe','inherit']});
@@ -37,22 +39,24 @@ process.on('SIGINT',pause);process.on('SIGTERM',pause);
 try{
  data.passes=await runScanCycles({
   deadline,stopped:()=>stopped,
-  plan:now=>planSignalBatch(pool.stocks,data.results,{shard,shards,limit:batchSize,now}),
+  plan:now=>planSignalBatch(pool.stocks,data.results,{shard,shards,limit:batchSize,now,generation:marketGeneration}),
   onBackoff:(delay,attempt)=>{data.background.status='backoff';data.background.message=`行情连续失败，${delay/1000}秒后重试（${attempt}/3）`;persist()},
   scan:async candidates=>{
    const codes=[];
    currentScanner=createSignalScanner({stocks:()=>candidates,records:()=>data.results,request,
-    onResult:r=>{codes.push(r.code);data.results=mergeSignals(data.results,{[r.code]:r},assignedCodes)},
+    onResult:r=>{if(marketGeneration)r.market_generation=marketGeneration;codes.push(r.code);data.results=mergeSignals(data.results,{[r.code]:r},assignedCodes)},
     onProgress:p=>{
      data.background={shard,shards,phase:process.env.SCAN_PHASE||'full',started_at:data.started_at,
       status:p.running?'running':p.reason?'source_unavailable':p.stopped?'paused':'batch_complete',
       checked:checked+p.done,batch_total:checked+p.total,updated_at:new Date().toISOString(),message:p.reason||null};
      if(p.done%20===0||!p.running||p.reason){console.log(JSON.stringify({...p,counts:signalCounts(assigned,data.results)}));persist()}
     },delay:1500,concurrency:Math.max(1,Math.min(2,Number(process.env.SCAN_CONCURRENCY)||1))});
-   await currentScanner.start({retry:true});checked+=codes.length;await persist();
+   await currentScanner.start({retry:true,force:!!marketGeneration});checked+=codes.length;await persist();
    return {codes,status:data.background.status};
   }
  });
+ try{data.provider_stats=await request('_stats','000001')}catch{data.provider_stats={unavailable:true}}
+ if(data.background)data.background.provider_stats=data.provider_stats;
  data.finished_at=new Date().toISOString();data.attempted_all=assigned.every(s=>!!data.results[s.code]);
  if(stopped&&Date.now()>=deadline&&data.background?.status==='paused')data.background.status='budget_reached';
  if(!data.background)data.background={shard,shards,phase:process.env.SCAN_PHASE||'full',status:'batch_complete',checked:0,batch_total:0,updated_at:data.finished_at,message:null};

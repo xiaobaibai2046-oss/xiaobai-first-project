@@ -13,6 +13,6 @@ export function retryEligible(record,now=new Date()){
  return expectedSignalTime(new Date(record.checked_at),'daily')!==expectedSignalTime(now,'daily')||record.checked_session!==expectedSignalTime(now)||age>=(coverage?3600000:300000);
 }
 const priority=record=>!record?0:record.state==='buy'?0:record.state==='sell'?1:record.state==='none'?2:3;
-export function planSignalBatch(stocks,records,{shard=0,shards=1,limit=stocks.length,now=new Date()}={}){
- return shardStocks(stocks,shard,shards).filter(s=>!['buy','sell','none'].includes(signalState(records[s.code],now))&&retryEligible(records[s.code],now)).sort((a,b)=>priority(records[a.code])-priority(records[b.code])||(Date.parse(records[a.code]?.checked_at)||0)-(Date.parse(records[b.code]?.checked_at)||0)).slice(0,limit);
+export function planSignalBatch(stocks,records,{shard=0,shards=1,limit=stocks.length,now=new Date(),generation=null}={}){
+ return shardStocks(stocks,shard,shards).filter(s=>generation&&records[s.code]?.market_generation!==generation||!['buy','sell','none'].includes(signalState(records[s.code],now))&&retryEligible(records[s.code],now)).sort((a,b)=>priority(records[a.code])-priority(records[b.code])||(Date.parse(records[a.code]?.checked_at)||0)-(Date.parse(records[b.code]?.checked_at)||0)).slice(0,limit);
 }

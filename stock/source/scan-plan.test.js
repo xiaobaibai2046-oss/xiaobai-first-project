@@ -32,3 +32,10 @@ test('previous buy candidates are checked before neutral records while all remai
  const selected=stocks.slice(0,2),a={...record(selected[0].code),state:'none'},b={...record(selected[1].code),state:'buy'};
  assert.deepEqual(planSignalBatch(selected,{[a.code]:a,[b.code]:b},{now:new Date('2026-10-30T06:01:00Z')}).map(s=>s.code),[b.code,a.code]);
 });
+test('enabling the official source rechecks fresh backup records once per source generation',()=>{
+ const selected=stocks.slice(0,3),records=Object.fromEntries(selected.map(s=>[s.code,record(s.code)]));
+ assert.equal(planSignalBatch(selected,records,{now}).length,0);
+ assert.equal(planSignalBatch(selected,records,{now,generation:'official-v1'}).length,3);
+ records[selected[0].code].market_generation='official-v1';
+ assert.deepEqual(planSignalBatch(selected,records,{now,generation:'official-v1'}).map(s=>s.code),selected.slice(1).map(s=>s.code));
+});

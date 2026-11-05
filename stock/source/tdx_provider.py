@@ -117,7 +117,9 @@ class Provider:
         if not self.configured():raise TdxError('not_configured')
         check_network_policy()
         circuit_key=(operation,params.get('period',''))
-        until,category=self.circuit.get('global',self.circuit.get(circuit_key,(0,'unavailable')))
+        market_key=circuit_key+(sid.split('.')[-1],)
+        symbol_key=circuit_key+(sid,)
+        until,category=self.circuit.get('global',self.circuit.get(market_key,self.circuit.get(symbol_key,self.circuit.get(circuit_key,(0,'unavailable')))))
         if time.monotonic()<until:raise TdxError(category)
         if self.calls>=self.max_calls:self.close();raise TdxError('budget')
         if self.process is None or self.process.poll() is not None:
@@ -137,7 +139,8 @@ class Provider:
                 raise TdxError(category)
             except (BrokenPipeError,OSError,ValueError):self.close();raise TdxError('network')
             except TdxError as exc:
-                self.circuit['global' if exc.category in ('authentication','credits') else circuit_key]=(time.monotonic()+(300 if exc.category in ('authentication','permission','credits','unavailable') else 30),exc.category)
+                scope='global' if exc.category in ('authentication','credits') else market_key if exc.category=='permission' else symbol_key if exc.category in ('unavailable','schema') else circuit_key
+                self.circuit[scope]=(time.monotonic()+(300 if exc.category in ('authentication','permission','credits','unavailable') else 30),exc.category)
                 # Never retry chargeable entitlement failures. Retry only an explicit native network response.
                 if exc.category=='network' and attempt==0 and self.process is not None:time.sleep(1);continue
                 raise

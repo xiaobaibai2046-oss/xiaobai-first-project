@@ -32,6 +32,16 @@ class CloudCacheTests(unittest.TestCase):
         self.assertFalse(list(Path(self.root).glob('*.json')))
         p=Path(self.root)/'file';p.write_text('blocked');self.root=str(p)
         self.assertFalse(self.load()['cloud_cache_hit'])
+    def test_official_namespace_never_caches_or_relabels_backup_bars(self):
+        data={'code':'600809','adjustment':'none','source':'TEST public backup','bars':[{'endTime':expected(self.now,'hourly')}]}
+        first=load_cached(self.root,'hourly','600809',lambda:data,self.now,source_prefix='通达信官方')
+        self.assertFalse(first['cloud_cache_hit']);self.assertFalse(list(Path(self.root).glob('*.json')))
+        official=dict(data,source='通达信官方 TdxAiData 1.3.1')
+        load_cached(self.root,'hourly','600809',lambda:official,self.now,source_prefix='通达信官方')
+        def should_not_fetch():raise AssertionError('same completed bar should reuse official disk cache')
+        cached=load_cached(self.root,'hourly','600809',should_not_fetch,self.now,source_prefix='通达信官方')
+        self.assertTrue(cached['cloud_cache_hit']);self.assertEqual(cached['source'],official['source'])
+
     def test_quotes_always_fetched(self):
         self.load('quote');self.load('quote');self.assertEqual(self.calls,2)
         self.assertFalse(list(Path(self.root).glob('*.json')))

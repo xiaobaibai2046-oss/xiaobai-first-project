@@ -31,8 +31,27 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Read explicit project market-source configuration
+        id: market
+        env:
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          CALL_OVERRIDE: ${{ vars.TDX_MAX_CALLS_PER_SHARD }}
+          PHASE: ${{ inputs.phase }}
+        run: |
+          python - <<'PYCONFIG'
+          import json,os
+          from pathlib import Path
+          config=json.loads(Path('stock/source/market-config.json').read_text())
+          override=os.environ.get('TDX_OVERRIDE','')
+          enabled=override=='true' if override else config.get('tdx_enabled',False)
+          limit=int(os.environ.get('CALL_OVERRIDE') or config['max_calls_per_shard'][os.environ['PHASE']])
+          if not 1<=limit<=2000:raise ValueError('Invalid per-shard SDK call budget')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('enabled='+str(bool(enabled)).lower()+'\n')
+              f.write('max_calls='+str(limit)+'\n')
+          PYCONFIG
       - name: Install official SDK only when explicitly enabled
-        if: vars.TDX_ENABLED == 'true'
+        if: steps.market.outputs.enabled == 'true'
         run: python -m pip install -r stock/source/requirements-tdx.txt
       - uses: actions/cache@v4
         with:
@@ -47,8 +66,8 @@ jobs:
           SCAN_SECONDS: ${{ inputs.seconds }}
           SCAN_PHASE: ${{ inputs.phase }}
           SCAN_CONCURRENCY: '2'
-          TDX_DATA_KEY: ${{ vars.TDX_ENABLED == 'true' && secrets.TDX_DATA_KEY || '' }}
-          TDX_MAX_CALLS: ${{ vars.TDX_MAX_CALLS_PER_SHARD || '100' }}
+          TDX_DATA_KEY: ${{ steps.market.outputs.enabled == 'true' && secrets.TDX_DATA_KEY || '' }}
+          TDX_MAX_CALLS: ${{ steps.market.outputs.max_calls }}
           CLOUD_MARKET_CACHE: ${{ runner.temp }}/stock-market-cache
         run: npm run scan:pool
       - uses: actions/upload-artifact@v4
