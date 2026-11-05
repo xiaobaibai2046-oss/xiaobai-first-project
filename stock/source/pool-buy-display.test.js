@@ -1,0 +1,9 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {poolSignalState,poolSignalCounts,signalState,SIGNAL_RULE} from './signal-model.js';
+const now=new Date('2026-11-06T01:00:00+08:00');
+const record=(code,state='none')=>({code,state,rule:SIGNAL_RULE,checked_at:'2026-11-05T16:00:00Z',checked_session:'2026-11-05T15:00:00+08:00',daily_as_of:'2026-11-05',hourly_as_of:'2026-11-05T15:00:00+08:00',dependencies:{daily:true,hourly:true},timing:{bottom:{mode:'gold_cross_dif',active:false,second_time:'2026-11-05T10:30:00+08:00'},buy_ma20:{passed:true}}});
+test('session buys enter red navigation; counts partition and raw scanner classifications stay unchanged',()=>{
+ const stocks=Array.from({length:6},(_,i)=>({code:String(600001+i)})),records=Object.fromEntries(stocks.map((s,i)=>[s.code,record(s.code,i<3?'sell':'none')]));const c=poolSignalCounts(stocks,records,now);assert.equal(c.buy,6);assert.equal(c.sell,0);assert.equal(c.none,0);assert.equal(c.buy+c.sell+c.none+c.incomplete+c.pending,c.all);
+ for(const r of Object.values(records)){assert.equal(poolSignalState(r,now),'buy');assert.notEqual(signalState(r,now),'buy');assert.equal(poolSignalState({...r,timing:{...r.timing,buy_ma20:{passed:false}}},now),r.state);assert.notEqual(poolSignalState(r,new Date('2026-11-06T10:35:00+08:00')),'buy')}
+});
+test('old-date events, future events, old rule and non-golden-cross candidates cannot be promoted',()=>{const r=record('600001');for(const time of ['2026-11-04T10:30:00+08:00','2026-11-05T16:00:00+08:00'])assert.equal(poolSignalState({...r,timing:{...r.timing,bottom:{...r.timing.bottom,second_time:time}}},now),'none');assert.equal(poolSignalState({...r,rule:'old'},now),'stale');assert.equal(poolSignalState({...r,timing:{...r.timing,bottom:{...r.timing.bottom,mode:'pivot'}}},now),'none')});

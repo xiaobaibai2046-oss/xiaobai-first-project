@@ -30,4 +30,15 @@ export function signalState(record,now=new Date()){
  if(record.dependencies?.hourly&&(!record.hourly_as_of||record.hourly_as_of!==expectedSignalTime(now)))return 'stale';return record.state;
 }
 export function signalCounts(stocks,records,now=new Date()){const counts={all:stocks.length,buy:0,sell:0,none:0,incomplete:0,pending:0,unscanned:0,stale:0};for(const s of stocks){const k=signalState(records[s.code],now);counts[k]++;if(k==='unscanned'||k==='stale')counts.pending++}return counts}
+// Navigation retains verified signals from the current target trading session.
+// This does not change scanner freshness or claim a new signal on the latest bar.
+export function poolSignalState(record,now=new Date()){
+ const state=signalState(record,now),target=expectedSignalTime(now),event=record?.timing?.bottom;
+ if(['buy','sell','none'].includes(state)&&record.hourly_as_of===target&&event?.mode==='gold_cross_dif'&&event.second_time?.slice(0,10)===target.slice(0,10)&&Date.parse(event.second_time)<=Date.parse(target)&&record.timing?.buy_ma20?.passed)return 'buy';
+ return state;
+}
+export function poolSignalCounts(stocks,records,now=new Date()){
+ const counts={all:stocks.length,buy:0,sell:0,none:0,incomplete:0,pending:0,unscanned:0,stale:0};
+ for(const stock of stocks){const state=poolSignalState(records[stock.code],now);counts[state]++;if(['unscanned','stale'].includes(state))counts.pending++}return counts;
+}
 export function mergeSignals(old,incoming,codes){const out={...old};for(const [code,r] of Object.entries(incoming||{})){if(!r||typeof r!=='object'||!codes.has(code)||r.code!==code||r.rule!==SIGNAL_RULE||!['buy','sell','none','incomplete'].includes(r.state)||!Array.isArray(r.reasons)||!Number.isFinite(Date.parse(r.checked_at)))continue;if(!out[code]||out[code].rule!==SIGNAL_RULE||Date.parse(r.checked_at)>=Date.parse(out[code].checked_at))out[code]=r}return out}
