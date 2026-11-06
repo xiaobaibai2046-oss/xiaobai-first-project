@@ -22,7 +22,7 @@ def scan_due(snapshot,pool,now,expected_rule=None,expected_generation=None):
     results=snapshot.get('results',{}) if not expected_rule or snapshot.get('rule')==expected_rule else {};stocks=pool.get('stocks',[])
     if expected_generation:results={code:r for code,r in results.items() if r.get('market_generation')==expected_generation}
     checked=sum(results.get(s['code'],{}).get('checked_session')==target for s in stocks)
-    valid=sum(results.get(s['code'],{}).get('checked_session')==target and results.get(s['code'],{}).get('hourly_as_of')==target for s in stocks)
+    valid=sum(results.get(s['code'],{}).get('checked_session')==target and results.get(s['code'],{}).get('hourly_as_of')==target and results.get(s['code'],{}).get('state') in ('buy','sell','none') for s in stocks)
     # A small, explicitly incomplete tail must not cause repeated paid full-pool runs.
     complete=bool(stocks) and checked==len(stocks) and valid/len(stocks)>=0.95
     return {'run':not complete,'reason':'slot_already_checked' if complete else 'target_slot_not_verified','target':target,'checked':checked,'hourly_current':valid,'pool_size':len(stocks)}

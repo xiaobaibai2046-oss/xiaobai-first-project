@@ -8,7 +8,7 @@ class DueTests(unittest.TestCase):
         pool={'stocks':[{'code':str(i)} for i in range(100)]}
         now=dt.datetime.fromisoformat('2026-11-06T10:35:00+08:00');target='2026-11-06T10:30:00+08:00'
         self.assertTrue(module.scan_due({},pool,now)['run'])
-        results={str(i):{'checked_session':target,'hourly_as_of':target if i<98 else None} for i in range(100)}
+        results={str(i):{'checked_session':target,'hourly_as_of':target if i<98 else None,'state':'none' if i<98 else 'incomplete'} for i in range(100)}
         self.assertFalse(module.scan_due({'results':results},pool,now)['run'])
         self.assertTrue(module.scan_due({'results':results},pool,now.replace(hour=11,minute=35))['run'])
         self.assertTrue(module.scan_due({},pool,now.replace(hour=18))['run'])
@@ -17,6 +17,8 @@ class DueTests(unittest.TestCase):
         pool={'stocks':[{'code':'600519'}]};now=dt.datetime.fromisoformat('2026-11-06T10:45:00+08:00')
         self.assertTrue(module.scan_due({'results':{'600519':{'checked_session':'2026-11-06T10:30:00+08:00','hourly_as_of':None}}},pool,now)['run'])
         self.assertFalse(module.scan_due({},pool,now.replace(day=7))['run'])
+        failed={'results':{'600519':{'checked_session':'2026-11-06T10:30:00+08:00','hourly_as_of':'2026-11-06T10:30:00+08:00','state':'incomplete'}}}
+        self.assertTrue(module.scan_due(failed,pool,now)['run'])
 
     def test_bounded_retry_and_strategy_migration(self):
         state={};result={'run':True,'target':'2026-11-06T10:30:00+08:00'}
