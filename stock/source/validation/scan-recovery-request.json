@@ -1,0 +1,1 @@
+{"run_id":42152476641,"obsolete_sha":"e541d63a0aa1c8340402a0b530f30f563f8ea5d5","reason":"Stop obsolete intraday parser run after two official real-data verification successes; let queued repaired official scan proceed without duplicate paid requests."}

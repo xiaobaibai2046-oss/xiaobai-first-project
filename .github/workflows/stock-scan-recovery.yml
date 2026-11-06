@@ -1,0 +1,33 @@
+name: Recover obsolete stock scan
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/scan-recovery-request.json']
+permissions:
+  contents: read
+  actions: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cancel only the explicitly obsolete parser run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          r=json.loads(Path('stock/source/validation/scan-recovery-request.json').read_text())
+          assert isinstance(r['run_id'],int) and r['run_id']>0
+          base='repos/'+os.environ['REPOSITORY']+'/actions/runs/'+str(r['run_id'])
+          p=subprocess.run(['gh','api',base],capture_output=True,text=True,check=True)
+          data=json.loads(p.stdout)
+          if data['head_sha']!=r['obsolete_sha']:raise RuntimeError('Run SHA changed; refusing cancellation')
+          if data['status']!='completed':
+              subprocess.run(['gh','api','--method','POST',base+'/cancel'],check=True)
+              print('Obsolete scan cancellation requested; repaired scan remains queued.')
+          else:print('Obsolete scan already completed; no cancellation needed.')
+          PY
