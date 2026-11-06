@@ -1,0 +1,27 @@
+name: Repair stock scheduler registration
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/scheduler-repair-request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify default branch and re-enable only the stock timers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python stock/source/scripts/repair-scheduler.py
+      - name: Preserve safe registration audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stock/source/validation/scheduler-repair.json
+          git commit -m "Record stock scheduler re-registration API results"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -1,0 +1,1 @@
+{"reason":"11:35 and same-workflow catch-up schedules created no run; re-register existing stock workflow and use a separate free GitHub watchdog without new accounts","workflows":["stock-signals.yml","stock-watchdog.yml"],"require_natural_schedule_observation":true}

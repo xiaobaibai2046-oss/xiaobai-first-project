@@ -1,18 +1,22 @@
 name: Update stock signals
-run-name: Stock signals · ${{ github.event_name }} · ${{ github.sha }}
+run-name: Stock signals · ${{ inputs.trigger_source || github.event_name }} · ${{ github.sha }}
 on:
   push:
     branches: [main]
     # Explicit manual requests only; code publication does not start paid collection.
     paths: ['stock/source/validation/pool-request.json']
   workflow_dispatch:
+    inputs:
+      trigger_source:
+        description: 'Manual request or the separate existing-account watchdog'
+        type: choice
+        default: manual
+        options: [manual, github_watchdog]
   schedule:
     # Beijing 10:35, 11:35, 14:05, 15:05; exchange-calendar gate skips holidays.
     # GitHub schedules are best effort and can run late.
     - cron: '35 2,3 * * 1-5'
     - cron: '5 6,7 * * 1-5'
-    # Low-cost catch-up checks through Beijing 23:50; collection only if a target slot is missing.
-    - cron: '*/10 2-15 * * 1-5'
 permissions:
   contents: write
   pages: write
@@ -53,7 +57,7 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Restore bounded scheduled retry counters
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.trigger_source == 'github_watchdog'
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/stock-schedule-state.json
@@ -61,7 +65,7 @@ jobs:
           restore-keys: stock-schedule-state-v1-
       - name: Check whether the latest due slot was already verified
         id: due
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.trigger_source == 'github_watchdog'
         env:
           TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
           TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
@@ -70,11 +74,11 @@ jobs:
       - name: Decide scheduled versus explicitly requested run
         id: decision
         env:
-          EVENT: ${{ github.event_name }}
+          AUTOMATIC: ${{ github.event_name == 'schedule' || inputs.trigger_source == 'github_watchdog' }}
           SESSION: ${{ steps.calendar.outputs.is_session == 'true' || steps.refreshed.outputs.is_session == 'true' }}
           DUE: ${{ steps.due.outputs.run }}
         run: |
-          if [ "$EVENT" != "schedule" ] || { [ "$SESSION" = "true" ] && [ "$DUE" = "true" ]; }; then
+          if [ "$AUTOMATIC" != "true" ] || { [ "$SESSION" = "true" ] && [ "$DUE" = "true" ]; }; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
