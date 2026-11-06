@@ -1,9 +1,9 @@
 {
-  "reason": "Verify corrected separation of future vendor 13:00 label from actual completed 10:30 bar with two real official calls",
+  "reason": "Verify actual official 11:30 completed bars at afternoon recovery time; inspect current forming timestamps without fallback",
   "stocks": [
     "600519",
     "000001"
   ],
   "max_sdk_calls": 4,
-  "retry": 2
+  "retry": 3
 }
