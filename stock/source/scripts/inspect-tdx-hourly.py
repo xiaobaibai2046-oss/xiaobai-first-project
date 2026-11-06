@@ -21,7 +21,8 @@ try:
                     out['minute_tail']={'times':minutes.get('Close',{}).get('index',[])[-5:]}
                     try:
                         fixed=reconstruct_today(raw,minutes,code,dt.datetime.now(SH),120)
-                        out['reconstructed']={'status':'success','last_time':fixed['last_time'],'bar_count':len(fixed['bars']),'composition':fixed['composition'],'tail':fixed['bars'][-2:]}
+                        from cloud_cache import expected
+                        out['reconstructed']={'status':'success' if fixed['last_time']==expected(dt.datetime.now(SH),'hourly') else 'partial','last_time':fixed['last_time'],'bar_count':len(fixed['bars']),'composition':fixed['composition'],'tail':fixed['bars'][-2:]}
                     except TdxError as e:out['reconstructed']={'status':e.category}
             report['results'][code]=out
         except TdxError as e:report['results'][code]={'status':e.category}

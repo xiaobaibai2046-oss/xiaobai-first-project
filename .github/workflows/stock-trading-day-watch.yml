@@ -1,0 +1,27 @@
+name: Bounded trading-day recovery watch
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/trading-day-watch-request.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: stock-trading-day-watch
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Watch today's remaining update slots with a bounded process clock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -u stock/source/scripts/trading-day-watch.py
