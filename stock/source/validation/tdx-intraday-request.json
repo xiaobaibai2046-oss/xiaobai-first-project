@@ -1,9 +1,9 @@
 {
-  "reason": "Verify official 5-minute reconstruction of completed 11:30 cash-session bar without relabelling native 13:00",
+  "reason": "Test per-stock full OHLC and volume agreement of SDK 13:00 against canonical closed 11:30 backup bar; no unverified time relabelling",
   "stocks": [
     "600519",
     "000001"
   ],
   "max_sdk_calls": 4,
-  "retry": 4
+  "retry": 5
 }

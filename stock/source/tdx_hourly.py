@@ -50,3 +50,37 @@ def reconstruct_today(raw,minutes,code,now,count=320,adjustment='none'):
     if not derived:raise TdxError('unavailable')
     bars=(bars+derived)[-count:]
     return {'code':code,'name':code,'bars':bars,'timeframe':'1h','last_time':bars[-1]['endTime'],'adjustment':adjustment,'source':SOURCE+'（当日由官方5分钟K线合成）','provider':'tdx_official','volume_unit':'手（SDK股数÷100）','amount_unit':'元（SDK万元×10000）','composition':{'minute_count':12,'canonical_native_matches':matched,'session_ends':list(ENDS),'missing_bars_filled':False}}
+
+
+def verify_midday_boundary(raw,backup,code,now,adjustment='none'):
+    """Correct a unique lunch-boundary label ONLY after per-symbol OHLC+volume agreement.
+    Prices/volume remain the untouched official SDK values. No unverified label change.
+    """
+    import copy
+    if adjustment!='none' or backup.get('adjustment')!='none' or backup.get('code')!=code:raise TdxError('schema')
+    day=now.astimezone(SH).date().isoformat();target=day+'T11:30:00+08:00'
+    if dt.datetime.fromisoformat(target)>now:raise TdxError('unavailable')
+    bar=next((b for b in backup.get('bars',[]) if b.get('endTime')==target),None)
+    if not bar:raise TdxError('unavailable')
+    sid=symbol(code)
+    try:
+        index=raw['Close']['index'];positions=[]
+        for i,v in enumerate(index):
+            t=dt.datetime.fromisoformat(v);t=t.replace(tzinfo=SH) if t.tzinfo is None else t.astimezone(SH)
+            if t.date().isoformat()==day and t.strftime('%H:%M:%S')=='11:30:00':raise TdxError('schema')
+            if t.date().isoformat()==day and t.strftime('%H:%M:%S')=='13:00:00':positions.append(i)
+        if len(positions)!=1:raise TdxError('schema')
+        i=positions[0]
+        for field,k in [('Open','open'),('High','high'),('Low','low'),('Close','close')]:
+            if raw[field]['index']!=index or abs(float(raw[field]['columns'][sid][i])-bar[k])>1e-8:raise TdxError('schema')
+        lots=float(raw['Volume']['columns'][sid][i])/100
+        if lots<=0 or abs(lots-bar['volume'])>1e-6:raise TdxError('schema')
+        corrected=copy.deepcopy(raw)
+        for field in FIELDS:
+            if corrected[field]['index']!=index:raise TdxError('schema')
+            corrected[field]['index'][i]=day+' 11:30:00'
+        data=normalize_bars(corrected,code,'1h',now,adjustment)
+    except (KeyError,TypeError,ValueError):raise TdxError('schema')
+    data['source']=SOURCE+'（午间标签经备用源价量校验）'
+    data['boundary_verification']={'original_label':day+'T13:00:00+08:00','normalized_end':target,'price_fields_matched':['open','high','low','close'],'volume_matched':True,'verification_source':backup.get('source'),'official_price_volume_modified':False}
+    return data
