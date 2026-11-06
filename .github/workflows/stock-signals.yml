@@ -11,6 +11,8 @@ on:
     # GitHub schedules are best effort and can run late.
     - cron: '35 2,3 * * 1-5'
     - cron: '5 6,7 * * 1-5'
+    # Low-cost catch-up checks through Beijing 23:50; collection only if a target slot is missing.
+    - cron: '*/10 2-15 * * 1-5'
 permissions:
   contents: write
   pages: write
@@ -50,17 +52,22 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+      - name: Check whether the latest due slot was already verified
+        id: due
+        if: github.event_name == 'schedule'
+        run: python stock/source/scripts/scan-due.py
       - name: Decide scheduled versus explicitly requested run
         id: decision
         env:
           EVENT: ${{ github.event_name }}
           SESSION: ${{ steps.calendar.outputs.is_session == 'true' || steps.refreshed.outputs.is_session == 'true' }}
+          DUE: ${{ steps.due.outputs.run }}
         run: |
-          if [ "$EVENT" != "schedule" ] || [ "$SESSION" = "true" ]; then
+          if [ "$EVENT" != "schedule" ] || { [ "$SESSION" = "true" ] && [ "$DUE" = "true" ]; }; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "A-share market closed today; scheduled paid collection skipped."
+            echo "Scheduled paid collection skipped: exchange closed, before update slot, or target slot already verified."
           fi
   quick-scan:
     needs: trading-day

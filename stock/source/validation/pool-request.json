@@ -1,6 +1,6 @@
 {
-  "requested_at": "2026-11-05T15:59:57.776676+00:00",
-  "reason": "Apply user confirmed 60-minute golden-cross DIF + as-of daily MA20 rule; rescan full annual ROE > 10% pool",
+  "requested_at": "2026-11-06T02:46:46.049604+00:00",
+  "reason": "Recover missing 2026-11-06 Beijing 10:35 update immediately; verify latest completed 10:30 hourly bars",
   "strategy": "roe2025-gold-cross-dif-v6-near5-dailyma20",
   "official_primary": true,
   "reuse_official_market_cache": true
