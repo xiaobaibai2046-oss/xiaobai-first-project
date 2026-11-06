@@ -11,7 +11,7 @@ export async function mountPool({esc,download,onSelect}){
   try{
    const stamp=Date.now(),urls=[new URL('pool-signals.json?t='+stamp,location.href).href,'https://raw.githubusercontent.com/xiaobaibai2046-oss/xiaobai-first-project/main/stock/pool-signals.json?t='+stamp];
    let saved=null;const failures=[];
-   for(const url of urls){try{const response=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('HTTP '+response.status);const candidate=await response.json();if(candidate.rule!==SIGNAL_RULE||!candidate.results)throw Error('页面与快照发布版本不同步，已拒绝旧规则数据');saved=candidate;break}catch(e){failures.push(e.message)}}
+   for(const url of urls){try{const response=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('HTTP '+response.status);const candidate=await response.json();if(candidate.rule!==SIGNAL_RULE||!candidate.results)throw Error('页面与快照发布版本不同步，已拒绝旧规则数据');if(!saved||Date.parse(candidate.finished_at)>Date.parse(saved.finished_at))saved=candidate;if(pool&&!poolSignalCounts(pool.stocks,cloudOnly(candidate.results)).pending)break}catch(e){failures.push(e.message)}}
    if(!saved)throw Error([...new Set(failures)].join('；'));
    if(!pool)return;records=mergeSignals(records,cloudOnly(saved.results),new Set(pool.stocks.map(s=>s.code)));if(!background?.finished_at||Date.parse(saved.finished_at)>=Date.parse(background.finished_at))background=saved;saveSoon();render();showBackground();
   }
