@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-06T05:28:50.684173+00:00",
+  "workflows": [
+    {
+      "file": "stock-signals.yml",
+      "id": 398915910,
+      "before": "active",
+      "after": "active"
+    },
+    {
+      "file": "stock-watchdog.yml",
+      "id": 408975399,
+      "before": "active",
+      "after": "active"
+    }
+  ],
+  "default_branch": "main",
+  "archived": false,
+  "natural_schedule_verified": false
+}
