@@ -5,6 +5,10 @@ on:
       TDX_DATA_KEY:
         required: false
     inputs:
+      artifact_prefix:
+        type: string
+        required: false
+        default: stock-signals
       phase:
         required: true
         type: string
@@ -56,7 +60,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/stock-market-cache
-          key: market-bars-v1-${{ matrix.shard }}-${{ github.run_id }}-${{ inputs.phase }}-${{ github.run_attempt }}
+          key: market-bars-v1-${{ matrix.shard }}-${{ inputs.artifact_prefix }}-${{ github.run_id }}-${{ inputs.phase }}-${{ github.run_attempt }}
           restore-keys: market-bars-v1-${{ matrix.shard }}-
       - name: Scan with bounded concurrency and retain partial results
         working-directory: stock/source
@@ -74,7 +78,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: stock-signals-${{ inputs.phase }}-${{ matrix.shard }}
+          name: ${{ inputs.artifact_prefix }}-${{ inputs.phase }}-${{ matrix.shard }}
           path: stock/source/scan-results/shard-${{ matrix.shard }}.json
           if-no-files-found: warn
           retention-days: 2

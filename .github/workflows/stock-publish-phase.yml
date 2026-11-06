@@ -2,6 +2,10 @@ name: Stock publish phase
 on:
   workflow_call:
     inputs:
+      artifact_prefix:
+        type: string
+        required: false
+        default: stock-signals
       phase:
         required: true
         type: string
@@ -24,7 +28,7 @@ jobs:
           node-version: '24'
       - uses: actions/download-artifact@v4
         with:
-          pattern: stock-signals-${{ inputs.phase }}-*
+          pattern: ${{ inputs.artifact_prefix }}-${{ inputs.phase }}-*
           path: stock/source/scan-results
           merge-multiple: true
       - name: Merge current records and compute actual coverage

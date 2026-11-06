@@ -1,0 +1,127 @@
+name: Recover today's remaining stock update slots
+on:
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/remaining-slots-request.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: stock-signals
+  cancel-in-progress: false
+jobs:
+  wait14:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      run: ${{ steps.due.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait until 14:05 on the explicitly requested trading date
+        id: clock
+        run: python -u stock/source/scripts/wait-update-slot.py --slot 14:05
+      - name: Read latest snapshot and skip if already verified
+        id: due
+        if: steps.clock.outputs.ready == 'true'
+        run: |
+          git fetch origin main
+          git checkout --detach origin/main
+          python stock/source/scripts/scan-due.py
+  quick14:
+    needs: wait14
+    if: needs.wait14.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-recovery-1405
+  publish14quick:
+    needs: [wait14, quick14]
+    if: always() && needs.wait14.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-recovery-1405
+  complete14:
+    needs: [wait14, publish14quick]
+    if: always() && needs.wait14.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-recovery-1405
+  publish14:
+    needs: [wait14, complete14]
+    if: always() && needs.wait14.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-recovery-1405
+  wait15:
+    needs: [wait14, publish14]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      run: ${{ steps.due.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait until 15:05 on the explicitly requested trading date
+        id: clock
+        run: python -u stock/source/scripts/wait-update-slot.py --slot 15:05
+      - name: Read latest snapshot and skip if already verified
+        id: due
+        if: steps.clock.outputs.ready == 'true'
+        run: |
+          git fetch origin main
+          git checkout --detach origin/main
+          python stock/source/scripts/scan-due.py
+  quick15:
+    needs: wait15
+    if: needs.wait15.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-recovery-1505
+  publish15quick:
+    needs: [wait15, quick15]
+    if: always() && needs.wait15.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-recovery-1505
+  complete15:
+    needs: [wait15, publish15quick]
+    if: always() && needs.wait15.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-recovery-1505
+  publish15:
+    needs: [wait15, complete15]
+    if: always() && needs.wait15.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-recovery-1505
