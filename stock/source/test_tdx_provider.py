@@ -53,6 +53,15 @@ class TdxTests(unittest.TestCase):
         self.assertEqual(len(d['bars']),1);self.assertEqual(d['forming_bar']['date'],'2026-11-03')
         h=normalize_bars(frames(period='1h'),'600519','1h',dt.datetime(2026,11,3,11,tzinfo=SH))
         self.assertEqual(len(h['bars']),1);self.assertIn('10:30',h['last_time'])
+    def test_vendor_future_intraday_label_does_not_discard_real_closed_hour(self):
+        raw=frames(period='1h')
+        for frame in raw.values():frame['index']=['2026-11-03 10:30:00','2026-11-03 13:00:00']
+        value=normalize_bars(raw,'600519','1h',dt.datetime(2026,11,3,10,51,tzinfo=SH))
+        self.assertEqual(len(value['bars']),1);self.assertEqual(value['bars'][0]['endTime'],'2026-11-03T10:30:00+08:00')
+        self.assertEqual(value['forming_bar']['endTime'],'2026-11-03T13:00:00+08:00')
+        # The vendor label is not remapped; if it is already past, it must still fail strict closed-bar validation.
+        with self.assertRaises(TdxError):normalize_bars(raw,'600519','1h',dt.datetime(2026,11,3,14,5,tzinfo=SH))
+
     def test_unverified_columns_or_prices_fail_closed(self):
         for modify in [lambda d:d['Close']['columns']['600519.SH'].pop(),lambda d:d['High']['columns']['600519.SH'].__setitem__(0,1),lambda d:d['Low'].__setitem__('index',[])]:
             d=frames();modify(d)

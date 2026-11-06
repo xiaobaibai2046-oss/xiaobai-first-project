@@ -79,7 +79,7 @@ def normalize_bars(payload,code,period,now=None,adjustment='none'):
             bar['date' if period=='1d' else 'endTime']=key
             if period=='1d':complete=stamp.date()<now.date() or stamp.date()==now.date() and now.hour>=15
             else:complete=stamp<=now
-            if period=='1h' and stamp.strftime('%H:%M') not in ('10:30','11:30','14:00','15:00'):raise TdxError('schema')
+            if period=='1h' and complete and stamp.strftime('%H:%M') not in ('10:30','11:30','14:00','15:00'):raise TdxError('schema')
             (bars if complete else forming).append(bar)
         bars.sort(key=lambda b:b.get('date',b.get('endTime')))
         if not bars:raise TdxError('unavailable')
