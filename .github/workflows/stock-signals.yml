@@ -52,9 +52,18 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+      - name: Restore bounded scheduled retry counters
+        if: github.event_name == 'schedule'
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-schedule-state.json
+          key: stock-schedule-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: stock-schedule-state-v1-
       - name: Check whether the latest due slot was already verified
         id: due
         if: github.event_name == 'schedule'
+        env:
+          SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
         run: python stock/source/scripts/scan-due.py
       - name: Decide scheduled versus explicitly requested run
         id: decision
