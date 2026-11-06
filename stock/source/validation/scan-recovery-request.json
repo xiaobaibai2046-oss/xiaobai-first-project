@@ -1,6 +1,6 @@
 {
-  "run_id": 42152476641,
-  "obsolete_sha": "e541d63a0aa1c8340402a0b530f30f563f8ea5d5",
-  "reason": "Stop obsolete intraday parser run after two official real-data verification successes; let queued repaired official scan proceed without duplicate paid requests.",
-  "retry": 2
+  "run_id": 42170097450,
+  "obsolete_sha": "c1d4faa45497ed2c8129ab156f24651c28e8b81d",
+  "reason": "Replace API-dispatch-based recovery watch with the already running direct timed workflow graph 42170937527. Stop the obsolete loop to avoid duplicate requests.",
+  "retry": 3
 }

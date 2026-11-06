@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 2
     steps:
       - uses: actions/checkout@v4
-      - name: Cancel only the explicitly obsolete parser run
+      - name: Cancel only the explicitly obsolete recovery run
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
