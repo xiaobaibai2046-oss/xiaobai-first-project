@@ -29,3 +29,34 @@ class DueTests(unittest.TestCase):
         self.assertTrue(module.scan_due(snapshot,pool,now,'current')['run'])
 
         snapshot['rule']='current';self.assertTrue(module.scan_due(snapshot,pool,now,'current','new-source')['run'])
+
+class BoundedWaitTests(unittest.TestCase):
+    def test_process_clock_reaches_slot_without_an_external_event(self):
+        import datetime,os,runpy,sys,tempfile
+        from unittest.mock import patch
+        original=datetime.datetime
+        class Clock(original):
+            current=original.fromisoformat('2026-11-06T14:04:50+08:00')
+            @classmethod
+            def now(cls,tz=None):return cls.current.astimezone(tz) if tz else cls.current
+        sleeps=[]
+        def advance(seconds):sleeps.append(seconds);Clock.current+=datetime.timedelta(seconds=seconds)
+        script=Path(__file__).parent/'scripts/wait-update-slot.py'
+        with tempfile.TemporaryDirectory() as folder:
+            output=Path(folder)/'output'
+            with patch.dict(os.environ,{'GITHUB_OUTPUT':str(output)}),patch.object(sys,'argv',[str(script),'--slot','14:05']),patch('datetime.datetime',Clock),patch('time.sleep',advance):
+                runpy.run_path(str(script),run_name='__main__')
+            self.assertEqual(output.read_text(),'ready=true\n');self.assertEqual(sum(sleeps),10)
+    def test_expired_watch_does_not_collect(self):
+        import datetime,os,runpy,sys,tempfile
+        from unittest.mock import patch
+        original=datetime.datetime
+        class Clock(original):
+            @classmethod
+            def now(cls,tz=None):return original.fromisoformat('2026-11-06T15:21:00+08:00').astimezone(tz)
+        script=Path(__file__).parent/'scripts/wait-update-slot.py'
+        with tempfile.TemporaryDirectory() as folder:
+            output=Path(folder)/'output'
+            with patch.dict(os.environ,{'GITHUB_OUTPUT':str(output)}),patch.object(sys,'argv',[str(script),'--slot','15:05']),patch('datetime.datetime',Clock),patch('time.sleep') as sleep:
+                runpy.run_path(str(script),run_name='__main__')
+            self.assertEqual(output.read_text(),'ready=false\n');sleep.assert_not_called()
