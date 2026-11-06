@@ -25,3 +25,5 @@ class DueTests(unittest.TestCase):
         pool={'stocks':[{'code':'600519'}]};now=dt.datetime.fromisoformat('2026-11-06T10:45:00+08:00');target='2026-11-06T10:30:00+08:00'
         snapshot={'rule':'old','results':{'600519':{'checked_session':target,'hourly_as_of':target}}}
         self.assertTrue(module.scan_due(snapshot,pool,now,'current')['run'])
+
+        snapshot['rule']='current';self.assertTrue(module.scan_due(snapshot,pool,now,'current','new-source')['run'])

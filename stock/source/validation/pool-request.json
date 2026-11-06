@@ -1,6 +1,6 @@
 {
-  "requested_at": "2026-11-06T02:46:46.049604+00:00",
-  "reason": "Recover missing 2026-11-06 Beijing 10:35 update immediately; verify latest completed 10:30 hourly bars",
+  "requested_at": "2026-11-06T02:55:03.471190+00:00",
+  "reason": "Refresh 10:30 slot with corrected official SDK closed-bar parser after successful real two-stock verification; replace fallback with primary when available",
   "strategy": "roe2025-gold-cross-dif-v6-near5-dailyma20",
   "official_primary": true,
   "reuse_official_market_cache": true

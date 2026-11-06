@@ -63,6 +63,8 @@ jobs:
         id: due
         if: github.event_name == 'schedule'
         env:
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
           SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
         run: python stock/source/scripts/scan-due.py
       - name: Decide scheduled versus explicitly requested run

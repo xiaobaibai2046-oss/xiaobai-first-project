@@ -1,7 +1,10 @@
 {
   "tdx_enabled": true,
   "primary": "tdx_official",
-  "refresh_generation": "tdx-full-pool-2026-11-05-v1",
-  "max_calls_per_shard": {"quick": 150, "complete": 750},
+  "refresh_generation": "tdx-intraday-closed-bars-2026-11-06-v2",
+  "max_calls_per_shard": {
+    "quick": 150,
+    "complete": 750
+  },
   "note": "User authorized full-pool official collection; raw SDK calls are not billing units. Quotes/ticks/funds are not polled by the pool scanner."
 }
