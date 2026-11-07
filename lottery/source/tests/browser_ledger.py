@@ -17,6 +17,7 @@ with sync_playwright() as p:
     page.goto(url)
     page.wait_for_selector('.zone')
     page.locator('#structured').uncheck()
+    page.locator('#blue-plan').select_option('all');page.locator('#count').fill('5');page.locator('#exclude-history').check()
     assert page.locator('#save-record').is_disabled()
     page.locator('#generate').click()
     assert not page.locator('#save-record').is_disabled()
@@ -53,7 +54,7 @@ with sync_playwright() as p:
     assert page.evaluate("JSON.parse(localStorage.getItem('ssq-ledger-v1'))[0].resultDraw.blue")==1
     # A backup restored into a clean browser reconstructs the record and locked control.
     fresh=browser.new_context(viewport={'width':1280,'height':900})
-    other=fresh.new_page();other.goto(url);other.wait_for_selector('.zone')
+    other=fresh.new_page();other.clock.install(time=datetime(2026,11,4,0,0,tzinfo=timezone.utc));other.goto(url);other.wait_for_selector('.zone')
     other.locator('#import-ledger').set_input_files(path)
     other.wait_for_function("document.getElementById('ledger-summary').textContent.includes('1期待开奖')")
     restored=json.loads(other.evaluate("localStorage.getItem('ssq-ledger-v1')"))

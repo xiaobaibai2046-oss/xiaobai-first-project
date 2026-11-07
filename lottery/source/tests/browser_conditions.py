@@ -11,6 +11,7 @@ with sync_playwright() as p:
     page.clock.install(time=datetime(2026,11,4,0,0,tzinfo=timezone.utc))
     errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto(url);page.wait_for_selector('.zone')
+    page.locator('#blue-plan').select_option('all');page.locator('#count').fill('5');page.locator('#exclude-history').check();page.locator('#structured').check()
     assert page.locator('#structured').is_checked()
     assert page.locator('#run-scope').input_value()=='zoneHistory'
     assert '已排除19组三连号' in page.locator('#condition-info').inner_text()

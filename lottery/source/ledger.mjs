@@ -1,6 +1,7 @@
 import {key,randomInt,zoneStats} from './core.mjs';
 import {checkSelection} from './conditions.mjs';
-export const LEDGER_VERSION=1;
+import {blueModeOf,blueMultiplier,checkBlues,drawBlues} from './bets.mjs';
+export const LEDGER_VERSION=2;
 export function randomControl(count,rng=randomInt){
   const out=[],seen=new Set();let attempts=0;
   while(out.length<count&&attempts++<100000){
@@ -17,8 +18,11 @@ export function checkGroups(groups){
   for(const r of groups)if(!Array.isArray(r)||r.length!==6||new Set(r).size!==6||r.some(n=>!Number.isInteger(n)||n<1||n>33))throw new Error('六红组合无效');
   if(new Set(groups.map(key)).size!==groups.length)throw new Error('批次内存在重复六红');
 }
-export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,now=new Date().toISOString()}){
+export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,blueMode='all',blues=[],excludeHistory=true,now=new Date().toISOString()}){
   checkGroups(groups);
+  const multiplier=blueMultiplier(blueMode);
+  if(blueMode==='single')checkBlues(blues,groups.length);
+  if(typeof excludeHistory!=='boolean')throw new Error('历史排除选项无效');
   if(!['simulation','purchased'].includes(mode))throw new Error('记录类型无效');
   if(!/^20\d{5}$/.test(target)||Number(target.slice(4))<1||target<=draws.at(-1).issue)throw new Error('目标期号必须晚于当前数据最新期号');
   if(records.some(r=>r.target===target))throw new Error('该期已有记录；每期仅保留一批，避免事后挑选');
@@ -29,20 +33,26 @@ export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',re
   const s=zoneStats(draws,zone);
   if(!s.trigger)throw new Error('所选区未触发规则');
   const past=new Set(draws.map(d=>key(d.red)));
-  if(groups.some(r=>r.some(n=>n>=zone*11+1&&n<=zone*11+11)||past.has(key(r))))throw new Error('组合不符合缺区或历史排除规则');
+  if(groups.some(r=>r.some(n=>n>=zone*11+1&&n<=zone*11+11)||(excludeHistory&&past.has(key(r)))))throw new Error('组合不符合缺区或历史排除规则');
   if(selection)checkSelection(groups,selection,zone);
+  if(selection&&(selection.excludeHistory??true)!==excludeHistory)throw new Error('历史排除选项与已生成组合不一致');
   return {version:LEDGER_VERSION,id:globalThis.crypto.randomUUID(),savedAt:now,cutoff:new Date(deadline).toISOString(),target,targetDate,mode,zone,
-    source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current},
-    groups:groups.map(r=>[...r]),control:randomControl(groups.length),cost:groups.length*32,...(selection?{selection:JSON.parse(JSON.stringify(selection))}:{})};
+    source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current,excludeHistory},
+    groups:groups.map(r=>[...r]),control:randomControl(groups.length),blueMode,blues:blueMode==='single'?[...blues]:[],controlBlues:blueMode==='single'?drawBlues(groups.length):[],cost:groups.length*multiplier*2,...(selection?{selection:JSON.parse(JSON.stringify(selection))}:{})};
 }
 export function validateRecord(r){
-  if(!r||r.version!==1||typeof r.id!=='string'||!/^[\da-f-]{36}$/i.test(r.id)||!/^20\d{5}$/.test(r.target)||!['simulation','purchased'].includes(r.mode)||!Number.isInteger(r.zone)||r.zone<0||r.zone>2)throw new Error('账本记录格式无效');
+  if(!r||![1,2].includes(r.version)||typeof r.id!=='string'||!/^[\da-f-]{36}$/i.test(r.id)||!/^20\d{5}$/.test(r.target)||!['simulation','purchased'].includes(r.mode)||!Number.isInteger(r.zone)||r.zone<0||r.zone>2)throw new Error('账本记录格式无效');
   checkGroups(r.groups);checkGroups(r.control);
-  if(r.control.length!==r.groups.length||r.cost!==r.groups.length*32||!Number.isFinite(Date.parse(r.savedAt))||!Number.isFinite(Date.parse(r.cutoff))||Date.parse(r.savedAt)>=Date.parse(r.cutoff))throw new Error('账本成本或时间无效');
+  const blueMode=blueModeOf(r),multiplier=blueMultiplier(blueMode);
+  if(r.version===1&&(r.blueMode!==undefined||r.blues!==undefined||r.controlBlues!==undefined))throw new Error('旧版账本不可带新版蓝球字段');
+  if(r.version===2){if(blueMode==='single'){checkBlues(r.blues,r.groups.length);checkBlues(r.controlBlues,r.control.length);}else if(!Array.isArray(r.blues)||r.blues.length||!Array.isArray(r.controlBlues)||r.controlBlues.length)throw new Error('全蓝账本字段无效');}
+  if(r.control.length!==r.groups.length||r.cost!==r.groups.length*multiplier*2||!Number.isFinite(Date.parse(r.savedAt))||!Number.isFinite(Date.parse(r.cutoff))||Date.parse(r.savedAt)>=Date.parse(r.cutoff))throw new Error('账本成本或时间无效');
   const date=new Date(Date.parse(r.cutoff)+8*3600000).toISOString().slice(0,10);
   if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule||r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
   if(r.groups.some(g=>g.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)))throw new Error('账本组合包含排除区号码');
+  if(r.rule.excludeHistory!==undefined&&typeof r.rule.excludeHistory!=='boolean')throw new Error('历史排除规则无效');
   if(r.selection)checkSelection(r.groups,r.selection,r.zone);
+  if(r.selection&&(r.selection.excludeHistory??true)!==(r.rule.excludeHistory??true))throw new Error('历史排除规则不一致');
   if(r.resultDraw){const d=r.resultDraw;checkGroups([d.red]);if(d.issue!==r.target||d.date!==r.targetDate||!Number.isInteger(d.blue)||d.blue<1||d.blue>16)throw new Error('账本开奖快照无效');}
   return r;
 }
@@ -57,17 +67,19 @@ export function mergeRecords(current,incoming){
   if(out.length>1000)throw new Error('最多保存1000期记录，请先导出备份');
   return out;
 }
-export function settleGroups(groups,draw){
+export function settleGroups(groups,draw,blueMode='all',blues=[]){
+  const multiplier=blueMultiplier(blueMode);if(blueMode==='single')checkBlues(blues,groups.length);
   const levels=[0,0,0,0,0,0],hits=groups.map(r=>r.filter(n=>draw.red.includes(n)).length);
-  for(const h of hits){
-    if(h===6){levels[0]++;levels[1]+=15;}
-    else if(h===5){levels[2]++;levels[3]+=15;}
-    else if(h===4){levels[3]++;levels[4]+=15;}
-    else if(h===3)levels[4]++;
-    else levels[5]++;
+  for(let i=0;i<hits.length;i++)for(const b of blueMode==='all'?Array.from({length:16},(_,i)=>i+1):[blues[i]]){
+    const h=hits[i],blue=b===draw.blue;
+    if(h===6)levels[blue?0:1]++;
+    else if(h===5)levels[blue?2:3]++;
+    else if(h===4)levels[blue?3:4]++;
+    else if(h===3&&blue)levels[4]++;
+    else if(h<3&&blue)levels[5]++;
   }
   const knownPayout=levels[2]*3000+levels[3]*200+levels[4]*10+levels[5]*5;
-  return {levels,knownPayout,unknownPayout:levels[0]>0||levels[1]>0,first:levels[0],redTotal:hits.reduce((a,b)=>a+b,0),bestRed:Math.max(...hits),cost:groups.length*32};
+  return {levels,knownPayout,unknownPayout:levels[0]>0||levels[1]>0,first:levels[0],second:levels[1],topTwo:levels[0]+levels[1],sixRedGroups:hits.filter(h=>h===6).length,redTotal:hits.reduce((a,b)=>a+b,0),bestRed:Math.max(...hits),cost:groups.length*multiplier*2};
 }
 export function assessRecord(r,draws){
   const current=draws.find(d=>d.issue===r.target),saved=r.resultDraw;
@@ -75,5 +87,5 @@ export function assessRecord(r,draws){
   const draw=current||saved;
   if(!draw)return {status:'pending'};
   if(draw.date!==r.targetDate)return {status:'conflict'};
-  return {status:'settled',draw,strategy:settleGroups(r.groups,draw),control:settleGroups(r.control,draw)};
+  return {status:'settled',draw,strategy:settleGroups(r.groups,draw,blueModeOf(r),r.blues),control:settleGroups(r.control,draw,blueModeOf(r),r.controlBlues)};
 }

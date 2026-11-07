@@ -1,5 +1,5 @@
 import {key,randomInt,zoneStats,absent} from './core.mjs';
-export function conditionPools(draws,zone,{runScope='zoneHistory',exactRun=true}={}){
+export function conditionPools(draws,zone,{runScope='zoneHistory',exactRun=true,excludeHistory=true}={}){
   if(draws.length<50)throw new Error('冷热条件至少需要50期开奖');
   if(!Number.isInteger(zone)||zone<0||zone>2||!['all','recent50','whole','zoneHistory'].includes(runScope)||typeof exactRun!=='boolean')throw new Error('条件选项无效');
   const pool=Array.from({length:33},(_,i)=>i+1).filter(n=>n<zone*11+1||n>zone*11+11);
@@ -15,7 +15,8 @@ export function conditionPools(draws,zone,{runScope='zoneHistory',exactRun=true}
     if(events.length)excludedRuns.push({triple,count:events.length,first:events[0],last:events.at(-1)});
     else runs.push(triple);
   }
-  return {version:1,runLength:3,window:50,runScope,exactRun,hot,cold,frequency,runs,pool,runDrawCount:runScope==='whole'?0:runDraws.length,excludedRuns,windowStart:recent[0].issue,windowEnd:recent.at(-1).issue};
+  if(typeof excludeHistory!=='boolean')throw new Error('历史排除选项无效');
+  return {version:1,runLength:3,window:50,runScope,exactRun,excludeHistory,hot,cold,frequency,runs,pool,runDrawCount:runScope==='whole'?0:runDraws.length,excludedRuns,windowStart:recent[0].issue,windowEnd:recent.at(-1).issue};
 }
 export function structuredCandidates(draws,zone,options={}){
   const summary=conditionPools(draws,zone,options),past=new Set(draws.map(d=>key(d.red))),found=new Map();
@@ -27,7 +28,7 @@ export function structuredCandidates(draws,zone,options={}){
     const red=[...base,random].sort((x,y)=>x-y);
     // Exactly two adjacent edges means a single length-3 run and no extra pair.
     if(exactRun&&red.slice(1).filter((n,i)=>n===red[i]+1).length!==2)continue;
-    const k=key(red);if(past.has(k)||found.has(k))continue;
+    const k=key(red);if((summary.excludeHistory&&past.has(k))||found.has(k))continue;
     found.set(k,{red,roles:{hot:[h],cold:c,triple:[...triple],random}});
     }
   }
