@@ -18,11 +18,13 @@ export function checkGroups(groups){
   for(const r of groups)if(!Array.isArray(r)||r.length!==6||new Set(r).size!==6||r.some(n=>!Number.isInteger(n)||n<1||n>33))throw new Error('六红组合无效');
   if(new Set(groups.map(key)).size!==groups.length)throw new Error('批次内存在重复六红');
 }
-export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,blueMode='all',blues=[],excludeHistory=true,now=new Date().toISOString()}){
+export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,blueMode='all',blues=[],excludeHistory=true,scheme='zone',now=new Date().toISOString()}){
   checkGroups(groups);
   const multiplier=blueMultiplier(blueMode);
   if(blueMode==='single')checkBlues(blues,groups.length);
   if(typeof excludeHistory!=='boolean')throw new Error('历史排除选项无效');
+  if(!['zone','fixed-triple'].includes(scheme))throw new Error('记录方案无效');
+  if(scheme==='fixed-triple'&&(zone!==2||blueMode!=='single'||excludeHistory||selection||groups.some(g=>g.some(n=>n>22)||![10,11,12].every(n=>g.includes(n)))))throw new Error('固定方案必须为01—22、包含10/11/12、每组单蓝且无额外筛选');
   if(!['simulation','purchased'].includes(mode))throw new Error('记录类型无效');
   if(!/^20\d{5}$/.test(target)||Number(target.slice(4))<1||target<=draws.at(-1).issue)throw new Error('目标期号必须晚于当前数据最新期号');
   if(records.some(r=>r.target===target))throw new Error('该期已有记录；每期仅保留一批，避免事后挑选');
@@ -31,13 +33,13 @@ export function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',re
   const targetDate=new Date(deadline+8*3600000).toISOString().slice(0,10);
   if(targetDate.slice(0,4)!==target.slice(0,4)||targetDate<=draws.at(-1).date)throw new Error('目标期号年份、开奖日期与数据末期不一致');
   const s=zoneStats(draws,zone);
-  if(!s.trigger)throw new Error('所选区未触发规则');
+  if(scheme==='zone'&&!s.trigger)throw new Error('所选区未触发规则');
   const past=new Set(draws.map(d=>key(d.red)));
   if(groups.some(r=>r.some(n=>n>=zone*11+1&&n<=zone*11+11)||(excludeHistory&&past.has(key(r)))))throw new Error('组合不符合缺区或历史排除规则');
   if(selection)checkSelection(groups,selection,zone);
   if(selection&&(selection.excludeHistory??true)!==excludeHistory)throw new Error('历史排除选项与已生成组合不一致');
   return {version:LEDGER_VERSION,id:globalThis.crypto.randomUUID(),savedAt:now,cutoff:new Date(deadline).toISOString(),target,targetDate,mode,zone,
-    source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current,excludeHistory},
+    source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:scheme==='fixed-triple'?{name:'fixed-triple-hypothesis-v1',fixed:[10,11,12],poolMax:22,conditionalUniverse:969,excludeHistory:false}:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current,excludeHistory},
     groups:groups.map(r=>[...r]),control:randomControl(groups.length),blueMode,blues:blueMode==='single'?[...blues]:[],controlBlues:blueMode==='single'?drawBlues(groups.length):[],cost:groups.length*multiplier*2,...(selection?{selection:JSON.parse(JSON.stringify(selection))}:{})};
 }
 export function validateRecord(r){
@@ -48,7 +50,10 @@ export function validateRecord(r){
   if(r.version===2){if(blueMode==='single'){checkBlues(r.blues,r.groups.length);checkBlues(r.controlBlues,r.control.length);}else if(!Array.isArray(r.blues)||r.blues.length||!Array.isArray(r.controlBlues)||r.controlBlues.length)throw new Error('全蓝账本字段无效');}
   if(r.control.length!==r.groups.length||r.cost!==r.groups.length*multiplier*2||!Number.isFinite(Date.parse(r.savedAt))||!Number.isFinite(Date.parse(r.cutoff))||Date.parse(r.savedAt)>=Date.parse(r.cutoff))throw new Error('账本成本或时间无效');
   const date=new Date(Date.parse(r.cutoff)+8*3600000).toISOString().slice(0,10);
-  if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule||r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
+  if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule)throw new Error('账本来源或规则无效');
+  if(r.rule.name==='fixed-triple-hypothesis-v1'){
+    if(r.version!==2||r.zone!==2||blueMode!=='single'||r.selection||r.rule.excludeHistory!==false||r.rule.poolMax!==22||r.rule.conditionalUniverse!==969||JSON.stringify(r.rule.fixed)!=='[10,11,12]'||r.groups.some(g=>![10,11,12].every(n=>g.includes(n))))throw new Error('固定三连号方案账本无效');
+  }else if(r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
   if(r.groups.some(g=>g.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)))throw new Error('账本组合包含排除区号码');
   if(r.rule.excludeHistory!==undefined&&typeof r.rule.excludeHistory!=='boolean')throw new Error('历史排除规则无效');
   if(r.selection)checkSelection(r.groups,r.selection,r.zone);
@@ -87,5 +92,6 @@ export function assessRecord(r,draws){
   const draw=current||saved;
   if(!draw)return {status:'pending'};
   if(draw.date!==r.targetDate)return {status:'conflict'};
-  return {status:'settled',draw,strategy:settleGroups(r.groups,draw,blueModeOf(r),r.blues),control:settleGroups(r.control,draw,blueModeOf(r),r.controlBlues)};
+  const conditionMet=!draw.red.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)&&(r.rule.name!=='fixed-triple-hypothesis-v1'||[10,11,12].every(n=>draw.red.includes(n)));
+  return {status:'settled',draw,conditionMet,strategy:settleGroups(r.groups,draw,blueModeOf(r),r.blues),control:settleGroups(r.control,draw,blueModeOf(r),r.controlBlues)};
 }

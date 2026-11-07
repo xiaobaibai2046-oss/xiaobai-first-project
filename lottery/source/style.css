@@ -7,3 +7,5 @@
 .quick-nav{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}.quick-nav a{color:#235e4c;background:#e3eade;padding:10px 14px;border-radius:7px;text-decoration:none;font-size:13px}.reference-legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin:18px 0;font-size:13px}.reference-chart{overflow-x:auto;max-width:100%;border-radius:10px;background:white}.reference-chart svg{display:block;min-width:900px;width:100%;font-family:system-ui,sans-serif}.reference-chart g[role=button]{cursor:pointer}.reference-chart g:focus{outline:2px solid #235e4c}.reference-table{max-height:620px}.reference-table thead{position:sticky;top:0;background:#f3f5ef}.selected-reference{background:#e0eddf}#reference-selected{background:#e6ece1;padding:12px;border-radius:7px;line-height:1.8}html{scroll-behavior:smooth}
 
 #cost{white-space:pre-line}.plan-comparison{line-height:1.9}.plan-comparison p{color:#65776c}#blue-plan{max-width:100%}
+
+.section-link{color:#235e4c;font-size:14px}.fixed-blue{display:inline-block;margin-left:12px}#fixed-status{color:#65776c;line-height:1.8}#fixed-count{width:140px}

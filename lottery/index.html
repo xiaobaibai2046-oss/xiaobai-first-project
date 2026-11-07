@@ -8,14 +8,16 @@
 .quick-nav{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}.quick-nav a{color:#235e4c;background:#e3eade;padding:10px 14px;border-radius:7px;text-decoration:none;font-size:13px}.reference-legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin:18px 0;font-size:13px}.reference-chart{overflow-x:auto;max-width:100%;border-radius:10px;background:white}.reference-chart svg{display:block;min-width:900px;width:100%;font-family:system-ui,sans-serif}.reference-chart g[role=button]{cursor:pointer}.reference-chart g:focus{outline:2px solid #235e4c}.reference-table{max-height:620px}.reference-table thead{position:sticky;top:0;background:#f3f5ef}.selected-reference{background:#e0eddf}#reference-selected{background:#e6ece1;padding:12px;border-radius:7px;line-height:1.8}html{scroll-behavior:smooth}
 
 #cost{white-space:pre-line}.plan-comparison{line-height:1.9}.plan-comparison p{color:#65776c}#blue-plan{max-width:100%}
+
+.section-link{color:#235e4c;font-size:14px}.fixed-blue{display:inline-block;margin-left:12px}#fixed-status{color:#65776c;line-height:1.8}#fixed-count{width:140px}
 </style></head>
 <body><header><div><span class="eyebrow">SSQ / RESEARCH DESK</span><h1>缺区观察<span>双色球研究台</span></h1></div><label class="import">导入开奖数据<input id="file" type="file" accept=".json,.csv" hidden></label></header>
-<main><nav class="quick-nav" aria-label="页面导航"><a href="#reference-section">百期缺席曲线与统计表</a><a href="#interval-section">缺席间隔统计与分析</a><a href="#ledger-section">记账与验证</a></nav><div class="notice">默认方案：72组不同六红，每组1蓝，共72注、144元。主要比较“所选区确实缺席时，至少中一次一等奖或二等奖”的覆盖率，不代表一等奖单独概率提高，也不代表能提前预测缺区。</div>
+<main><nav class="quick-nav" aria-label="页面导航"><a href="#fixed-section">固定10/11/12方案</a><a href="#reference-section">百期缺席曲线与统计表</a><a href="#interval-section">缺席间隔统计与分析</a><a href="#ledger-section">记账与验证</a></nav><div class="notice">默认方案：72组不同六红，每组1蓝，共72注、144元。主要比较“所选区确实缺席时，至少中一次一等奖或二等奖”的覆盖率，不代表一等奖单独概率提高，也不代表能提前预测缺区。</div>
 <div id="status" role="status">正在加载历史记录…</div>
 <section><div class="section-head"><div><span class="eyebrow">01 / SIGNALS</span><h2>先观察，再筛选</h2></div><p>点击卡片，选择要排除的区</p></div><div id="zones" class="zones"></div>
 <details><summary>计算口径与数据限制</summary><p>缺席：该区11个号码在当期开奖中一个也没出现。平均间隔：历史相邻两次缺席事件之间的开奖期数均值，不是日历天数。当前遗漏：最近一次缺席之后已完成的开奖期数。触发条件严格为：当前遗漏 &gt; 平均间隔 × 2。两者计数口径相差一个事件期，界面同时列明，未把当前未完成间隔计入平均值。</p><p>排除历史组合仅对当前数据有效：六红排序后比较，忽略蓝球及原始顺序。过去开过的组合仍可能再次开出，排除它们没有已知概率优势。缺少记录会影响间隔与排除结果，需核对数据完整性。</p></details></section>
 <section><div class="section-head"><div><span class="eyebrow">02 / COMBINATIONS</span><h2>不同六红覆盖 · 一二等奖验证</h2></div></div><div class="controls"><label>蓝球方案<select id="blue-plan"><option value="single">单蓝分散覆盖：每组2元</option><option value="all">旧方案：每组全16蓝，32元</option></select></label><label>不同六红组数<input id="count" type="number" min="1" max="100" value="72"></label><button id="generate" disabled>按规则生成</button><button id="export" class="secondary" disabled>导出当前组合</button></div><p id="rule"></p><fieldset class="condition-panel"><legend>可选筛选（默认关闭）</legend><label class="check-label"><input id="exclude-history" type="checkbox"> 排除历史已开出的完整六红组合</label><label class="check-label"><input id="structured" type="checkbox"> 启用：1个热号＋1个冷号＋3个连续号＋1个随机号</label><div class="controls"><label>三连号排除范围<select id="run-scope"><option value="zoneHistory">排除所选两区历史六红中的三连号</option><option value="recent50">排除最近50期出现过的三连号</option><option value="all">排除全部历史出现过的三连号</option><option value="whole">只排历史整组六红，三连号可重复</option></select></label><label class="check-label"><input id="exact-run" type="checkbox" checked> 恰好一组三连号，不含四连号或额外两连号</label></div><p id="condition-info" aria-live="polite"></p><details><summary>查看已排除三连号的历史依据</summary><div id="run-evidence"></div></details><p class="muted">热池取剩余22个号码近50期频次前6名，冷池取后6名。频次相同时号码小的排前，两个池不重叠。6个角色的号码互不重复；三连号和随机号也可能来自冷热池，因此总冷热号个数可超过角色数量；1热＋1冷＋3连＋1随机共6个号码，互不重复。关闭本条件恢复基础缺区随机。完整历史六红只在勾选排除选项时过滤。</p></fieldset><div id="cost"></div><details class="plan-comparison"><summary>为什么默认改为72组单蓝？查看同为144元的比较</summary><div class="table-wrap"><table><thead><tr><th>方案</th><th>不同六红覆盖</th><th>完整注数</th><th>缺区成立时，一或二等奖至少中一次</th><th>缺区成立时，一等奖</th></tr></thead><tbody><tr><td>6＋16，加两组互不重叠的8＋1</td><td>57组</td><td>72注</td><td>57/74,613 ≈ 0.0764%</td><td>72/1,193,808 ≈ 0.00603%</td></tr><tr><td>72组不同六红，各1蓝</td><td>72组</td><td>72注</td><td>72/74,613 ≈ 0.0965%</td><td>72/1,193,808 ≈ 0.00603%</td></tr></tbody></table></div><p>上述均假设所选区确实缺席，所有红球来自剩余22个号码，展开后的完整号码不重复。新方案的一或二等奖至少中一次概率相对提高约26.3%，一等奖单独概率相同。它失去了全包蓝球的最低小奖保障，也减少了同组六红命中时同时获得多注二等奖的机会。蓝球随机分配，每组六红不同，蓝球之间允许重复，不声称存在蓝球预测优势。</p></details><div id="recommendations" class="recommendations"></div><p class="muted">每次为随机筛选；重新生成会替换当前结果。导出便于保存，请勿将多次生成结果直接叠加购买，避免跨批次重复。</p></section>
-<section id="ledger-section"><div class="section-head"><div><span class="eyebrow">LEDGER / VERIFY</span><h2>记账与同预算验证</h2></div><div class="controls"><button id="export-ledger" class="secondary">导出账本备份</button><label class="import">导入账本<input id="import-ledger" type="file" accept=".json" hidden></label></div></div>
+<section id="fixed-section"><div class="section-head"><div><span class="eyebrow">SCENARIO / FIXED TRIPLE</span><h2>预设缺区＋10/11/12 · 一二等奖覆盖</h2></div><a class="section-link" href="#ledger-section">查看统一账本</a></div><div class="notice">本方案以“当期第三区23—33完全缺席，并且红球包含10、11、12”同时成立为前提。目标是一等奖或二等奖至少中一个，不是两个奖级同时中，也不是一等奖单独10%。不会预测或保证这两个条件发生。</div><p>固定10、11、12，另外3个号从01—22除去这三个号后的19个号码中选，共C(19,3)＝969种六红。默认随机抽取97种不同组合，每组配1个蓝球，97注194元；条件成立时至少中一或二等奖约10.01%，一等奖单独约0.626%。</p><div class="controls"><label>不同六红组数<input id="fixed-count" type="number" min="1" max="100" value="97"></label><button id="fixed-generate">生成固定方案</button><button id="fixed-export" class="secondary" disabled>导出本方案 CSV</button></div><div id="fixed-cost" class="ledger-summary"></div><p id="fixed-status" role="status" aria-live="polite"></p><details><summary>登记本期方案并锁定验证记录</summary><p>只登记单蓝方案，不自动购票。与普通方案共用“一期一批”的限制和账本备份；同一期已有记录时不会覆盖。请在开奖前保存，截止时间需自行按官方销售规则核对。历史数据仅用于识别已知开奖和记录数据截至期号，不用于本方案选号。</p><div class="controls"><label>目标期号（7位）<input id="fixed-target" maxlength="7" inputmode="numeric" placeholder="填写未开奖目标期号"></label><label>销售截止（北京时间）<input id="fixed-cutoff" type="datetime-local"></label><label>记录类型<select id="fixed-mode"><option value="simulation">模拟验证（未购票）</option><option value="purchased">已实际购买（自行登记）</option></select></label><button id="fixed-save" disabled>保存到统一账本</button></div></details><details><summary>本方案号码清单</summary><div id="fixed-results" class="recommendations"></div></details><p class="muted">固定模式独立于普通缺区模式：不依赖“两倍遗漏”、近50期冷热排名、历史组合排除，也不排除四连号等包含10/11/12的合法组合。全部969种均为候选，批次内六红不重复；跨批次仍需查重。统一账本会分别报告条件实际成立次数和全部登记期的结果，不删除条件未成立的失败期。随机对照来自01—33，采用相同注数与单蓝预算，仅用于观察总体结果，不是相同969池内的对照。记录只存本地浏览器，请导出备份。</p></section><section id="ledger-section"><div class="section-head"><div><span class="eyebrow">LEDGER / VERIFY</span><h2>记账与同预算验证</h2></div><div class="controls"><button id="export-ledger" class="secondary">导出账本备份</button><label class="import">导入账本<input id="import-ledger" type="file" accept=".json" hidden></label></div></div>
 <p>一期一批：保存策略六红、对应蓝球、成本和当时规则。随机对照从01—33均匀生成，采用本批相同的蓝球方案和相同总注数，保存时锁定，仅供模拟，不计为实际支出。旧全蓝记录保持原方案核奖，与新单蓝记录分开汇总。</p>
 <div class="controls"><label>目标期号（7位）<input id="record-target" inputmode="numeric" maxlength="7" placeholder="如 2026127"></label><label>本期记录截止（北京时间）<input id="record-cutoff" type="datetime-local"></label><label>记录类型<select id="record-mode"><option value="simulation">模拟验证（未购票）</option><option value="purchased">已实际购买（自行登记）</option></select></label><button id="save-record" disabled>保存当前组合与对照</button></div>
 <p class="muted">截止时间请按该期官方销售截止时间填写，软件不自动核验。仅允许保存未来目标，已知开奖禁止登记；保存后不提供修改或重抽同一期。开奖数据仍需通过上方「导入开奖数据」更新，核奖随之进行；奖金按常规奖级计算，未计派奖、促销、税款和渠道差异。</p>
@@ -159,6 +161,21 @@ function checkSelection(groups,selection,zone){
     if(!role||!Array.isArray(role.hot)||role.hot.length!==1||role.hot.some(n=>!selection.hot.includes(n))||!selection.cold.includes(role.cold)||!Number.isInteger(role.random)||!Array.isArray(role.triple)||role.triple.length!==3||role.triple.some(n=>!Number.isInteger(n))||role.triple[1]!==role.triple[0]+1||role.triple[2]!==role.triple[0]+2||!Array.isArray(selection.runs)||!selection.runs.some(r=>key(r)===key(role.triple))||key([...role.hot,role.cold,...role.triple,role.random])!==key(groups[i]))throw new Error('号码角色与三连号条件快照不一致');
     const red=[...groups[i]].sort((a,b)=>a-b);if(selection.exactRun&&red.slice(1).filter((n,j)=>n===red[j]+1).length!==2)throw new Error('组合不满足恰好一组三连号');
   }
+}
+
+function fixedCandidates(){
+  const pool=Array.from({length:22},(_,i)=>i+1).filter(n=>![10,11,12].includes(n)),groups=[];
+  for(let a=0;a<pool.length-2;a++)for(let b=a+1;b<pool.length-1;b++)for(let c=b+1;c<pool.length;c++)groups.push([10,11,12,pool[a],pool[b],pool[c]].sort((a,b)=>a-b));
+  return groups;
+}
+function fixedStats(count){
+  if(!Number.isInteger(count)||count<1||count>100)throw new Error('每次生成1—100组不同六红，达到10%至少需97组');
+  return {count,tickets:count,cost:count*2,universe:969,conditionalTopTwo:count/969,conditionalFirst:count/15504,overallTopTwo:count/1107568,overallFirst:count/17721088};
+}
+function generateFixed(count=97,rng=randomInt){
+  const stats=fixedStats(count),all=fixedCandidates();
+  for(let i=0;i<count;i++){const j=i+rng(all.length-i);[all[i],all[j]]=[all[j],all[i]];}
+  return {groups:all.slice(0,count),blues:drawBlues(count,rng),stats};
 }
 
 function absenceBlocks(draws,size=100){
@@ -326,11 +343,13 @@ function checkGroups(groups){
   for(const r of groups)if(!Array.isArray(r)||r.length!==6||new Set(r).size!==6||r.some(n=>!Number.isInteger(n)||n<1||n>33))throw new Error('六红组合无效');
   if(new Set(groups.map(key)).size!==groups.length)throw new Error('批次内存在重复六红');
 }
-function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,blueMode='all',blues=[],excludeHistory=true,now=new Date().toISOString()}){
+function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[],selection=null,blueMode='all',blues=[],excludeHistory=true,scheme='zone',now=new Date().toISOString()}){
   checkGroups(groups);
   const multiplier=blueMultiplier(blueMode);
   if(blueMode==='single')checkBlues(blues,groups.length);
   if(typeof excludeHistory!=='boolean')throw new Error('历史排除选项无效');
+  if(!['zone','fixed-triple'].includes(scheme))throw new Error('记录方案无效');
+  if(scheme==='fixed-triple'&&(zone!==2||blueMode!=='single'||excludeHistory||selection||groups.some(g=>g.some(n=>n>22)||![10,11,12].every(n=>g.includes(n)))))throw new Error('固定方案必须为01—22、包含10/11/12、每组单蓝且无额外筛选');
   if(!['simulation','purchased'].includes(mode))throw new Error('记录类型无效');
   if(!/^20\d{5}$/.test(target)||Number(target.slice(4))<1||target<=draws.at(-1).issue)throw new Error('目标期号必须晚于当前数据最新期号');
   if(records.some(r=>r.target===target))throw new Error('该期已有记录；每期仅保留一批，避免事后挑选');
@@ -339,13 +358,13 @@ function makeRecord({draws,groups,zone,target,cutoff,mode='simulation',records=[
   const targetDate=new Date(deadline+8*3600000).toISOString().slice(0,10);
   if(targetDate.slice(0,4)!==target.slice(0,4)||targetDate<=draws.at(-1).date)throw new Error('目标期号年份、开奖日期与数据末期不一致');
   const s=zoneStats(draws,zone);
-  if(!s.trigger)throw new Error('所选区未触发规则');
+  if(scheme==='zone'&&!s.trigger)throw new Error('所选区未触发规则');
   const past=new Set(draws.map(d=>key(d.red)));
   if(groups.some(r=>r.some(n=>n>=zone*11+1&&n<=zone*11+11)||(excludeHistory&&past.has(key(r)))))throw new Error('组合不符合缺区或历史排除规则');
   if(selection)checkSelection(groups,selection,zone);
   if(selection&&(selection.excludeHistory??true)!==excludeHistory)throw new Error('历史排除选项与已生成组合不一致');
   return {version:LEDGER_VERSION,id:globalThis.crypto.randomUUID(),savedAt:now,cutoff:new Date(deadline).toISOString(),target,targetDate,mode,zone,
-    source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current,excludeHistory},
+    source:{issue:draws.at(-1).issue,date:draws.at(-1).date,count:draws.length},rule:scheme==='fixed-triple'?{name:'fixed-triple-hypothesis-v1',fixed:[10,11,12],poolMax:22,conditionalUniverse:969,excludeHistory:false}:{name:'zone-omission-2x-v1',mean:s.mean,current:s.current,excludeHistory},
     groups:groups.map(r=>[...r]),control:randomControl(groups.length),blueMode,blues:blueMode==='single'?[...blues]:[],controlBlues:blueMode==='single'?drawBlues(groups.length):[],cost:groups.length*multiplier*2,...(selection?{selection:JSON.parse(JSON.stringify(selection))}:{})};
 }
 function validateRecord(r){
@@ -356,7 +375,10 @@ function validateRecord(r){
   if(r.version===2){if(blueMode==='single'){checkBlues(r.blues,r.groups.length);checkBlues(r.controlBlues,r.control.length);}else if(!Array.isArray(r.blues)||r.blues.length||!Array.isArray(r.controlBlues)||r.controlBlues.length)throw new Error('全蓝账本字段无效');}
   if(r.control.length!==r.groups.length||r.cost!==r.groups.length*multiplier*2||!Number.isFinite(Date.parse(r.savedAt))||!Number.isFinite(Date.parse(r.cutoff))||Date.parse(r.savedAt)>=Date.parse(r.cutoff))throw new Error('账本成本或时间无效');
   const date=new Date(Date.parse(r.cutoff)+8*3600000).toISOString().slice(0,10);
-  if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule||r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
+  if(r.targetDate!==date||date.slice(0,4)!==r.target.slice(0,4)||!r.source||!/^20\d{5}$/.test(r.source.issue)||r.source.issue>=r.target||!/^\d{4}-\d{2}-\d{2}$/.test(r.source.date)||r.source.date>=date||!Number.isInteger(r.source.count)||r.source.count<1||!r.rule)throw new Error('账本来源或规则无效');
+  if(r.rule.name==='fixed-triple-hypothesis-v1'){
+    if(r.version!==2||r.zone!==2||blueMode!=='single'||r.selection||r.rule.excludeHistory!==false||r.rule.poolMax!==22||r.rule.conditionalUniverse!==969||JSON.stringify(r.rule.fixed)!=='[10,11,12]'||r.groups.some(g=>![10,11,12].every(n=>g.includes(n))))throw new Error('固定三连号方案账本无效');
+  }else if(r.rule.name!=='zone-omission-2x-v1'||!Number.isFinite(r.rule.mean)||r.rule.mean<=0||!Number.isInteger(r.rule.current)||r.rule.current<=2*r.rule.mean)throw new Error('账本来源或规则无效');
   if(r.groups.some(g=>g.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)))throw new Error('账本组合包含排除区号码');
   if(r.rule.excludeHistory!==undefined&&typeof r.rule.excludeHistory!=='boolean')throw new Error('历史排除规则无效');
   if(r.selection)checkSelection(r.groups,r.selection,r.zone);
@@ -395,7 +417,8 @@ function assessRecord(r,draws){
   const draw=current||saved;
   if(!draw)return {status:'pending'};
   if(draw.date!==r.targetDate)return {status:'conflict'};
-  return {status:'settled',draw,strategy:settleGroups(r.groups,draw,blueModeOf(r),r.blues),control:settleGroups(r.control,draw,blueModeOf(r),r.controlBlues)};
+  const conditionMet=!draw.red.some(n=>n>=r.zone*11+1&&n<=r.zone*11+11)&&(r.rule.name!=='fixed-triple-hypothesis-v1'||[10,11,12].every(n=>draw.red.includes(n)));
+  return {status:'settled',draw,conditionMet,strategy:settleGroups(r.groups,draw,blueModeOf(r),r.blues),control:settleGroups(r.control,draw,blueModeOf(r),r.controlBlues)};
 }
 
 function initLedger({getDraws,getGroups,getZone,getSelection=()=>null,getBlueMode=()=>'all',getBlues=()=>[],getExcludeHistory=()=>true}){
@@ -417,18 +440,22 @@ function initLedger({getDraws,getGroups,getZone,getSelection=()=>null,getBlueMod
     if(proposed.some((r,i)=>r!==records[i]))try{persist(proposed);}catch(e){message('开奖可核算，但快照保存失败：'+e.message);}
     const assessments=records.map(r=>({r,a:assessRecord(r,draws)}));
     const summary=[];
-    const strategyKey=r=>`${blueModeOf(r)}/${r.rule.excludeHistory??true}/${r.selection?`${r.selection.runScope}/${r.selection.exactRun}`:'zone-random'}`;
+    const strategyKey=r=>`${r.rule.name}/${blueModeOf(r)}/${r.rule.excludeHistory??true}/${r.selection?`${r.selection.runScope}/${r.selection.exactRun}`:'zone-random'}`;
     for(const mode of ['simulation','purchased'])for(const sk of new Set(assessments.filter(x=>x.r.mode===mode).map(x=>strategyKey(x.r)))){
       const subset=assessments.filter(x=>x.r.mode===mode&&strategyKey(x.r)===sk),settled=subset.filter(x=>x.a.status==='settled'),pending=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)>Date.now()).length,overdue=subset.filter(x=>x.a.status==='pending'&&Date.parse(x.r.cutoff)<=Date.now()).length,conflict=subset.filter(x=>x.a.status==='conflict').length;
       if(!subset.length)continue;
       const totalCost=subset.reduce((s,x)=>s+x.r.cost,0),cost=settled.reduce((s,x)=>s+x.r.cost,0),groups=settled.reduce((s,x)=>s+x.r.groups.length,0);
       const sum=(side,field)=>settled.reduce((s,x)=>s+x.a[side][field],0);
       const uncertain=settled.some(x=>x.a.strategy.unknownPayout||x.a.control.unknownPayout);
-      const sample=subset[0].r,ss=sample.selection,label=`${blueModeOf(sample)==='single'?'单蓝分散覆盖':'全包16蓝'} / ${sample.rule.excludeHistory??true?'排历史六红':'允许历史六红'} / `+(ss?`冷热三连号 / ${{zoneHistory:'两区历史排三连号',all:'全历史排三连号',recent50:'近50期排三连号',whole:'只排整组六红'}[ss.runScope]} / ${ss.exactRun?'仅一组三连号':'可额外连号'}`:'基础缺区随机');
+      const sample=subset[0].r,ss=sample.selection,label=sample.rule.name==='fixed-triple-hypothesis-v1'?'独立预设：第三区缺席＋10/11/12 / 每组单蓝':`${blueModeOf(sample)==='single'?'单蓝分散覆盖':'全包16蓝'} / ${sample.rule.excludeHistory??true?'排历史六红':'允许历史六红'} / `+(ss?`冷热三连号 / ${{zoneHistory:'两区历史排三连号',all:'全历史排三连号',recent50:'近50期排三连号',whole:'只排整组六红'}[ss.runScope]} / ${ss.exactRun?'仅一组三连号':'可额外连号'}`:'基础缺区随机');
       summary.push(`${mode==='simulation'?'模拟验证':'自报已购'} · ${label}：共${subset.length}期，${settled.length}期已核奖、${pending}期待开奖、${overdue}期待补开奖数据、${conflict}期冲突。记录成本${format(totalCost)}；已核奖成本${format(cost)}。`);
       if(settled.length){
         const topIssues=side=>settled.filter(x=>x.a[side].topTwo>0).length;
         summary.push(`策略 / 同预算随机对照：一等奖 ${sum('strategy','first')} / ${sum('control','first')} 注；二等奖 ${sum('strategy','second')} / ${sum('control','second')} 注；一或二等奖至少命中 ${topIssues('strategy')}/${settled.length} / ${topIssues('control')}/${settled.length} 期；六红全中 ${sum('strategy','sixRedGroups')} / ${sum('control','sixRedGroups')} 组。每组六红平均命中 ${(sum('strategy','redTotal')/groups).toFixed(3)} / ${(sum('control','redTotal')/groups).toFixed(3)} 个。`);
+        if(sample.rule.name==='fixed-triple-hypothesis-v1'){
+          const met=settled.filter(x=>x.a.conditionMet),won=met.filter(x=>x.a.strategy.topTwo>0).length;
+          summary.push(`实际预设条件成立 ${met.length}/${settled.length} 期；在条件成立的开奖中，一或二等奖至少命中 ${won}/${met.length} 期${met.length?'':'（尚无可验证样本）'}。未成立的期数仍计入总体成本和结果，不予删除。`);
+        }
         if(uncertain)summary.push(`已知固定奖奖金下限：${format(sum('strategy','knownPayout'))} / ${format(sum('control','knownPayout'))}。含一、二等奖，浮动奖金未知，暂不计算总盈亏或回报率。`);
         else summary.push(`模拟税前奖金：${format(sum('strategy','knownPayout'))} / ${format(sum('control','knownPayout'))}；净收益：${format(sum('strategy','knownPayout')-cost)} / ${format(sum('control','knownPayout')-cost)}；回报率（净收益/成本）：${(100*(sum('strategy','knownPayout')-cost)/cost).toFixed(2)}% / ${(100*(sum('control','knownPayout')-cost)/cost).toFixed(2)}%。`);
       }
@@ -438,24 +465,30 @@ function initLedger({getDraws,getGroups,getZone,getSelection=()=>null,getBlueMod
     for(const {r,a} of [...assessments].reverse()){
       const item=document.createElement('details');item.className='ledger-record';
       const bm=blueModeOf(r),blueLabel=bm==='single'?'每组单蓝':'每组16蓝';
-      const title=document.createElement('summary');title.textContent=`${r.target}期 · ${r.mode==='simulation'?'模拟':'自报已购'} · ${r.groups.length}组 / ${blueLabel} / ${r.cost}元 · ${a.status==='settled'?'已核奖':a.status==='pending'?(Date.parse(r.cutoff)>Date.now()?'待开奖':'待补开奖数据'):'开奖数据冲突'}`;
+      const fixed=r.rule.name==='fixed-triple-hypothesis-v1';
+      const title=document.createElement('summary');title.textContent=`${r.target}期 · ${fixed?'固定10/11/12 · ':''}${r.mode==='simulation'?'模拟':'自报已购'} · ${r.groups.length}组 / ${blueLabel} / ${r.cost}元 · ${a.status==='settled'?'已核奖':a.status==='pending'?(Date.parse(r.cutoff)>Date.now()?'待开奖':'待补开奖数据'):'开奖数据冲突'}`;
       const text=document.createElement('p');text.className='ledger-text';
       const tickets=(groups,blues)=>groups.map((g,i)=>g.map(n=>String(n).padStart(2,'0')).join(' ')+(bm==='single'?` + 蓝${String(blues[i]).padStart(2,'0')}`:' + 蓝01—16')).join('\n');
-      const lines=[`保存：${new Date(r.savedAt).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}（北京时间）`,`截止：${new Date(r.cutoff).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}；目标开奖日：${r.targetDate}`,`依据截至${r.source.issue}期，共${r.source.count}期。排除第${r.zone+1}区；当时遗漏${r.rule.current}期，平均间隔${r.rule.mean.toFixed(2)}期。历史六红${r.rule.excludeHistory??true?'排除':'不排除'}。`,`策略号码（${blueLabel}）：\n${tickets(r.groups,r.blues)}`,`随机对照号码（${blueLabel}，仅模拟）：\n${tickets(r.control,r.controlBlues)}`];
+      const ruleText=fixed?'预设第三区完全缺席且含10/11/12；候选969种，不以遗漏/冷热/历史排除触发。':`排除第${r.zone+1}区；当时遗漏${r.rule.current}期，平均间隔${r.rule.mean.toFixed(2)}期。历史六红${r.rule.excludeHistory??true?'排除':'不排除'}。`;
+      const lines=[`保存：${new Date(r.savedAt).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}（北京时间）`,`截止：${new Date(r.cutoff).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false})}；目标开奖日：${r.targetDate}`,`数据截至${r.source.issue}期，共${r.source.count}期。${ruleText}`,`策略号码（${blueLabel}）：\n${tickets(r.groups,r.blues)}`,`随机对照号码（${blueLabel}，仅模拟）：\n${tickets(r.control,r.controlBlues)}`];
       if(r.selection){const s=r.selection;lines.push(`附加规则：最近50期（${s.windowStart}—${s.windowEnd}），热池${s.hot.join(' ')}，冷池${s.cold.join(' ')}；三连号排除范围${{zoneHistory:'所选两区完整历史开奖',all:'全部历史',recent50:'最近50期',whole:'只排除历史整组六红'}[s.runScope]}；${s.exactRun?'恰好一组三连号':'允许额外连号'}。`,...s.roles.map((v,i)=>`第${i+1}组角色：热${v.hot.join('/')}；冷${v.cold}；三连号${v.triple.join('/')}；随机${v.random}`));}
       if(a.status==='settled'){
         lines.push(`开奖：${a.draw.date} · ${a.draw.red.join(' ')} + ${a.draw.blue}`);
+        if(fixed)lines.push(`预设条件实际${a.conditionMet?'成立':'未成立'}；该期成本和结果均保留。`);
         for(const [side,label] of [['strategy','策略'],['control','随机对照']])lines.push(`${label}：一至六等奖注数 [${a[side].levels.join(', ')}]；最高命中${a[side].bestRed}红；${a[side].unknownPayout?'固定奖奖金下限':'模拟税前奖金'}${format(a[side].knownPayout)}。`);
       }else if(a.status==='conflict')lines.push('当前开奖与保存快照或登记日期冲突，不纳入核奖比较。请核对数据，原记录与快照保留。');
       text.textContent=lines.join('\n');item.append(title,text);L('ledger-records').append(item);
     }
   }
+  function saveDraft(options){
+    if(records.length>=1000)throw new Error('最多保存1000期，请先导出备份');
+    const r=makeRecord({...options,records});persist([...records,r]);message('已保存本期策略、成本和同预算随机对照；请导出备份。');refresh();return r;
+  }
   L('save-record').onclick=()=>{
     try{
       if(records.length>=1000)throw new Error('最多保存1000期，请先导出备份');
       const value=L('record-cutoff').value;if(!value)throw new Error('请填写北京时间的记录截止时间');
-      const r=makeRecord({draws:getDraws(),groups:getGroups(),zone:getZone(),selection:getSelection(),blueMode:getBlueMode(),blues:getBlues(),excludeHistory:getExcludeHistory(),target:L('record-target').value.trim(),cutoff:value+':00+08:00',mode:L('record-mode').value,records});
-      persist([...records,r]);message('已保存此期策略、成本和同注数随机对照。保存后不提供编辑或重抽；请导出备份。');refresh();
+      saveDraft({draws:getDraws(),groups:getGroups(),zone:getZone(),selection:getSelection(),blueMode:getBlueMode(),blues:getBlues(),excludeHistory:getExcludeHistory(),target:L('record-target').value.trim(),cutoff:value+':00+08:00',mode:L('record-mode').value});
     }catch(e){message('未保存：'+e.message);}
   };
   L('export-ledger').onclick=()=>{
@@ -472,6 +505,47 @@ function initLedger({getDraws,getGroups,getZone,getSelection=()=>null,getBlueMod
     }catch(err){message('未导入，原账本保留：'+err.message);}
     e.target.value='';
   };
+  return {refresh,saveDraft};
+}
+
+function initFixedPlan({getDraws,saveDraft}){
+  const F=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');let generated=null;
+  function info(text){F('fixed-status').textContent=text;}
+  function render(){
+    const count=Number(F('fixed-count').value);
+    try{
+      const s=fixedStats(count);F('fixed-generate').disabled=false;
+      F('fixed-cost').textContent=`${s.count}组不同六红 × 每组1蓝＝${s.tickets}注，共${s.cost}元。候选池始终为969种。\n仅当“第三区缺席＋10、11、12同时出现”都成立时：至少中一次一等奖或二等奖 ${(100*s.conditionalTopTwo).toFixed(4)}%；一等奖单独 ${(100*s.conditionalFirst).toFixed(4)}%。\n开奖前不假定上述条件：一或二等奖 ${(100*s.overallTopTwo).toFixed(6)}%；一等奖 ${(100*s.overallFirst).toFixed(6)}%。默认97组达到的10.01%仅是条件概率。`;
+    }catch(e){F('fixed-generate').disabled=true;F('fixed-cost').textContent=e.message;}
+    F('fixed-export').disabled=!generated;F('fixed-save').disabled=!generated||!getDraws().length;
+    F('fixed-results').replaceChildren();
+    if(!generated)return;
+    generated.groups.forEach((red,i)=>{
+      const card=document.createElement('article');card.className='combo';
+      const label=document.createElement('span');label.className='combo-index';label.textContent=`第${i+1}注 · 固定10/11/12 · 2元`;
+      const numbers=document.createElement('div');numbers.className='balls';
+      for(const n of red){const b=document.createElement('span');b.className='ball';b.textContent=pad(n);numbers.append(b);}
+      const blue=document.createElement('span');blue.className='ball blue';blue.textContent=pad(generated.blues[i]);
+      const caption=document.createElement('small');caption.textContent='六红＋单个蓝球；附加的3个红球来自其余19个号码。';
+      const blueWrap=document.createElement('span');blueWrap.className='fixed-blue';blueWrap.append(blue);card.append(label,numbers,blueWrap,caption);F('fixed-results').append(card);
+    });
+  }
+  function refresh(){generated=null;render();info('此模式研究预设场景，不要求历史遗漏触发；不会排除已开过的组合，也不强制冷热号。生成后可在本区登记，记录会保存到统一账本。');}
+  F('fixed-count').oninput=()=>{generated=null;render();};
+  F('fixed-generate').onclick=()=>{try{generated=generateFixed(Number(F('fixed-count').value));render();info(`已从969种候选中抽取${generated.groups.length}组不同六红，并为每组锁定一个随机蓝球。重新生成会替换未保存结果；已保存记录不会变化。`);}catch(e){generated=null;render();info(e.message);}};
+  F('fixed-export').onclick=()=>{
+    if(!generated)return;
+    const csv=['red1,red2,red3,red4,red5,red6,blue,cost,scheme',...generated.groups.map((r,i)=>[...r.map(pad),pad(generated.blues[i]),2,'fixed-triple-hypothesis-v1'].join(','))].join('\n');
+    const u=URL.createObjectURL(new Blob(['\uFEFF',csv],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download='固定10-11-12单蓝方案.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
+  };
+  F('fixed-save').onclick=()=>{
+    try{
+      if(!generated)throw new Error('请先生成组合');
+      const value=F('fixed-cutoff').value;if(!value)throw new Error('请填写本期官方销售截止时间（北京时间）');
+      saveDraft({draws:getDraws(),groups:generated.groups,blues:generated.blues,zone:2,blueMode:'single',excludeHistory:false,selection:null,scheme:'fixed-triple',target:F('fixed-target').value.trim(),cutoff:value+':00+08:00',mode:F('fixed-mode').value});
+      info('已保存到统一账本，并锁定同预算随机对照。此方案单独汇总；开奖结果不满足预设条件时，仍保留该期成本和结果。');
+    }catch(e){info('未保存：'+e.message);}
+  };
   return {refresh};
 }
 
@@ -479,12 +553,13 @@ const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
 let draws=[],stats=[],selected=2,combos=[],blues=[],selection=null,eventPage=0,historyPage=0,source='';
 const pageSize=25;
 const ledger=initLedger({getDraws:()=>draws,getGroups:()=>combos,getZone:()=>selected,getSelection:()=>selection,getBlueMode:()=>$('blue-plan').value,getBlues:()=>blues,getExcludeHistory:()=>$('exclude-history').checked});
+const fixedPlan=initFixedPlan({getDraws:()=>draws,saveDraft:options=>ledger.saveDraft(options)});
 const ball=(n,blue=false)=>`<span class="ball${blue?' blue':''}">${pad(n)}</span>`;
 const balls=r=>`<span class="balls">${r.map(n=>ball(n)).join('')}</span>`;
 const zoneName=z=>['第一区','第二区','第三区'][z];
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
 function clearCombos(){combos=[];blues=[];selection=null;}
-function load(next,label){draws=next;source=label;stats=ZONES.map((_,z)=>zoneStats(draws,z));clearCombos();eventPage=historyPage=0;render();renderReferences(draws);renderIntervals(draws);}
+function load(next,label){draws=next;source=label;stats=ZONES.map((_,z)=>zoneStats(draws,z));clearCombos();eventPage=historyPage=0;render();renderReferences(draws);renderIntervals(draws);fixedPlan.refresh();}
 function render(){
   const first=draws[0],last=draws.at(-1);
   const issuesByYear=new Map();
