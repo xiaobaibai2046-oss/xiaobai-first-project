@@ -10,9 +10,12 @@ from zoneinfo import ZoneInfo
 ROOT=Path(__file__).resolve().parent.parent;sys.path.insert(0,str(ROOT))
 from trading_sessions import is_trading_day
 SH=ZoneInfo('Asia/Shanghai')
-parser=argparse.ArgumentParser();parser.add_argument('--slot',choices=['14:05','15:05'],required=True);args=parser.parse_args()
-r=json.loads((ROOT/'validation/remaining-slots-request.json').read_text());now=dt.datetime.now(SH);date=r['date']
-ready=now.date().isoformat()==date and is_trading_day(now.date()) and now.strftime('%H:%M')<'15:20'
+parser=argparse.ArgumentParser();parser.add_argument('--slot',choices=['10:35','11:35','14:05','15:05'],required=True);args=parser.parse_args()
+now=dt.datetime.now(SH)
+automatic=os.environ.get('DAILY_CLOCK')=='true'
+r={} if automatic else json.loads((ROOT/'validation/remaining-slots-request.json').read_text())
+date=now.date().isoformat() if automatic else r['date']
+ready=now.date().isoformat()==date and is_trading_day(now.date()) and (automatic or now.strftime('%H:%M')<'15:20')
 if ready:
     target=dt.datetime.fromisoformat(date+'T'+args.slot+':00+08:00')
     if (target-now).total_seconds()>3*3600:raise RuntimeError('Recovery wait exceeds its bounded window')

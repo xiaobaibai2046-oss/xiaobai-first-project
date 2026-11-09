@@ -1,0 +1,281 @@
+name: Daily stock process clock
+run-name: Stock daily clock · ${{ github.event_name }} · ${{ github.run_id }}
+on:
+  schedule:
+    # Start before the market opens, away from the top-of-hour load spike.
+    # One successful start keeps all four slots inside the same running workflow.
+    - cron: '5 0 * * 1-5'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: stock-signals
+  cancel-in-progress: false
+jobs:
+  wait1035:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      run: ${{ steps.due.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait inside the running workflow until Beijing 10:35
+        env:
+          DAILY_CLOCK: 'true'
+        run: python -u stock/source/scripts/wait-update-slot.py --slot 10:35
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-schedule-state.json
+          key: stock-schedule-state-v1-${{ github.run_id }}-1035-${{ github.run_attempt }}
+          restore-keys: stock-schedule-state-v1-
+      - name: Read latest snapshot and enforce freshness and bounded retry checks
+        id: due
+        env:
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
+          SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
+        run: |
+          git fetch origin main
+          git checkout --detach origin/main
+          python stock/source/scripts/scan-due.py
+  quick1035:
+    needs: wait1035
+    if: always() && needs.wait1035.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-daily-1035
+  publishquick1035:
+    needs: [wait1035, quick1035]
+    if: always() && needs.wait1035.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-daily-1035
+  complete1035:
+    needs: [wait1035, publishquick1035]
+    if: always() && needs.wait1035.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-daily-1035
+  publish1035:
+    needs: [wait1035, complete1035]
+    if: always() && needs.wait1035.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-daily-1035
+  wait1135:
+    needs: [wait1035, publish1035]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      run: ${{ steps.due.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait inside the running workflow until Beijing 11:35
+        env:
+          DAILY_CLOCK: 'true'
+        run: python -u stock/source/scripts/wait-update-slot.py --slot 11:35
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-schedule-state.json
+          key: stock-schedule-state-v1-${{ github.run_id }}-1135-${{ github.run_attempt }}
+          restore-keys: stock-schedule-state-v1-
+      - name: Read latest snapshot and enforce freshness and bounded retry checks
+        id: due
+        env:
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
+          SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
+        run: |
+          git fetch origin main
+          git checkout --detach origin/main
+          python stock/source/scripts/scan-due.py
+  quick1135:
+    needs: wait1135
+    if: always() && needs.wait1135.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-daily-1135
+  publishquick1135:
+    needs: [wait1135, quick1135]
+    if: always() && needs.wait1135.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-daily-1135
+  complete1135:
+    needs: [wait1135, publishquick1135]
+    if: always() && needs.wait1135.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-daily-1135
+  publish1135:
+    needs: [wait1135, complete1135]
+    if: always() && needs.wait1135.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-daily-1135
+  wait1405:
+    needs: [wait1135, publish1135]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      run: ${{ steps.due.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait inside the running workflow until Beijing 14:05
+        env:
+          DAILY_CLOCK: 'true'
+        run: python -u stock/source/scripts/wait-update-slot.py --slot 14:05
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-schedule-state.json
+          key: stock-schedule-state-v1-${{ github.run_id }}-1405-${{ github.run_attempt }}
+          restore-keys: stock-schedule-state-v1-
+      - name: Read latest snapshot and enforce freshness and bounded retry checks
+        id: due
+        env:
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
+          SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
+        run: |
+          git fetch origin main
+          git checkout --detach origin/main
+          python stock/source/scripts/scan-due.py
+  quick1405:
+    needs: wait1405
+    if: always() && needs.wait1405.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-daily-1405
+  publishquick1405:
+    needs: [wait1405, quick1405]
+    if: always() && needs.wait1405.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-daily-1405
+  complete1405:
+    needs: [wait1405, publishquick1405]
+    if: always() && needs.wait1405.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-daily-1405
+  publish1405:
+    needs: [wait1405, complete1405]
+    if: always() && needs.wait1405.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-daily-1405
+  wait1505:
+    needs: [wait1405, publish1405]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    outputs:
+      run: ${{ steps.due.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait inside the running workflow until Beijing 15:05
+        env:
+          DAILY_CLOCK: 'true'
+        run: python -u stock/source/scripts/wait-update-slot.py --slot 15:05
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-schedule-state.json
+          key: stock-schedule-state-v1-${{ github.run_id }}-1505-${{ github.run_attempt }}
+          restore-keys: stock-schedule-state-v1-
+      - name: Read latest snapshot and enforce freshness and bounded retry checks
+        id: due
+        env:
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
+          SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
+        run: |
+          git fetch origin main
+          git checkout --detach origin/main
+          python stock/source/scripts/scan-due.py
+  quick1505:
+    needs: wait1505
+    if: always() && needs.wait1505.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-daily-1505
+  publishquick1505:
+    needs: [wait1505, quick1505]
+    if: always() && needs.wait1505.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-daily-1505
+  complete1505:
+    needs: [wait1505, publishquick1505]
+    if: always() && needs.wait1505.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-daily-1505
+  publish1505:
+    needs: [wait1505, complete1505]
+    if: always() && needs.wait1505.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-daily-1505
