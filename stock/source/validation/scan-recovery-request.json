@@ -1,5 +1,6 @@
 {
   "run_id": 42170109710,
   "obsolete_sha": "c1d4faa45497ed2c8129ab156f24651c28e8b81d",
-  "reason": "Cancel only the obsolete November 6 queued main dispatch; November 9 direct watchdog is already collecting."
+  "reason": "Cancel only the obsolete November 6 queued main dispatch; November 9 direct watchdog is already collecting.",
+  "retry": "Handle queued-run cancellation conflict before trying force-cancel"
 }
