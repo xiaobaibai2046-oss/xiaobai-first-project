@@ -1,0 +1,4 @@
+{
+  "requested_at": "2026-11-09T05:09:19.951036+00:00",
+  "reason": "Recover November 9 missing 11:35 snapshot through direct reusable jobs; no dispatch or stale-queue blocker."
+}

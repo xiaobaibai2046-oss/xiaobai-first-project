@@ -5,17 +5,22 @@ on:
     - cron: '35 2,3 * * 1-5'
     - cron: '5 6,7 * * 1-5'
     - cron: '2-59/5 2-15 * * 1-5'
+  push:
+    branches: [main]
+    paths: ['stock/source/validation/watchdog-request.json']
   workflow_dispatch:
 permissions:
-  contents: read
-  actions: write
+  contents: write
+  pages: write
 concurrency:
-  group: stock-watchdog
+  group: stock-signals
   cancel-in-progress: false
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
+    outputs:
+      run: ${{ steps.due.outputs.run }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,11 +28,49 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/stock-schedule-state.json
+          key: stock-schedule-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: stock-schedule-state-v1-
       - name: Check exchange day and latest due snapshot without paid APIs
         id: due
-        run: python stock/source/scripts/scan-due.py
-      - name: Recover original scan if no job is active
-        if: steps.due.outputs.run == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: python stock/source/scripts/watchdog-dispatch.py
+          TDX_OVERRIDE: ${{ vars.TDX_ENABLED }}
+          TDX_ADJUSTMENT: ${{ vars.TDX_ADJUSTMENT || 'none' }}
+          SCHEDULE_SCAN_STATE: ${{ runner.temp }}/stock-schedule-state.json
+        run: python stock/source/scripts/scan-due.py
+  quick-scan:
+    needs: check
+    if: always() && needs.check.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: quick
+      seconds: 120
+      artifact_prefix: stock-watchdog
+  quick-publish:
+    needs: [check, quick-scan]
+    if: always() && needs.check.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: quick
+      artifact_prefix: stock-watchdog
+  complete-scan:
+    needs: [check, quick-publish]
+    if: always() && needs.check.outputs.run == 'true'
+    uses: ./.github/workflows/stock-scan-phase.yml
+    secrets:
+      TDX_DATA_KEY: ${{ secrets.TDX_DATA_KEY }}
+    with:
+      phase: complete
+      seconds: 720
+      artifact_prefix: stock-watchdog
+  complete-publish:
+    needs: [check, complete-scan]
+    if: always() && needs.check.outputs.run == 'true'
+    uses: ./.github/workflows/stock-publish-phase.yml
+    with:
+      phase: complete
+      artifact_prefix: stock-watchdog

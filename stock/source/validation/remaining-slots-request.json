@@ -1,1 +1,9 @@
-{"date":"2026-11-06","slots":["14:05","15:05"],"expires_at":"2026-11-06T15:20:00+08:00","reason":"One-day push-triggered sequential recovery. Wait jobs invoke already-declared reusable scan/publish jobs directly, bypassing both missed cron and queued workflow_dispatch events. No new accounts, no self-chaining."}
+{
+  "date": "2026-11-09",
+  "slots": [
+    "14:05",
+    "15:05"
+  ],
+  "expires_at": "2026-11-09T15:20:00+08:00",
+  "reason": "One-day push-triggered sequential recovery. Wait jobs invoke already-declared reusable scan/publish jobs directly, bypassing both missed cron and queued workflow_dispatch events. No new accounts, no self-chaining."
+}
